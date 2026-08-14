@@ -108,67 +108,41 @@ var PORTFOLIO_PROJECTS = [
   },
   {
     "id": "project-02",
-    "title": "East MC Kinny Architectural Residential 3D BIM Model",
+    "title": "HVAC Project 3D BIM Model",
     "category": [
-      "architecture",
-      "autocad"
+      "mep"
     ],
-    "thumbnail": "./src/assets/images/projects/east-mc-kinny/t0.webp",
+    "thumbnail": "./src/assets/images/projects/hvac1/p1.webp",
     "images": [
       {
-        "url": "./src/assets/images/projects/east-mc-kinny/p0.webp", "caption": "Architectural Residential Revit Model"
+        "url": "./src/assets/images/projects/hvac1/p1.webp", "caption": "MEP Project 3D BIM Model"
       },
       {
-        "url": "./src/assets/images/projects/east-mc-kinny/p1.webp", "caption": "Architectural Residential Revit Model"
+        "url": "./src/assets/images/projects/hvac1/p2.webp", "caption": "MEP Project 3D BIM Model"
       },
       {
-        "url": "./src/assets/images/projects/east-mc-kinny/p2.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p3.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p4.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p5.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p6.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p7.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p8.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p9.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p10.webp", "caption": "Architectural Residential Revit Model"
+        "url": "./src/assets/images/projects/hvac1/p3.webp", "caption": "MEP Project 3D BIM Model"
       }
     ],
-    "shortDesc": "Transformed 3D Faro point cloud scan data into a millimeter-accurate Revit As-Built model (LOD 400) for historic renovation.",
-    "fullDesc": "Processed over 18GB of point cloud scan data (.e57 format) using Autodesk Recap Pro and imported into Revit. Reconstructed irregular historical brick masonry, tilted columns, original timber roof trusses, and exposed pipework with strict tolerance limits (<5mm deviation).",
-    "lod": "LOD 400",
+    "shortDesc": "2D CAD Concept into 3D installation-ready Revit model for a HVAC system, including ductwork, piping, and equipment layout with LOD 350.",
+    "fullDesc": "Fully developed a 3D Revit model for a HVAC system, integrating ductwork, piping, and equipment layout with precise dimensions and installation-ready details. The model was created from 2D CAD drawings and includes detailed annotations, schedules, and clash detection to ensure seamless construction.",
+    "lod": "LOD 350",
     "softwareUsed": [
       "Autodesk Revit",
-      "Autodesk ReCap Pro",
-      "Faro Scene",
+      "Autodesk Autocad",
       "Navisworks"
     ],
-    "clientRegion": "United States (Florida)",
-    "completionDate": "March 2024",
-    "areaSqFt": "4,000 sq.ft",
+    "clientRegion": "United Kingdom (London)",
+    "completionDate": "Aug 2023",
+    "areaSqFt": "20,000 sq.ft",
     "keyFeatures": [
-      "Conceptual modeling is used for early-stage spatial programming, massing studies, and site analysis alignment",
-      "Detailed design establishes precise multi-layered wall, floor, and roof assemblies with parametric components",
-      "Multidisciplinary coordination federates architectural elements with structural and MEP models to run clash detection",
-      "Construction documentation automatically generates dimensioned drawing packages, detailed component schedules, and standardized IFC/PDF exports"
+      "Developed a detailed 3D Revit model integrating all HVAC ductwork, piping, and equipment layouts",
+      "Converted 2D CAD drawings into precise, installation-ready 3D parametric components",
+      "Included comprehensive technical annotations, accurate equipment schedules, and material take-offs",
+      "Conducted automated clash detection to resolve spatial conflicts before on-site construction"
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Architecture Modeling • AutoCAD Services"
+    "categoryName": "MEP Systems HVAC Modeling"
   },
   {
     "id": "project-03",
@@ -343,41 +317,67 @@ var PORTFOLIO_PROJECTS = [
   },
   {
     "id": "project-06",
-    "title": "HVAC Project 3D BIM Model",
+    "title": "East MC Kinny Architectural Residential 3D BIM Model",
     "category": [
-      "mep"
+      "architecture",
+      "autocad"
     ],
-    "thumbnail": "./src/assets/images/projects/hvac1/p1.webp",
+    "thumbnail": "./src/assets/images/projects/east-mc-kinny/t0.webp",
     "images": [
       {
-        "url": "./src/assets/images/projects/hvac1/p1.webp", "caption": "MEP Project 3D BIM Model"
+        "url": "./src/assets/images/projects/east-mc-kinny/p0.webp", "caption": "Architectural Residential Revit Model"
       },
       {
-        "url": "./src/assets/images/projects/hvac1/p2.webp", "caption": "MEP Project 3D BIM Model"
+        "url": "./src/assets/images/projects/east-mc-kinny/p1.webp", "caption": "Architectural Residential Revit Model"
       },
       {
-        "url": "./src/assets/images/projects/hvac1/p3.webp", "caption": "MEP Project 3D BIM Model"
+        "url": "./src/assets/images/projects/east-mc-kinny/p2.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p3.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p4.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p5.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p6.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p7.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p8.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p9.webp", "caption": "Architectural Residential Revit Model"
+      },
+      {
+        "url": "./src/assets/images/projects/east-mc-kinny/p10.webp", "caption": "Architectural Residential Revit Model"
       }
     ],
-    "shortDesc": "2D CAD Concept into 3D installation-ready Revit model for a HVAC system, including ductwork, piping, and equipment layout with LOD 350.",
-    "fullDesc": "Fully developed a 3D Revit model for a HVAC system, integrating ductwork, piping, and equipment layout with precise dimensions and installation-ready details. The model was created from 2D CAD drawings and includes detailed annotations, schedules, and clash detection to ensure seamless construction.",
-    "lod": "LOD 350",
+    "shortDesc": "Transformed 3D Faro point cloud scan data into a millimeter-accurate Revit As-Built model (LOD 400) for historic renovation.",
+    "fullDesc": "Processed over 18GB of point cloud scan data (.e57 format) using Autodesk Recap Pro and imported into Revit. Reconstructed irregular historical brick masonry, tilted columns, original timber roof trusses, and exposed pipework with strict tolerance limits (<5mm deviation).",
+    "lod": "LOD 400",
     "softwareUsed": [
       "Autodesk Revit",
-      "Autodesk Autocad",
+      "Autodesk ReCap Pro",
+      "Faro Scene",
       "Navisworks"
     ],
-    "clientRegion": "United Kingdom (London)",
-    "completionDate": "Aug 2023",
-    "areaSqFt": "20,000 sq.ft",
+    "clientRegion": "United States (Florida)",
+    "completionDate": "March 2024",
+    "areaSqFt": "4,000 sq.ft",
     "keyFeatures": [
-      "Developed a detailed 3D Revit model integrating all HVAC ductwork, piping, and equipment layouts",
-      "Converted 2D CAD drawings into precise, installation-ready 3D parametric components",
-      "Included comprehensive technical annotations, accurate equipment schedules, and material take-offs",
-      "Conducted automated clash detection to resolve spatial conflicts before on-site construction"
+      "Conceptual modeling is used for early-stage spatial programming, massing studies, and site analysis alignment",
+      "Detailed design establishes precise multi-layered wall, floor, and roof assemblies with parametric components",
+      "Multidisciplinary coordination federates architectural elements with structural and MEP models to run clash detection",
+      "Construction documentation automatically generates dimensioned drawing packages, detailed component schedules, and standardized IFC/PDF exports"
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "MEP Systems"
+    "categoryName": "Architecture Modeling • AutoCAD Services"
   },
   {
     "id": "project-07",
