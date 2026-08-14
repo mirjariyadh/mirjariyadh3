@@ -1,0 +1,154 @@
+/* Mirja Riyadh Portfolio Custom Styles */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: #1a2234;
+  --bg-card-hover: #222d42;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --accent-cyan: #06b6d4;
+  --accent-blue: #3b82f6;
+  --accent-emerald: #10b981;
+  --border-color: #2e3a52;
+  --nav-bg: rgba(10, 14, 23, 0.85);
+}
+
+
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.font-mono-code {
+  font-family: 'Fira Code', monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* Grid overlay background effect */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(6, 182, 212, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.light-theme .bg-grid-pattern {
+  background-image: radial-gradient(rgba(2, 132, 199, 0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+/* Before/After Comparison Slider */
+.comparison-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  user-select: none;
+  border: 1px solid var(--border-color);
+}
+
+.comparison-slider .img-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.comparison-slider .slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: var(--accent-cyan);
+  cursor: ew-resize;
+  z-index: 10;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.8);
+}
+
+.comparison-slider .slider-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-cyan);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Hover & Card Animations */
+.card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -6px rgba(6, 182, 212, 0.18);
+  border-color: var(--accent-cyan);
+}
+
+/* Pulsing Badge */
+.pulse-badge {
+  position: relative;
+}
+.pulse-badge::before {
+  content: '';
+  position: absolute;
+  top: -2px; right: -2px; bottom: -2px; left: -2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(6px);
+  animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.3; filter: blur(4px); }
+  100% { opacity: 0.8; filter: blur(8px); }
+}
+
+/* SEO Schema hidden container */
+.seo-structured-data {
+  display: none;
+}
+
+#theme-toggle-btn, #theme-toggle-icon, #theme-toggle-btn-mobile {
+  display: none !important;
+  visibility: hidden !important;
+}
