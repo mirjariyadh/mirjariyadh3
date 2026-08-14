@@ -211,13 +211,28 @@
         </div>
 
         <div class="comparison-slider aspect-video max-h-[520px]">
-          <img src="/src/assets/images/point_cloud_scan_1786523985538.jpg" alt="Raw Laser Scan Point Cloud Data" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
-          <div class="img-after">
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Clean As-Built Revit BIM Model" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          <!-- Background Image: Clean 3D BIM Model (Shown on Right) -->
+          <img 
+            src="/src/assets/images/slider/point-cloud-a.webp" 
+            alt="Clean As-Built 3D Revit BIM Model" 
+            class="w-full h-full object-cover select-none pointer-events-none" 
+            referrerPolicy="no-referrer" 
+          />
+          
+          <!-- Foreground Clip Image: Raw Point Cloud Scan (Shown on Left) -->
+          <div class="img-after absolute inset-0 w-full h-full overflow-hidden">
+            <img 
+              src="/src/assets/images/slider/point-cloud-b.webp" 
+              alt="Raw Laser Scan Point Cloud Data" 
+              class="w-full h-full object-cover select-none pointer-events-none" 
+              referrerPolicy="no-referrer" 
+            />
           </div>
+
+          <!-- Slider Center Handle -->
           <div class="slider-handle">
             <div class="slider-button">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"></path></svg>
             </div>
           </div>
         </div>

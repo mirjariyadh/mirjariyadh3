@@ -147,13 +147,17 @@ function renderProjectDetailsPage() {
           <span class="text-xs text-gray-400">Raw Point Cloud (Left) vs 3D Revit Model (Right)</span>
         </div>
         <div class="comparison-slider aspect-video">
-          <img src="${project.beforeImage}" alt="Raw Laser Scan Point Cloud" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
-          <div class="img-after">
-            <img src="${project.afterImage}" alt="Completed 3D Revit Model" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          <!-- Background Image: Completed 3D Revit Model (Shown on Right) -->
+          <img src="${project.afterImage}" alt="Completed 3D Revit Model" class="w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" />
+          
+          <!-- Foreground Clip Image: Raw Point Cloud (Shown on Left) -->
+          <div class="img-after absolute inset-0 w-full h-full overflow-hidden">
+            <img src="${project.beforeImage}" alt="Raw Laser Scan Point Cloud" class="w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" />
           </div>
+
           <div class="slider-handle">
             <div class="slider-button">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"></path></svg>
             </div>
           </div>
         </div>

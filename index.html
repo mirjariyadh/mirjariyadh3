@@ -250,9 +250,9 @@
 
           <!-- Hero Action Buttons -->
           <div class="pt-4 flex flex-wrap gap-4">
-            <a href="#projects-showcase" class="px-7 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-cyan-950/50 inline-flex items-center space-x-2">
+            <a href="all-projects.html" class="px-7 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-cyan-950/50 inline-flex items-center space-x-2">
               <span>Explore All Projects</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </a>
             <button class="open-contact-modal px-7 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-gray-200 font-bold rounded-xl transition-all">
               Schedule Technical Call
@@ -272,7 +272,7 @@
             <div class="p-4 flex items-center justify-between">
               <div>
                 <p class="text-xs font-mono text-cyan-400 uppercase">Featured Master Model</p>
-                <p class="text-sm font-bold text-gray-200">High-End Pharmaceutical 3D BIM Model </p>
+                <p class="text-sm font-bold text-gray-200">High-End Pharmaceutical 3D BIM Model</p>
               </div>
               <a href="project-details.html?id=1" class="px-3 py-1.5 bg-slate-800 hover:bg-cyan-600 text-xs font-semibold rounded-lg transition-colors">
                 Inspect 3D Model
@@ -282,6 +282,220 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- Visual Comparison & Engineering Showcase Cards (4-Column Grid) -->
+  <section class="py-12 bg-slate-950/80 border-b border-slate-800/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Card 1: BIM ECOSYSTEM WORKFLOW -->
+        <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 rounded-2xl p-4 transition-all flex flex-col justify-between shadow-xl group">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-mono font-bold text-cyan-400 tracking-wider uppercase">BIM ECOSYSTEM</span>
+            </div>
+
+            <!-- Workflow Visual Box -->
+            <div class="relative bg-slate-950 border border-slate-800 rounded-xl p-3 text-center overflow-hidden aspect-[4/3] flex flex-col justify-between">
+              <div>
+                <p class="text-[10px] font-mono font-bold tracking-tight text-gray-200 uppercase mb-2">BIM WORKFLOW: <span class="text-cyan-400">REVIT TO DOCUMENTATION</span></p>
+                
+                <!-- 4 Step Mini Diagram -->
+                <div class="grid grid-cols-4 gap-1 items-stretch text-[8px] font-sans">
+                  <!-- Step 1 -->
+                  <div class="bg-slate-900 border border-cyan-500/40 rounded p-1 flex flex-col items-center justify-between">
+                    <span class="font-bold text-cyan-300 leading-tight">1. REVIT ARCH & MEP</span>
+                    <div class="my-1 w-5 h-5 bg-cyan-950 rounded flex items-center justify-center text-cyan-400 font-mono font-black text-[9px]">R</div>
+                    <span class="text-[7px] text-gray-400">3D RVT</span>
+                  </div>
+                  <!-- Step 2 -->
+                  <div class="bg-slate-900 border border-blue-500/40 rounded p-1 flex flex-col items-center justify-between">
+                    <span class="font-bold text-blue-300 leading-tight">2. NAVISWORKS</span>
+                    <div class="my-1 w-5 h-5 bg-blue-950 rounded flex items-center justify-center text-blue-400 font-mono font-black text-[9px]">N</div>
+                    <span class="text-[7px] text-gray-400">Clash NWD</span>
+                  </div>
+                  <!-- Step 3 -->
+                  <div class="bg-slate-900 border border-emerald-500/40 rounded p-1 flex flex-col items-center justify-between">
+                    <span class="font-bold text-emerald-300 leading-tight">3. PDF/IFC</span>
+                    <div class="my-1 w-5 h-5 bg-emerald-950 rounded flex items-center justify-center text-emerald-400 font-mono font-black text-[9px]">IFC</div>
+                    <span class="text-[7px] text-gray-400">OpenBIM</span>
+                  </div>
+                  <!-- Step 4 -->
+                  <div class="bg-slate-900 border border-indigo-500/40 rounded p-1 flex flex-col items-center justify-between">
+                    <span class="font-bold text-indigo-300 leading-tight">4. DOCS</span>
+                    <div class="my-1 w-5 h-5 bg-indigo-950 rounded flex items-center justify-center text-indigo-400 font-mono font-black text-[9px]">DWG</div>
+                    <span class="text-[7px] text-gray-400">Sheets</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Tags -->
+              <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 text-[8px] font-mono">
+                <span class="px-2 py-0.5 bg-cyan-950/80 text-cyan-300 rounded border border-cyan-500/30">REVIT / NAVISWORKS</span>
+                <span class="px-2 py-0.5 bg-emerald-950/80 text-emerald-300 rounded border border-emerald-500/30">RVT / IFC / DWG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: POINT CLOUD -> BIM (Interactive Comparison Slider) -->
+        <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 rounded-2xl p-4 transition-all flex flex-col justify-between shadow-xl group">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-mono font-bold text-cyan-400 tracking-wider uppercase">POINT CLOUD → BIM</span>
+            </div>
+
+            <div class="relative bg-slate-950 border border-slate-800 rounded-xl overflow-hidden aspect-[4/3] comparison-slider select-none cursor-ew-resize">
+              <!-- Background Image: Clean 3D BIM Model (Shown on Right Side) -->
+              <img 
+                src="/src/assets/images/slider/point-cloud-a.webp" 
+                alt="Clean 3D BIM Revit Architecture Model" 
+                class="w-full h-full object-cover select-none pointer-events-none" 
+                referrerPolicy="no-referrer" 
+              />
+
+              <!-- Foreground Clip Image: Raw Point Cloud Scan (Shown on Left Side) -->
+              <div class="img-after absolute inset-0 w-full h-full overflow-hidden">
+                <img 
+                  src="/src/assets/images/slider/point-cloud-b.webp" 
+                  alt="Raw 3D Laser Scan Point Cloud Data" 
+                  class="w-full h-full object-cover select-none pointer-events-none" 
+                  referrerPolicy="no-referrer" 
+                />
+              </div>
+
+              <!-- Top Left Label: POINT CLOUD RAW -->
+              <div class="absolute top-2 left-2 z-10 pointer-events-none">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-300 text-[9px] font-mono font-bold rounded border border-cyan-500/40 shadow-sm">POINT CLOUD RAW</span>
+              </div>
+
+              <!-- Top Right Label: 3D BIM MODEL -->
+              <div class="absolute top-2 right-2 z-10 pointer-events-none">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-300 text-[9px] font-mono font-bold rounded border border-cyan-500/40 shadow-sm">3D BIM MODEL</span>
+              </div>
+
+              <!-- Slider Center Handle & Button Icon -->
+              <div class="slider-handle">
+                <div class="slider-button">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"></path></svg>
+                </div>
+              </div>
+
+              <!-- Expand Button -->
+              <button type="button" class="expand-btn absolute bottom-2 left-2 z-20 p-1 bg-slate-900/80 hover:bg-cyan-600 text-gray-300 hover:text-white rounded border border-slate-700 transition-colors" title="Expand view" onclick="window.location.href='point-cloud.html'">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: MEP COORDINATION (Interactive Comparison Slider) -->
+        <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 rounded-2xl p-4 transition-all flex flex-col justify-between shadow-xl group">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-mono font-bold text-cyan-400 tracking-wider uppercase">MEP COORDINATION</span>
+            </div>
+
+            <div class="relative bg-slate-950 border border-slate-800 rounded-xl overflow-hidden aspect-[4/3] comparison-slider select-none cursor-ew-resize">
+              <!-- Background Image: Coordinated Clean MEP (Shown on Right Side) -->
+              <img 
+                src="/src/assets/images/slider/mep-real-life.webp" 
+                alt="Clean Coordinated 3D MEP Navisworks BIM Model" 
+                class="w-full h-full object-cover select-none pointer-events-none" 
+                referrerPolicy="no-referrer" 
+              />
+
+              <!-- Foreground Clip Image: MEP Model (Shown on Left Side) -->
+              <div class="img-after absolute inset-0 w-full h-full overflow-hidden">
+                <img 
+                  src="/src/assets/images/slider/mep-model.webp" 
+                  alt="Uncoordinated MEP Duct and Pipe Collisions" 
+                  class="w-full h-full object-cover select-none pointer-events-none" 
+                  referrerPolicy="no-referrer" 
+                />
+              </div>
+
+              <!-- Top Left Label: MEP Model -->
+              <div class="absolute top-2 left-2 z-10 pointer-events-none">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-amber-400 text-[9px] font-mono font-bold rounded border border-amber-500/40 shadow-sm">MEP MODEL</span>
+              </div>
+
+              <!-- Top Right Label: Real Life -->
+              <div class="absolute top-2 right-2 z-10 pointer-events-none">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-300 text-[9px] font-mono font-bold rounded border border-cyan-500/40 shadow-sm">REAL LIFE</span>
+              </div>
+
+              <!-- Slider Center Handle & Button Icon -->
+              <div class="slider-handle">
+                <div class="slider-button">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"></path></svg>
+                </div>
+              </div>
+
+              <!-- Expand Button -->
+              <button type="button" class="expand-btn absolute bottom-2 left-2 z-20 p-1 bg-slate-900/80 hover:bg-cyan-600 text-gray-300 hover:text-white rounded border border-slate-700 transition-colors" title="Expand view" onclick="window.location.href='mep.html'">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: PDF TO CAD (Interactive Comparison Slider) -->
+        <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 rounded-2xl p-4 transition-all flex flex-col justify-between shadow-xl group">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-mono font-bold text-cyan-400 tracking-wider uppercase">PDF TO CAD</span>
+            </div>
+
+            <div class="relative bg-slate-950 border border-slate-800 rounded-xl overflow-hidden aspect-[4/3] comparison-slider select-none cursor-ew-resize">
+              <!-- Background Image: 2D CAD DWG (Shown on Right Side) -->
+              <img 
+                src="/src/assets/images/slider/cad-dwg.webp" 
+                alt="Precision Layered 2D AutoCAD DWG Drawing" 
+                class="w-full h-full object-cover select-none pointer-events-none" 
+                referrerPolicy="no-referrer" 
+              />
+
+              <!-- Foreground Clip Image: 2D PDF Draft (Shown on Left Side) -->
+              <div class="img-after absolute inset-0 w-full h-full overflow-hidden">
+                <img 
+                  src="/src/assets/images/slider/cad-remarks.webp" 
+                  alt="Scanned 2D PDF Architectural Blueprint Draft" 
+                  class="w-full h-full object-cover select-none pointer-events-none" 
+                  referrerPolicy="no-referrer" 
+                />
+              </div>
+
+              <!-- Top Left Label: 2D PDF DRAFT -->
+              <div class="absolute top-2 left-2 z-10 pointer-events-none">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-gray-300 text-[9px] font-mono font-bold rounded border border-slate-700 shadow-sm">2D PDF DRAFT</span>
+              </div>
+
+              <!-- Top Right Label: 2D CAD DWG -->
+              <div class="absolute top-2 right-2 z-10 pointer-events-none">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-300 text-[9px] font-mono font-bold rounded border border-cyan-500/40 shadow-sm">2D CAD DWG</span>
+              </div>
+
+              <!-- Slider Center Handle & Button Icon -->
+              <div class="slider-handle">
+                <div class="slider-button">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"></path></svg>
+                </div>
+              </div>
+
+              <!-- Expand Button -->
+              <button type="button" class="expand-btn absolute bottom-2 left-2 z-20 p-1 bg-slate-900/80 hover:bg-cyan-600 text-gray-300 hover:text-white rounded border border-slate-700 transition-colors" title="Expand view" onclick="window.location.href='autocad.html'">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -352,54 +566,38 @@
     </div>
   </section>
 
-  <!-- All Projects Showcase Section with Search & Filter Bar -->
-  <section id="projects-showcase" class="py-20 bg-slate-950">
+  <!-- Selected Projects Showcase Section (8 Projects 4x2 Grid) -->
+  <section id="selected-projects" class="py-16 bg-slate-950 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+      <!-- Section Header with Category Filter Buttons -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
         <div>
-          <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest">Verified Portfolio Catalog</h2>
-          <h3 class="text-3xl font-extrabold text-gray-100 mt-1">All BIM & Drafting Projects</h3>
-          <p class="text-sm text-gray-400 mt-1">Filter by service category or search by software and keyword.</p>
+          <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest block mb-1">PORTFOLIO</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Selected Projects</h2>
         </div>
 
-        <!-- Search Input & Filter Buttons -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <!-- Search Input -->
-          <div class="relative">
-            <input 
-              type="text" 
-              id="project-search-input" 
-              placeholder="Search project name, software..." 
-              class="w-full sm:w-64 px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-500"
-            />
-            <svg class="w-4 h-4 text-gray-500 absolute right-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-          </div>
-
-          <!-- Category Filter Buttons -->
-          <div class="flex items-center space-x-1 bg-slate-900 p-1 border border-slate-800 rounded-xl overflow-x-auto">
-            <button class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-cyan-600 text-white" data-category="all">All</button>
-            <button class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-gray-400 hover:text-white" data-category="architecture">Architecture</button>
-            <button class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-gray-400 hover:text-white" data-category="mep">MEP</button>
-            <button class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-gray-400 hover:text-white" data-category="point-cloud">Point Cloud</button>
-            <button class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-gray-400 hover:text-white" data-category="autocad">AutoCAD</button>
-          </div>
+        <!-- Filter Buttons (All, Point Cloud, Architectural, MEP Systems, AutoCAD) -->
+        <div class="flex items-center space-x-1.5 overflow-x-auto p-1 bg-slate-900 border border-slate-800 rounded-xl scrollbar-none">
+          <button class="selected-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all bg-[#009FB7] text-white shadow" data-category="all">All</button>
+          <button class="selected-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="point-cloud">Point Cloud</button>
+          <button class="selected-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="architecture">Architectural</button>
+          <button class="selected-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="mep">MEP Systems</button>
+          <button class="selected-filter-btn px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="autocad">AutoCAD</button>
         </div>
       </div>
 
-      <!-- Projects Grid Render Container (3x3 Grid - 9 Projects) -->
-      <div id="all-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <!-- 8 Projects Grid (4 cols on lg, 2 cols on sm) -->
+      <div id="selected-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
 
-      <!-- Show All Projects CTA Button -->
-      <div class="mt-12 text-center">
+      <!-- View All Projects Button -->
+      <div class="mt-10 text-center">
         <a 
           href="all-projects.html" 
-          class="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-base rounded-2xl shadow-xl shadow-cyan-950/60 hover:scale-[1.02] transition-all group"
+          class="inline-flex items-center space-x-2 px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-gray-200 hover:text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl border border-slate-800 hover:border-cyan-500/50 transition-all shadow-lg hover:shadow-cyan-950/40 group"
         >
-          <span>Explore All Projects</span>
-          <svg class="w-5 h-5 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
+          <span>EXPLORE ALL PROJECTS</span>
+          <svg class="w-4 h-4 text-cyan-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
       </div>
 
@@ -407,18 +605,18 @@
   </section>
 
   <!-- Interactive BIM ROI & Clash Savings Estimator -->
-  <section class="py-20 bg-slate-900/60 border-y border-slate-800">
+  <section class="py-10 bg-slate-900/60 border-y border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
         
-        <div class="lg:col-span-5 space-y-4">
+        <div class="lg:col-span-5 space-y-3">
           <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest">Interactive Engineering Tool</span>
-          <h2 class="text-3xl font-extrabold text-gray-100">BIM ROI & Clash Detection Estimator</h2>
-          <p class="text-sm text-gray-300 leading-relaxed">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-100">BIM ROI & Clash Detection Estimator</h2>
+          <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
             Uncoordinated construction leads to expensive field rework. Calculate how much time, clash conflict, and field labor cost you save by hiring Mirja Riyadh for pre-construction BIM modeling.
           </p>
 
-          <div class="space-y-3 pt-2 text-xs font-mono text-gray-300">
+          <div class="space-y-2 pt-1 text-xs font-mono text-gray-300">
             <div class="flex items-center space-x-2">
               <span class="text-cyan-400">✓</span>
               <span>Prevents multi-trade duct & pipe collisions on site</span>
@@ -434,23 +632,23 @@
           </div>
         </div>
 
-        <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
-          <form id="bim-roi-form" class="space-y-6">
+        <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-2xl">
+          <form id="bim-roi-form" class="space-y-4">
             
             <!-- Area Slider -->
             <div>
-              <div class="flex justify-between items-center mb-2">
-                <label class="text-sm font-semibold text-gray-200">Total Project Gross Floor Area:</label>
-                <span id="calc-area-val" class="text-sm font-mono font-bold text-cyan-400">100,000 sq.ft</span>
+              <div class="flex justify-between items-center mb-1.5">
+                <label class="text-xs sm:text-sm font-semibold text-gray-200">Total Project Gross Floor Area:</label>
+                <span id="calc-area-val" class="text-xs sm:text-sm font-mono font-bold text-cyan-400">100,000 sq.ft</span>
               </div>
-              <input type="range" id="calc-area" min="10000" max="1000000" step="10000" value="100000" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-2" />
+              <input type="range" id="calc-area" min="10000" max="1000000" step="10000" value="100000" class="w-full accent-cyan-500 bg-slate-800 rounded-lg cursor-pointer h-1.5" />
             </div>
 
             <!-- Project Type & LOD -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label class="block text-xs font-semibold text-gray-300 mb-2">Facility Building Type:</label>
-                <select id="calc-type" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-gray-200 focus:outline-none focus:border-cyan-500">
+                <label class="block text-xs font-semibold text-gray-300 mb-1.5">Facility Building Type:</label>
+                <select id="calc-type" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-gray-200 focus:outline-none focus:border-cyan-500">
                   <option value="commercial">Commercial Tower / Office</option>
                   <option value="medical">Hospital / Healthcare (High Density)</option>
                   <option value="industrial">Industrial Factory / Plant</option>
@@ -459,8 +657,8 @@
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-gray-300 mb-2">Required Level of Detail (LOD):</label>
-                <select id="calc-lod" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-gray-200 focus:outline-none focus:border-cyan-500">
+                <label class="block text-xs font-semibold text-gray-300 mb-1.5">Required Level of Detail (LOD):</label>
+                <select id="calc-lod" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-gray-200 focus:outline-none focus:border-cyan-500">
                   <option value="LOD300">LOD 300 (Design Coordination)</option>
                   <option value="LOD350" selected>LOD 350 (Construction Detailing)</option>
                   <option value="LOD400">LOD 400 (Fabrication Ready)</option>
@@ -469,26 +667,26 @@
             </div>
 
             <!-- Calculation Output Cards -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800">
-              <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl text-center">
-                <span class="block text-xs font-mono text-gray-400">Est. Hard Clashes</span>
-                <span id="res-clashes" class="text-lg font-extrabold text-cyan-400 mt-1 block">120+ Clashes</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 border-t border-slate-800">
+              <div class="p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-center">
+                <span class="block text-[11px] font-mono text-gray-400">Est. Hard Clashes</span>
+                <span id="res-clashes" class="text-base font-extrabold text-cyan-400 mt-0.5 block">120+ Clashes</span>
               </div>
-              <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl text-center">
-                <span class="block text-xs font-mono text-gray-400">Field Labor Saved</span>
-                <span id="res-rework" class="text-lg font-extrabold text-emerald-400 mt-1 block">420 Hours</span>
+              <div class="p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-center">
+                <span class="block text-[11px] font-mono text-gray-400">Field Labor Saved</span>
+                <span id="res-rework" class="text-base font-extrabold text-emerald-400 mt-0.5 block">420 Hours</span>
               </div>
-              <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl text-center">
-                <span class="block text-xs font-mono text-gray-400">Financial Savings</span>
-                <span id="res-savings" class="text-lg font-extrabold text-cyan-300 mt-1 block">$18,900 USD</span>
+              <div class="p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-center">
+                <span class="block text-[11px] font-mono text-gray-400">Financial Savings</span>
+                <span id="res-savings" class="text-base font-extrabold text-cyan-300 mt-0.5 block">$18,900 USD</span>
               </div>
-              <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl text-center">
-                <span class="block text-xs font-mono text-gray-400">Estimated ROI</span>
-                <span id="res-roi" class="text-lg font-extrabold text-blue-400 mt-1 block">158% ROI</span>
+              <div class="p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-center">
+                <span class="block text-[11px] font-mono text-gray-400">Estimated ROI</span>
+                <span id="res-roi" class="text-base font-extrabold text-blue-400 mt-0.5 block">158% ROI</span>
               </div>
             </div>
 
-            <button type="button" class="open-contact-modal w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-colors">
+            <button type="button" class="open-contact-modal w-full py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm rounded-xl transition-colors">
               Claim This Estimated Savings — Request Proposal
             </button>
           </form>
@@ -507,7 +705,7 @@
       <div class="flex flex-wrap justify-center gap-4">
         <span class="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm font-mono text-gray-200 flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-          <span>Autodesk Revit 2024</span>
+          <span>Autodesk Revit</span>
         </span>
         <span class="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm font-mono text-gray-200 flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
@@ -515,7 +713,7 @@
         </span>
         <span class="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm font-mono text-gray-200 flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-          <span>Leica Cyclone REGISTER 360</span>
+          <span>Scan data</span>
         </span>
         <span class="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm font-mono text-gray-200 flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
@@ -523,17 +721,133 @@
         </span>
         <span class="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm font-mono text-gray-200 flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span>
-          <span>AutoCAD Architecture</span>
+          <span>AutoCAD</span>
         </span>
         <span class="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm font-mono text-gray-200 flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
-          <span>Dynamo Visual Scripting</span>
+          <span>Documentation</span>
         </span>
         <span class="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm font-mono text-gray-200 flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-pink-400"></span>
-          <span>CloudCompare Point Cloud</span>
+          <span>Compare Point Cloud</span>
         </span>
       </div>
+    </div>
+  </section>
+
+  <!-- Client Feedback & Reviews (Testimonials Section) -->
+  <section class="py-16 bg-slate-950 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Testimonials Header Bar -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
+        <div>
+          <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
+            <span>TESTIMONIALS</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Client Feedback & Reviews</h2>
+        </div>
+
+        <!-- Rating Pill & Marketplace Profile Buttons -->
+        <div class="flex flex-wrap items-center gap-3">
+          <div class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl flex items-center space-x-2 text-xs font-mono text-gray-200">
+            <span class="text-amber-400 font-bold text-sm">★★★★★</span>
+            <span class="font-bold">5.0 Rating on Fiverr & Upwork</span>
+          </div>
+
+          <a href="https://fiverr.com/mirjariyadh" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-[#00b22d] hover:bg-[#009926] text-white text-xs font-mono font-bold rounded-xl flex items-center space-x-1.5 transition-all shadow-lg shadow-emerald-950/40">
+            <span>Fiverr Profile</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+
+          <a href="https://www.upwork.com/freelancers/~012e6231655d49ca23?mp_source=share" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-[#009FB7] hover:bg-[#00899e] text-white text-xs font-mono font-bold rounded-xl flex items-center space-x-1.5 transition-all shadow-lg shadow-cyan-950/40">
+            <span>Upwork Profile</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3 Testimonial Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-6 flex flex-col justify-between transition-all">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 font-bold text-sm tracking-widest">★★★★★</span>
+              <span class="px-2 py-0.5 bg-emerald-950/80 text-emerald-400 border border-emerald-500/40 rounded text-[10px] font-mono font-bold flex items-center space-x-1">
+                <span>Fiverr Verified</span>
+                <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+              "Made switching to an unfamiliar Revit workflow painless. Riyadh was a true asset place in before world stayed agreed on access, and patiently explained what the software could and couldn't do along the way."
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
+            <div>
+              <p class="font-bold text-gray-100">P. Architecture Studio</p>
+              <p class="text-[11px] text-gray-400">United States</p>
+            </div>
+            <span class="text-[11px] text-gray-400">Dec 2024</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-6 flex flex-col justify-between transition-all">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 font-bold text-sm tracking-widest">★★★★★</span>
+              <span class="px-2 py-0.5 bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 rounded text-[10px] font-mono font-bold flex items-center space-x-1">
+                <span>Upwork Verified</span>
+                <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+              "Mirja Riyadh is an exceptional BIM Specialist. His expertise in MEP clash detection and Revit family creation saved us weeks of site delays. Highly communicative, skilled, and detail-oriented."
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
+            <div>
+              <p class="font-bold text-gray-100">Nexus Engineering Group</p>
+              <p class="text-[11px] text-gray-400">Australia</p>
+            </div>
+            <span class="text-[11px] text-gray-400">Jan 2025</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-6 flex flex-col justify-between transition-all">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 font-bold text-sm tracking-widest">★★★★★</span>
+              <span class="px-2 py-0.5 bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 rounded text-[10px] font-mono font-bold flex items-center space-x-1">
+                <span>Upwork Verified</span>
+                <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+              "Phenomenal work on our commercial architectural documentation sheets. Flawless Revit model setup, precise schedules, and delivered ahead of schedule. Will hire again!"
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
+            <div>
+              <p class="font-bold text-gray-100">B. Urban Developers</p>
+              <p class="text-[11px] text-gray-400">Canada</p>
+            </div>
+            <span class="text-[11px] text-gray-400">Oct 2024</span>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -586,8 +900,7 @@
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
-        <p>© 2026 Mirja Riyadh (mirjariyadh.com.bd). All rights reserved. Built for 100% Free GitHub Pages Hosting.</p>
-        <p class="mt-2 sm:mt-0 font-mono">Optimized for Google Technical SEO</p>
+        <p>© 2026 Mirja Riyadh (mirjariyadh.com.bd). All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -647,44 +960,8 @@
 
   <!-- Scripts -->
   <script src="js/projects-data.js"></script>
+  <script src="js/pointcloud-slider.js"></script>
   <script src="js/main.js"></script>
   <script src="js/roi-calculator.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Render All Projects initially
-      if (typeof renderProjectGrid === 'function') {
-        renderProjectGrid('all-projects-grid', 'all');
-      }
-
-      // Setup filter buttons
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const searchInput = document.getElementById('project-search-input');
-      let currentCategory = 'all';
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => {
-            b.classList.remove('bg-cyan-600', 'text-white');
-            b.classList.add('text-gray-400');
-          });
-          btn.classList.add('bg-cyan-600', 'text-white');
-          btn.classList.remove('text-gray-400');
-
-          currentCategory = btn.getAttribute('data-category');
-          if (typeof renderProjectGrid === 'function') {
-            renderProjectGrid('all-projects-grid', currentCategory, searchInput ? searchInput.value : '');
-          }
-        });
-      });
-
-      if (searchInput) {
-        searchInput.addEventListener('input', () => {
-          if (typeof renderProjectGrid === 'function') {
-            renderProjectGrid('all-projects-grid', currentCategory, searchInput.value);
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>

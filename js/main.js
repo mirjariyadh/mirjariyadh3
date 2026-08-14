@@ -30,7 +30,13 @@ if (document.readyState === 'loading') {
 
 /* Automatically initialize grids if elements are present in DOM */
 function autoInitCategoryGrids() {
-  // All Projects Grid (Home Page or All Projects Page)
+  // Home Page Selected Projects Grid (8 Projects)
+  if (document.getElementById('selected-projects-grid')) {
+    renderSelectedProjects('all');
+    setupSelectedProjectFilters();
+  }
+
+  // All Projects Grid (All Projects Page)
   if (document.getElementById('all-projects-grid')) {
     renderProjectGrid('all-projects-grid', 'all');
     setupFilterButtons('all-projects-grid');
@@ -49,6 +55,118 @@ function autoInitCategoryGrids() {
   if (document.getElementById('autocad-projects-grid')) {
     renderProjectGrid('autocad-projects-grid', 'autocad');
   }
+}
+
+/* Home Page Selected Projects Filter Handler */
+function setupSelectedProjectFilters() {
+  const filterBtns = document.querySelectorAll('.selected-filter-btn');
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-[#009FB7]', 'bg-cyan-600', 'text-white', 'shadow');
+        b.classList.add('text-gray-400', 'bg-transparent');
+      });
+      btn.classList.add('bg-[#009FB7]', 'text-white', 'shadow');
+      btn.classList.remove('text-gray-400', 'bg-transparent');
+
+      const category = btn.getAttribute('data-category') || 'all';
+      renderSelectedProjects(category);
+    };
+  });
+}
+
+/* Render exactly 8 Projects for the Home Page Showcase */
+function renderSelectedProjects(categoryFilter = 'all') {
+  const container = document.getElementById('selected-projects-grid');
+  if (!container) return;
+
+  const projects = window.projectsData || window.PORTFOLIO_PROJECTS;
+  if (!projects || !projects.length) {
+    setTimeout(() => renderSelectedProjects(categoryFilter), 50);
+    return;
+  }
+
+  let filtered = projects;
+  if (categoryFilter && categoryFilter !== 'all') {
+    filtered = filtered.filter(p => matchProjectCategory(p, categoryFilter));
+  }
+
+  // Always show up to 8 projects in the 4x2 grid
+  const displayProjects = filtered.slice(0, 8);
+
+  if (displayProjects.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 text-center bg-slate-900/40 rounded-2xl border border-slate-800">
+        <p class="text-gray-400 font-mono text-xs">No projects found in this category.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = displayProjects.map(project => {
+    const cats = Array.isArray(project.category) ? project.category : [project.category];
+    let badgeText = 'ARCHITECTURAL MODELING';
+    if (cats.includes('point-cloud')) {
+      badgeText = 'POINT CLOUD TO BIM';
+    } else if (cats.includes('mep') && !cats.includes('architecture')) {
+      badgeText = 'MEP SYSTEMS';
+    } else if (cats.includes('autocad') && !cats.includes('architecture') && !cats.includes('mep')) {
+      badgeText = 'AUTOCAD SERVICES';
+    } else if (cats.includes('architecture')) {
+      badgeText = 'ARCHITECTURAL MODELING';
+    }
+
+    const thumbnail = project.thumbnail || project.image || 
+      (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
+    const lod = project.lod || 'LOD 350';
+    const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
+    const clientRegion = project.clientRegion || 'International Client';
+
+    return `
+      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+        <div>
+          <!-- Thumbnail & Category Tag -->
+          <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
+            <img 
+              src="${thumbnail}" 
+              alt="${project.title}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900" 
+              loading="lazy" 
+              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
+            />
+            <div class="absolute top-2.5 left-2.5">
+              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded border border-cyan-500/30">
+                ${badgeText}
+              </span>
+            </div>
+          </div>
+
+          <!-- Project Specs -->
+          <div class="p-4">
+            <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 min-h-[40px] leading-snug">
+              ${project.title}
+            </h3>
+            <p class="text-[11px] font-mono text-gray-400 mt-1.5 flex items-center space-x-1.5">
+              <span>${lod}</span>
+              <span class="text-slate-600">|</span>
+              <span>${primarySoftware}</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="px-4 pb-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-gray-400 truncate max-w-[170px]">${clientRegion}</span>
+          <div class="w-7 h-7 rounded-lg bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
+            →
+          </div>
+        </div>
+      </a>
+    `;
+  }).join('');
 }
 
 /* Helper to setup category filter buttons and search input */
