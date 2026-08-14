@@ -131,10 +131,15 @@ function renderSelectedProjects(categoryFilter = 'all') {
           <!-- Thumbnail & Category Tag -->
           <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
             <img 
-              src="${thumbnail}" 
+              data-src="${thumbnail}"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'><rect width='100%' height='100%' fill='%230f172a'/></svg>"
               alt="${project.title}" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900 opacity-90 transition-opacity duration-300 lazy-project-img" 
               loading="lazy" 
+              decoding="async"
+              fetchpriority="low"
+              referrerPolicy="no-referrer"
+              onload="this.classList.remove('opacity-90'); this.classList.add('opacity-100');"
               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
             <div class="absolute top-2.5 left-2.5">
@@ -167,6 +172,8 @@ function renderSelectedProjects(categoryFilter = 'all') {
       </a>
     `;
   }).join('');
+
+  initLazyImages(container);
 }
 
 /* Helper to setup category filter buttons and search input */
@@ -500,11 +507,15 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
           <!-- Thumbnail & Category Tag -->
           <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
             <img 
-              src="${thumbnail}" 
+              data-src="${thumbnail}"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'><rect width='100%' height='100%' fill='%230f172a'/></svg>"
               alt="${project.title}" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900 opacity-90 transition-opacity duration-300 lazy-project-img" 
               loading="lazy" 
+              decoding="async"
+              fetchpriority="low"
               referrerPolicy="no-referrer"
+              onload="this.classList.remove('opacity-90'); this.classList.add('opacity-100');"
               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
             <div class="absolute top-2.5 left-2.5">
@@ -537,9 +548,48 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
       </a>
     `;
   }).join('');
+
+  initLazyImages(container);
+}
+
+/* Intersection Observer-based High Performance Lazy Loader */
+function initLazyImages(container) {
+  const scope = container || document;
+  const lazyImages = scope.querySelectorAll('img[data-src]');
+  if (!lazyImages || lazyImages.length === 0) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+          obs.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '250px 0px 250px 0px',
+      threshold: 0.01
+    });
+
+    lazyImages.forEach(img => observer.observe(img));
+  } else {
+    // Immediate fallback for browsers without IntersectionObserver
+    lazyImages.forEach(img => {
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    });
+  }
 }
 
 // Make functions available globally
 window.renderProjectGrid = renderProjectGrid;
+window.renderSelectedProjects = renderSelectedProjects;
+window.initLazyImages = initLazyImages;
 window.matchProjectCategory = matchProjectCategory;
 window.getProjectCategoryCounts = getProjectCategoryCounts;
