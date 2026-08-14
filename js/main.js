@@ -19,6 +19,7 @@ function initMain() {
   initContactModal();
   initScrollTop();
   initCopyButtons();
+  initSectionObserverAnimations();
   autoInitCategoryGrids();
 }
 
@@ -587,7 +588,44 @@ function initLazyImages(container) {
   }
 }
 
+/* Smooth Section Reveal Observer Animation on Scroll */
+function initSectionObserverAnimations() {
+  // Select all major semantic sections and designated containers
+  const targets = document.querySelectorAll('section:not(#hero), .reveal-on-scroll');
+  if (!targets || targets.length === 0) return;
+
+  // Add the initial animation class to all target sections
+  targets.forEach((el, index) => {
+    // Avoid double tagging
+    if (!el.classList.contains('reveal-on-scroll')) {
+      el.classList.add('reveal-on-scroll');
+    }
+  });
+
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          // Once animated in, unobserve to free resources
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -60px 0px', // triggers just before full entry for a natural fluid feel
+      threshold: 0.08
+    });
+
+    targets.forEach(target => sectionObserver.observe(target));
+  } else {
+    // Fallback: immediately make visible
+    targets.forEach(target => target.classList.add('is-visible'));
+  }
+}
+
 // Make functions available globally
+window.initSectionObserverAnimations = initSectionObserverAnimations;
 window.renderProjectGrid = renderProjectGrid;
 window.renderSelectedProjects = renderSelectedProjects;
 window.initLazyImages = initLazyImages;
