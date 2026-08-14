@@ -154,26 +154,91 @@ function initContactModal() {
     });
   }
 
-  // Handle Form Submission
+  // Handle Form Submission with Formspree Endpoint
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const statusDiv = document.getElementById('form-status');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit Quote Request';
+
+      // Gather form data
+      const formData = new FormData(contactForm);
+      const dataObj = Object.fromEntries(formData.entries());
+
+      // Set Loading State
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <span class="inline-flex items-center justify-center space-x-2">
+            <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>Sending Proposal Request...</span>
+          </span>
+        `;
+      }
+
       if (statusDiv) {
         statusDiv.innerHTML = `
-          <div class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 p-4 rounded-lg flex items-center space-x-3">
-            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-            <div>
-              <p class="font-semibold">Inquiry Received!</p>
-              <p class="text-xs text-gray-300">Thank you. Mirja Riyadh will review your BIM project details and respond within 12 hours.</p>
-            </div>
+          <div class="bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 p-3 rounded-lg text-xs flex items-center space-x-2">
+            <span>Connecting to Mirja Riyadh's secure mail server...</span>
           </div>
         `;
-        contactForm.reset();
-        setTimeout(() => {
-          if (modal) modal.classList.add('hidden');
-          statusDiv.innerHTML = '';
-        }, 4000);
+      }
+
+      try {
+        const response = await fetch('https://formspree.io/f/xgawzykp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(dataObj)
+        });
+
+        if (response.ok) {
+          if (statusDiv) {
+            statusDiv.innerHTML = `
+              <div class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 p-4 rounded-xl flex items-center space-x-3 animate-fade-in">
+                <svg class="w-6 h-6 shrink-0 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <p class="font-bold text-sm text-emerald-300">Quote Request Delivered Successfully!</p>
+                  <p class="text-xs text-gray-300 mt-0.5">Thank you! Your project details have been sent directly to Mirja Riyadh's inbox. I will review and reply to your email shortly.</p>
+                </div>
+              </div>
+            `;
+          }
+          contactForm.reset();
+          setTimeout(() => {
+            if (modal) {
+              modal.classList.add('hidden');
+              modal.classList.remove('flex');
+            }
+            if (statusDiv) statusDiv.innerHTML = '';
+          }, 4500);
+        } else {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || 'Server error while submitting form');
+        }
+      } catch (err) {
+        console.error('Form submission error:', err);
+        if (statusDiv) {
+          statusDiv.innerHTML = `
+            <div class="bg-red-500/10 border border-red-500/30 text-red-400 p-3.5 rounded-xl text-xs space-y-1">
+              <p class="font-semibold text-red-300">Message Delivery Issue</p>
+              <p class="text-gray-300">Could not submit automatically. Please email directly to: <a href="mailto:mirja.riyadh@gmail.com" class="text-cyan-400 underline font-medium">mirja.riyadh@gmail.com</a></p>
+            </div>
+          `;
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
       }
     });
   }
