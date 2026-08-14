@@ -432,7 +432,7 @@ function getProjectCategoryCounts() {
   };
 }
 
-/* Universal Render Projects function for category pages and home page */
+/* Universal Render Projects function for category pages and all projects page */
 function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = '') {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -476,67 +476,65 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
   }
 
   container.innerHTML = filtered.map(project => {
-    const catArray = Array.isArray(project.category) ? project.category : [project.category || 'BIM Project'];
-    const categoryName = project.categoryName || catArray.join(' • ');
+    const cats = Array.isArray(project.category) ? project.category : [project.category || 'architecture'];
+    let badgeText = 'ARCHITECTURAL';
+    if (cats.includes('point-cloud')) {
+      badgeText = 'POINT CLOUD TO BIM';
+    } else if (cats.includes('mep') && !cats.includes('architecture')) {
+      badgeText = 'MEP SYSTEMS';
+    } else if (cats.includes('autocad') && !cats.includes('architecture') && !cats.includes('mep')) {
+      badgeText = 'AUTOCAD SERVICES';
+    } else if (cats.includes('architecture')) {
+      badgeText = 'ARCHITECTURAL MODELING';
+    }
+
     const thumbnail = project.thumbnail || project.image || 
       (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
-    const lod = project.lod || 'LOD 300';
-    const client = project.clientRegion || project.client || 'Client';
-    const year = project.completionDate || project.year || 'Completed';
-    const description = project.shortDesc || project.description || '';
-    const softwareList = project.softwareUsed || project.software || [];
+    const lod = project.lod || 'LOD 350';
+    const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
+    const clientRegion = project.clientRegion || project.client || 'International Client';
 
     return `
-      <article class="bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between group">
+      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
         <div>
-          <div class="relative overflow-hidden aspect-video bg-slate-950">
+          <!-- Thumbnail & Category Tag -->
+          <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
             <img 
               src="${thumbnail}" 
-              alt="${project.title} - ${categoryName}" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-800" 
+              alt="${project.title}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900" 
               loading="lazy" 
               referrerPolicy="no-referrer"
-              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'225\\' viewBox=\\'0 0 400 225\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'sans-serif\\' font-size=\\'14\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM PROJECT VIEW</text></svg>';"
+              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
-            <div class="absolute top-3 left-3 flex gap-2 flex-wrap">
-              <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 backdrop-blur-md">
-                ${categoryName}
-              </span>
-              <span class="px-3 py-1 text-xs font-mono font-semibold rounded-full bg-slate-900/80 border border-slate-700 text-emerald-400 backdrop-blur-md">
-                ${lod}
+            <div class="absolute top-2.5 left-2.5">
+              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded border border-cyan-500/30">
+                ${badgeText}
               </span>
             </div>
           </div>
-          <div class="p-6">
-            <p class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2">${client} • ${year}</p>
-            <h3 class="text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors line-clamp-2">
+
+          <!-- Project Specs -->
+          <div class="p-4">
+            <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 min-h-[40px] leading-snug">
               ${project.title}
             </h3>
-            <p class="text-sm text-gray-400 mt-2 line-clamp-3 leading-relaxed">
-              ${description}
+            <p class="text-[11px] font-mono text-gray-400 mt-1.5 flex items-center space-x-1.5">
+              <span>${lod}</span>
+              <span class="text-slate-600">|</span>
+              <span>${primarySoftware}</span>
             </p>
-            
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              ${softwareList.map(s => `
-                <span class="px-2 py-0.5 text-xs font-mono rounded bg-slate-800/80 text-slate-300 border border-slate-700/50">
-                  ${s}
-                </span>
-              `).join('')}
-            </div>
           </div>
         </div>
 
-        <div class="px-6 pb-6 pt-2 border-t border-slate-800/50 mt-4 flex items-center justify-between">
-          <span class="text-xs text-slate-400 font-mono">${project.areaSqFt || 'Verified BIM Model'}</span>
-          <a 
-            href="project-details.html?id=${project.id}" 
-            class="inline-flex items-center space-x-1 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
-          >
-            <span>View Details</span>
-            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
+        <!-- Footer -->
+        <div class="px-4 pb-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-gray-400 truncate max-w-[170px]">${clientRegion}</span>
+          <div class="w-7 h-7 rounded-lg bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
+            →
+          </div>
         </div>
-      </article>
+      </a>
     `;
   }).join('');
 }
