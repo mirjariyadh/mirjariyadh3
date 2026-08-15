@@ -127,7 +127,7 @@ function renderSelectedProjects(categoryFilter = 'all') {
     const clientRegion = project.clientRegion || 'International Client';
 
     return `
-      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
         <div>
           <!-- Thumbnail & Category Tag -->
           <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
@@ -144,7 +144,7 @@ function renderSelectedProjects(categoryFilter = 'all') {
               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
             <div class="absolute top-2.5 left-2.5">
-              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded border border-cyan-500/30">
+              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded-sm border border-cyan-500/30">
                 ${badgeText}
               </span>
             </div>
@@ -166,7 +166,7 @@ function renderSelectedProjects(categoryFilter = 'all') {
         <!-- Footer -->
         <div class="px-4 pb-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
           <span class="text-[11px] font-mono text-gray-400 truncate max-w-[170px]">${clientRegion}</span>
-          <div class="w-7 h-7 rounded-lg bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
+          <div class="w-7 h-7 rounded bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
             →
           </div>
         </div>
@@ -503,7 +503,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
     const clientRegion = project.clientRegion || project.client || 'International Client';
 
     return `
-      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
         <div>
           <!-- Thumbnail & Category Tag -->
           <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
@@ -520,7 +520,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
             <div class="absolute top-2.5 left-2.5">
-              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded border border-cyan-500/30">
+              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded-sm border border-cyan-500/30">
                 ${badgeText}
               </span>
             </div>
@@ -542,7 +542,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
         <!-- Footer -->
         <div class="px-4 pb-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
           <span class="text-[11px] font-mono text-gray-400 truncate max-w-[170px]">${clientRegion}</span>
-          <div class="w-7 h-7 rounded-lg bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
+          <div class="w-7 h-7 rounded bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
             →
           </div>
         </div>

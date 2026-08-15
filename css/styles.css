@@ -63,12 +63,12 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* Before/After Comparison Slider */
+/* Precision CAD / BIM Sleek Corner Radii */
 .comparison-slider {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 6px;
   user-select: none;
   border: 1px solid var(--border-color);
   touch-action: pan-y;
@@ -160,6 +160,34 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 12px 28px -6px rgba(6, 182, 212, 0.18);
   border-color: var(--accent-cyan);
+}
+
+/* Precision Corner Radii (Clean Architectural & Engineering CAD Aesthetic) */
+.rounded-3xl, .rounded-2xl {
+  border-radius: 6px !important;
+}
+.rounded-xl {
+  border-radius: 6px !important;
+}
+.rounded-lg {
+  border-radius: 4px !important;
+}
+.rounded-md {
+  border-radius: 4px !important;
+}
+.rounded {
+  border-radius: 3px !important;
+}
+.rounded-sm {
+  border-radius: 2px !important;
+}
+
+/* Specific Card & Tag Refinements */
+.project-card-refined {
+  border-radius: 6px;
+}
+.tag-refined {
+  border-radius: 3px;
 }
 
 /* Pulsing Badge */

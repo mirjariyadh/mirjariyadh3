@@ -108,17 +108,17 @@ function renderProjectDetailsPage() {
     <!-- Header & Meta Tags -->
     <header class="mb-10">
       <div class="flex flex-wrap items-center gap-3 mb-4">
-        <span class="px-3.5 py-1 text-xs font-semibold rounded-full bg-cyan-950 border border-cyan-500/40 text-cyan-300">
+        <span class="px-3 py-1 text-xs font-semibold rounded-sm bg-cyan-950 border border-cyan-500/40 text-cyan-300">
           ${categoryName}
         </span>
-        <span class="px-3.5 py-1 text-xs font-mono font-semibold rounded-full bg-slate-800 border border-slate-700 text-emerald-400">
+        <span class="px-3 py-1 text-xs font-mono font-semibold rounded-sm bg-slate-800 border border-slate-700 text-emerald-400">
           ${lod}
         </span>
-        <span class="px-3.5 py-1 text-xs font-mono text-gray-400 bg-slate-900 border border-slate-800 rounded-full">
+        <span class="px-3 py-1 text-xs font-mono text-gray-400 bg-slate-900 border border-slate-800 rounded-sm">
           Completed: ${completionDate}
         </span>
         ${areaSqFt !== 'N/A' ? `
-          <span class="px-3.5 py-1 text-xs font-mono text-cyan-300 bg-slate-900 border border-slate-800 rounded-full">
+          <span class="px-3 py-1 text-xs font-mono text-cyan-300 bg-slate-900 border border-slate-800 rounded-sm">
             Area: ${areaSqFt}
           </span>
         ` : ''}
