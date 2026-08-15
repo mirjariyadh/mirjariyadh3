@@ -144,6 +144,82 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "MEP Systems HVAC Modeling"
   },
+
+
+  {
+    "id": "project-25",
+    "title": "4601 S University Ave Architectural & MEP 3D BIM Model",
+    "category": [
+      "architecture",
+      "mep"
+    ],
+    "thumbnail": "./src/assets/images/projects/4601-s-university-ave/t0.webp",
+    "images": [
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p0.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p1.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p2.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p3.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p4.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p5.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p6.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p7.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p8.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p9.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p10.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p11.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p12.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/4601-s-university-ave/p13.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
+      }
+    ],
+    "shortDesc": "2D CAD Concept into 3D installation-ready Revit model for a Architectual and MEP system.",
+    "fullDesc": "Fully developed a 3D Revit model for a Architectural and MEP system, piping, and equipment layout with precise dimensions and installation-ready details. The model was created from cocept.",
+    "lod": "LOD 350",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk Autocad",
+      "Navisworks"
+    ],
+    "clientRegion": "United States",
+    "completionDate": "Sep 2024",
+    "areaSqFt": "8,700 sq.ft",
+    "keyFeatures": [
+      "Developed a detailed 3D Revit model integrating all piping, and equipment layouts",
+      "Converted concept into precise, installation-ready 3D parametric components",
+      "Included comprehensive technical annotations, accurate equipment schedules, and material take-offs",
+      "Conducted automated clash detection to resolve spatial conflicts before on-site construction"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architectural & MEP BIM model"
+  },
+
+  
   {
     "id": "project-03",
     "title": "Eco Park Architectural Residential 3D BIM Model",
@@ -257,43 +333,27 @@ var PORTFOLIO_PROJECTS = [
     "id": "project-05",
     "title": "Hotel Resort 3D BIM Model",
     "category": [
-      "architecture",
-      "mep"
+      "architecture"
     ],
-    "thumbnail": "./src/assets/images/projects/hotel-lodge-1/t0.webp",
+    "thumbnail": "./src/assets/images/projects/spa-lodge-arc/t0.webp",
     "images": [
       {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p1.webp", "caption": "Hotel Resort 3D BIM Model"
+        "url": "./src/assets/images/projects/spa-lodge-arc/p1.webp", "caption": "Hotel Resort 3D BIM Model"
       },
       {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p2.webp", "caption": "Hotel Resort 3D BIM Model"
+        "url": "./src/assets/images/projects/spa-lodge-arc/p2.webp", "caption": "Hotel Resort 3D BIM Model"
       },
       {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p3.webp", "caption": "Hotel Resort 3D BIM Model"
+        "url": "./src/assets/images/projects/spa-lodge-arc/p3.webp", "caption": "Hotel Resort 3D BIM Model"
       },
       {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p4.webp", "caption": "Hotel Resort 3D BIM Model"
+        "url": "./src/assets/images/projects/spa-lodge-arc/p4.webp", "caption": "Hotel Resort 3D BIM Model"
       },
       {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p5.webp", "caption": "Hotel Resort 3D BIM Model"
+        "url": "./src/assets/images/projects/spa-lodge-arc/p5.webp", "caption": "Hotel Resort 3D BIM Model"
       },
       {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p6.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p7.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p8.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p9.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p10.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hotel-lodge-1/p11.webp", "caption": "Hotel Resort 3D BIM Model"
+        "url": "./src/assets/images/projects/spa-lodge-arc/p6.webp", "caption": "Hotel Resort 3D BIM Model"
       }
     ],
     "shortDesc": "Transformed 2D CAD drawings into a full functional 3D BIM model (LOD 350) for a hotel resort.",
@@ -313,7 +373,50 @@ var PORTFOLIO_PROJECTS = [
       "As built verification and clash detection to ensure design accuracy and constructability"
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Architecture Modeling • MEP Systems"
+    "categoryName": "Architecture Modeling"
+  },
+  {
+    "id": "project-24",
+    "title": "Hotel Resort MEP 3D BIM Model",
+    "category": [
+      "mep"
+    ],
+    "thumbnail": "./src/assets/images/projects/spa-lodge-mep/t0.webp",
+    "images": [
+      {
+        "url": "./src/assets/images/projects/spa-lodge-mep/p1.webp", "caption": "Hotel Resort 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/spa-lodge-mep/p2.webp", "caption": "Hotel Resort 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/spa-lodge-mep/p3.webp", "caption": "Hotel Resort 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/spa-lodge-mep/p4.webp", "caption": "Hotel Resort 3D BIM Model"
+      },
+      {
+        "url": "./src/assets/images/projects/spa-lodge-mep/p5.webp", "caption": "Hotel Resort 3D BIM Model"
+      }
+    ],
+    "shortDesc": "Transformed 2D CAD drawings into a full functional MEP 3D BIM model (LOD 350) for a hotel resort.",
+    "fullDesc": "Developed a detailed drawing set and documentation report for a hotel resort project.",
+    "lod": "LOD 350",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk Autocad",
+      "Navisworks"
+    ],
+    "clientRegion": "United Kingdom (London)",
+    "completionDate": "Jul 2024",
+    "areaSqFt": "2,300 sq.ft",
+    "keyFeatures": [
+      "Hotel Resort 3D BIM Model with LOD 350",
+      "MEP coordination for efficient space utilization and system integration",
+      "As built verification and clash detection to ensure design accuracy and constructability"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "MEP Modeling"
   },
   {
     "id": "project-06",
