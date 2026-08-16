@@ -1,7 +1,158 @@
 /**
  * Mirja Riyadh - BIM Specialist Portfolio
- * Dynamic Single Project Detail Page Logic
+ * Dynamic Single Project Detail Page Logic & Interactive Suite
  */
+
+function showBimToast(message) {
+  let toast = document.getElementById('bim-toast-elem');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'bim-toast-elem';
+    toast.className = 'bim-toast';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `
+    <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <span>${message}</span>
+  `;
+  toast.classList.add('is-visible');
+  clearTimeout(window.bimToastTimer);
+  window.bimToastTimer = setTimeout(() => {
+    toast.classList.remove('is-visible');
+  }, 3200);
+}
+
+function shareCurrentProject() {
+  const proj = window.currentProject;
+  const url = window.location.href;
+  const title = proj ? proj.title : document.title;
+  const text = proj ? (proj.shortDesc || proj.description) : 'BIM Project by Mirja Riyadh';
+
+  if (window.trackBimEvent) {
+    window.trackBimEvent('project_share_click', { projectId: proj ? proj.id : 'unknown' });
+  }
+
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      text: text,
+      url: url
+    }).then(() => {
+      showBimToast('Project shared successfully');
+    }).catch(err => {
+      if (err.name !== 'AbortError') {
+        copyProjectLinkFallback(url);
+      }
+    });
+  } else {
+    copyProjectLinkFallback(url);
+  }
+}
+
+function copyProjectLinkFallback(url) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(() => {
+      showBimToast('Project link copied to clipboard!');
+    }).catch(() => {
+      prompt('Copy project URL:', url);
+    });
+  } else {
+    prompt('Copy project URL:', url);
+  }
+}
+
+function printProjectSheet() {
+  if (window.trackBimEvent && window.currentProject) {
+    window.trackBimEvent('project_sheet_print', { projectId: window.currentProject.id });
+  }
+  window.print();
+}
+
+function updateProjectMeta(project, categoryName) {
+  const pageTitle = `${project.title} | ${categoryName} — Mirja Riyadh`;
+  document.title = pageTitle;
+
+  const descText = project.shortDesc || project.description || `Specialized BIM modeling and coordination case study by Mirja Riyadh.`;
+
+  // Standard Meta Description
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.name = 'description';
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.setAttribute('content', `${project.title} — ${descText}`);
+
+  // Canonical Link
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute('href', `https://mirjariyadh.com.bd/project-details.html?id=${project.id}`);
+
+  // Open Graph
+  const setOg = (prop, content) => {
+    let elem = document.querySelector(`meta[property="${prop}"]`);
+    if (!elem) {
+      elem = document.createElement('meta');
+      elem.setAttribute('property', prop);
+      document.head.appendChild(elem);
+    }
+    elem.setAttribute('content', content);
+  };
+
+  const mainImage = project.thumbnail || project.image || 
+    (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
+  const absoluteImg = mainImage.startsWith('http') ? mainImage : `https://mirjariyadh.com.bd/${mainImage.replace(/^\.?\//, '')}`;
+
+  setOg('og:title', pageTitle);
+  setOg('og:description', descText);
+  setOg('og:url', `https://mirjariyadh.com.bd/project-details.html?id=${project.id}`);
+  setOg('og:image', absoluteImg);
+  setOg('og:type', 'article');
+
+  // Inject Rich JSON-LD Structured Data
+  let scriptLd = document.getElementById('project-json-ld');
+  if (!scriptLd) {
+    scriptLd = document.createElement('script');
+    scriptLd.id = 'project-json-ld';
+    scriptLd.type = 'application/ld+json';
+    document.head.appendChild(scriptLd);
+  }
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mirjariyadh.com.bd/" },
+          { "@type": "ListItem", "position": 2, "name": "All Projects", "item": "https://mirjariyadh.com.bd/all-projects.html" },
+          { "@type": "ListItem", "position": 3, "name": project.title, "item": `https://mirjariyadh.com.bd/project-details.html?id=${project.id}` }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": `https://mirjariyadh.com.bd/project-details.html?id=${project.id}#project`,
+        "name": project.title,
+        "description": descText,
+        "image": absoluteImg,
+        "creator": {
+          "@type": "Person",
+          "name": "Mirja Riyadh",
+          "jobTitle": "Senior BIM Specialist & Revit Modeler",
+          "url": "https://mirjariyadh.com.bd/"
+        },
+        "genre": categoryName,
+        "keywords": `BIM, Revit, ${project.lod || 'LOD 350'}, ${(project.softwareUsed || []).join(', ')}, ${project.buildingType || 'Building'}`
+      }
+    ]
+  };
+
+  scriptLd.textContent = JSON.stringify(structuredData, null, 2);
+}
 
 function renderProjectDetailsPage() {
   const container = document.getElementById('project-details-container');
@@ -9,7 +160,6 @@ function renderProjectDetailsPage() {
 
   const projects = window.projectsData || window.PORTFOLIO_PROJECTS;
   if (!projects || !projects.length) {
-    // Retry shortly if data is still loading
     setTimeout(renderProjectDetailsPage, 50);
     return;
   }
@@ -22,21 +172,11 @@ function renderProjectDetailsPage() {
     return;
   }
 
-  const cleanId = rawId.trim();
-  const numericId = parseInt(cleanId.replace(/\D/g, ''), 10);
-
-  // Flexible ID search
-  const project = projects.find(p => {
-    if (p.id === cleanId) return true;
-    if (p.id.toLowerCase() === cleanId.toLowerCase()) return true;
-    if (`project-${cleanId}` === p.id) return true;
-    if (`project-${String(cleanId).padStart(2, '0')}` === p.id) return true;
-    if (!isNaN(numericId)) {
-      if (p.id === `project-${String(numericId).padStart(2, '0')}`) return true;
-      if (p.id === `project-${numericId}`) return true;
-    }
-    return false;
-  });
+  let project = window.BIM_PROJECT_UTILS ? window.BIM_PROJECT_UTILS.getById(rawId) : null;
+  if (!project) {
+    const cleanId = rawId.trim().toLowerCase();
+    project = projects.find(p => p.id.toLowerCase() === cleanId || p.id.toLowerCase() === `project-${cleanId}`);
+  }
 
   if (!project) {
     showNotFound(container);
@@ -45,18 +185,20 @@ function renderProjectDetailsPage() {
 
   window.currentProject = project;
 
+  if (window.trackBimEvent) {
+    window.trackBimEvent('project_view', { projectId: project.id, title: project.title });
+  }
+
   // Normalize project attributes
-  const catArray = Array.isArray(project.category) 
-    ? project.category 
-    : [project.category || 'BIM Project'];
-  
-  const categoryName = project.categoryName || catArray.join(' • ');
+  const catArray = Array.isArray(project.category) ? project.category : [project.category || 'architecture'];
+  const categoryName = project.categoryName || catArray.map(c => c.toUpperCase()).join(' • ');
   const shortDesc = project.shortDesc || project.description || '';
   const fullDesc = project.fullDesc || project.longDescription || shortDesc;
-  const clientInfo = project.clientRegion || project.client || 'N/A';
-  const completionDate = project.completionDate || project.year || 'N/A';
-  const lod = project.lod || 'LOD 300';
+  const clientInfo = project.clientRegion || project.client || 'International Client';
+  const completionDate = project.completionDate || project.year || 'Completed';
+  const lod = project.lod || 'LOD 350';
   const areaSqFt = project.areaSqFt || 'N/A';
+  const buildingType = (project.buildingType || 'Commercial / Residential').toUpperCase();
 
   const mainImage = project.thumbnail || project.image || 
     (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
@@ -71,111 +213,159 @@ function renderProjectDetailsPage() {
 
   window.currentProjectGallery = galleryList;
 
-  const deliverables = project.keyFeatures || project.deliverables || [];
-  const software = project.softwareUsed || project.software || [];
+  const deliverables = project.deliverables || project.keyFeatures || [
+    'Autodesk Revit 3D Model (.RVT)',
+    'Coordinated BIM Sheet Sets (.PDF)',
+    'AutoCAD Shop Drawings (.DWG)',
+    'Clash Detection Report (.NWD)'
+  ];
+  const software = project.softwareUsed || project.software || ['Autodesk Revit', 'Navisworks Manage', 'AutoCAD'];
 
-  // Update Page Title and Meta Description
-  document.title = `${project.title} | ${categoryName} - Mirja Riyadh`;
-  
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) {
-    metaDesc.setAttribute('content', `${project.title} - ${shortDesc} Specialized BIM Services by Mirja Riyadh.`);
-  }
+  // SEO & Social Meta
+  updateProjectMeta(project, categoryName);
 
-  // Find Category Page URL based on internal slugs
+  // Category page URL
   let categoryPageUrl = 'all-projects.html';
-  if (catArray.includes('architecture') || catArray.some(c => /architecture|Architectural/i.test(c))) {
-    categoryPageUrl = 'architecture.html';
-  } else if (catArray.includes('mep') || catArray.some(c => /mep/i.test(c))) {
-    categoryPageUrl = 'mep.html';
-  } else if (catArray.includes('point-cloud') || catArray.some(c => /point[\s_-]?cloud|scan/i.test(c))) {
-    categoryPageUrl = 'point-cloud.html';
-  } else if (catArray.includes('autocad') || catArray.some(c => /autocad|drafting|documentation/i.test(c))) {
-    categoryPageUrl = 'autocad.html';
-  }
+  if (catArray.includes('architecture')) categoryPageUrl = 'architecture.html';
+  else if (catArray.includes('mep')) categoryPageUrl = 'mep.html';
+  else if (catArray.includes('point-cloud')) categoryPageUrl = 'point-cloud.html';
+  else if (catArray.includes('autocad')) categoryPageUrl = 'autocad.html';
 
-  // Render Full Project View
+  // Previous and Next Projects
+  const adj = window.BIM_PROJECT_UTILS ? window.BIM_PROJECT_UTILS.getAdjacentProjects(project.id) : { prev: null, next: null };
+  const prevProj = adj.prev;
+  const nextProj = adj.next;
+
   container.innerHTML = `
-    <!-- Breadcrumb & Back Link -->
-    <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-6 flex-wrap gap-y-1">
-      <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
-      <span>/</span>
-      <a href="${categoryPageUrl}" class="hover:text-cyan-400 transition-colors">${categoryName}</a>
-      <span>/</span>
-      <span class="text-gray-200 font-medium truncate max-w-xs">${project.title}</span>
-    </nav>
+    <!-- Printable Header Banner (Only visible during print) -->
+    <div class="print-header hidden">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-bold text-black">${project.title}</h1>
+          <p class="text-xs text-gray-700">Mirja Riyadh — Senior BIM Specialist (mirjariyadh.com.bd)</p>
+        </div>
+        <div class="text-right text-xs text-gray-600">
+          <p>Email: mirja.riyadh@gmail.com</p>
+          <p>Date: ${completionDate} | LOD: ${lod}</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- Header & Meta Tags -->
+    <!-- Breadcrumbs & Quick Actions Row -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 no-print">
+      <nav class="flex items-center space-x-2 text-xs font-mono text-gray-400 flex-wrap gap-y-1">
+        <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
+        <span>/</span>
+        <a href="all-projects.html" class="hover:text-cyan-400 transition-colors">Portfolio</a>
+        <span>/</span>
+        <a href="${categoryPageUrl}" class="hover:text-cyan-400 transition-colors">${catArray[0].toUpperCase()}</a>
+        <span>/</span>
+        <span class="text-cyan-400 font-semibold truncate max-w-xs">${project.title}</span>
+      </nav>
+
+      <!-- Action Buttons (Print / Share / Quote) -->
+      <div class="flex items-center space-x-2">
+        <button 
+          onclick="shareCurrentProject()" 
+          class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-gray-300 hover:text-white rounded text-xs font-mono flex items-center space-x-1.5 transition-colors cursor-pointer"
+          title="Share or Copy Link"
+        >
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+          <span>Share</span>
+        </button>
+
+        <button 
+          onclick="printProjectSheet()" 
+          class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-gray-300 hover:text-white rounded text-xs font-mono flex items-center space-x-1.5 transition-colors cursor-pointer"
+          title="Print / Save PDF Project Sheet"
+        >
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          <span>Print Sheet</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header & Title -->
     <header class="mb-10">
-      <div class="flex flex-wrap items-center gap-3 mb-4">
-        <span class="px-3 py-1 text-xs font-semibold rounded-sm bg-cyan-950 border border-cyan-500/40 text-cyan-300">
+      <div class="flex flex-wrap items-center gap-2.5 mb-4">
+        <span class="px-2.5 py-1 text-[11px] font-mono font-bold uppercase rounded-sm bg-cyan-950/90 border border-cyan-500/40 text-cyan-300">
           ${categoryName}
         </span>
-        <span class="px-3 py-1 text-xs font-mono font-semibold rounded-sm bg-slate-800 border border-slate-700 text-emerald-400">
+        <span class="px-2.5 py-1 text-[11px] font-mono font-bold rounded-sm bg-slate-900 border border-emerald-500/40 text-emerald-400">
           ${lod}
         </span>
-        <span class="px-3 py-1 text-xs font-mono text-gray-400 bg-slate-900 border border-slate-800 rounded-sm">
+        <span class="px-2.5 py-1 text-[11px] font-mono text-gray-300 bg-slate-900 border border-slate-800 rounded-sm">
+          Building: ${buildingType}
+        </span>
+        <span class="px-2.5 py-1 text-[11px] font-mono text-gray-400 bg-slate-900 border border-slate-800 rounded-sm">
           Completed: ${completionDate}
         </span>
         ${areaSqFt !== 'N/A' ? `
-          <span class="px-3 py-1 text-xs font-mono text-cyan-300 bg-slate-900 border border-slate-800 rounded-sm">
+          <span class="px-2.5 py-1 text-[11px] font-mono text-cyan-300 bg-slate-900 border border-slate-800 rounded-sm">
             Area: ${areaSqFt}
           </span>
         ` : ''}
       </div>
 
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
         ${project.title}
       </h1>
 
-      <p class="text-lg text-gray-300 mt-4 leading-relaxed max-w-4xl">
+      <p class="text-base sm:text-lg text-gray-300 mt-4 leading-relaxed max-w-4xl font-normal">
         ${shortDesc}
       </p>
 
-      <!-- Compact Professional Project Overview Box -->
+      <!-- Technical Project Overview Matrix Box -->
       <div class="mt-8 p-5 bg-slate-900/90 border border-slate-800 rounded-md">
         <div class="text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center space-x-2">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-          <span>PROJECT OVERVIEW</span>
+          <span>TECHNICAL PROJECT OVERVIEW</span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-xs font-mono">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs font-mono">
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">PROJECT TYPE</span>
+            <span class="text-gray-400 text-[11px] block uppercase">DISCIPLINE</span>
             <span class="font-bold text-white">${categoryName}</span>
           </div>
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">SCOPE</span>
-            <span class="font-bold text-cyan-400">${project.shortDesc ? project.shortDesc.split('.')[0] : 'BIM Modeling'}</span>
+            <span class="text-gray-400 text-[11px] block uppercase">BUILDING TYPE</span>
+            <span class="font-bold text-white">${buildingType}</span>
           </div>
           <div class="space-y-1">
             <span class="text-gray-400 text-[11px] block uppercase">SOFTWARE</span>
-            <span class="font-bold text-white">${software.join(', ') || 'Autodesk Revit'}</span>
+            <span class="font-bold text-cyan-400">${software.join(', ')}</span>
           </div>
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">LOD</span>
+            <span class="text-gray-400 text-[11px] block uppercase">LOD SPEC</span>
             <span class="font-bold text-emerald-400">${lod}</span>
           </div>
           <div class="space-y-1">
+            <span class="text-gray-400 text-[11px] block uppercase">CLIENT REGION</span>
+            <span class="font-bold text-gray-300">${clientInfo}</span>
+          </div>
+          <div class="space-y-1">
             <span class="text-gray-400 text-[11px] block uppercase">DELIVERABLES</span>
-            <span class="font-bold text-white">Revit Model / Documentation</span>
+            <span class="font-bold text-white">RVT · IFC · DWG · PDF</span>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Project Feature Showcase Image / Comparison -->
-    <div class="mb-12 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
+    <!-- Main Showcase Visual / Scan-to-BIM Comparison -->
+    <div class="mb-12 rounded-md overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
       ${project.beforeImage && project.afterImage ? `
         <!-- Interactive Point Cloud Slider -->
-        <div class="p-4 bg-slate-900/60 border-b border-slate-800 flex items-center justify-between">
-          <span class="text-xs font-mono text-cyan-400 font-semibold uppercase tracking-wider">Interactive Scan-to-BIM Comparison (Drag Handle)</span>
-          <span class="text-xs text-gray-400">Raw Point Cloud (Left) vs 3D Revit Model (Right)</span>
+        <div class="p-3 bg-slate-900/80 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 no-print">
+          <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Interactive Scan-to-BIM Comparison (Drag Handle)</span>
+          </div>
+          <span class="text-[11px] font-mono text-gray-400">Raw Point Cloud (Left) ↔ 3D Revit Model (Right)</span>
         </div>
         <div class="comparison-slider aspect-video">
-          <!-- Background Image: Completed 3D Revit Model (Shown on Right) -->
+          <!-- Background: Completed 3D Revit Model -->
           <img src="${project.afterImage}" alt="Completed 3D Revit Model" class="w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" />
           
-          <!-- Foreground Clip Image: Raw Point Cloud (Shown on Left) -->
+          <!-- Foreground: Raw Point Cloud -->
           <div class="img-after absolute inset-0 w-full h-full overflow-hidden">
             <img src="${project.beforeImage}" alt="Raw Laser Scan Point Cloud" class="w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" />
           </div>
@@ -187,45 +377,100 @@ function renderProjectDetailsPage() {
           </div>
         </div>
       ` : `
-        <img 
-          src="${mainImage}" 
-          alt="${project.title} Main Visual" 
-          class="w-full aspect-video object-cover"
-          referrerPolicy="no-referrer"
-        />
+        <div class="relative group cursor-pointer aspect-video" onclick="window.openLightbox(0)">
+          <img 
+            src="${mainImage}" 
+            alt="${project.title} Main Visual" 
+            class="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+          <div class="absolute inset-0 bg-cyan-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center no-print">
+            <span class="px-4 py-2 bg-slate-900/95 text-cyan-300 text-xs font-mono font-bold rounded-md border border-cyan-500/40 shadow-xl flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+              <span>Click to Enlarge Drawing</span>
+            </span>
+          </div>
+        </div>
       `}
     </div>
 
-    <!-- Content Columns: Deep Dive & Deliverables -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+    <!-- Deep Dive Case Study Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
       
-      <!-- Left Column: Detailed Case Study Narrative -->
+      <!-- Left Column (2 Cols): Case Study Narrative & Gallery -->
       <div class="lg:col-span-2 space-y-8">
-        <section class="bg-slate-900/40 border border-slate-800 rounded-2xl p-8">
-          <h2 class="text-2xl font-bold text-gray-100 mb-4 flex items-center space-x-3">
-            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-            <span>Technical Project Overview</span>
+        
+        <!-- Case Study Detailed Scope -->
+        <section class="bg-slate-900/50 border border-slate-800 rounded-md p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white mb-4 flex items-center space-x-2.5">
+            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+            <span>Project Scope & Technical Execution</span>
           </h2>
-          <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-4">
+          <div class="text-sm text-gray-300 leading-relaxed space-y-4">
             <p>${fullDesc}</p>
           </div>
         </section>
 
-        <!-- Gallery Screenshots -->
+        <!-- Structured BIM Workflow Visualization Component -->
+        <section class="bg-slate-900/50 border border-slate-800 rounded-md p-6 sm:p-8">
+          <h3 class="text-sm font-mono font-bold text-cyan-400 uppercase tracking-wider mb-4">
+            BIM EXECUTION WORKFLOW
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-xs font-mono">
+            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
+              <span class="text-cyan-400 block font-bold mb-1">01. INGESTION</span>
+              <span class="text-gray-300 text-[11px]">Point Cloud / CAD / PDF Drawings</span>
+            </div>
+            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
+              <span class="text-cyan-400 block font-bold mb-1">02. MODELING</span>
+              <span class="text-gray-300 text-[11px]">Parametric Revit Components</span>
+            </div>
+            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
+              <span class="text-cyan-400 block font-bold mb-1">03. MULTI-TRADE</span>
+              <span class="text-gray-300 text-[11px]">Architecture & MEP Systems</span>
+            </div>
+            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
+              <span class="text-emerald-400 block font-bold mb-1">04. CLASH AUDIT</span>
+              <span class="text-gray-300 text-[11px]">Navisworks Spatial Resolution</span>
+            </div>
+            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
+              <span class="text-cyan-400 block font-bold mb-1">05. OUTPUTS</span>
+              <span class="text-gray-300 text-[11px]">RVT · IFC · DWG · Sheets</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Technical Image Gallery with Lightbox Hook -->
         ${galleryList.length > 0 ? `
-          <section class="bg-slate-900/40 border border-slate-800 rounded-2xl p-8">
-            <h2 class="text-2xl font-bold text-gray-100 mb-6 flex items-center space-x-3">
-              <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <span>Project Gallery & High-Res Renders</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <section class="bg-slate-900/50 border border-slate-800 rounded-md p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-xl font-bold text-white flex items-center space-x-2.5">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                <span>Project Gallery & Technical Drawings</span>
+              </h2>
+              <span class="text-xs font-mono text-gray-400">${galleryList.length} Visuals</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               ${galleryList.map((imgObj, idx) => `
-                <div class="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-950 aspect-video group cursor-pointer" onclick="window.openLightbox(${idx})">
-                  <img src="${imgObj.url}" alt="${imgObj.caption || project.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" />
-                  <div class="absolute inset-0 bg-cyan-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-3.5 py-1.5 bg-slate-900/90 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-500/40 shadow-lg flex items-center space-x-1.5">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                      <span>Enlarge View</span>
+                <div 
+                  class="relative overflow-hidden rounded-md border border-slate-800 bg-slate-950 aspect-video group cursor-pointer hover:border-cyan-500/50 transition-colors" 
+                  onclick="window.openLightbox(${idx})"
+                  tabindex="0"
+                  role="button"
+                  aria-label="View Image ${idx + 1}"
+                  onkeydown="if(event.key==='Enter'||event.key===' ') { window.openLightbox(${idx}); event.preventDefault(); }"
+                >
+                  <img 
+                    src="${imgObj.url}" 
+                    alt="${imgObj.caption || project.title}" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer" 
+                  />
+                  <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-3 py-1.5 bg-slate-900 text-cyan-300 text-xs font-mono font-bold rounded border border-cyan-500/40 shadow-lg flex items-center space-x-1.5">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                      <span>Inspect Drawing</span>
                     </span>
                   </div>
                 </div>
@@ -235,53 +480,52 @@ function renderProjectDetailsPage() {
         ` : ''}
       </div>
 
-      <!-- Right Column: Key Deliverables & Software Sidebar -->
+      <!-- Right Column (1 Col): Key Deliverables & Actions -->
       <div class="space-y-6">
         
-        <!-- Deliverables Box -->
-        ${deliverables.length > 0 ? `
-          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-            <h3 class="text-lg font-bold text-gray-100 mb-4 pb-3 border-b border-slate-800 flex items-center space-x-2">
-              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <span>Key Project Highlights</span>
-            </h3>
-            <ul class="space-y-3">
-              ${deliverables.map(item => `
-                <li class="flex items-start space-x-3 text-sm text-gray-300">
-                  <span class="text-cyan-400 mt-0.5">✓</span>
-                  <span>${item}</span>
-                </li>
-              `).join('')}
-            </ul>
-          </div>
-        ` : ''}
+        <!-- Deliverables & Highlights -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-md p-6">
+          <h3 class="text-sm font-mono font-bold text-cyan-400 uppercase tracking-wider mb-4 pb-3 border-b border-slate-800 flex items-center space-x-2">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>Deliverables & Highlights</span>
+          </h3>
+          <ul class="space-y-3">
+            ${deliverables.map(item => `
+              <li class="flex items-start space-x-2.5 text-xs text-gray-300 leading-normal">
+                <span class="text-cyan-400 font-mono font-bold shrink-0">✓</span>
+                <span>${item}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
 
-        <!-- Software Stack Used -->
-        ${software.length > 0 ? `
-          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-            <h3 class="text-lg font-bold text-gray-100 mb-4 pb-3 border-b border-slate-800 flex items-center space-x-2">
-              <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-              <span>Software & Tools Used</span>
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              ${software.map(tool => `
-                <span class="px-3 py-1.5 text-xs font-mono rounded-lg bg-slate-800 text-cyan-300 border border-slate-700/80 font-medium">
-                  ${tool}
-                </span>
-              `).join('')}
-            </div>
+        <!-- Software Stack -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-md p-6">
+          <h3 class="text-sm font-mono font-bold text-cyan-400 uppercase tracking-wider mb-4 pb-3 border-b border-slate-800 flex items-center space-x-2">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            <span>Software & Standards</span>
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            ${software.map(tool => `
+              <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-950 text-cyan-300 border border-slate-800">
+                ${tool}
+              </span>
+            `).join('')}
           </div>
-        ` : ''}
+        </div>
 
-        <!-- Inquiry Action Box -->
-        <div class="bg-gradient-to-br from-cyan-950/60 to-slate-900 border border-cyan-500/30 rounded-2xl p-6 text-center">
-          <h3 class="text-xl font-extrabold text-gray-100">Need a Similar BIM Model?</h3>
-          <p class="text-xs text-gray-300 mt-2">Get high-precision modeling, clash detection, or point cloud conversion tailored to your project schedule.</p>
+        <!-- Direct Inquiry Card -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-cyan-500/30 rounded-md p-6 text-center space-y-4 no-print">
+          <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest block">CLIENT INQUIRY</span>
+          <h3 class="text-lg font-bold text-white">Need a Similar BIM Model?</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Get high-precision modeling, clash detection, or point cloud conversion tailored to your project schedule and LOD requirement.
+          </p>
           <button 
             onclick="triggerQuoteForProject('${project.title}')"
-            class="mt-5 w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-cyan-950/50 flex items-center justify-center space-x-2"
+            class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold rounded transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
             <span>Request Quote for This Project</span>
           </button>
         </div>
@@ -289,9 +533,44 @@ function renderProjectDetailsPage() {
       </div>
     </div>
 
+    <!-- Previous / Next Project Navigation Bar -->
+    <nav class="my-10 pt-6 pb-6 border-t border-b border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 no-print text-xs font-mono">
+      ${prevProj ? `
+        <a href="project-details.html?id=${prevProj.id}" class="w-full sm:w-auto p-3 bg-slate-900 hover:bg-slate-850 hover:border-cyan-500/50 border border-slate-800 rounded flex items-center space-x-3 text-gray-300 hover:text-white transition-all group">
+          <span class="text-cyan-400 group-hover:-translate-x-1 transition-transform">←</span>
+          <div class="text-left">
+            <span class="text-[10px] text-gray-500 uppercase block">Previous Project</span>
+            <span class="font-bold truncate max-w-[200px] block">${prevProj.title}</span>
+          </div>
+        </a>
+      ` : `<div class="hidden sm:block"></div>`}
+
+      <a href="all-projects.html" class="text-xs font-mono text-cyan-400 hover:underline px-4 py-2">
+        View All Projects
+      </a>
+
+      ${nextProj ? `
+        <a href="project-details.html?id=${nextProj.id}" class="w-full sm:w-auto p-3 bg-slate-900 hover:bg-slate-850 hover:border-cyan-500/50 border border-slate-800 rounded flex items-center justify-between sm:justify-end space-x-3 text-gray-300 hover:text-white transition-all group">
+          <div class="text-right">
+            <span class="text-[10px] text-gray-500 uppercase block">Next Project</span>
+            <span class="font-bold truncate max-w-[200px] block">${nextProj.title}</span>
+          </div>
+          <span class="text-cyan-400 group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      ` : `<div class="hidden sm:block"></div>`}
+    </nav>
+
     <!-- Related Projects Section -->
-    <section class="pt-10 border-t border-slate-800">
-      <h2 class="text-2xl font-bold text-gray-100 mb-6">More Related BIM Projects</h2>
+    <section class="pt-8 no-print">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block">EXPLORE MORE</span>
+          <h2 class="text-2xl font-bold text-white mt-1">Related Projects</h2>
+        </div>
+        <a href="all-projects.html" class="text-xs font-mono text-cyan-400 hover:underline hidden sm:block">
+          All Case Studies →
+        </a>
+      </div>
       <div id="related-projects-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </section>
   `;
@@ -301,33 +580,47 @@ function renderProjectDetailsPage() {
     window.initComparisonSliders();
   }
 
-  // Render Related Projects
+  // Render Smart Related Projects
   const relatedContainer = document.getElementById('related-projects-grid');
   if (relatedContainer) {
-    const related = projects
-      .filter(p => p.id !== project.id)
-      .slice(0, 3);
+    const related = window.BIM_PROJECT_UTILS 
+      ? window.BIM_PROJECT_UTILS.getRelatedProjects(project.id, 3)
+      : projects.filter(p => p.id !== project.id).slice(0, 3);
 
     relatedContainer.innerHTML = related.map(rel => {
-      const relCat = rel.categoryName || (Array.isArray(rel.category) ? rel.category.join(' • ') : rel.category);
+      const relCat = rel.categoryName || (Array.isArray(rel.category) ? rel.category[0].toUpperCase() : 'BIM MODEL');
       const relImg = rel.thumbnail || rel.image || (rel.images && rel.images[0] ? (typeof rel.images[0] === 'string' ? rel.images[0] : rel.images[0].url) : '');
-      const relDesc = rel.shortDesc || rel.description || '';
+      const relLod = rel.lod || 'LOD 350';
+      const relSoftware = (rel.softwareUsed && rel.softwareUsed[0]) || 'Autodesk Revit';
+
       return `
-        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden card-hover flex flex-col justify-between">
+        <div class="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300">
           <div>
-            <div class="aspect-video bg-slate-950 overflow-hidden">
-              <img src="${relImg}" alt="${rel.title}" class="w-full h-full object-cover" loading="lazy" referrerPolicy="no-referrer" />
+            <div class="aspect-video bg-slate-950 overflow-hidden relative">
+              <img src="${relImg}" alt="${rel.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" />
+              <div class="absolute top-2 left-2">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold uppercase rounded border border-cyan-500/30">
+                  ${relCat}
+                </span>
+              </div>
             </div>
-            <div class="p-5">
-              <span class="text-xs font-mono text-cyan-400 font-semibold">${relCat}</span>
-              <h3 class="text-base font-bold text-gray-100 mt-1 line-clamp-1">${rel.title}</h3>
-              <p class="text-xs text-gray-400 mt-2 line-clamp-2">${relDesc}</p>
+            <div class="p-4 space-y-2">
+              <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug">
+                ${rel.title}
+              </h3>
+              <p class="text-[11px] text-gray-400 line-clamp-2 leading-relaxed">
+                ${rel.shortDesc || ''}
+              </p>
+              <div class="pt-2 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-slate-800/80">
+                <span class="text-emerald-400 font-bold">${relLod}</span>
+                <span>${relSoftware}</span>
+              </div>
             </div>
           </div>
-          <div class="p-5 pt-0">
-            <a href="project-details.html?id=${rel.id}" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 inline-flex items-center space-x-1">
+          <div class="p-4 pt-0">
+            <a href="project-details.html?id=${rel.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
               <span>View Case Study</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </a>
           </div>
         </div>
@@ -339,19 +632,16 @@ function renderProjectDetailsPage() {
 function showNotFound(container) {
   document.title = "Project Not Found | Mirja Riyadh BIM Specialist";
   container.innerHTML = `
-    <div class="max-w-4xl mx-auto py-20 px-4 text-center">
-      <div class="w-20 h-20 mx-auto bg-slate-900 border border-slate-800 rounded-full flex items-center justify-center text-cyan-400 mb-6">
-        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+    <div class="max-w-xl mx-auto py-20 px-4 text-center">
+      <div class="w-16 h-16 mx-auto bg-slate-900 border border-slate-800 rounded-full flex items-center justify-center text-cyan-400 mb-6">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
       </div>
-      <h1 class="text-3xl font-extrabold text-gray-100">Project Not Found</h1>
-      <p class="text-gray-400 mt-2 max-w-lg mx-auto">The project you are looking for does not exist or may have been updated in our database catalog.</p>
-      <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <a href="all-projects.html" class="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-xl transition-colors inline-flex items-center space-x-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-          <span>Back to All Projects</span>
-        </a>
-        <a href="architecture.html" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-gray-200 font-semibold rounded-xl transition-colors">
-          Architecture Projects
+      <h1 class="text-2xl font-extrabold text-white">Project Not Found</h1>
+      <p class="text-gray-400 text-xs font-mono mt-2">The requested BIM case study is unavailable or has moved.</p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="all-projects.html" class="px-6 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold rounded transition-colors inline-flex items-center space-x-2">
+          <span>Explore All Projects</span>
+          <span>→</span>
         </a>
       </div>
     </div>
@@ -362,17 +652,25 @@ function showNotFound(container) {
 function triggerQuoteForProject(projectTitle) {
   const modal = document.getElementById('contact-modal');
   const messageInput = document.getElementById('contact-message');
+  const serviceSelect = document.querySelector('select[name="service"]') || document.querySelector('select[name="projectType"]');
+  
   if (messageInput) {
-    messageInput.value = `Hello Mirja, I am interested in a BIM service similar to: "${projectTitle}". Please contact me with availability and estimated rates.`;
+    messageInput.value = `Hello Mirja, I am interested in a BIM modeling service similar to "${projectTitle}". Please contact me regarding scope and estimate.`;
   }
   if (modal) {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
   }
+
+  if (window.trackBimEvent) {
+    window.trackBimEvent('project_quote_trigger', { projectTitle });
+  }
 }
 
-// Lightbox modal for gallery images
+// Technical Image Lightbox Modal
 let currentLightboxIndex = 0;
+let touchStartX = 0;
+let touchEndX = 0;
 
 function openLightbox(index = 0) {
   let gallery = window.currentProjectGallery || [];
@@ -394,16 +692,6 @@ function openLightbox(index = 0) {
 
   if (typeof index === 'number') {
     currentLightboxIndex = index;
-  } else if (typeof index === 'string' && !isNaN(parseInt(index, 10)) && String(parseInt(index, 10)) === index.trim()) {
-    currentLightboxIndex = parseInt(index, 10);
-  } else if (typeof index === 'string') {
-    const foundIdx = gallery.findIndex(item => (typeof item === 'string' ? item : item.url) === index);
-    if (foundIdx !== -1) {
-      currentLightboxIndex = foundIdx;
-    } else {
-      gallery.push({ url: index, caption: 'Project Visual' });
-      currentLightboxIndex = gallery.length - 1;
-    }
   } else {
     currentLightboxIndex = 0;
   }
@@ -418,50 +706,56 @@ function openLightbox(index = 0) {
   const modal = document.createElement('div');
   modal.id = 'lightbox-modal';
   modal.className = "fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 select-none";
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-label', 'Technical Image Viewer');
 
   function renderLightboxStep() {
     const item = gallery[currentLightboxIndex];
     const imgUrl = typeof item === 'string' ? item : (item ? item.url : '');
-    const caption = typeof item === 'object' && item && item.caption ? item.caption : '';
+    const caption = typeof item === 'object' && item && item.caption ? item.caption : (window.currentProject ? window.currentProject.title : '');
 
     modal.innerHTML = `
-      <!-- Top Bar: Counter & Close -->
+      <!-- Top Bar: Counter & Close Button -->
       <div class="w-full max-w-7xl flex items-center justify-between px-4 py-2 text-white z-20">
-        <span class="text-xs md:text-sm font-mono bg-slate-900/90 text-cyan-400 px-4 py-1.5 rounded-full border border-slate-700/80 shadow-lg">
+        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3.5 py-1.5 rounded border border-slate-700">
           Image ${currentLightboxIndex + 1} of ${gallery.length}
         </span>
-        <button id="lightbox-close-btn" class="bg-slate-900/80 hover:bg-cyan-600 text-white w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer">
+        <button id="lightbox-close-btn" class="bg-slate-900 hover:bg-cyan-600 text-white w-9 h-9 rounded flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer" aria-label="Close Lightbox">
           ✕
         </button>
       </div>
 
-      <!-- Main Image Display Container -->
-      <div class="relative flex-1 w-full max-w-7xl flex items-center justify-center max-h-[80vh] my-2">
+      <!-- Main Image Display (Uncropped Technical Drawing View) -->
+      <div id="lightbox-content-area" class="relative flex-1 w-full max-w-7xl flex items-center justify-center max-h-[82vh] my-2 overflow-hidden">
         
-        <!-- Previous Button ( Left Arrow ) -->
+        <!-- Previous Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-prev-btn" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-3.5 md:p-4 rounded-full border border-slate-700 shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer" title="Previous Image (Left Arrow)">
-            <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+          <button id="lightbox-prev-btn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Previous image">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
           </button>
         ` : ''}
 
-        <!-- Enlarged Image -->
-        <img src="${imgUrl}" alt="Enlarged Project Visual" class="max-w-full max-h-full object-contain rounded-xl border border-slate-800 shadow-2xl transition-all duration-300" referrerPolicy="no-referrer" />
+        <!-- Image Element (object-contain avoids clipping drawings) -->
+        <img 
+          id="lightbox-main-img"
+          src="${imgUrl}" 
+          alt="${caption}" 
+          class="max-w-full max-h-full object-contain rounded border border-slate-800 shadow-2xl transition-opacity duration-200" 
+          referrerPolicy="no-referrer" 
+        />
 
-        <!-- Next Button ( Right Arrow ) -->
+        <!-- Next Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-next-btn" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-3.5 md:p-4 rounded-full border border-slate-700 shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer" title="Next Image (Right Arrow)">
-            <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+          <button id="lightbox-next-btn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Next image">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
           </button>
         ` : ''}
       </div>
 
-      <!-- Caption Footer -->
-      ${caption ? `
-        <div class="bg-slate-900/90 border border-slate-800/90 px-6 py-2.5 rounded-full text-center max-w-3xl text-xs md:text-sm text-gray-200 shadow-xl z-20">
-          ${caption}
-        </div>
-      ` : '<div class="h-4"></div>'}
+      <!-- Caption Bar -->
+      <div class="bg-slate-900/95 border border-slate-800 px-5 py-2 rounded text-center max-w-2xl text-xs font-mono text-gray-200 shadow-xl z-20 truncate">
+        ${caption}
+      </div>
     `;
 
     // Event Handlers
@@ -490,6 +784,33 @@ function openLightbox(index = 0) {
         closeModal();
       };
     }
+
+    // Touch swipe gestures for mobile
+    const contentArea = modal.querySelector('#lightbox-content-area');
+    if (contentArea) {
+      contentArea.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      contentArea.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+    }
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swiped Left -> Next Image
+      currentLightboxIndex = (currentLightboxIndex + 1) % gallery.length;
+      renderLightboxStep();
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      // Swiped Right -> Prev Image
+      currentLightboxIndex = (currentLightboxIndex - 1 + gallery.length) % gallery.length;
+      renderLightboxStep();
+    }
   }
 
   function closeModal() {
@@ -512,7 +833,7 @@ function openLightbox(index = 0) {
   window.addEventListener('keydown', handleKeyEvents);
 
   modal.onclick = (e) => {
-    if (e.target === modal || e.target.classList.contains('my-2')) {
+    if (e.target === modal || e.target.id === 'lightbox-content-area') {
       closeModal();
     }
   };
@@ -521,8 +842,12 @@ function openLightbox(index = 0) {
   document.body.appendChild(modal);
 }
 
+// Global exports
 window.triggerQuoteForProject = triggerQuoteForProject;
 window.openLightbox = openLightbox;
+window.shareCurrentProject = shareCurrentProject;
+window.printProjectSheet = printProjectSheet;
+window.showBimToast = showBimToast;
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', renderProjectDetailsPage);

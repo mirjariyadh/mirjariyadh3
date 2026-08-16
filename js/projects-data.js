@@ -1,9 +1,11 @@
 /**
  * Portfolio Projects Data
- * Full 23 Projects list
+ * Full 23 Projects list with structured metadata
  * 
- * category: Internal slugs for filtering ["architecture", "mep", "point-cloud", "autocad"]
- * categoryName: Display text shown on website UI ("Architecture Modeling", "MEP Systems", "Point Cloud to BIM", "AutoCAD Services")
+ * category: Slugs for filtering ["architecture", "mep", "point-cloud", "autocad"]
+ * discipline: Disciplines ["architecture", "mep", "point-cloud", "autocad", "coordination"]
+ * buildingType: ["pharmaceutical", "residential", "commercial", "industrial", "hospitality", "healthcare", "educational"]
+ * categoryName: Display text shown on website UI
  */
 
 var PORTFOLIO_PROJECTS = [
@@ -15,6 +17,8 @@ var PORTFOLIO_PROJECTS = [
       "mep",
       "autocad"
     ],
+    "discipline": ["architecture", "mep", "autocad", "coordination"],
+    "buildingType": "pharmaceutical",
     "thumbnail": "./src/assets/images/projects/dbl/t0.webp",
     "images": [
       {
@@ -1331,9 +1335,171 @@ var PORTFOLIO_PROJECTS = [
 ];
 
 var projectsData = PORTFOLIO_PROJECTS;
+
+// Helper to determine building type if not explicitly set
+function inferBuildingType(project) {
+  if (project.buildingType) return project.buildingType;
+  const text = `${project.title} ${project.shortDesc || ''} ${project.fullDesc || ''}`.toLowerCase();
+  if (text.includes('pharma') || text.includes('incepta') || text.includes('cleanroom') || text.includes('clean room')) {
+    return 'pharmaceutical';
+  }
+  if (text.includes('hospital') || text.includes('healthcare') || text.includes('clinic')) {
+    return 'healthcare';
+  }
+  if (text.includes('hotel') || text.includes('resort') || text.includes('spa') || text.includes('lodge')) {
+    return 'hospitality';
+  }
+  if (text.includes('school') || text.includes('gymnazium') || text.includes('university') || text.includes('education')) {
+    return 'educational';
+  }
+  if (text.includes('office') || text.includes('commercial') || text.includes('city permit') || text.includes('retail')) {
+    return 'commercial';
+  }
+  if (text.includes('industrial') || text.includes('plant') || text.includes('facility') || text.includes('warehouse')) {
+    return 'industrial';
+  }
+  return 'residential';
+}
+
+// Helper to determine disciplines if not explicitly set
+function inferDisciplines(project) {
+  const cats = Array.isArray(project.category) ? project.category : [project.category || 'architecture'];
+  const disciplines = new Set(cats);
+  const text = `${project.title} ${project.shortDesc || ''} ${project.fullDesc || ''}`.toLowerCase();
+  
+  if (text.includes('clash') || text.includes('coordination') || text.includes('navisworks')) {
+    disciplines.add('coordination');
+  }
+  if (text.includes('point cloud') || text.includes('scan to bim') || text.includes('laser scan') || text.includes('as-built')) {
+    disciplines.add('point-cloud');
+  }
+  if (text.includes('mep') || text.includes('hvac') || text.includes('piping') || text.includes('plumbing') || text.includes('duct')) {
+    disciplines.add('mep');
+  }
+  if (text.includes('cad') || text.includes('dwg') || text.includes('autocad') || text.includes('drafting')) {
+    disciplines.add('autocad');
+  }
+  if (text.includes('architectur') || text.includes('revit') || text.includes('building')) {
+    disciplines.add('architecture');
+  }
+  return Array.from(disciplines);
+}
+
+// Normalize all projects
+PORTFOLIO_PROJECTS.forEach(project => {
+  project.buildingType = inferBuildingType(project);
+  project.discipline = inferDisciplines(project);
+  if (!project.deliverables && project.keyFeatures) {
+    project.deliverables = project.keyFeatures;
+  }
+});
+
+// Query Utilities
+var BIM_PROJECT_UTILS = {
+  getAll() {
+    return PORTFOLIO_PROJECTS;
+  },
+  
+  getById(id) {
+    if (!id) return null;
+    const cleanId = String(id).trim().toLowerCase();
+    const num = parseInt(cleanId.replace(/\D/g, ''), 10);
+    return PORTFOLIO_PROJECTS.find(p => {
+      if (p.id.toLowerCase() === cleanId) return true;
+      if (`project-${cleanId}` === p.id.toLowerCase()) return true;
+      if (!isNaN(num)) {
+        if (p.id === `project-${String(num).padStart(2, '0')}`) return true;
+        if (p.id === `project-${num}`) return true;
+      }
+      return false;
+    }) || null;
+  },
+
+  filterProjects({ discipline = 'all', buildingType = 'all', query = '' } = {}) {
+    const q = query ? query.toLowerCase().trim() : '';
+    
+    return PORTFOLIO_PROJECTS.filter(project => {
+      // 1. Discipline match
+      if (discipline && discipline !== 'all') {
+        const discMatch = project.discipline && project.discipline.includes(discipline);
+        const catMatch = Array.isArray(project.category) ? project.category.includes(discipline) : project.category === discipline;
+        if (!discMatch && !catMatch) return false;
+      }
+
+      // 2. Building type match
+      if (buildingType && buildingType !== 'all') {
+        if (buildingType === 'industrial-pharma') {
+          if (project.buildingType !== 'industrial' && project.buildingType !== 'pharmaceutical') return false;
+        } else if (buildingType === 'hospitality-healthcare') {
+          if (project.buildingType !== 'hospitality' && project.buildingType !== 'healthcare') return false;
+        } else {
+          if (project.buildingType !== buildingType) return false;
+        }
+      }
+
+      // 3. Search query match
+      if (q) {
+        const searchable = [
+          project.title,
+          project.categoryName || '',
+          project.buildingType || '',
+          project.shortDesc || '',
+          project.fullDesc || '',
+          project.lod || '',
+          project.clientRegion || '',
+          ...(project.softwareUsed || []),
+          ...(project.discipline || []),
+          ...(Array.isArray(project.category) ? project.category : [project.category || ''])
+        ].join(' ').toLowerCase();
+
+        // Support multiple keywords, e.g. "point cloud residential" or "mep hvac"
+        const tokens = q.split(/\s+/).filter(Boolean);
+        const allTokensMatch = tokens.every(token => searchable.includes(token));
+        if (!allTokensMatch) return false;
+      }
+
+      return true;
+    });
+  },
+
+  getRelatedProjects(currentId, limit = 3) {
+    const current = this.getById(currentId);
+    if (!current) return PORTFOLIO_PROJECTS.slice(0, limit);
+
+    const candidates = PORTFOLIO_PROJECTS.filter(p => p.id !== current.id);
+    
+    // Score based on similarity
+    const scored = candidates.map(p => {
+      let score = 0;
+      if (p.buildingType === current.buildingType) score += 4;
+      const commonDisciplines = (p.discipline || []).filter(d => (current.discipline || []).includes(d));
+      score += commonDisciplines.length * 3;
+      if (p.lod === current.lod) score += 1;
+      return { project: p, score };
+    });
+
+    scored.sort((a, b) => b.score - a.score);
+    return scored.slice(0, limit).map(item => item.project);
+  },
+
+  getAdjacentProjects(currentId) {
+    const index = PORTFOLIO_PROJECTS.findIndex(p => p.id === currentId);
+    if (index === -1) {
+      return { prev: null, next: null };
+    }
+    const prevIndex = (index - 1 + PORTFOLIO_PROJECTS.length) % PORTFOLIO_PROJECTS.length;
+    const nextIndex = (index + 1) % PORTFOLIO_PROJECTS.length;
+    return {
+      prev: PORTFOLIO_PROJECTS[prevIndex],
+      next: PORTFOLIO_PROJECTS[nextIndex]
+    };
+  }
+};
+
 if (typeof window !== 'undefined') {
   window.PORTFOLIO_PROJECTS = PORTFOLIO_PROJECTS;
   window.projectsData = PORTFOLIO_PROJECTS;
+  window.BIM_PROJECT_UTILS = BIM_PROJECT_UTILS;
 }
 
 

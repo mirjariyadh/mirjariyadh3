@@ -3,20 +3,32 @@
  * Main Layout & Universal Scripts (GitHub Pages Ready)
  */
 
+// Analytics-Ready Event Tracker
+function trackBimEvent(eventName, data = {}) {
+  try {
+    if (window.gtag) {
+      window.gtag('event', eventName, data);
+    }
+    // Custom event dispatch for analytics hooks
+    window.dispatchEvent(new CustomEvent('bim_portfolio_event', { detail: { eventName, data, timestamp: Date.now() } }));
+  } catch (e) {
+    // Silent fail
+  }
+}
+window.trackBimEvent = trackBimEvent;
+
 function initMain() {
-  // Ensure dark mode is active and clear light theme settings
+  // Ensure dark mode is active
   document.documentElement.classList.add('dark');
   document.documentElement.classList.remove('light-theme');
   if (document.body) {
     document.body.classList.remove('light-theme');
   }
-  try {
-    localStorage.removeItem('mirja_theme');
-  } catch (e) {}
 
   initMobileNav();
   highlightActiveNav();
   initContactModal();
+  initRequirementHelper();
   initScrollTop();
   initCopyButtons();
   initSectionObserverAnimations();
@@ -31,7 +43,7 @@ if (document.readyState === 'loading') {
 
 /* Automatically initialize grids if elements are present in DOM */
 function autoInitCategoryGrids() {
-  // Home Page Selected Projects Grid (8 Projects)
+  // Home Page Selected Projects Grid
   if (document.getElementById('selected-projects-grid')) {
     renderSelectedProjects('all');
     setupSelectedProjectFilters();
@@ -39,8 +51,7 @@ function autoInitCategoryGrids() {
 
   // All Projects Grid (All Projects Page)
   if (document.getElementById('all-projects-grid')) {
-    renderProjectGrid('all-projects-grid', 'all');
-    setupFilterButtons('all-projects-grid');
+    setupAdvancedPortfolioFilter('all-projects-grid');
   }
 
   // Category Specific Pages
@@ -56,27 +67,6 @@ function autoInitCategoryGrids() {
   if (document.getElementById('autocad-projects-grid')) {
     renderProjectGrid('autocad-projects-grid', 'autocad');
   }
-}
-
-/* Home Page Selected Projects Filter Handler */
-function setupSelectedProjectFilters() {
-  const filterBtns = document.querySelectorAll('.selected-filter-btn');
-  if (!filterBtns.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.onclick = (e) => {
-      e.preventDefault();
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-[#009FB7]', 'bg-cyan-600', 'text-white', 'shadow');
-        b.classList.add('text-gray-400', 'bg-transparent');
-      });
-      btn.classList.add('bg-[#009FB7]', 'text-white', 'shadow');
-      btn.classList.remove('text-gray-400', 'bg-transparent');
-
-      const category = btn.getAttribute('data-category') || 'all';
-      renderSelectedProjects(category);
-    };
-  });
 }
 
 /* 12 Prioritized Featured Project IDs for Homepage Showcase */
@@ -101,7 +91,7 @@ function getProjectMetadata(project) {
   let categoryLabel = 'Architectural BIM';
   let scopeTag = '3D BIM Modeling · Documentation';
 
-  if (project.id === 'project-01' || project.id === 'project-08') {
+  if (project.id === 'project-01' || project.id === 'project-08' || project.buildingType === 'pharmaceutical') {
     categoryLabel = 'Industrial / MEP BIM';
     scopeTag = 'Pharmaceutical Facility · Cleanroom · MEP';
   } else if (cats.includes('point-cloud')) {
@@ -184,8 +174,7 @@ function renderSelectedProjects(categoryFilter = 'all') {
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900 opacity-90 transition-opacity duration-300 lazy-project-img" 
               loading="lazy" 
               decoding="async"
-              fetchpriority="low"
-              referrerPolicy="no-referrer"
+              referrerPolicy="no-referrer" 
               onload="this.classList.remove('opacity-90'); this.classList.add('opacity-100');"
               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'225\\' viewBox=\\'0 0 400 225\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
@@ -227,35 +216,203 @@ function renderSelectedProjects(categoryFilter = 'all') {
   initLazyImages(container);
 }
 
-/* Helper to setup category filter buttons and search input */
-function setupFilterButtons(gridContainerId) {
-  const filterBtns = document.querySelectorAll('.filter-btn');
+/* Home Page Selected Projects Filter Handler */
+function setupSelectedProjectFilters() {
+  const filterBtns = document.querySelectorAll('.selected-filter-btn');
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-cyan-600', 'text-white', 'shadow');
+        b.classList.add('text-gray-400', 'bg-transparent');
+      });
+      btn.classList.add('bg-cyan-600', 'text-white', 'shadow');
+      btn.classList.remove('text-gray-400', 'bg-transparent');
+
+      const category = btn.getAttribute('data-category') || 'all';
+      renderSelectedProjects(category);
+      trackBimEvent('home_filter_click', { category });
+    };
+  });
+}
+
+/* Advanced Multi-Facet Filter & Instant Search System for all-projects.html */
+function setupAdvancedPortfolioFilter(gridContainerId = 'all-projects-grid') {
+  const container = document.getElementById(gridContainerId);
+  if (!container) return;
+
   const searchInput = document.getElementById('project-search-input');
-  let currentCategory = 'all';
+  const disciplineBtns = document.querySelectorAll('.filter-discipline-btn, .filter-btn');
+  const buildingTypeSelect = document.getElementById('filter-building-type');
+  const countBadge = document.getElementById('portfolio-count-badge');
+  const clearBtn = document.getElementById('clear-filters-btn');
 
-  if (filterBtns.length > 0) {
-    filterBtns.forEach(btn => {
-      // Remove any existing click handlers by cloning or replacing
-      btn.onclick = (e) => {
-        e.preventDefault();
-        filterBtns.forEach(b => {
-          b.classList.remove('bg-cyan-600', 'text-white');
-          b.classList.add('text-gray-400');
-        });
-        btn.classList.add('bg-cyan-600', 'text-white');
-        btn.classList.remove('text-gray-400');
+  let activeDiscipline = 'all';
+  let activeBuildingType = 'all';
+  let activeSearchQuery = '';
 
-        currentCategory = btn.getAttribute('data-category') || 'all';
-        renderProjectGrid(gridContainerId, currentCategory, searchInput ? searchInput.value : '');
-      };
-    });
+  function applyFilters() {
+    let results = [];
+    if (window.BIM_PROJECT_UTILS) {
+      results = window.BIM_PROJECT_UTILS.filterProjects({
+        discipline: activeDiscipline,
+        buildingType: activeBuildingType,
+        query: activeSearchQuery
+      });
+    } else {
+      const projects = window.projectsData || window.PORTFOLIO_PROJECTS || [];
+      results = projects.filter(p => matchProjectCategory(p, activeDiscipline));
+    }
+
+    // Update count badge
+    if (countBadge) {
+      countBadge.textContent = `Showing ${results.length} verified projects`;
+    }
+
+    if (results.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full py-16 text-center bg-slate-900/40 rounded-md border border-slate-800">
+          <svg class="w-10 h-10 mx-auto text-slate-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <h3 class="text-base font-bold text-gray-200">No Matching Projects Found</h3>
+          <p class="text-gray-400 text-xs font-mono mt-1">Try resetting filters or using a broader search keyword.</p>
+          <button id="reset-filter-action" class="mt-4 px-4 py-1.5 bg-slate-800 hover:bg-cyan-600 text-white text-xs font-mono font-bold rounded transition-colors">
+            Reset All Filters
+          </button>
+        </div>
+      `;
+      const resetAction = document.getElementById('reset-filter-action');
+      if (resetAction) {
+        resetAction.onclick = resetFilters;
+      }
+      return;
+    }
+
+    container.innerHTML = results.map(project => {
+      const { categoryLabel, scopeTag } = getProjectMetadata(project);
+      const thumbnail = project.thumbnail || project.image || 
+        (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
+      const lod = project.lod || 'LOD 350';
+      const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
+
+      return `
+        <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-950">
+              <img 
+                data-src="${thumbnail}"
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'><rect width='100%' height='100%' fill='%230f172a'/></svg>"
+                alt="${project.title}" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900 opacity-90 transition-opacity duration-300 lazy-project-img" 
+                loading="lazy" 
+                decoding="async"
+                referrerPolicy="no-referrer" 
+                onload="this.classList.remove('opacity-90'); this.classList.add('opacity-100');"
+                onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'225\\' viewBox=\\'0 0 400 225\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
+              />
+              <div class="absolute top-2.5 left-2.5">
+                <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[10px] font-mono font-bold tracking-wider uppercase rounded-sm border border-cyan-500/30">
+                  ${categoryLabel}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-4 space-y-2">
+              <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug">
+                ${project.title}
+              </h3>
+              
+              <p class="text-[11px] text-gray-400 font-mono line-clamp-1">
+                ${scopeTag}
+              </p>
+
+              <div class="pt-1 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-slate-800/60">
+                <span class="text-emerald-400 font-bold">${lod}</span>
+                <span>${primarySoftware}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-4 pb-4 pt-2">
+            <a href="project-details.html?id=${project.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
+              <span>View Case Study</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    initLazyImages(container);
   }
 
-  if (searchInput) {
-    searchInput.oninput = () => {
-      renderProjectGrid(gridContainerId, currentCategory, searchInput.value);
+  function resetFilters() {
+    activeDiscipline = 'all';
+    activeBuildingType = 'all';
+    activeSearchQuery = '';
+    if (searchInput) searchInput.value = '';
+    if (buildingTypeSelect) buildingTypeSelect.value = 'all';
+    disciplineBtns.forEach(b => {
+      b.classList.remove('bg-cyan-600', 'text-white');
+      b.classList.add('text-gray-400');
+      if (b.getAttribute('data-discipline') === 'all' || b.getAttribute('data-category') === 'all') {
+        b.classList.add('bg-cyan-600', 'text-white');
+        b.classList.remove('text-gray-400');
+      }
+    });
+    applyFilters();
+  }
+
+  // Discipline Button Handlers
+  disciplineBtns.forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      disciplineBtns.forEach(b => {
+        b.classList.remove('bg-cyan-600', 'text-white');
+        b.classList.add('text-gray-400');
+      });
+      btn.classList.add('bg-cyan-600', 'text-white');
+      btn.classList.remove('text-gray-400');
+
+      activeDiscipline = btn.getAttribute('data-discipline') || btn.getAttribute('data-category') || 'all';
+      applyFilters();
+      trackBimEvent('portfolio_discipline_filter', { discipline: activeDiscipline });
+    };
+  });
+
+  // Building Type Select Handler
+  if (buildingTypeSelect) {
+    buildingTypeSelect.onchange = () => {
+      activeBuildingType = buildingTypeSelect.value;
+      applyFilters();
+      trackBimEvent('portfolio_buildingtype_filter', { buildingType: activeBuildingType });
     };
   }
+
+  // Instant Free-Text Search Handler
+  if (searchInput) {
+    let searchDebounce = null;
+    searchInput.oninput = () => {
+      activeSearchQuery = searchInput.value;
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        applyFilters();
+        if (activeSearchQuery.length > 2) {
+          trackBimEvent('portfolio_search', { query: activeSearchQuery });
+        }
+      }, 80);
+    };
+  }
+
+  if (clearBtn) {
+    clearBtn.onclick = resetFilters;
+  }
+
+  // Initial render
+  applyFilters();
 }
 
 /* Mobile Hamburger Menu */
@@ -268,7 +425,6 @@ function initMobileNav() {
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Close mobile menu on clicking links
     const links = mobileMenu.querySelectorAll('a');
     links.forEach(link => {
       link.addEventListener('click', () => {
@@ -320,7 +476,6 @@ function initContactModal() {
     });
   });
 
-  // Close when clicking backdrop
   if (modal) {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -338,11 +493,13 @@ function initContactModal() {
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit Quote Request';
 
-      // Gather form data
       const formData = new FormData(contactForm);
       const dataObj = Object.fromEntries(formData.entries());
 
-      // Set Loading State
+      trackBimEvent('contact_form_submit_attempt', {
+        service: dataObj.service || dataObj.projectType || 'General'
+      });
+
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = `
@@ -351,15 +508,15 @@ function initContactModal() {
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <span>Sending Proposal Request...</span>
+            <span>Submitting BIM Inquiry...</span>
           </span>
         `;
       }
 
       if (statusDiv) {
         statusDiv.innerHTML = `
-          <div class="bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 p-3 rounded-lg text-xs flex items-center space-x-2">
-            <span>Connecting to Mirja Riyadh's secure mail server...</span>
+          <div class="bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 p-3 rounded-lg text-xs flex items-center space-x-2 font-mono">
+            <span>Transmitting project requirements to Mirja Riyadh...</span>
           </div>
         `;
       }
@@ -375,15 +532,16 @@ function initContactModal() {
         });
 
         if (response.ok) {
+          trackBimEvent('contact_form_submit_success');
           if (statusDiv) {
             statusDiv.innerHTML = `
-              <div class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 p-4 rounded-xl flex items-center space-x-3 animate-fade-in">
+              <div class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 p-4 rounded-xl flex items-center space-x-3">
                 <svg class="w-6 h-6 shrink-0 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
                 <div>
                   <p class="font-bold text-sm text-emerald-300">Quote Request Delivered Successfully!</p>
-                  <p class="text-xs text-gray-300 mt-0.5">Thank you! Your project details have been sent directly to Mirja Riyadh's inbox. I will review and reply to your email shortly.</p>
+                  <p class="text-xs text-gray-300 mt-0.5">Thank you! Your project details have been sent directly to Mirja Riyadh's inbox. I will review and reply with a scope breakdown shortly.</p>
                 </div>
               </div>
             `;
@@ -405,8 +563,8 @@ function initContactModal() {
         if (statusDiv) {
           statusDiv.innerHTML = `
             <div class="bg-red-500/10 border border-red-500/30 text-red-400 p-3.5 rounded-xl text-xs space-y-1">
-              <p class="font-semibold text-red-300">Message Delivery Issue</p>
-              <p class="text-gray-300">Could not submit automatically. Please email directly to: <a href="mailto:mirja.riyadh@gmail.com" class="text-cyan-400 underline font-medium">mirja.riyadh@gmail.com</a></p>
+              <p class="font-semibold text-red-300">Direct Delivery Issue</p>
+              <p class="text-gray-300">Could not submit automatically. Please send project drawings directly to: <a href="mailto:mirja.riyadh@gmail.com" class="text-cyan-400 underline font-mono">mirja.riyadh@gmail.com</a></p>
             </div>
           `;
         }
@@ -417,6 +575,41 @@ function initContactModal() {
         }
       }
     });
+  }
+}
+
+/* Project Requirement Helper Modal Trigger */
+function initRequirementHelper() {
+  const triggerBtns = document.querySelectorAll('.open-requirement-helper');
+  const modal = document.getElementById('requirement-helper-modal');
+  const closeBtns = document.querySelectorAll('.close-requirement-helper');
+
+  triggerBtns.forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    };
+  });
+
+  closeBtns.forEach(btn => {
+    btn.onclick = () => {
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    };
+  });
+
+  if (modal) {
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    };
   }
 }
 
@@ -449,7 +642,7 @@ function initCopyButtons() {
       if (textToCopy) {
         navigator.clipboard.writeText(textToCopy).then(() => {
           const originalText = btn.innerHTML;
-          btn.innerHTML = `<span class="text-emerald-400 font-semibold">✓ Copied!</span>`;
+          btn.innerHTML = `<span class="text-emerald-400 font-semibold font-mono">✓ Copied!</span>`;
           setTimeout(() => {
             btn.innerHTML = originalText;
           }, 2000);
@@ -459,9 +652,7 @@ function initCopyButtons() {
   });
 }
 
-/* Universal Category Matcher
- * Uses internal slugs: 'architecture', 'mep', 'point-cloud', 'autocad'
- */
+/* Universal Category Matcher */
 function matchProjectCategory(project, categoryFilter) {
   if (!categoryFilter || categoryFilter === 'all') return true;
   const cats = Array.isArray(project.category) ? project.category : [project.category];
@@ -479,18 +670,7 @@ function matchProjectCategory(project, categoryFilter) {
   });
 }
 
-function getProjectCategoryCounts() {
-  const projects = window.projectsData || window.PORTFOLIO_PROJECTS || [];
-  return {
-    all: projects.length,
-    architecture: projects.filter(p => matchProjectCategory(p, 'architecture')).length,
-    mep: projects.filter(p => matchProjectCategory(p, 'mep')).length,
-    'point-cloud': projects.filter(p => matchProjectCategory(p, 'point-cloud')).length,
-    autocad: projects.filter(p => matchProjectCategory(p, 'autocad')).length
-  };
-}
-
-/* Universal Render Projects function for category pages and all projects page */
+/* Universal Render Projects function for category pages */
 function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = '') {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -503,12 +683,10 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
 
   let filtered = projects;
 
-  // Filter by category
   if (categoryFilter && categoryFilter !== 'all') {
     filtered = filtered.filter(p => matchProjectCategory(p, categoryFilter));
   }
 
-  // Filter by search keyword
   if (searchKeyword && searchKeyword.trim() !== '') {
     const q = searchKeyword.toLowerCase();
     filtered = filtered.filter(p => {
@@ -522,12 +700,12 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      <div class="col-span-full py-16 text-center bg-slate-900/40 rounded-2xl border border-slate-800">
-        <svg class="w-12 h-12 mx-auto text-slate-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="col-span-full py-16 text-center bg-slate-900/40 rounded-md border border-slate-800">
+        <svg class="w-10 h-10 mx-auto text-slate-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
         </svg>
-        <h3 class="text-xl font-bold text-gray-200">No Projects Found</h3>
-        <p class="text-gray-400 text-sm mt-1">Try adjusting your search query or selecting a different category.</p>
+        <h3 class="text-base font-bold text-gray-200">No Projects Found</h3>
+        <p class="text-gray-400 text-xs font-mono mt-1">Try adjusting your filters or search keywords.</p>
       </div>
     `;
     return;
@@ -543,7 +721,6 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
     return `
       <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
         <div>
-          <!-- Thumbnail & Category Tag (16:9 standard ratio) -->
           <div class="relative aspect-video overflow-hidden bg-slate-950">
             <img 
               data-src="${thumbnail}"
@@ -552,8 +729,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900 opacity-90 transition-opacity duration-300 lazy-project-img" 
               loading="lazy" 
               decoding="async"
-              fetchpriority="low"
-              referrerPolicy="no-referrer"
+              referrerPolicy="no-referrer" 
               onload="this.classList.remove('opacity-90'); this.classList.add('opacity-100');"
               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'225\\' viewBox=\\'0 0 400 225\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
@@ -564,7 +740,6 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
             </div>
           </div>
 
-          <!-- Project Specs & Scope -->
           <div class="p-4 space-y-2">
             <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug">
               ${project.title}
@@ -581,10 +756,9 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
           </div>
         </div>
 
-        <!-- Footer Action -->
         <div class="px-4 pb-4 pt-2">
           <a href="project-details.html?id=${project.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
-            <span>View Project</span>
+            <span>View Case Study</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </a>
         </div>
@@ -620,7 +794,6 @@ function initLazyImages(container) {
 
     lazyImages.forEach(img => observer.observe(img));
   } else {
-    // Immediate fallback for browsers without IntersectionObserver
     lazyImages.forEach(img => {
       if (img.dataset.src) {
         img.src = img.dataset.src;
@@ -632,13 +805,10 @@ function initLazyImages(container) {
 
 /* Smooth Section Reveal Observer Animation on Scroll */
 function initSectionObserverAnimations() {
-  // Select all major semantic sections and designated containers
   const targets = document.querySelectorAll('section:not(#hero), .reveal-on-scroll');
   if (!targets || targets.length === 0) return;
 
-  // Add the initial animation class to all target sections
-  targets.forEach((el, index) => {
-    // Avoid double tagging
+  targets.forEach((el) => {
     if (!el.classList.contains('reveal-on-scroll')) {
       el.classList.add('reveal-on-scroll');
     }
@@ -649,27 +819,25 @@ function initSectionObserverAnimations() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          // Once animated in, unobserve to free resources
           obs.unobserve(entry.target);
         }
       });
     }, {
       root: null,
-      rootMargin: '0px 0px -60px 0px', // triggers just before full entry for a natural fluid feel
+      rootMargin: '0px 0px -60px 0px',
       threshold: 0.08
     });
 
     targets.forEach(target => sectionObserver.observe(target));
   } else {
-    // Fallback: immediately make visible
     targets.forEach(target => target.classList.add('is-visible'));
   }
 }
 
-// Make functions available globally
+// Global exports
 window.initSectionObserverAnimations = initSectionObserverAnimations;
 window.renderProjectGrid = renderProjectGrid;
 window.renderSelectedProjects = renderSelectedProjects;
 window.initLazyImages = initLazyImages;
 window.matchProjectCategory = matchProjectCategory;
-window.getProjectCategoryCounts = getProjectCategoryCounts;
+window.setupAdvancedPortfolioFilter = setupAdvancedPortfolioFilter;

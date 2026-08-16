@@ -98,7 +98,7 @@
       
       <!-- Brand Logo -->
       <a href="index.html" class="flex items-center space-x-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center font-extrabold text-white text-xl shadow-lg shadow-cyan-950/50 group-hover:scale-105 transition-transform">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center font-extrabold text-white text-xl shadow-lg shadow-cyan-950/50 group-hover:scale-105 transition-transform">
           MR
         </div>
         <div>
@@ -120,14 +120,14 @@
 
       <!-- Right Header Actions -->
       <div class="hidden md:flex items-center space-x-4">
-        <button class="open-contact-modal px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm rounded-xl transition-all shadow-lg shadow-cyan-950/50">
+        <button class="open-contact-modal px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm rounded-md transition-all shadow-lg shadow-cyan-950/50 cursor-pointer">
           Request BIM Quote
         </button>
       </div>
 
       <!-- Mobile Hamburger Button -->
       <div class="flex items-center space-x-3 md:hidden">
-        <button id="mobile-menu-btn" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-gray-300">
+        <button id="mobile-menu-btn" class="p-2 rounded-md bg-slate-900 border border-slate-800 text-gray-300">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
       </div>
@@ -146,45 +146,73 @@
   </header>
 
   <!-- Filter Controls Section -->
-  <section class="py-4 bg-slate-900/90 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-6 bg-slate-900/90 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
       
-      <!-- Filter Controls Row -->
+      <!-- Top Row: Discipline Tabs & Instant Search -->
       <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
         
-        <!-- Category Filter Tabs -->
-        <div class="flex items-center space-x-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
-          <button class="all-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap bg-cyan-600 text-white shadow-lg" data-category="all">
-            All Projects (<span id="count-all">23</span>)
+        <!-- Discipline Filter Tabs -->
+        <div class="flex items-center space-x-1.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+          <button class="filter-discipline-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all whitespace-nowrap bg-cyan-600 text-white shadow-lg cursor-pointer" data-discipline="all">
+            All Projects (23)
           </button>
-          <button class="all-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap bg-slate-950 text-gray-300 border border-slate-800 hover:border-cyan-500" data-category="architecture">
-            Revit Architecture (<span id="count-architecture">12</span>)
+          <button class="filter-discipline-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all whitespace-nowrap bg-slate-950 text-gray-400 border border-slate-800 hover:border-cyan-500 hover:text-white cursor-pointer" data-discipline="architecture">
+            Architectural BIM
           </button>
-          <button class="all-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap bg-slate-950 text-gray-300 border border-slate-800 hover:border-cyan-500" data-category="mep">
-            MEP Systems (<span id="count-mep">9</span>)
+          <button class="filter-discipline-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all whitespace-nowrap bg-slate-950 text-gray-400 border border-slate-800 hover:border-cyan-500 hover:text-white cursor-pointer" data-discipline="mep">
+            MEP Systems
           </button>
-          <button class="all-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap bg-slate-950 text-gray-300 border border-slate-800 hover:border-cyan-500" data-category="point-cloud">
-            Point Cloud to BIM (<span id="count-point-cloud">9</span>)
+          <button class="filter-discipline-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all whitespace-nowrap bg-slate-950 text-gray-400 border border-slate-800 hover:border-cyan-500 hover:text-white cursor-pointer" data-discipline="point-cloud">
+            Point Cloud / Scan-to-BIM
           </button>
-          <button class="all-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap bg-slate-950 text-gray-300 border border-slate-800 hover:border-cyan-500" data-category="autocad">
-            AutoCAD Services (<span id="count-autocad">5</span>)
+          <button class="filter-discipline-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all whitespace-nowrap bg-slate-950 text-gray-400 border border-slate-800 hover:border-cyan-500 hover:text-white cursor-pointer" data-discipline="autocad">
+            AutoCAD Services
+          </button>
+          <button class="filter-discipline-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all whitespace-nowrap bg-slate-950 text-gray-400 border border-slate-800 hover:border-cyan-500 hover:text-white cursor-pointer" data-discipline="coordination">
+            Clash Coordination
           </button>
         </div>
 
         <!-- Search Input -->
-        <div class="relative w-full lg:w-72 shrink-0">
+        <div class="relative w-full lg:w-80 shrink-0">
           <input 
             type="text" 
-            id="all-search-input"
-            placeholder="Search projects..."
-            class="w-full pl-10 pr-4 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
+            id="project-search-input"
+            placeholder="Search by name, LOD, software, building..."
+            class="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
           />
-          <svg class="w-4 h-4 absolute left-3.5 top-2.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 absolute left-3 top-2.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
         </div>
 
       </div>
+
+      <!-- Bottom Row: Building Type Filter & Requirement Helper Quick-Link -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-800/80 text-xs font-mono">
+        <div class="flex items-center space-x-2.5">
+          <span class="text-gray-400 uppercase text-[11px]">Building Type:</span>
+          <select id="filter-building-type" class="bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-gray-200 focus:outline-none focus:border-cyan-500">
+            <option value="all">All Building Types</option>
+            <option value="residential">Residential Properties</option>
+            <option value="commercial">Commercial / Office</option>
+            <option value="industrial-pharma">Industrial / Pharmaceutical Facilities</option>
+            <option value="hospitality-healthcare">Hospitality & Healthcare</option>
+            <option value="educational">Educational / Institutional</option>
+          </select>
+          <button id="clear-filters-btn" class="text-cyan-400 hover:underline text-[11px] px-2 py-1 cursor-pointer">
+            Reset Filters
+          </button>
+        </div>
+
+        <button class="open-requirement-helper text-gray-300 hover:text-cyan-400 flex items-center space-x-1.5 cursor-pointer">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>What details are needed for a quote?</span>
+          <span class="underline">View Checklist</span>
+        </button>
+      </div>
+
     </div>
   </section>
 
@@ -194,8 +222,8 @@
       
       <!-- Results Header -->
       <div class="flex items-center justify-between mb-6 pb-2 border-b border-slate-800/60">
-        <span id="all-results-count" class="text-xs font-mono text-gray-400">Showing 9 verified projects</span>
-        <span class="text-xs font-mono text-cyan-400">Filtered Portfolio</span>
+        <span id="portfolio-count-badge" class="text-xs font-mono text-gray-400">Showing 23 verified projects</span>
+        <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">Filtered Case Studies</span>
       </div>
 
       <!-- Grid (4 cols on lg, 2 cols on sm) -->
@@ -225,143 +253,143 @@
     </div>
   </footer>
 
-  <!-- Universal Contact Modal -->
+  <!-- Universal Client Project Inquiry Modal -->
   <div id="contact-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl">
-      <button class="close-contact-modal absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-lg">✕</button>
+    <div class="bg-slate-900 border border-slate-800 rounded-md max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button class="close-contact-modal absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-lg cursor-pointer">✕</button>
       
       <div class="mb-6">
-        <span class="text-xs font-mono text-cyan-400 uppercase">Direct Project Quote</span>
-        <h3 class="text-2xl font-bold text-gray-100 mt-1">Request Service Estimate</h3>
+        <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">DIRECT CLIENT INQUIRY</span>
+        <h3 class="text-2xl font-bold text-gray-100 mt-1">Request BIM Project Estimate</h3>
+        <p class="text-xs text-gray-400 mt-1">Provide your project specifications below for a fast scope and timeline breakdown.</p>
       </div>
 
       <div id="form-status" class="mb-4"></div>
 
       <form id="contact-form" action="https://formspree.io/f/xgawzykp" method="POST" class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-gray-300 mb-1">Your Name *</label>
-          <input type="text" name="name" required placeholder="Your full name" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-gray-200 focus:outline-none focus:border-cyan-500" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono text-gray-300 mb-1">Your Full Name *</label>
+            <input type="text" name="name" required placeholder="e.g. Arch. Rahman / Eng. David" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded text-xs text-gray-200 focus:outline-none focus:border-cyan-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-gray-300 mb-1">Email Address *</label>
+            <input type="email" name="email" required placeholder="you@company.com" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded text-xs text-gray-200 focus:outline-none focus:border-cyan-500" />
+          </div>
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-gray-300 mb-1">Email *</label>
-          <input type="email" name="email" required placeholder="you@company.com" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-gray-200 focus:outline-none focus:border-cyan-500" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono text-gray-300 mb-1">Company / Organization</label>
+            <input type="text" name="company" placeholder="e.g. BIM Consulting Studio / General Contractor" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded text-xs text-gray-200 focus:outline-none focus:border-cyan-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-gray-300 mb-1">Project Type *</label>
+            <select name="projectType" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded text-xs text-gray-200 focus:outline-none focus:border-cyan-500">
+              <option value="Architectural BIM">Architectural BIM Modeling (LOD 200–350)</option>
+              <option value="MEP BIM">MEP Systems Modeling & Coordination (LOD 300–400)</option>
+              <option value="Point Cloud to BIM">Point Cloud to BIM (Scan-to-BIM Conversion)</option>
+              <option value="BIM Coordination & Clash Detection">BIM Coordination & Clash Detection (Navisworks)</option>
+              <option value="Revit Family Creation">Revit Family Creation (Parametric Families)</option>
+              <option value="2D AutoCAD Drafting">2D AutoCAD Drafting & Permit Sets</option>
+              <option value="Other">Other / Full BIM Consultancy</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-gray-300 mb-1">Project Message *</label>
-          <textarea id="contact-message" name="message" rows="4" required placeholder="Describe project location, square footage, BIM requirements..." class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-gray-200 focus:outline-none focus:border-cyan-500"></textarea>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono text-gray-300 mb-1">Expected Deliverables</label>
+            <select name="deliverables" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded text-xs text-gray-200 focus:outline-none focus:border-cyan-500">
+              <option value="Autodesk Revit RVT">Autodesk Revit (.RVT)</option>
+              <option value="Revit + PDF Drawing Sheets">Revit (.RVT) + 2D PDF Sheet Sets</option>
+              <option value="Revit + IFC + Navisworks">Full Package (.RVT + .IFC + .NWD)</option>
+              <option value="AutoCAD DWG">AutoCAD Drawings (.DWG)</option>
+              <option value="Clash Detection Report">Navisworks Clash Audit Report</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-gray-300 mb-1">Preferred Contact Method</label>
+            <select name="contactMethod" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded text-xs text-gray-200 focus:outline-none focus:border-cyan-500">
+              <option value="Email">Email</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Video Call">Video Call (Google Meet / Teams / Zoom)</option>
+              <option value="Phone">Phone</option>
+            </select>
+          </div>
         </div>
-        <button type="submit" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-colors">
-          Submit Quote Request
+
+        <div>
+          <label class="block text-xs font-mono text-gray-300 mb-1">Project Description & Scope *</label>
+          <textarea id="contact-message" name="message" rows="4" required placeholder="Describe total floor area, required LOD, target turnaround timeline, or share download links for scans/drawings..." class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded text-xs text-gray-200 focus:outline-none focus:border-cyan-500"></textarea>
+        </div>
+
+        <!-- File Transfer Guidance Note -->
+        <div class="p-3 bg-slate-950/80 border border-slate-800 rounded text-[11px] font-mono text-gray-400 leading-relaxed">
+          <span class="text-cyan-400 font-bold">📁 Large File Transfer:</span>
+          Need to send large laser scans (.e57 / .rcp), 2D drawings, or Revit models? Include a WeTransfer / Google Drive / Dropbox link in your description, or email files directly to <a href="mailto:mirja.riyadh@gmail.com" class="text-cyan-400 underline">mirja.riyadh@gmail.com</a>.
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold rounded transition-all shadow-lg cursor-pointer">
+          Submit Project Inquiry
         </button>
       </form>
     </div>
   </div>
 
+  <!-- Project Requirement Helper Modal -->
+  <div id="requirement-helper-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-md max-w-xl w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button class="close-requirement-helper absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-lg cursor-pointer">✕</button>
+      
+      <div class="mb-4">
+        <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">CHECKLIST</span>
+        <h3 class="text-xl font-bold text-white mt-1">Project Requirements Guide</h3>
+        <p class="text-xs text-gray-400 mt-1">Not sure what information to send for a BIM estimate? Here is what helps speed up quote calculation:</p>
+      </div>
+
+      <div class="space-y-3 text-xs font-mono text-gray-300">
+        <div class="p-3 bg-slate-950 rounded border border-slate-800">
+          <span class="text-cyan-400 font-bold block mb-0.5">1. Source Drawings or Scan Data</span>
+          <span class="text-gray-400 text-[11px]">2D CAD (.dwg), PDF blueprints, sketches, or 3D Laser Scan point clouds (.e57, .rcp, .las).</span>
+        </div>
+        <div class="p-3 bg-slate-950 rounded border border-slate-800">
+          <span class="text-cyan-400 font-bold block mb-0.5">2. Target LOD (Level of Development)</span>
+          <span class="text-gray-400 text-[11px]">LOD 200 (Schematic), LOD 300 (Design/Permit), LOD 350 (Coordinated), or LOD 400 (Fabrication).</span>
+        </div>
+        <div class="p-3 bg-slate-950 rounded border border-slate-800">
+          <span class="text-cyan-400 font-bold block mb-0.5">3. Project Units & Standards</span>
+          <span class="text-gray-400 text-[11px]">Imperial (Feet/Inches) or Metric (Millimeters/Meters), along with regional building codes.</span>
+        </div>
+        <div class="p-3 bg-slate-950 rounded border border-slate-800">
+          <span class="text-cyan-400 font-bold block mb-0.5">4. Scope of Disciplines</span>
+          <span class="text-gray-400 text-[11px]">Architectural exterior/interior, Structural frame, MEP (HVAC ducting, plumbing, electrical, fire protection).</span>
+        </div>
+        <div class="p-3 bg-slate-950 rounded border border-slate-800">
+          <span class="text-cyan-400 font-bold block mb-0.5">5. Required Deliverable Formats</span>
+          <span class="text-gray-400 text-[11px]">Autodesk Revit (.RVT), openBIM (.IFC), Navisworks (.NWD), AutoCAD (.DWG), or PDF sheets.</span>
+        </div>
+        <div class="p-3 bg-slate-950 rounded border border-slate-800">
+          <span class="text-cyan-400 font-bold block mb-0.5">6. Timeline & Milestones</span>
+          <span class="text-gray-400 text-[11px]">Target completion deadline and any phased delivery requirements.</span>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end">
+        <button class="close-requirement-helper px-5 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold rounded cursor-pointer">
+          Got It, Start Inquiry
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll To Top Button -->
+  <button id="scroll-top-btn" class="fixed bottom-6 right-6 z-40 p-3 bg-slate-900 border border-slate-700 hover:bg-cyan-600 text-white rounded-full shadow-2xl transition-all opacity-0 pointer-events-none cursor-pointer">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+
   <!-- Scripts -->
   <script src="js/projects-data.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      let currentCategory = 'all';
-      let currentQuery = '';
-
-      // Check URL query parameter (e.g., all-projects.html?category=mep)
-      const urlParams = new URLSearchParams(window.location.search);
-      const paramCat = urlParams.get('category');
-      if (paramCat) {
-        currentCategory = paramCat;
-      }
-
-      function updateCategoryBadges() {
-        const projects = window.projectsData || window.PORTFOLIO_PROJECTS;
-        if (!projects || !projects.length) {
-          setTimeout(updateCategoryBadges, 50);
-          return;
-        }
-        if (typeof window.getProjectCategoryCounts === 'function') {
-          const counts = window.getProjectCategoryCounts();
-          const elAll = document.getElementById('count-all');
-          const elArch = document.getElementById('count-architecture');
-          const elMep = document.getElementById('count-mep');
-          const elPoint = document.getElementById('count-point-cloud');
-          const elCad = document.getElementById('count-autocad');
-
-          if (elAll) elAll.textContent = counts.all;
-          if (elArch) elArch.textContent = counts.architecture;
-          if (elMep) elMep.textContent = counts.mep;
-          if (elPoint) elPoint.textContent = counts['point-cloud'];
-          if (elCad) elCad.textContent = counts.autocad;
-        }
-      }
-
-      function updateGrid() {
-        renderProjectGrid('all-projects-grid', currentCategory, currentQuery);
-        
-        // Update results counter text
-        const countSpan = document.getElementById('all-results-count');
-        const countBadge = document.getElementById('all-count-badge');
-        const projects = window.projectsData || window.PORTFOLIO_PROJECTS;
-        if (projects && projects.length) {
-          let count = projects.length;
-          const matcher = window.matchProjectCategory || ((p, cat) => cat === 'all');
-          
-          if (currentCategory !== 'all') {
-            count = projects.filter(p => matcher(p, currentCategory)).length;
-          }
-          if (currentQuery.trim() !== '') {
-            const q = currentQuery.toLowerCase();
-            count = projects.filter(p => {
-              const matchesCat = currentCategory === 'all' || matcher(p, currentCategory);
-              if (!matchesCat) return false;
-              const title = (p.title || '').toLowerCase();
-              const desc = (p.shortDesc || p.description || '').toLowerCase();
-              const client = (p.clientRegion || p.client || '').toLowerCase();
-              const software = (p.softwareUsed || p.software || []).join(' ').toLowerCase();
-              return title.includes(q) || desc.includes(q) || client.includes(q) || software.includes(q);
-            }).length;
-          }
-          if (countSpan) countSpan.textContent = `Showing ${count} of ${projects.length} total projects`;
-          if (countBadge) countBadge.textContent = count;
-        }
-      }
-
-      // Initialize Active Tab Buttons
-      const filterBtns = document.querySelectorAll('.all-filter-btn');
-      filterBtns.forEach(btn => {
-        const cat = btn.getAttribute('data-category');
-        if (cat === currentCategory) {
-          btn.classList.add('bg-cyan-600', 'text-white', 'shadow-lg');
-          btn.classList.remove('bg-slate-950', 'text-gray-300', 'border', 'border-slate-800');
-        } else {
-          btn.classList.remove('bg-cyan-600', 'text-white', 'shadow-lg');
-          btn.classList.add('bg-slate-950', 'text-gray-300', 'border', 'border-slate-800');
-        }
-
-        btn.addEventListener('click', () => {
-          currentCategory = cat;
-          filterBtns.forEach(b => {
-            b.classList.remove('bg-cyan-600', 'text-white', 'shadow-lg');
-            b.classList.add('bg-slate-950', 'text-gray-300', 'border', 'border-slate-800');
-          });
-          btn.classList.add('bg-cyan-600', 'text-white', 'shadow-lg');
-          btn.classList.remove('bg-slate-950', 'text-gray-300', 'border', 'border-slate-800');
-          updateGrid();
-        });
-      });
-
-      // Search Listener
-      const searchInput = document.getElementById('all-search-input');
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          currentQuery = e.target.value;
-          updateGrid();
-        });
-      }
-
-      // Initial Render & Counts
-      updateCategoryBadges();
-      updateGrid();
-    });
-  </script>
 </body>
 </html>
