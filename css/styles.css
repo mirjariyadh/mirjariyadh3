@@ -182,6 +182,31 @@ body {
   border-radius: 2px !important;
 }
 
+/* Widescreen Desktop Expansion (Reduces unused side margins on desktop monitors) */
+@media (min-width: 1280px) {
+  .max-w-7xl {
+    max-width: 1480px !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .max-w-7xl {
+    max-width: 1640px !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .max-w-7xl {
+    max-width: 1780px !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+
 /* Specific Card & Tag Refinements */
 .project-card-refined {
   border-radius: 6px;
