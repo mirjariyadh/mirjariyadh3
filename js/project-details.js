@@ -752,8 +752,8 @@ function openLightbox(index = 0) {
 
     modal.innerHTML = `
       <!-- Top Bar: Counter & Close Button -->
-      <div class="w-full max-w-7xl flex items-center justify-between px-4 py-2 text-white z-20">
-        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3.5 py-1.5 rounded border border-slate-700">
+      <div class="w-full max-w-7xl flex items-center justify-between px-2 sm:px-4 py-1 sm:py-2 text-white z-20 shrink-0">
+        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3.5 py-1.5 rounded border border-slate-700 shadow-md">
           Image ${currentLightboxIndex + 1} of ${gallery.length}
         </span>
         <button id="lightbox-close-btn" class="bg-slate-900 hover:bg-cyan-600 text-white w-9 h-9 rounded flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer" aria-label="Close Lightbox">
@@ -762,11 +762,11 @@ function openLightbox(index = 0) {
       </div>
 
       <!-- Main Image Display (Uncropped Technical Drawing View) -->
-      <div id="lightbox-content-area" class="relative flex-1 w-full max-w-7xl flex items-center justify-center max-h-[82vh] my-2 overflow-hidden">
+      <div id="lightbox-content-area" class="relative flex-1 min-h-0 w-full max-w-7xl flex items-center justify-center my-1 sm:my-2 overflow-hidden">
         
         <!-- Previous Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-prev-btn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Previous image">
+          <button id="lightbox-prev-btn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Previous image">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
           </button>
         ` : ''}
@@ -776,25 +776,63 @@ function openLightbox(index = 0) {
           id="lightbox-main-img"
           src="${imgUrl}" 
           alt="${caption}" 
-          class="max-w-full max-h-full object-contain rounded border border-slate-800 shadow-2xl transition-opacity duration-200" 
+          class="max-w-full max-h-full object-contain rounded border border-slate-800/80 shadow-2xl transition-opacity duration-200" 
           referrerPolicy="no-referrer" 
         />
 
         <!-- Next Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-next-btn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Next image">
+          <button id="lightbox-next-btn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Next image">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
           </button>
         ` : ''}
       </div>
 
-      <!-- Caption Bar -->
-      <div class="bg-slate-900/95 border border-slate-800 px-5 py-2 rounded text-center max-w-2xl text-xs font-mono text-gray-200 shadow-xl z-20 truncate">
-        ${caption}
+      <!-- Bottom Container: Caption & Bottom Thumbnail Preview Strip -->
+      <div class="w-full max-w-7xl flex flex-col items-center gap-2 z-20 px-2 sm:px-4 pb-1 shrink-0 select-none">
+        
+        <!-- Caption Bar -->
+        ${caption ? `
+          <div class="bg-slate-900/90 border border-slate-800 px-4 py-1 rounded-full text-center max-w-2xl text-[11px] sm:text-xs font-mono text-cyan-300 shadow-lg truncate">
+            ${caption}
+          </div>
+        ` : ''}
+
+        <!-- Horizontal Thumbnail Preview Strip (All Project Images) -->
+        ${gallery.length > 1 ? `
+          <div class="w-full flex items-center justify-center">
+            <div id="lightbox-thumb-strip" class="flex items-center gap-2 overflow-x-auto max-w-full py-1.5 px-3 bg-slate-950/90 border border-slate-800 rounded-lg scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+              ${gallery.map((thumbItem, tIdx) => {
+                const tUrl = typeof thumbItem === 'string' ? thumbItem : (thumbItem ? thumbItem.url : '');
+                const isActive = tIdx === currentLightboxIndex;
+                return `
+                  <button 
+                    type="button"
+                    data-thumb-index="${tIdx}"
+                    class="lightbox-thumb-btn shrink-0 w-16 h-11 sm:w-20 sm:h-13 rounded overflow-hidden transition-all duration-200 cursor-pointer ${
+                      isActive 
+                        ? 'border-2 border-cyan-400 ring-2 ring-cyan-400/50 opacity-100 scale-105 shadow-lg shadow-cyan-950' 
+                        : 'border border-slate-800 opacity-50 hover:opacity-100 hover:border-slate-600'
+                    }"
+                    title="View Image ${tIdx + 1}"
+                  >
+                    <img 
+                      src="${tUrl}" 
+                      alt="Thumbnail ${tIdx + 1}" 
+                      class="w-full h-full object-cover pointer-events-none" 
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        ` : ''}
       </div>
     `;
 
-    // Event Handlers
+    // Event Handlers for Prev / Next / Close
     const prevBtn = modal.querySelector('#lightbox-prev-btn');
     if (prevBtn) {
       prevBtn.onclick = (e) => {
@@ -820,6 +858,26 @@ function openLightbox(index = 0) {
         closeModal();
       };
     }
+
+    // Thumbnail Clicks
+    modal.querySelectorAll('.lightbox-thumb-btn').forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const idx = parseInt(btn.getAttribute('data-thumb-index'), 10);
+        if (!isNaN(idx) && idx !== currentLightboxIndex) {
+          currentLightboxIndex = idx;
+          renderLightboxStep();
+        }
+      };
+    });
+
+    // Auto-scroll active thumbnail into view smoothly
+    setTimeout(() => {
+      const activeThumb = modal.querySelector(`[data-thumb-index="${currentLightboxIndex}"]`);
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }, 20);
 
     // Touch swipe gestures for mobile
     const contentArea = modal.querySelector('#lightbox-content-area');
