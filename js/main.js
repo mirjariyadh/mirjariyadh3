@@ -79,6 +79,51 @@ function setupSelectedProjectFilters() {
   });
 }
 
+/* 12 Prioritized Featured Project IDs for Homepage Showcase */
+const FEATURED_PROJECT_PRIORITY_IDS = [
+  'project-10', // Point Cloud to Revit (Residential)
+  'project-16', // Point Cloud to Revit (Hospital Main Building)
+  'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
+  'project-02', // HVAC Project 3D BIM Model
+  'project-24', // Hotel Resort MEP 3D BIM Model
+  'project-22', // Spa Center Architectural & MEP BIM
+  'project-25', // 4601 S University Ave Architectural & MEP BIM
+  'project-01', // High-End Pharmaceutical 3D BIM Model (LOD 350)
+  'project-08', // Incepta Pharmaceutical Facility BIM (LOD 400)
+  'project-23', // Construction City Permit Set (Documentation)
+  'project-04', // Healthcare Facility 3D BIM Model
+  'project-06'  // East MC Kinny Residential As-Built BIM
+];
+
+/* Helper to get formatted category and scope tag */
+function getProjectMetadata(project) {
+  const cats = Array.isArray(project.category) ? project.category : [project.category || 'architecture'];
+  let categoryLabel = 'Architectural BIM';
+  let scopeTag = '3D BIM Modeling · Documentation';
+
+  if (project.id === 'project-01' || project.id === 'project-08') {
+    categoryLabel = 'Industrial / MEP BIM';
+    scopeTag = 'Pharmaceutical Facility · Cleanroom · MEP';
+  } else if (cats.includes('point-cloud')) {
+    categoryLabel = 'Point Cloud → BIM';
+    scopeTag = 'Existing Condition · Laser Scan · As-Built';
+  } else if (cats.includes('mep') && cats.includes('architecture')) {
+    categoryLabel = 'Architectural & MEP BIM';
+    scopeTag = 'Multidisciplinary · Clash Coordination';
+  } else if (cats.includes('mep')) {
+    categoryLabel = 'MEP BIM';
+    scopeTag = 'HVAC Ductwork · Piping · Clash Detection';
+  } else if (cats.includes('autocad') && !cats.includes('architecture')) {
+    categoryLabel = 'CAD & Documentation';
+    scopeTag = 'Permit Sets · Shop Drawings · DWG';
+  } else if (cats.includes('architecture')) {
+    categoryLabel = 'Architectural BIM';
+    scopeTag = 'Parametric Revit · Construction Sheets';
+  }
+
+  return { categoryLabel, scopeTag };
+}
+
 /* Render exactly 12 Projects for the Home Page Showcase */
 function renderSelectedProjects(categoryFilter = 'all') {
   const container = document.getElementById('selected-projects-grid');
@@ -90,17 +135,30 @@ function renderSelectedProjects(categoryFilter = 'all') {
     return;
   }
 
-  let filtered = projects;
-  if (categoryFilter && categoryFilter !== 'all') {
-    filtered = filtered.filter(p => matchProjectCategory(p, categoryFilter));
-  }
+  let displayProjects = [];
 
-  // Show up to 12 projects in the grid for full depth
-  const displayProjects = filtered.slice(0, 12);
+  if (!categoryFilter || categoryFilter === 'all') {
+    // Pick the 12 prioritized projects in exact order
+    FEATURED_PROJECT_PRIORITY_IDS.forEach(id => {
+      const p = projects.find(item => item.id === id);
+      if (p) displayProjects.push(p);
+    });
+    // Fallback if some IDs not found
+    if (displayProjects.length < 12) {
+      projects.forEach(p => {
+        if (!displayProjects.includes(p) && displayProjects.length < 12) {
+          displayProjects.push(p);
+        }
+      });
+    }
+  } else {
+    const filtered = projects.filter(p => matchProjectCategory(p, categoryFilter));
+    displayProjects = filtered.slice(0, 12);
+  }
 
   if (displayProjects.length === 0) {
     container.innerHTML = `
-      <div class="col-span-full py-12 text-center bg-slate-900/40 rounded-2xl border border-slate-800">
+      <div class="col-span-full py-12 text-center bg-slate-900/40 rounded-md border border-slate-800">
         <p class="text-gray-400 font-mono text-xs">No projects found in this category.</p>
       </div>
     `;
@@ -108,32 +166,20 @@ function renderSelectedProjects(categoryFilter = 'all') {
   }
 
   container.innerHTML = displayProjects.map(project => {
-    const cats = Array.isArray(project.category) ? project.category : [project.category];
-    let badgeText = 'ARCHITECTURAL MODELING';
-    if (cats.includes('point-cloud')) {
-      badgeText = 'POINT CLOUD TO BIM';
-    } else if (cats.includes('mep') && !cats.includes('architecture')) {
-      badgeText = 'MEP SYSTEMS';
-    } else if (cats.includes('autocad') && !cats.includes('architecture') && !cats.includes('mep')) {
-      badgeText = 'AUTOCAD SERVICES';
-    } else if (cats.includes('architecture')) {
-      badgeText = 'ARCHITECTURAL MODELING';
-    }
-
+    const { categoryLabel, scopeTag } = getProjectMetadata(project);
     const thumbnail = project.thumbnail || project.image || 
       (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
     const lod = project.lod || 'LOD 350';
     const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
-    const clientRegion = project.clientRegion || 'International Client';
 
     return `
-      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+      <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
         <div>
-          <!-- Thumbnail & Category Tag -->
-          <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
+          <!-- Thumbnail & Category Tag (16:9 standard ratio) -->
+          <div class="relative aspect-video overflow-hidden bg-slate-950">
             <img 
               data-src="${thumbnail}"
-              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'><rect width='100%' height='100%' fill='%230f172a'/></svg>"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'><rect width='100%' height='100%' fill='%230f172a'/></svg>"
               alt="${project.title}" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900 opacity-90 transition-opacity duration-300 lazy-project-img" 
               loading="lazy" 
@@ -141,36 +187,40 @@ function renderSelectedProjects(categoryFilter = 'all') {
               fetchpriority="low"
               referrerPolicy="no-referrer"
               onload="this.classList.remove('opacity-90'); this.classList.add('opacity-100');"
-              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
+              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'225\\' viewBox=\\'0 0 400 225\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
             <div class="absolute top-2.5 left-2.5">
-              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded-sm border border-cyan-500/30">
-                ${badgeText}
+              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[10px] font-mono font-bold tracking-wider uppercase rounded-sm border border-cyan-500/30">
+                ${categoryLabel}
               </span>
             </div>
           </div>
 
-          <!-- Project Specs -->
-          <div class="p-4">
-            <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 min-h-[40px] leading-snug">
+          <!-- Project Specs & Scope -->
+          <div class="p-4 space-y-2">
+            <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug">
               ${project.title}
             </h3>
-            <p class="text-[11px] font-mono text-gray-400 mt-1.5 flex items-center space-x-1.5">
-              <span>${lod}</span>
-              <span class="text-slate-600">|</span>
-              <span>${primarySoftware}</span>
+            
+            <p class="text-[11px] text-gray-400 font-mono line-clamp-1">
+              ${scopeTag}
             </p>
+
+            <div class="pt-1 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-slate-800/60">
+              <span class="text-emerald-400 font-bold">${lod}</span>
+              <span>${primarySoftware}</span>
+            </div>
           </div>
         </div>
 
-        <!-- Footer -->
-        <div class="px-4 pb-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
-          <span class="text-[11px] font-mono text-gray-400 truncate max-w-[170px]">${clientRegion}</span>
-          <div class="w-7 h-7 rounded bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
-            →
-          </div>
+        <!-- Footer Action -->
+        <div class="px-4 pb-4 pt-2">
+          <a href="project-details.html?id=${project.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
+            <span>View Project</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
         </div>
-      </a>
+      </div>
     `;
   }).join('');
 
@@ -484,32 +534,20 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
   }
 
   container.innerHTML = filtered.map(project => {
-    const cats = Array.isArray(project.category) ? project.category : [project.category || 'architecture'];
-    let badgeText = 'ARCHITECTURAL';
-    if (cats.includes('point-cloud')) {
-      badgeText = 'POINT CLOUD TO BIM';
-    } else if (cats.includes('mep') && !cats.includes('architecture')) {
-      badgeText = 'MEP SYSTEMS';
-    } else if (cats.includes('autocad') && !cats.includes('architecture') && !cats.includes('mep')) {
-      badgeText = 'AUTOCAD SERVICES';
-    } else if (cats.includes('architecture')) {
-      badgeText = 'ARCHITECTURAL MODELING';
-    }
-
+    const { categoryLabel, scopeTag } = getProjectMetadata(project);
     const thumbnail = project.thumbnail || project.image || 
       (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
     const lod = project.lod || 'LOD 350';
     const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
-    const clientRegion = project.clientRegion || project.client || 'International Client';
 
     return `
-      <a href="project-details.html?id=${project.id}" class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+      <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
         <div>
-          <!-- Thumbnail & Category Tag -->
-          <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
+          <!-- Thumbnail & Category Tag (16:9 standard ratio) -->
+          <div class="relative aspect-video overflow-hidden bg-slate-950">
             <img 
               data-src="${thumbnail}"
-              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'><rect width='100%' height='100%' fill='%230f172a'/></svg>"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'><rect width='100%' height='100%' fill='%230f172a'/></svg>"
               alt="${project.title}" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-slate-900 opacity-90 transition-opacity duration-300 lazy-project-img" 
               loading="lazy" 
@@ -517,36 +555,40 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
               fetchpriority="low"
               referrerPolicy="no-referrer"
               onload="this.classList.remove('opacity-90'); this.classList.add('opacity-100');"
-              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
+              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'225\\' viewBox=\\'0 0 400 225\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2338bdf8\\' font-family=\\'monospace\\' font-size=\\'12\\' font-weight=\\'bold\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>BIM MODEL</text></svg>';"
             />
             <div class="absolute top-2.5 left-2.5">
-              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[9px] font-mono font-bold tracking-wider uppercase rounded-sm border border-cyan-500/30">
-                ${badgeText}
+              <span class="px-2 py-0.5 bg-slate-950/90 text-cyan-400 text-[10px] font-mono font-bold tracking-wider uppercase rounded-sm border border-cyan-500/30">
+                ${categoryLabel}
               </span>
             </div>
           </div>
 
-          <!-- Project Specs -->
-          <div class="p-4">
-            <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 min-h-[40px] leading-snug">
+          <!-- Project Specs & Scope -->
+          <div class="p-4 space-y-2">
+            <h3 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug">
               ${project.title}
             </h3>
-            <p class="text-[11px] font-mono text-gray-400 mt-1.5 flex items-center space-x-1.5">
-              <span>${lod}</span>
-              <span class="text-slate-600">|</span>
-              <span>${primarySoftware}</span>
+            
+            <p class="text-[11px] text-gray-400 font-mono line-clamp-1">
+              ${scopeTag}
             </p>
+
+            <div class="pt-1 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-slate-800/60">
+              <span class="text-emerald-400 font-bold">${lod}</span>
+              <span>${primarySoftware}</span>
+            </div>
           </div>
         </div>
 
-        <!-- Footer -->
-        <div class="px-4 pb-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
-          <span class="text-[11px] font-mono text-gray-400 truncate max-w-[170px]">${clientRegion}</span>
-          <div class="w-7 h-7 rounded bg-slate-800 group-hover:bg-[#009FB7] group-hover:text-white flex items-center justify-center text-gray-400 transition-colors text-xs font-bold shrink-0">
-            →
-          </div>
+        <!-- Footer Action -->
+        <div class="px-4 pb-4 pt-2">
+          <a href="project-details.html?id=${project.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
+            <span>View Project</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
         </div>
-      </a>
+      </div>
     `;
   }).join('');
 

@@ -132,31 +132,33 @@ function renderProjectDetailsPage() {
         ${shortDesc}
       </p>
 
-      <!-- Technical Project Specifications Matrix Grid -->
-      <div class="mt-8 p-5 bg-slate-900/90 border border-slate-800 rounded-md grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs font-mono">
-        <div class="space-y-1">
-          <span class="text-gray-400 text-[11px] block uppercase">PROJECT TYPE</span>
-          <span class="font-bold text-white">${categoryName}</span>
+      <!-- Compact Professional Project Overview Box -->
+      <div class="mt-8 p-5 bg-slate-900/90 border border-slate-800 rounded-md">
+        <div class="text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center space-x-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          <span>PROJECT OVERVIEW</span>
         </div>
-        <div class="space-y-1">
-          <span class="text-gray-400 text-[11px] block uppercase">LOD SPEC</span>
-          <span class="font-bold text-emerald-400">${lod}</span>
-        </div>
-        <div class="space-y-1">
-          <span class="text-gray-400 text-[11px] block uppercase">PRIMARY SOFTWARE</span>
-          <span class="font-bold text-cyan-400">${software[0] || 'Autodesk Revit'}</span>
-        </div>
-        <div class="space-y-1">
-          <span class="text-gray-400 text-[11px] block uppercase">LOCATION / REGION</span>
-          <span class="font-bold text-white">${clientInfo}</span>
-        </div>
-        <div class="space-y-1">
-          <span class="text-gray-400 text-[11px] block uppercase">DELIVERABLES</span>
-          <span class="font-bold text-white">${deliverables.length} Key Outputs</span>
-        </div>
-        <div class="space-y-1">
-          <span class="text-gray-400 text-[11px] block uppercase">EXECUTION STATUS</span>
-          <span class="font-bold text-emerald-400">Completed & Verified</span>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-xs font-mono">
+          <div class="space-y-1">
+            <span class="text-gray-400 text-[11px] block uppercase">PROJECT TYPE</span>
+            <span class="font-bold text-white">${categoryName}</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-gray-400 text-[11px] block uppercase">SCOPE</span>
+            <span class="font-bold text-cyan-400">${project.shortDesc ? project.shortDesc.split('.')[0] : 'BIM Modeling'}</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-gray-400 text-[11px] block uppercase">SOFTWARE</span>
+            <span class="font-bold text-white">${software.join(', ') || 'Autodesk Revit'}</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-gray-400 text-[11px] block uppercase">LOD</span>
+            <span class="font-bold text-emerald-400">${lod}</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-gray-400 text-[11px] block uppercase">DELIVERABLES</span>
+            <span class="font-bold text-white">Revit Model / Documentation</span>
+          </div>
         </div>
       </div>
     </header>
