@@ -231,6 +231,11 @@ function renderProjectDetailsPage() {
   else if (catArray.includes('point-cloud')) categoryPageUrl = 'point-cloud.html';
   else if (catArray.includes('autocad')) categoryPageUrl = 'autocad.html';
 
+  // Check if project is Point Cloud to render comparison slider
+  const isPointCloudProject = catArray.includes('point-cloud') || catArray.includes('pointcloud') || /point[\s_-]?cloud|scan/i.test(categoryName) || Boolean(project.beforeImage && project.afterImage);
+  const pointCloudImg = project.beforeImage || (galleryList.length > 0 ? galleryList[0].url : mainImage);
+  const bimModelImg = project.afterImage || (galleryList.length > 1 ? galleryList[1].url : (galleryList.length > 0 ? galleryList[0].url : mainImage));
+
   // Previous and Next Projects
   const adj = window.BIM_PROJECT_UTILS ? window.BIM_PROJECT_UTILS.getAdjacentProjects(project.id) : { prev: null, next: null };
   const prevProj = adj.prev;
@@ -263,24 +268,15 @@ function renderProjectDetailsPage() {
         <span class="text-cyan-400 font-semibold truncate max-w-xs">${project.title}</span>
       </nav>
 
-      <!-- Action Buttons (Print / Share / Quote) -->
+      <!-- Action Buttons (Share) -->
       <div class="flex items-center space-x-2">
         <button 
           onclick="shareCurrentProject()" 
-          class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-gray-300 hover:text-white rounded text-xs font-mono flex items-center space-x-1.5 transition-colors cursor-pointer"
+          class="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-gray-300 hover:text-white rounded text-xs font-mono flex items-center space-x-1.5 transition-colors cursor-pointer"
           title="Share or Copy Link"
         >
           <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
-          <span>Share</span>
-        </button>
-
-        <button 
-          onclick="printProjectSheet()" 
-          class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-gray-300 hover:text-white rounded text-xs font-mono flex items-center space-x-1.5 transition-colors cursor-pointer"
-          title="Print / Save PDF Project Sheet"
-        >
-          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-          <span>Print Sheet</span>
+          <span>Share Project</span>
         </button>
       </div>
     </div>
@@ -352,29 +348,69 @@ function renderProjectDetailsPage() {
 
     <!-- Main Showcase Visual / Scan-to-BIM Comparison -->
     <div class="mb-12 rounded-md overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
-      ${project.beforeImage && project.afterImage ? `
-        <!-- Interactive Point Cloud Slider -->
-        <div class="p-3 bg-slate-900/80 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 no-print">
+      ${isPointCloudProject ? `
+        <!-- Interactive Point Cloud vs 3D BIM Model Slider -->
+        <div class="p-3 bg-slate-900/90 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 no-print">
           <div class="flex items-center space-x-2">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Interactive Scan-to-BIM Comparison (Drag Handle)</span>
+            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Point Cloud vs. 3D BIM Model (Drag Slider)</span>
           </div>
-          <span class="text-[11px] font-mono text-gray-400">Raw Point Cloud (Left) ↔ 3D Revit Model (Right)</span>
+          <div class="flex items-center space-x-3 text-[11px] font-mono">
+            <span class="text-amber-400 font-bold">← Point Cloud (Left)</span>
+            <span class="text-gray-500">|</span>
+            <span class="text-cyan-400 font-bold">3D BIM Model (Right) →</span>
+          </div>
         </div>
-        <div class="comparison-slider aspect-video">
-          <!-- Background: Completed 3D Revit Model -->
-          <img src="${project.afterImage}" alt="Completed 3D Revit Model" class="w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" />
+
+        <div class="relative comparison-slider aspect-video select-none cursor-ew-resize bg-slate-950">
+          <!-- Right Side: 3D BIM Model Background -->
+          <img 
+            src="${bimModelImg}" 
+            alt="${project.title} - 3D BIM Model" 
+            class="w-full h-full object-cover select-none pointer-events-none" 
+            referrerPolicy="no-referrer" 
+          />
           
-          <!-- Foreground: Raw Point Cloud -->
+          <!-- Left Side (Clipped): Raw Point Cloud Scan -->
           <div class="img-after absolute inset-0 w-full h-full overflow-hidden">
-            <img src="${project.beforeImage}" alt="Raw Laser Scan Point Cloud" class="w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" />
+            <img 
+              src="${pointCloudImg}" 
+              alt="${project.title} - Point Cloud Scan" 
+              class="w-full h-full object-cover select-none pointer-events-none" 
+              referrerPolicy="no-referrer" 
+            />
           </div>
 
+          <!-- Badges -->
+          <div class="absolute top-3 left-3 z-10 pointer-events-none">
+            <span class="px-2.5 py-1 bg-slate-950/90 text-amber-400 text-[10px] font-mono font-bold rounded-sm border border-amber-500/40 shadow-md">
+              POINT CLOUD
+            </span>
+          </div>
+
+          <div class="absolute top-3 right-3 z-10 pointer-events-none">
+            <span class="px-2.5 py-1 bg-slate-950/90 text-cyan-300 text-[10px] font-mono font-bold rounded-sm border border-cyan-500/40 shadow-md">
+              3D BIM MODEL
+            </span>
+          </div>
+
+          <!-- Slider Center Handle -->
           <div class="slider-handle">
             <div class="slider-button">
               <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"></path></svg>
             </div>
           </div>
+
+          <!-- Enlarge Visual Trigger Button -->
+          <button 
+            type="button" 
+            class="absolute bottom-3 left-3 z-20 px-3 py-1.5 bg-slate-900/90 hover:bg-cyan-600 text-gray-200 hover:text-white rounded border border-slate-700 text-xs font-mono flex items-center space-x-1.5 transition-colors cursor-pointer" 
+            title="Open full view in lightbox" 
+            onclick="window.openLightbox(0)"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+            <span>Enlarge Visual (Lightbox)</span>
+          </button>
         </div>
       ` : `
         <div class="relative group cursor-pointer aspect-video" onclick="window.openLightbox(0)">
@@ -387,7 +423,7 @@ function renderProjectDetailsPage() {
           <div class="absolute inset-0 bg-cyan-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center no-print">
             <span class="px-4 py-2 bg-slate-900/95 text-cyan-300 text-xs font-mono font-bold rounded-md border border-cyan-500/40 shadow-xl flex items-center space-x-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-              <span>Click to Enlarge Drawing</span>
+              <span>Click to Enlarge Drawing (Lightbox)</span>
             </span>
           </div>
         </div>

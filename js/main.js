@@ -114,24 +114,51 @@ function getProjectMetadata(project) {
   return { categoryLabel, scopeTag };
 }
 
-/* Render exactly 12 Projects for the Home Page Showcase */
-function renderSelectedProjects(categoryFilter = 'all') {
+let homeSelectedCategory = 'all';
+let homeSearchQuery = '';
+
+/* Render 12 Projects for the Home Page Showcase with Category & Search support */
+function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
   const container = document.getElementById('selected-projects-grid');
   if (!container) return;
 
   const projects = window.projectsData || window.PORTFOLIO_PROJECTS;
   if (!projects || !projects.length) {
-    setTimeout(() => renderSelectedProjects(categoryFilter), 50);
+    setTimeout(() => renderSelectedProjects(categoryFilter, searchQuery), 50);
     return;
   }
 
-  let displayProjects = [];
+  homeSelectedCategory = categoryFilter;
+  homeSearchQuery = searchQuery;
 
-  if (!categoryFilter || categoryFilter === 'all') {
+  let filtered = projects;
+
+  // Filter by category
+  if (categoryFilter && categoryFilter !== 'all') {
+    filtered = filtered.filter(p => matchProjectCategory(p, categoryFilter));
+  }
+
+  // Filter by search query
+  if (searchQuery && searchQuery.trim() !== '') {
+    const q = searchQuery.toLowerCase().trim();
+    filtered = filtered.filter(p => {
+      const title = (p.title || '').toLowerCase();
+      const desc = (p.shortDesc || p.description || p.fullDesc || '').toLowerCase();
+      const client = (p.clientRegion || p.client || '').toLowerCase();
+      const building = (p.buildingType || '').toLowerCase();
+      const software = (p.softwareUsed || p.software || []).join(' ').toLowerCase();
+      const lod = (p.lod || '').toLowerCase();
+      const cat = (p.categoryName || (Array.isArray(p.category) ? p.category.join(' ') : '')).toLowerCase();
+      return title.includes(q) || desc.includes(q) || client.includes(q) || building.includes(q) || software.includes(q) || lod.includes(q) || cat.includes(q);
+    });
+  }
+
+  let displayProjects = [];
+  if ((!categoryFilter || categoryFilter === 'all') && (!searchQuery || searchQuery.trim() === '')) {
     // Pick the 12 prioritized projects in exact order
     FEATURED_PROJECT_PRIORITY_IDS.forEach(id => {
       const p = projects.find(item => item.id === id);
-      if (p) displayProjects.push(p);
+      if (p && !displayProjects.includes(p)) displayProjects.push(p);
     });
     // Fallback if some IDs not found
     if (displayProjects.length < 12) {
@@ -142,14 +169,17 @@ function renderSelectedProjects(categoryFilter = 'all') {
       });
     }
   } else {
-    const filtered = projects.filter(p => matchProjectCategory(p, categoryFilter));
     displayProjects = filtered.slice(0, 12);
   }
 
   if (displayProjects.length === 0) {
     container.innerHTML = `
-      <div class="col-span-full py-12 text-center bg-slate-900/40 rounded-md border border-slate-800">
-        <p class="text-gray-400 font-mono text-xs">No projects found in this category.</p>
+      <div class="col-span-full py-16 text-center bg-slate-900/40 rounded-md border border-slate-800">
+        <svg class="w-10 h-10 mx-auto text-slate-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <p class="text-gray-300 font-bold text-sm">No matching projects found</p>
+        <p class="text-gray-400 font-mono text-xs mt-1">Try clearing your search keyword or switching category.</p>
       </div>
     `;
     return;
@@ -219,23 +249,39 @@ function renderSelectedProjects(categoryFilter = 'all') {
 /* Home Page Selected Projects Filter Handler */
 function setupSelectedProjectFilters() {
   const filterBtns = document.querySelectorAll('.selected-filter-btn');
-  if (!filterBtns.length) return;
+  const searchInput = document.getElementById('home-project-search');
 
-  filterBtns.forEach(btn => {
-    btn.onclick = (e) => {
-      e.preventDefault();
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-cyan-600', 'text-white', 'shadow');
-        b.classList.add('text-gray-400', 'bg-transparent');
-      });
-      btn.classList.add('bg-cyan-600', 'text-white', 'shadow');
-      btn.classList.remove('text-gray-400', 'bg-transparent');
+  if (filterBtns.length) {
+    filterBtns.forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-[#009FB7]', 'bg-cyan-600', 'text-white', 'shadow');
+          b.classList.add('text-gray-400', 'bg-transparent');
+        });
+        btn.classList.add('bg-[#009FB7]', 'text-white', 'shadow');
+        btn.classList.remove('text-gray-400', 'bg-transparent');
 
-      const category = btn.getAttribute('data-category') || 'all';
-      renderSelectedProjects(category);
-      trackBimEvent('home_filter_click', { category });
+        homeSelectedCategory = btn.getAttribute('data-category') || 'all';
+        renderSelectedProjects(homeSelectedCategory, homeSearchQuery);
+        trackBimEvent('home_filter_click', { category: homeSelectedCategory });
+      };
+    });
+  }
+
+  if (searchInput) {
+    let debounceTimer = null;
+    searchInput.oninput = () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        homeSearchQuery = searchInput.value;
+        renderSelectedProjects(homeSelectedCategory, homeSearchQuery);
+        if (homeSearchQuery.length > 2) {
+          trackBimEvent('home_search', { query: homeSearchQuery });
+        }
+      }, 80);
     };
-  });
+  }
 }
 
 /* Advanced Multi-Facet Filter & Instant Search System for all-projects.html */
