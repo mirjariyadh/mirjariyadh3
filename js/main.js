@@ -79,7 +79,7 @@ function setupSelectedProjectFilters() {
   });
 }
 
-/* Render exactly 8 Projects for the Home Page Showcase */
+/* Render exactly 12 Projects for the Home Page Showcase */
 function renderSelectedProjects(categoryFilter = 'all') {
   const container = document.getElementById('selected-projects-grid');
   if (!container) return;
@@ -95,8 +95,8 @@ function renderSelectedProjects(categoryFilter = 'all') {
     filtered = filtered.filter(p => matchProjectCategory(p, categoryFilter));
   }
 
-  // Always show up to 8 projects in the 4x2 grid
-  const displayProjects = filtered.slice(0, 8);
+  // Show up to 12 projects in the grid for full depth
+  const displayProjects = filtered.slice(0, 12);
 
   if (displayProjects.length === 0) {
     container.innerHTML = `

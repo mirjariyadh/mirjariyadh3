@@ -132,9 +132,32 @@ function renderProjectDetailsPage() {
         ${shortDesc}
       </p>
 
-      <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-gray-400 pt-4 border-t border-slate-800/80">
-        <div><strong class="text-gray-200">Client / Region:</strong> ${clientInfo}</div>
-        <div><strong class="text-gray-200">Role:</strong> Senior BIM Modeler & Specialist</div>
+      <!-- Technical Project Specifications Matrix Grid -->
+      <div class="mt-8 p-5 bg-slate-900/90 border border-slate-800 rounded-md grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs font-mono">
+        <div class="space-y-1">
+          <span class="text-gray-400 text-[11px] block uppercase">PROJECT TYPE</span>
+          <span class="font-bold text-white">${categoryName}</span>
+        </div>
+        <div class="space-y-1">
+          <span class="text-gray-400 text-[11px] block uppercase">LOD SPEC</span>
+          <span class="font-bold text-emerald-400">${lod}</span>
+        </div>
+        <div class="space-y-1">
+          <span class="text-gray-400 text-[11px] block uppercase">PRIMARY SOFTWARE</span>
+          <span class="font-bold text-cyan-400">${software[0] || 'Autodesk Revit'}</span>
+        </div>
+        <div class="space-y-1">
+          <span class="text-gray-400 text-[11px] block uppercase">LOCATION / REGION</span>
+          <span class="font-bold text-white">${clientInfo}</span>
+        </div>
+        <div class="space-y-1">
+          <span class="text-gray-400 text-[11px] block uppercase">DELIVERABLES</span>
+          <span class="font-bold text-white">${deliverables.length} Key Outputs</span>
+        </div>
+        <div class="space-y-1">
+          <span class="text-gray-400 text-[11px] block uppercase">EXECUTION STATUS</span>
+          <span class="font-bold text-emerald-400">Completed & Verified</span>
+        </div>
       </div>
     </header>
 
