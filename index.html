@@ -297,51 +297,103 @@
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         
-        <!-- Card 1: BIM ECOSYSTEM WORKFLOW -->
+        <!-- Card 1: BIM ECOSYSTEM (PROJECTS & DELIVERABLES) -->
         <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 rounded-md p-4 transition-all flex flex-col justify-between shadow-xl group">
           <div>
             <div class="flex items-center justify-between mb-3">
-              <span class="text-[11px] font-mono font-bold text-cyan-400 tracking-wider uppercase">BIM ECOSYSTEM</span>
+              <span class="text-[11px] font-mono font-bold text-cyan-400 tracking-wider uppercase">PROJECT I WORK ON | WHAT I DELIVER</span>
             </div>
 
-            <!-- Workflow Visual Box -->
-            <div class="relative bg-slate-950 border border-slate-800 rounded-sm p-3 text-center overflow-hidden aspect-[4/3] flex flex-col justify-between">
-              <div>
-                <p class="text-[10px] font-mono font-bold tracking-tight text-gray-200 uppercase mb-2">BIM WORKFLOW: <span class="text-cyan-400">REVIT TO DOCUMENTATION</span></p>
+            <!-- 2-Column Split: Projects I Work On vs What I Deliver -->
+            <div class="relative bg-slate-950 border border-slate-800 rounded-sm p-3 overflow-hidden min-h-[240px] flex flex-col justify-between">
+              <div class="grid grid-cols-2 gap-3 text-left h-full">
                 
-                <!-- 4 Step Mini Diagram -->
-                <div class="grid grid-cols-4 gap-1 items-stretch text-[8px] font-sans">
-                  <!-- Step 1 -->
-                  <div class="bg-slate-900 border border-cyan-500/40 rounded p-1 flex flex-col items-center justify-between">
-                    <span class="font-bold text-cyan-300 leading-tight">1. REVIT ARCH & MEP</span>
-                    <div class="my-1 w-5 h-5 bg-cyan-950 rounded flex items-center justify-center text-cyan-400 font-mono font-black text-[9px]">R</div>
-                    <span class="text-[7px] text-gray-400">3D RVT</span>
-                  </div>
-                  <!-- Step 2 -->
-                  <div class="bg-slate-900 border border-blue-500/40 rounded p-1 flex flex-col items-center justify-between">
-                    <span class="font-bold text-blue-300 leading-tight">2. NAVISWORKS</span>
-                    <div class="my-1 w-5 h-5 bg-blue-950 rounded flex items-center justify-center text-blue-400 font-mono font-black text-[9px]">N</div>
-                    <span class="text-[7px] text-gray-400">Clash NWD</span>
-                  </div>
-                  <!-- Step 3 -->
-                  <div class="bg-slate-900 border border-emerald-500/40 rounded p-1 flex flex-col items-center justify-between">
-                    <span class="font-bold text-emerald-300 leading-tight">3. PDF/IFC</span>
-                    <div class="my-1 w-5 h-5 bg-emerald-950 rounded flex items-center justify-center text-emerald-400 font-mono font-black text-[9px]">IFC</div>
-                    <span class="text-[7px] text-gray-400">OpenBIM</span>
-                  </div>
-                  <!-- Step 4 -->
-                  <div class="bg-slate-900 border border-indigo-500/40 rounded p-1 flex flex-col items-center justify-between">
-                    <span class="font-bold text-indigo-300 leading-tight">4. DOCS</span>
-                    <div class="my-1 w-5 h-5 bg-indigo-950 rounded flex items-center justify-center text-indigo-400 font-mono font-black text-[9px]">DWG</div>
-                    <span class="text-[7px] text-gray-400">Sheets</span>
-                  </div>
+                <!-- Left Column: Projects I Work On -->
+                <div class="flex flex-col border-r border-slate-800 pr-2 min-w-0">
+                  <h4 class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-tight mb-2 pb-1.5 border-b border-slate-800 flex items-center justify-between">
+                    <span class="truncate">Projects</span>
+                  </h4>
+                  <ul class="space-y-1.5 text-xs font-mono text-gray-200 overflow-y-auto scrollbar-none flex-1">
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-sm shrink-0">🏢</span>
+                      <span class="truncate">Commercial</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-sm shrink-0">🏥</span>
+                      <span class="truncate">Healthcare</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-sm shrink-0">🏭</span>
+                      <span class="truncate">Industrial</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-sm shrink-0">🏠</span>
+                      <span class="truncate">Residential</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-sm shrink-0">🏨</span>
+                      <span class="truncate">Hospitality</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-sm shrink-0">🚇</span>
+                      <span class="truncate">Infrastructure</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-sm shrink-0">💊</span>
+                      <span class="truncate">Pharma</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate" title="Existing Buildings / Renovation">
+                      <span class="text-sm shrink-0">🏛️</span>
+                      <span class="truncate">Renovation</span>
+                    </li>
+                  </ul>
                 </div>
-              </div>
 
-              <!-- Bottom Tags -->
-              <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 text-[8px] font-mono">
-                <span class="px-2 py-0.5 bg-cyan-950/80 text-cyan-300 rounded border border-cyan-500/30">REVIT / NAVISWORKS</span>
-                <span class="px-2 py-0.5 bg-emerald-950/80 text-emerald-300 rounded border border-emerald-500/30">RVT / IFC / DWG</span>
+                <!-- Right Column: What I Deliver -->
+                <div class="flex flex-col pl-1 min-w-0">
+                  <h4 class="text-xs font-mono font-bold text-emerald-300 uppercase tracking-tight mb-2 pb-1.5 border-b border-slate-800 flex items-center justify-between">
+                    <span class="truncate">Deliverables</span>
+                  </h4>
+                  <ul class="space-y-1.5 text-xs font-mono text-gray-200 overflow-y-auto scrollbar-none flex-1">
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-cyan-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="font-bold text-cyan-300 truncate">RVT</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-cyan-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="font-bold text-emerald-300 truncate">IFC</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-cyan-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="font-bold text-blue-300 truncate">NWC / NWD</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-cyan-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="font-bold text-indigo-300 truncate">DWG</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-emerald-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="truncate">PDF Sheets</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-emerald-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="truncate">Schedules</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-emerald-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="truncate">BOQ / Qty</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-emerald-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="truncate">Clash Reports</span>
+                    </li>
+                    <li class="flex items-center gap-1.5 hover:text-white transition-colors truncate">
+                      <span class="text-emerald-400 text-xs font-bold shrink-0">✓</span>
+                      <span class="truncate">Revit Families</span>
+                    </li>
+                  </ul>
+                </div>
+
               </div>
             </div>
           </div>
@@ -513,97 +565,6 @@
         <h2 class="text-3xl font-extrabold text-white tracking-tight">Structured BIM Execution Workflow</h2>
         <p class="text-gray-400 text-sm mt-2">A structured BIM workflow focused on coordination, clash detection, and construction-ready documentation.</p>
       </div>
-
-      <!-- 6-Step Workflow Flowchart Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-        
-        <!-- Step 1 -->
-        <div class="bg-slate-950 border border-slate-800 rounded-md p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
-          <div>
-            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
-              01
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1.5">Input & Scan Ingestion</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Laser scan point cloud (.e57, .rcp), 2D CAD DWG, PDF blueprints, or design sketches.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
-            ReCap · CAD
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="bg-slate-950 border border-slate-800 rounded-md p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
-          <div>
-            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
-              02
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1.5">Revit BIM Modeling</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Parametric architectural elements, wall assemblies, custom families, and level grids setup.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
-            Autodesk Revit · RVT
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="bg-slate-950 border border-slate-800 rounded-md p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
-          <div>
-            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
-              03
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1.5">Architectural & MEP</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">HVAC duct routing, domestic water piping, fire suppression, cable trays, and equipment.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
-            LOD-Based BIM Modeling
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="bg-slate-950 border border-slate-800 rounded-md p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
-          <div>
-            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
-              04
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1.5">BIM Coordination</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Federation of architectural, structural, and multi-trade MEP discipline models.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
-            Multi-Trade Matrix
-          </div>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="bg-slate-950 border border-slate-800 rounded-md p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
-          <div>
-            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
-              05
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1.5">Clash Detection</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Automated hard and clearance clash tests in Navisworks, spatial resolution & audit logs.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-emerald-400">
-            Navisworks Manage · NWD
-          </div>
-        </div>
-
-        <!-- Step 6 -->
-        <div class="bg-slate-950 border border-slate-800 rounded-md p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
-          <div>
-            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
-              06
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1.5">Documentation & IFC</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Permit sheets, shop drawings, BOQ quantity takeoff schedules, and openBIM IFC exports.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
-            IFC · PDF · DWG · Sheets
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- Selected Projects Showcase Section (12 Projects Grid) -->
   <section id="selected-projects" class="py-16 bg-slate-950 border-b border-slate-800/80">
@@ -887,22 +848,22 @@
             <div class="flex items-center justify-between">
               <span class="text-amber-400 font-bold text-sm tracking-widest">★★★★★</span>
               <span class="px-2 py-0.5 bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 rounded text-[10px] font-mono font-bold flex items-center space-x-1">
-                <span>Upwork Verified</span>
+                <span>Fiverr Verified</span>
                 <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </span>
             </div>
 
             <p class="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
-              "Quick turn around; quality work; easy to work with!"
+              "Riyadh was fantastic to work with on our building engineering project! His professionalism and ability to exceed expectations truly impressed us. Plus, his proactive communication made the entire process smooth and efficient. 🙌"
             </p>
           </div>
 
           <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
             <div>
-              <p class="font-bold text-gray-100">Huneidi Services LLC</p>
-              <p class="text-[11px] text-gray-400">United States</p>
+              <p class="font-bold text-gray-100">The Design Servey & Consultant</p>
+              <p class="text-[11px] text-gray-400">United Kingdom</p>
             </div>
-            <span class="text-[11px] text-gray-400">|Aug 2024</span>
+            <span class="text-[11px] text-gray-400">Aug 2025</span>
           </div>
         </div>
 
