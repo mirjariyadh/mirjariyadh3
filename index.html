@@ -39,21 +39,15 @@
   <meta property="twitter:description" content="Professional BIM & Revit Services in Bangladesh. High-precision 3D Modeling, Scan-to-BIM, & Clash Detection." />
   <meta property="twitter:image" content="https://mirjariyadh.com.bd/src/assets/images/hero/hero.webp" />
 
-  <!-- Tailwind CSS & Styles -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 950: '#083344' },
-            tealCustom: { 500: '#18A999', 600: '#138b7e' }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Preconnect & Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+
+  <!-- Preload Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="/src/assets/images/hero/hero.webp" fetchpriority="high" type="image/webp" />
+
+  <!-- Compiled Production Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 
   <!-- JSON-LD Comprehensive Structured Data for Google Rich Snippets -->
@@ -275,6 +269,10 @@
               class="w-full aspect-video object-cover rounded-sm"
               referrerPolicy="no-referrer"
               loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              width="768"
+              height="432"
             />
             <div class="p-3 sm:p-4 flex items-center justify-between">
               <div>
@@ -414,6 +412,10 @@
                 alt="Clean 3D BIM Revit Architecture Model" 
                 class="w-full h-full object-cover select-none pointer-events-none" 
                 referrerPolicy="no-referrer" 
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="300"
               />
 
               <!-- Foreground Clip Image: Raw Point Cloud Scan (Shown on Left Side) -->
@@ -423,6 +425,10 @@
                   alt="Raw 3D Laser Scan Point Cloud Data" 
                   class="w-full h-full object-cover select-none pointer-events-none" 
                   referrerPolicy="no-referrer" 
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="300"
                 />
               </div>
 
@@ -465,6 +471,10 @@
                 alt="Clean Coordinated 3D MEP Navisworks BIM Model" 
                 class="w-full h-full object-cover select-none pointer-events-none" 
                 referrerPolicy="no-referrer" 
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="300"
               />
 
               <!-- Foreground Clip Image: MEP Model (Shown on Left Side) -->
@@ -474,6 +484,10 @@
                   alt="Uncoordinated MEP Duct and Pipe Collisions" 
                   class="w-full h-full object-cover select-none pointer-events-none" 
                   referrerPolicy="no-referrer" 
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="300"
                 />
               </div>
 
@@ -516,6 +530,10 @@
                 alt="Precision Layered 2D AutoCAD DWG Drawing" 
                 class="w-full h-full object-cover select-none pointer-events-none" 
                 referrerPolicy="no-referrer" 
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="300"
               />
 
               <!-- Foreground Clip Image: 2D PDF Draft (Shown on Left Side) -->
@@ -525,6 +543,10 @@
                   alt="Scanned 2D PDF Architectural Blueprint Draft" 
                   class="w-full h-full object-cover select-none pointer-events-none" 
                   referrerPolicy="no-referrer" 
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="300"
                 />
               </div>
 
@@ -1191,9 +1213,8 @@
   </button>
 
   <!-- Scripts -->
-  <script src="js/projects-data.js"></script>
-  <script src="js/pointcloud-slider.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/roi-calculator.js"></script>
+  <script src="js/projects-data.js" defer></script>
+  <script src="js/pointcloud-slider.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

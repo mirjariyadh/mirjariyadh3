@@ -38,21 +38,12 @@
   <meta property="twitter:description" content="Expert Scan-to-BIM, Architectural BIM, MEP Coordination, and Technical AutoCAD drafting." />
   <meta property="twitter:image" content="https://mirjariyadh.com.bd/src/assets/images/hero/hero.webp" />
 
-  <!-- Tailwind CSS & Styles -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 950: '#083344' },
-            tealCustom: { 500: '#18A999', 600: '#138b7e' }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Preconnect & Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+
+  <!-- Compiled Production Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 
   <!-- JSON-LD Structured Data with Breadcrumbs -->
@@ -205,6 +196,11 @@
               src="/assets/images/about/mirja-riyadh-desk.webp"
               alt="Mirja Riyadh - BIM Modeler & Revit Specialist"
               class="w-full h-full object-cover object-center grayscale-[15%] group-hover:grayscale-0 transition-all duration-500"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              width="320"
+              height="400"
               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23111827\'/><circle cx=\'200\' cy=\'180\' r=\'70\' fill=\'%231e293b\'/><path d=\'M80 420 C80 300 120 280 200 280 C280 280 320 300 320 420 Z\' fill=\'%231e293b\'/><text x=\'200\' y=\'460\' text-anchor=\'middle\' fill=\'%2318A999\' font-family=\'monospace\' font-size=\'14\'>MIRJA RIYADH</text></svg>';"
             />
             
@@ -716,8 +712,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/projects-data.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/projects-data.js" defer></script>
+  <script src="js/main.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const cvBtn = document.getElementById('download-cv-btn');

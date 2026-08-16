@@ -3,6 +3,26 @@
  * Main Layout & Universal Scripts (GitHub Pages Ready)
  */
 
+// Global State & Constants
+const FEATURED_PROJECT_PRIORITY_IDS = [
+  'project-01', // 1. Revit BIM Modeling: High-End Pharmaceutical 3D BIM Model (LOD 350)
+  'project-02', // 2. MEP Coordination: HVAC Project 3D BIM Model
+  'project-10', // 3. Point Cloud to BIM: Point Cloud to Revit (Residential Laser Scan)
+  'project-16', // Point Cloud to Revit (Hospital Main Building)
+  'project-24', // Hotel Resort MEP 3D BIM Model
+  'project-25', // 4601 S University Ave Architectural & MEP BIM
+  'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
+  'project-08', // Incepta Pharmaceutical Facility BIM (LOD 400)
+  'project-22', // Spa Center Architectural & MEP BIM
+  'project-23', // Construction City Permit Set (Documentation)
+  'project-04', // Healthcare Facility 3D BIM Model
+  'project-06'  // East MC Kinny Residential As-Built BIM
+];
+
+let homeSelectedCategory = 'all';
+let homeSearchQuery = '';
+let mobileShowAllProjects = false;
+
 // Analytics-Ready Event Tracker
 function trackBimEvent(eventName, data = {}) {
   try {
@@ -35,12 +55,6 @@ function initMain() {
   autoInitCategoryGrids();
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMain);
-} else {
-  initMain();
-}
-
 /* Automatically initialize grids if elements are present in DOM */
 function autoInitCategoryGrids() {
   // Home Page Selected Projects Grid
@@ -68,23 +82,6 @@ function autoInitCategoryGrids() {
     renderProjectGrid('autocad-projects-grid', 'autocad');
   }
 }
-
-/* 12 Prioritized Featured Project IDs for Homepage Showcase */
-/* Top 3 strictly demonstrate: 1. Revit BIM Modeling, 2. MEP Coordination / Clash Detection, 3. Point Cloud to BIM (Scan-to-BIM) */
-const FEATURED_PROJECT_PRIORITY_IDS = [
-  'project-01', // 1. Revit BIM Modeling: High-End Pharmaceutical 3D BIM Model (LOD 350)
-  'project-02', // 2. MEP Coordination: HVAC Project 3D BIM Model
-  'project-10', // 3. Point Cloud to BIM: Point Cloud to Revit (Residential Laser Scan)
-  'project-16', // Point Cloud to Revit (Hospital Main Building)
-  'project-24', // Hotel Resort MEP 3D BIM Model
-  'project-25', // 4601 S University Ave Architectural & MEP BIM
-  'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
-  'project-08', // Incepta Pharmaceutical Facility BIM (LOD 400)
-  'project-22', // Spa Center Architectural & MEP BIM
-  'project-23', // Construction City Permit Set (Documentation)
-  'project-04', // Healthcare Facility 3D BIM Model
-  'project-06'  // East MC Kinny Residential As-Built BIM
-];
 
 /* Helper to get formatted category and scope tag */
 function getProjectMetadata(project) {
@@ -114,10 +111,6 @@ function getProjectMetadata(project) {
 
   return { categoryLabel, scopeTag };
 }
-
-let homeSelectedCategory = 'all';
-let homeSearchQuery = '';
-let mobileShowAllProjects = false;
 
 /* Render 12 Projects for the Home Page Showcase with Category, Search & Mobile-First Prioritization */
 function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
@@ -1009,3 +1002,11 @@ window.renderSelectedProjects = renderSelectedProjects;
 window.initLazyImages = initLazyImages;
 window.matchProjectCategory = matchProjectCategory;
 window.setupAdvancedPortfolioFilter = setupAdvancedPortfolioFilter;
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMain);
+} else {
+  initMain();
+}
+

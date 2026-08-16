@@ -10,20 +10,12 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   
-  <!-- Tailwind CSS & Custom Styles -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 950: '#083344' }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Preconnect & Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+
+  <!-- Compiled Production Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body class="bg-slate-950 text-gray-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950 font-sans">
@@ -120,6 +112,9 @@
       © 2026 Mirja Riyadh (mirjariyadh.com.bd). Senior BIM Specialist & Revit Modeler.
     </div>
   </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
 
 </body>
 </html>

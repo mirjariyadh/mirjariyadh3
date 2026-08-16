@@ -38,20 +38,12 @@
   <meta property="twitter:description" content="Laser scan to 3D Revit modeling, as-built documentation, and clash verification." />
   <meta property="twitter:image" content="https://mirjariyadh.com.bd/src/assets/images/hero/hero.webp" />
 
-  <!-- Tailwind CSS & Custom Styles -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 950: '#083344' }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Preconnect & Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+
+  <!-- Compiled Production Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 
   <!-- JSON-LD Structured Data with Breadcrumbs -->
@@ -227,6 +219,10 @@
             alt="Clean As-Built 3D Revit BIM Model" 
             class="w-full h-full object-cover select-none pointer-events-none" 
             referrerPolicy="no-referrer" 
+            loading="lazy"
+            decoding="async"
+            width="800"
+            height="450"
           />
           
           <!-- Foreground Clip Image: Raw Point Cloud Scan (Shown on Left) -->
@@ -236,6 +232,10 @@
               alt="Raw Laser Scan Point Cloud Data" 
               class="w-full h-full object-cover select-none pointer-events-none" 
               referrerPolicy="no-referrer" 
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="450"
             />
           </div>
 
@@ -325,9 +325,9 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/projects-data.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/pointcloud-slider.js"></script>
+  <script src="js/projects-data.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/pointcloud-slider.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Automatically renders ONLY projects from 'point-cloud' category

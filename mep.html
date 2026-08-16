@@ -38,20 +38,12 @@
   <meta property="twitter:description" content="LOD Based HVAC ducting, pipe spooling, and Navisworks zero-clash coordination." />
   <meta property="twitter:image" content="https://mirjariyadh.com.bd/src/assets/images/hero/hero.webp" />
 
-  <!-- Tailwind CSS & Custom Styles -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            cyan: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 950: '#083344' }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Preconnect & Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+
+  <!-- Compiled Production Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 
   <!-- JSON-LD Structured Data with Breadcrumbs -->
@@ -280,8 +272,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/projects-data.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/projects-data.js" defer></script>
+  <script src="js/main.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Automatically renders ONLY projects from 'mep' category

@@ -3,6 +3,11 @@
  * Dynamic Single Project Detail Page Logic & Interactive Suite
  */
 
+// Technical Image Lightbox State
+let currentLightboxIndex = 0;
+let touchStartX = 0;
+let touchEndX = 0;
+
 function showBimToast(message) {
   let toast = document.getElementById('bim-toast-elem');
   if (!toast) {
@@ -788,10 +793,6 @@ function triggerQuoteForProject(projectTitle) {
 }
 
 // Technical Image Lightbox Modal
-let currentLightboxIndex = 0;
-let touchStartX = 0;
-let touchEndX = 0;
-
 function openLightbox(index = 0) {
   let gallery = window.currentProjectGallery || [];
 
