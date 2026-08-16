@@ -159,21 +159,11 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/4601-s-university-ave/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p0.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p1.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p2.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p3.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p4.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p0.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p1.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p2.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p3.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p4.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
       {
         "url": "./src/assets/images/projects/4601-s-university-ave/p5.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
       },
