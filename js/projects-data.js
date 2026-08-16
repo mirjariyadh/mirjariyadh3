@@ -177,7 +177,7 @@ var PORTFOLIO_PROJECTS = [
       {"url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"},
       {"url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"}
     ],
-    "shortDesc": "SketchUp models into a millimeter-accurate Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
+    "shortDesc": "SketchUp models into a Point Cloud-verified Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
     "fullDesc": "Processed over 18GB of point cloud scan data (.e57 format) using Autodesk Recap Pro and imported into Revit. Reconstructed irregular historical brick masonry, tilted columns, original timber roof trusses, and exposed pipework with strict tolerance limits (<5mm deviation).",
     "lod": "LOD 300",
     "softwareUsed": [
@@ -188,7 +188,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "March 2024",
     "areaSqFt": "7,200 sq.ft",
     "keyFeatures": [
-      "Millimeter-accurate modeling",
+      "Point Cloud-verified modeling",
       "Specialized parametric handling of complex, non-standard historic wall geometries",
       "Accurate As-Built structural verification and structural load path modeling"
     ],
@@ -326,7 +326,7 @@ var PORTFOLIO_PROJECTS = [
       {"url": "./src/assets/images/projects/east-mc-kinny/p9.webp", "caption": "Architectural Residential Revit Model"},
       {"url": "./src/assets/images/projects/east-mc-kinny/p10.webp", "caption": "Architectural Residential Revit Model"}
     ],
-    "shortDesc": "Transformed 3D Faro point cloud scan data into a millimeter-accurate Revit As-Built model (LOD 400) for historic renovation.",
+    "shortDesc": "Transformed 3D Faro point cloud scan data into a Point Cloud-verified Revit As-Built model (LOD 400) for historic renovation.",
     "fullDesc": "Processed over 18GB of point cloud scan data (.e57 format) using Autodesk Recap Pro and imported into Revit. Reconstructed irregular historical brick masonry, tilted columns, original timber roof trusses, and exposed pipework with strict tolerance limits (<5mm deviation).",
     "lod": "LOD 400",
     "softwareUsed": [
@@ -487,7 +487,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Nov 2023",
     "areaSqFt": "4,000 sq.ft",
     "keyFeatures": [
-      "Converted high-density point cloud scan data into a millimeter-accurate 3D Revit model",
+      "Converted high-density point cloud scan data into a Point Cloud-verified 3D Revit model",
       "Captured complex as-built residential architectural elements, including structural walls, fixtures, and finishes",
       "Eliminated manual measurement errors by modeling directly over registered laser scan data",
       "Provided a reliable, high-fidelity BIM foundation for future residential renovations and extensions"
@@ -518,7 +518,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Dec 2023",
     "areaSqFt": "2,400 sq.ft",
     "keyFeatures": [
-      "Converted high-density point cloud scan data into a millimeter-accurate 3D Revit model",
+      "Converted high-density point cloud scan data into a Point Cloud-verified 3D Revit model",
       "Captured complex as-built residential architectural elements, including structural walls, fixtures, and finishes",
       "Eliminated manual measurement errors by modeling directly over registered laser scan data",
       "Provided a reliable, high-fidelity BIM foundation for future residential renovations and extensions"
@@ -550,7 +550,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Dec 2023",
     "areaSqFt": "1,800 sq.ft",
     "keyFeatures": [
-      "Converted high-density point cloud scan data into a millimeter-accurate 3D Revit model",
+      "Converted high-density point cloud scan data into a Point Cloud-verified 3D Revit model",
       "Captured complex as-built residential architectural elements, including structural walls, fixtures, and finishes",
       "Eliminated manual measurement errors by modeling directly over registered laser scan data",
       "Provided a reliable, high-fidelity BIM foundation for future residential renovations and extensions"
@@ -585,7 +585,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Jan 2024",
     "areaSqFt": "1,800 sq.ft",
     "keyFeatures": [
-      "Converted high-density point cloud scan data into a millimeter-accurate 3D Revit model",
+      "Converted high-density point cloud scan data into a Point Cloud-verified 3D Revit model",
       "Captured complex as-built residential architectural elements, including structural walls, fixtures, and finishes",
       "Eliminated manual measurement errors by modeling directly over registered laser scan data",
       "Provided a reliable, high-fidelity BIM foundation for future residential renovations and extensions"
@@ -621,7 +621,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Feb 2024",
     "areaSqFt": "35,000 sq.ft",
     "keyFeatures": [
-      "Transformed complex school point cloud data into a millimeter-accurate 3D Revit model",
+      "Transformed complex school point cloud data into a Point Cloud-verified 3D Revit model",
       "Captured detailed institutional layouts, structural elements, and large-scale architectural features",
       "Documented existing conditions precisely to eliminate manual surveying errors across multiple campus blocks",
       "Provided a high-fidelity as-built BIM baseline optimized for school renovation and facility management"
@@ -655,7 +655,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Feb 2024",
     "areaSqFt": "35,000 sq.ft",
     "keyFeatures": [
-      "Transformed raw laser scan data into a millimeter-accurate 3D Revit as-built heritage model",
+      "Transformed raw laser scan data into a Point Cloud-verified 3D Revit as-built heritage model",
       "Captured complex, non-standard historic wall geometries, ornamental details, and structural anomalies",
       "Preserved architectural authenticity by modeling directly over registered high-density point clouds",
       "Provided a reliable, high-fidelity BIM foundation optimized for historic renovation and preservation workflows"
@@ -689,7 +689,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Mar 2024",
     "areaSqFt": "20,000 sq.ft",
     "keyFeatures": [
-      "Transformed massive hospital laser scan data into a millimeter-accurate 3D Revit as-built model",
+      "Transformed massive hospital laser scan data into a Point Cloud-verified 3D Revit as-built model",
       "Captured complex medical layouts, specialized healthcare partitions, and structural frameworks precisely",
       "Documented existing facility conditions without disrupting ongoing medical operations or active patient zones",
       "Provided a high-fidelity BIM baseline optimized for complex healthcare renovations, MEP coordination, and facility management"
@@ -722,7 +722,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "Apr 2024",
     "areaSqFt": "12,200 sq.ft",
     "keyFeatures": [
-      "Transformed multi-floor office laser scan data into a millimeter-accurate 3D Revit model",
+      "Transformed multi-floor office laser scan data into a Point Cloud-verified 3D Revit model",
       "Captured complex commercial layouts, structural columns, core areas, and ceiling grids precisely",
       "Documented existing open-plan configurations and core services to optimize corporate spatial planning",
       "Provided a high-fidelity as-built BIM baseline for commercial interior fit-outs and facility lifecycle management"
@@ -755,7 +755,7 @@ var PORTFOLIO_PROJECTS = [
     "completionDate": "May 2024",
     "areaSqFt": "30,000 sq.ft",
     "keyFeatures": [
-      "Transformed large-scale hotel laser scan data into a millimeter-accurate 3D Revit as-built model",
+      "Transformed large-scale hotel laser scan data into a Point Cloud-verified 3D Revit as-built model",
       "Captured complex multi-room guest layouts, grand lobbies, structural columns, and circulation zones precisely",
       "Documented existing architectural conditions to streamline future hospitality interior fit-outs and modernizations",
       "Provided a high-fidelity BIM baseline optimized for multidisciplinary MEP coordination and ongoing resort facility management"
