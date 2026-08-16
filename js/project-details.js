@@ -334,8 +334,8 @@ function renderProjectDetailsPage() {
     </div>
 
     <!-- Header & Title -->
-    <header class="mb-10">
-      <div class="flex flex-wrap items-center gap-2.5 mb-4">
+    <header class="mb-8 sm:mb-10">
+      <div class="flex flex-wrap items-center gap-2 mb-4">
         <span class="px-2.5 py-1 text-[11px] font-mono font-bold uppercase rounded-sm bg-cyan-950/90 border border-cyan-500/40 text-cyan-300">
           ${categoryName}
         </span>
@@ -355,44 +355,44 @@ function renderProjectDetailsPage() {
         ` : ''}
       </div>
 
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight break-words">
         ${project.title}
       </h1>
 
-      <p class="text-base sm:text-lg text-gray-300 mt-4 leading-relaxed max-w-4xl font-normal">
+      <p class="text-sm sm:text-base lg:text-lg text-gray-300 mt-3 sm:mt-4 leading-relaxed max-w-4xl font-normal break-words">
         ${shortDesc}
       </p>
 
       <!-- Technical Project Overview Matrix Box -->
-      <div class="mt-8 p-5 bg-slate-900/90 border border-slate-800 rounded-md">
+      <div class="mt-6 sm:mt-8 p-4 sm:p-5 bg-slate-900/90 border border-slate-800 rounded-md">
         <div class="text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center space-x-2">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
           <span>TECHNICAL PROJECT OVERVIEW</span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs font-mono">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 text-xs font-mono">
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">DISCIPLINE</span>
-            <span class="font-bold text-white">${categoryName}</span>
+            <span class="text-gray-400 text-[10px] sm:text-[11px] block uppercase">DISCIPLINE</span>
+            <span class="font-bold text-white break-words">${categoryName}</span>
           </div>
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">BUILDING TYPE</span>
-            <span class="font-bold text-white">${buildingType}</span>
+            <span class="text-gray-400 text-[10px] sm:text-[11px] block uppercase">BUILDING TYPE</span>
+            <span class="font-bold text-white break-words">${buildingType}</span>
           </div>
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">SOFTWARE</span>
-            <span class="font-bold text-cyan-400">${software.join(', ')}</span>
+            <span class="text-gray-400 text-[10px] sm:text-[11px] block uppercase">SOFTWARE</span>
+            <span class="font-bold text-cyan-400 break-words">${software.join(', ')}</span>
           </div>
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">LOD SPEC</span>
+            <span class="text-gray-400 text-[10px] sm:text-[11px] block uppercase">LOD SPEC</span>
             <span class="font-bold text-emerald-400">${lod}</span>
           </div>
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">CLIENT REGION</span>
-            <span class="font-bold text-gray-300">${clientInfo}</span>
+            <span class="text-gray-400 text-[10px] sm:text-[11px] block uppercase">CLIENT REGION</span>
+            <span class="font-bold text-gray-300 break-words">${clientInfo}</span>
           </div>
           <div class="space-y-1">
-            <span class="text-gray-400 text-[11px] block uppercase">DELIVERABLES</span>
-            <span class="font-bold text-white">RVT · IFC · DWG · PDF</span>
+            <span class="text-gray-400 text-[10px] sm:text-[11px] block uppercase">DELIVERABLES</span>
+            <span class="font-bold text-white break-words">RVT · IFC · DWG · PDF</span>
           </div>
         </div>
       </div>
@@ -765,16 +765,21 @@ function showNotFound(container) {
 
 // Quote trigger pre-filler
 function triggerQuoteForProject(projectTitle) {
-  const modal = document.getElementById('contact-modal');
-  const messageInput = document.getElementById('contact-message');
-  const serviceSelect = document.querySelector('select[name="service"]') || document.querySelector('select[name="projectType"]');
-  
-  if (messageInput) {
-    messageInput.value = `Hello Mirja, I am interested in a BIM modeling service similar to "${projectTitle}". Please contact me regarding scope and estimate.`;
-  }
-  if (modal) {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
+  const msg = `Hello Mirja, I am interested in a BIM modeling service similar to "${projectTitle}". Please contact me regarding scope and estimate.`;
+  if (window.openContactModal) {
+    window.openContactModal('', msg);
+  } else {
+    const modal = document.getElementById('contact-modal');
+    const messageInput = document.getElementById('contact-message') || (modal ? modal.querySelector('textarea[name="message"]') : null);
+    if (messageInput) {
+      messageInput.value = msg;
+    }
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   if (window.trackBimEvent) {
@@ -833,11 +838,11 @@ function openLightbox(index = 0) {
     modal.innerHTML = `
       <!-- Top Bar: Counter & Close Button -->
       <div class="w-full max-w-7xl flex items-center justify-between px-2 sm:px-4 py-1 sm:py-2 text-white z-20 shrink-0">
-        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3.5 py-1.5 rounded border border-slate-700 shadow-md flex items-center space-x-1.5">
-          <span>Image ${currentLightboxIndex + 1} of ${gallery.length}</span>
-          ${groupName ? `<span class="text-gray-600">|</span><span class="text-gray-300 font-normal truncate max-w-[200px] sm:max-w-xs">${groupName}</span>` : ''}
+        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3 py-1.5 rounded border border-slate-700 shadow-md flex items-center space-x-1.5 max-w-[calc(100%-50px)] overflow-hidden">
+          <span class="shrink-0 font-bold">Image ${currentLightboxIndex + 1} of ${gallery.length}</span>
+          ${groupName ? `<span class="text-gray-600 shrink-0">|</span><span class="text-gray-300 font-normal truncate">${groupName}</span>` : ''}
         </span>
-        <button id="lightbox-close-btn" class="bg-slate-900 hover:bg-cyan-600 text-white w-9 h-9 rounded flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer" aria-label="Close Lightbox">
+        <button id="lightbox-close-btn" class="bg-slate-900 hover:bg-cyan-600 text-white w-9 h-9 rounded flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer shrink-0 ml-2" aria-label="Close Lightbox">
           ✕
         </button>
       </div>
@@ -847,7 +852,7 @@ function openLightbox(index = 0) {
         
         <!-- Previous Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-prev-btn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Previous image">
+          <button id="lightbox-prev-btn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer min-h-[40px] min-w-[40px]" aria-label="Previous image">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
           </button>
         ` : ''}
@@ -863,7 +868,7 @@ function openLightbox(index = 0) {
 
         <!-- Next Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-next-btn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer" aria-label="Next image">
+          <button id="lightbox-next-btn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer min-h-[40px] min-w-[40px]" aria-label="Next image">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
           </button>
         ` : ''}
@@ -872,9 +877,9 @@ function openLightbox(index = 0) {
       <!-- Bottom Container: Caption & Bottom Thumbnail Preview Strip -->
       <div class="w-full max-w-7xl flex flex-col items-center gap-2 z-20 px-2 sm:px-4 pb-1 shrink-0 select-none">
         
-        <!-- Caption Bar -->
+        <!-- Caption Bar (Full text wrap on mobile, prevents truncation clipping) -->
         ${caption ? `
-          <div class="bg-slate-900/90 border border-slate-800 px-4 py-1 rounded-full text-center max-w-2xl text-[11px] sm:text-xs font-mono text-cyan-300 shadow-lg truncate">
+          <div class="bg-slate-900/95 border border-slate-800 px-3.5 py-1.5 sm:px-4 sm:py-1 rounded-md sm:rounded-full text-center max-w-[94vw] sm:max-w-2xl text-[11px] sm:text-xs font-mono text-cyan-300 shadow-xl break-words leading-tight">
             ${caption}
           </div>
         ` : ''}
@@ -882,7 +887,7 @@ function openLightbox(index = 0) {
         <!-- Horizontal Thumbnail Preview Strip (All Project Images) -->
         ${gallery.length > 1 ? `
           <div class="w-full flex items-center justify-center">
-            <div id="lightbox-thumb-strip" class="flex items-center gap-2 overflow-x-auto max-w-full py-1.5 px-3 bg-slate-950/90 border border-slate-800 rounded-lg scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+            <div id="lightbox-thumb-strip" class="flex items-center gap-2 overflow-x-auto max-w-[95vw] sm:max-w-full py-1.5 px-3 bg-slate-950/90 border border-slate-800 rounded-lg scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
               ${gallery.map((thumbItem, tIdx) => {
                 const tUrl = typeof thumbItem === 'string' ? thumbItem : (thumbItem ? thumbItem.url : '');
                 const isActive = tIdx === currentLightboxIndex;

@@ -172,45 +172,45 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        <a href="index.html" class="nav-link text-cyan-400 font-bold border-b-2 border-cyan-400 py-1">Home</a>
-        <a href="about.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1">About</a>
-        <a href="all-projects.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1">All Projects</a>
-        <a href="architecture.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1">Architecture</a>
-        <a href="mep.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1">MEP Systems</a>
-        <a href="point-cloud.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1">Point Cloud to BIM</a>
-        <a href="autocad.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1">AutoCAD Services</a>
+      <!-- Desktop Navigation Links (Visible on lg: 1024px and above) -->
+      <nav class="hidden lg:flex items-center space-x-3 xl:space-x-6 text-xs xl:text-sm font-medium whitespace-nowrap">
+        <a href="index.html" class="nav-link text-cyan-400 font-bold border-b-2 border-cyan-400 py-1 shrink-0">Home</a>
+        <a href="about.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1 shrink-0">About</a>
+        <a href="all-projects.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1 shrink-0">All Projects</a>
+        <a href="architecture.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1 shrink-0">Architecture</a>
+        <a href="mep.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1 shrink-0">MEP Systems</a>
+        <a href="point-cloud.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1 shrink-0">Point Cloud to BIM</a>
+        <a href="autocad.html" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors py-1 shrink-0">AutoCAD Services</a>
       </nav>
 
       <!-- Right Header Actions -->
-      <div class="hidden md:flex items-center space-x-4">
+      <div class="hidden lg:flex items-center space-x-3 xl:space-x-4 shrink-0">
         <!-- CTA Quote Button -->
-        <button class="open-contact-modal px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm rounded-xl transition-all shadow-lg shadow-cyan-950/50 flex items-center space-x-2">
+        <button class="open-contact-modal whitespace-nowrap px-4 py-2 xl:px-5 xl:py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs xl:text-sm rounded-md transition-all shadow-lg shadow-cyan-950/50 flex items-center space-x-1.5 cursor-pointer shrink-0">
           <span>Request BIM Quote</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </button>
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <div class="flex items-center space-x-3 md:hidden">
-        <button id="mobile-menu-btn" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-gray-300 hover:text-white focus:outline-none">
+      <!-- Mobile & Tablet Hamburger Button (Visible below lg: 1024px) -->
+      <div class="flex items-center space-x-3 lg:hidden">
+        <button id="mobile-menu-btn" class="p-2.5 rounded-md bg-slate-900 border border-slate-800 text-gray-300 hover:text-white focus:outline-none cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Toggle navigation menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
       </div>
     </div>
 
     <!-- Mobile Dropdown Navigation -->
-    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-slate-950 px-4 pt-3 pb-6 space-y-3">
-      <a href="index.html" class="block py-2 text-base font-medium text-cyan-400 font-bold">Home</a>
-      <a href="about.html" class="block py-2 text-base font-medium text-gray-300 hover:text-cyan-400">About</a>
-      <a href="all-projects.html" class="block py-2 text-base font-medium text-gray-300 hover:text-cyan-400">All Projects</a>
-      <a href="architecture.html" class="block py-2 text-base font-medium text-gray-300 hover:text-cyan-400">Architecture</a>
-      <a href="mep.html" class="block py-2 text-base font-medium text-gray-300 hover:text-cyan-400">MEP Systems</a>
-      <a href="point-cloud.html" class="block py-2 text-base font-medium text-gray-300 hover:text-cyan-400">Point Cloud to BIM</a>
-      <a href="autocad.html" class="block py-2 text-base font-medium text-gray-300 hover:text-cyan-400">AutoCAD Services</a>
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-800 bg-slate-950 px-4 pt-3 pb-6 space-y-1 shadow-2xl">
+      <a href="index.html" class="flex items-center px-3 py-3 text-base font-medium text-cyan-400 font-bold rounded-md hover:bg-slate-900 min-h-[44px]">Home</a>
+      <a href="about.html" class="flex items-center px-3 py-3 text-base font-medium text-gray-300 hover:text-cyan-400 rounded-md hover:bg-slate-900 min-h-[44px]">About</a>
+      <a href="all-projects.html" class="flex items-center px-3 py-3 text-base font-medium text-gray-300 hover:text-cyan-400 rounded-md hover:bg-slate-900 min-h-[44px]">All Projects</a>
+      <a href="architecture.html" class="flex items-center px-3 py-3 text-base font-medium text-gray-300 hover:text-cyan-400 rounded-md hover:bg-slate-900 min-h-[44px]">Architecture</a>
+      <a href="mep.html" class="flex items-center px-3 py-3 text-base font-medium text-gray-300 hover:text-cyan-400 rounded-md hover:bg-slate-900 min-h-[44px]">MEP Systems</a>
+      <a href="point-cloud.html" class="flex items-center px-3 py-3 text-base font-medium text-gray-300 hover:text-cyan-400 rounded-md hover:bg-slate-900 min-h-[44px]">Point Cloud to BIM</a>
+      <a href="autocad.html" class="flex items-center px-3 py-3 text-base font-medium text-gray-300 hover:text-cyan-400 rounded-md hover:bg-slate-900 min-h-[44px]">AutoCAD Services</a>
       <div class="pt-3 border-t border-slate-800">
-        <button class="open-contact-modal w-full py-3 bg-cyan-600 text-white font-semibold rounded-xl text-center">
+        <button class="open-contact-modal w-full py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-md text-center cursor-pointer min-h-[48px] flex items-center justify-center">
           Request BIM Quote
         </button>
       </div>
@@ -218,27 +218,27 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="relative py-16 lg:py-24 overflow-hidden bg-grid-pattern border-b border-slate-800/80">
+  <section class="relative py-12 sm:py-16 lg:py-24 overflow-hidden bg-grid-pattern border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         <!-- Hero Text -->
-        <div class="lg:col-span-7 space-y-6 text-left">
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
+        <div class="lg:col-span-7 space-y-4 sm:space-y-6 text-left">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-[11px] sm:text-xs font-mono font-semibold">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
             <span>Available for Remote BIM Projects & Consultancy</span>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-100 tracking-tight leading-[1.15]">
-            Revit BIM Modeling & Coordination for <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Architecture and MEP</span>
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-100 tracking-tight leading-[1.2] sm:leading-[1.15]">
+            Revit BIM Modeling &amp; MEP Coordination <span class="hidden sm:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">for Architecture and MEP</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl">
-            Accurate models from <strong class="text-white">CAD, PDF & Point Clouds</strong> — with coordinated deliverables ready for <strong class="text-white">design, documentation and construction.</strong>
+          <p class="text-sm sm:text-lg text-gray-300 leading-relaxed max-w-3xl">
+            Accurate BIM models and coordinated deliverables for <strong class="text-white">Architecture, MEP and Scan-to-BIM</strong> projects.
           </p>
 
           <!-- Core Value Badges -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs font-mono">
+          <div class="hidden sm:grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs font-mono">
             <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-md">
               <span class="block font-bold text-cyan-400 text-sm">Revit Architecture/MEP</span>
               <span class="text-gray-400">Full Lifecycle Modeling</span>
@@ -249,38 +249,39 @@
             </div>
             <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-md col-span-2 sm:col-span-1">
               <span class="block font-bold text-blue-400 text-sm">Navisworks</span>
-              <span class="text-gray-400">Navisworks Coordination</span>
+              <span class="text-gray-400">Clash Coordination</span>
             </div>
           </div>
 
           <!-- Hero Action Buttons -->
-          <div class="pt-3 flex flex-wrap gap-4">
-            <a href="#selected-projects" class="px-7 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-md transition-all shadow-lg shadow-cyan-950/50 inline-flex items-center space-x-2">
+          <div class="pt-2 sm:pt-3 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="#selected-projects" class="w-full sm:w-auto px-7 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm rounded-md transition-all shadow-lg shadow-cyan-950/50 inline-flex items-center justify-center space-x-2 cursor-pointer min-h-[48px]">
               <span>View Projects</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </a>
-            <button class="open-contact-modal px-7 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-gray-200 hover:text-white font-bold rounded-md transition-all inline-flex items-center space-x-2">
-              <span>Let's Work Together</span>
+            <button class="open-contact-modal w-full sm:w-auto px-7 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-gray-200 hover:text-white font-bold text-sm rounded-md transition-all inline-flex items-center justify-center space-x-2 cursor-pointer min-h-[48px]">
+              <span>Request a Quote</span>
               <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
           </div>
         </div>
 
         <!-- Hero Featured Media Card -->
-        <div class="lg:col-span-5">
+        <div class="lg:col-span-5 pt-2 lg:pt-0">
           <div class="relative rounded-md overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl p-2 group">
             <img 
               src="/src/assets/images/hero/hero.webp" 
               alt="Revit 3D BIM Model Showcase by Mirja Riyadh" 
               class="w-full aspect-video object-cover rounded-sm"
               referrerPolicy="no-referrer"
+              loading="eager"
             />
-            <div class="p-4 flex items-center justify-between">
+            <div class="p-3 sm:p-4 flex items-center justify-between">
               <div>
-                <p class="text-xs font-mono text-cyan-400 uppercase">Featured Master Model</p>
-                <p class="text-sm font-bold text-gray-200">High-End Pharmaceutical 3D BIM Model</p>
+                <p class="text-[10px] sm:text-xs font-mono text-cyan-400 uppercase">Featured Master Model</p>
+                <p class="text-xs sm:text-sm font-bold text-gray-200">Pharmaceutical 3D BIM Model</p>
               </div>
-              <a href="project-details.html?id=project-01" class="px-3 py-1.5 bg-slate-800 hover:bg-cyan-600 text-xs font-semibold rounded transition-colors text-white">
+              <a href="project-details.html?id=project-01" class="px-3 py-1.5 bg-slate-800 hover:bg-cyan-600 text-xs font-semibold rounded transition-colors text-white min-h-[36px] flex items-center">
                 Inspect 3D Model
               </a>
             </div>
@@ -557,24 +558,16 @@
     </div>
   </section>
 
-  <!-- Complete End-to-End BIM Workflow Section -->
-  <section class="py-16 bg-slate-900/40 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">END-TO-END METHODOLOGY</span>
-        <h2 class="text-3xl font-extrabold text-white tracking-tight">Structured BIM Execution Workflow</h2>
-        <p class="text-gray-400 text-sm mt-2">A structured BIM workflow focused on coordination, clash detection, and construction-ready documentation.</p>
-      </div>
-
-  <!-- Selected Projects Showcase Section (12 Projects Grid) -->
-  <section id="selected-projects" class="py-16 bg-slate-950 border-b border-slate-800/80">
+  <!-- Selected Projects Showcase Section (Top 3 on mobile, 12 on desktop) -->
+  <section id="selected-projects" class="py-12 sm:py-16 bg-slate-950 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header with Category Filter Buttons & Search Filter -->
       <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
         <div>
           <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest block mb-1">PORTFOLIO</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Selected Projects</h2>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">Featured BIM Projects</h2>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Verified models and coordinated deliverables across architectural, MEP, and scan-to-BIM scopes.</p>
         </div>
 
         <!-- Search Bar and Filter Buttons Combo -->
@@ -588,31 +581,42 @@
               type="text" 
               id="home-project-search" 
               placeholder="Search projects, software, LOD..." 
-              class="w-full pl-9 pr-3.5 py-2 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
+              class="w-full pl-9 pr-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-md text-xs font-mono text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
             />
           </div>
 
-          <!-- Category Filter Buttons -->
-          <div class="flex items-center space-x-1.5 overflow-x-auto p-1 bg-slate-900 border border-slate-800 rounded-lg scrollbar-none shrink-0">
-            <button class="selected-filter-btn px-3.5 py-1.5 rounded-md text-xs font-mono font-bold transition-all bg-[#009FB7] text-white shadow" data-category="all">All</button>
-            <button class="selected-filter-btn px-3.5 py-1.5 rounded-md text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="point-cloud">Point Cloud</button>
-            <button class="selected-filter-btn px-3.5 py-1.5 rounded-md text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="architecture">Architectural</button>
-            <button class="selected-filter-btn px-3.5 py-1.5 rounded-md text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="mep">MEP Systems</button>
-            <button class="selected-filter-btn px-3.5 py-1.5 rounded-md text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="autocad">AutoCAD</button>
+          <!-- Category Filter Buttons (Smooth Horizontal Scroll on Mobile) -->
+          <div class="flex items-center space-x-1.5 overflow-x-auto p-1 bg-slate-900 border border-slate-800 rounded-md scrollbar-none shrink-0">
+            <button class="selected-filter-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all bg-[#009FB7] text-white shadow" data-category="all">All</button>
+            <button class="selected-filter-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="point-cloud">Point Cloud</button>
+            <button class="selected-filter-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="architecture">Architectural</button>
+            <button class="selected-filter-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="mep">MEP Systems</button>
+            <button class="selected-filter-btn px-3.5 py-2 rounded text-xs font-mono font-bold transition-all bg-transparent text-gray-400 hover:text-white" data-category="autocad">AutoCAD</button>
           </div>
         </div>
       </div>
 
-      <!-- 8 Projects Grid (4 cols on lg, 2 cols on sm) -->
+      <!-- Projects Grid (Top 3 on Mobile by Default, 12 on Desktop) -->
       <div id="selected-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
 
+      <!-- Mobile Expand / Collapse Toggle Button -->
+      <div id="mobile-projects-toggle-wrapper" class="mt-6 text-center sm:hidden">
+        <button 
+          id="mobile-projects-toggle-btn" 
+          onclick="window.toggleMobileFeaturedProjects()"
+          class="w-full py-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-cyan-400 font-mono font-bold text-xs rounded-md transition-all cursor-pointer min-h-[44px]"
+        >
+          Show More Featured Projects (9 more) ↓
+        </button>
+      </div>
+
       <!-- View All Projects Button -->
-      <div class="mt-10 text-center">
+      <div class="mt-8 sm:mt-10 text-center">
         <a 
           href="all-projects.html" 
-          class="inline-flex items-center space-x-2 px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-gray-200 hover:text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl border border-slate-800 hover:border-cyan-500/50 transition-all shadow-lg hover:shadow-cyan-950/40 group"
+          class="inline-flex items-center justify-center space-x-2 w-full sm:w-auto px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-gray-200 hover:text-white font-mono font-bold text-xs uppercase tracking-wider rounded-md border border-slate-800 hover:border-cyan-500/50 transition-all shadow-lg hover:shadow-cyan-950/40 group min-h-[48px]"
         >
-          <span>EXPLORE ALL PROJECTS</span>
+          <span>VIEW ALL PROJECTS</span>
           <svg class="w-4 h-4 text-cyan-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
       </div>
@@ -620,23 +624,23 @@
     </div>
   </section>
 
-  <!-- Specializations Category Cards Grid -->
-  <section class="py-16 bg-slate-950 border-b border-slate-800/80">
+  <!-- Specializations Category Cards Grid (Services) -->
+  <section id="services" class="py-12 sm:py-16 bg-slate-950 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
         <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">BIM MODELING & COORDINATION</span>
-        <h2 class="text-3xl font-extrabold text-gray-100">Professional Engineering Services</h2>
-        <p class="text-gray-400 text-sm mt-2">Comprehensive architectural, structural, and mechanical modeling services conforming to international LOD guidelines.</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-100">Professional Engineering Services</h2>
+        <p class="text-gray-400 text-xs sm:text-sm mt-2">Comprehensive architectural, structural, and mechanical modeling services conforming to international LOD guidelines.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         
         <!-- Architecture Card -->
-        <a href="architecture.html" class="p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
-          <div class="w-12 h-12 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+        <a href="architecture.html" class="p-5 sm:p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">Architectural BIM</h3>
+          <h3 class="text-base sm:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">Architectural BIM</h3>
           <p class="text-xs text-gray-400 mt-2 leading-relaxed">High-precision 3D architectural modeling (LOD-Based BIM Modeling), custom Revit families, facade curtain walls, and building envelopes.</p>
           <span class="mt-4 inline-flex items-center space-x-1 text-xs font-mono text-cyan-400">
             <span>Explore Architecture</span>
@@ -645,11 +649,11 @@
         </a>
 
         <!-- MEP Systems Card -->
-        <a href="mep.html" class="p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
-          <div class="w-12 h-12 rounded bg-blue-950 border border-blue-500/30 text-blue-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+        <a href="mep.html" class="p-5 sm:p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded bg-blue-950 border border-blue-500/30 text-blue-400 flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">MEP Systems & Clash</h3>
+          <h3 class="text-base sm:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">MEP Systems & Clash</h3>
           <p class="text-xs text-gray-400 mt-2 leading-relaxed">HVAC ducting, domestic plumbing, fire sprinklers, electrical trays, and Navisworks hard clash detection & resolution matrix.</p>
           <span class="mt-4 inline-flex items-center space-x-1 text-xs font-mono text-cyan-400">
             <span>Explore MEP Systems</span>
@@ -658,11 +662,11 @@
         </a>
 
         <!-- Point Cloud Card -->
-        <a href="point-cloud.html" class="p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
-          <div class="w-12 h-12 rounded bg-emerald-950 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+        <a href="point-cloud.html" class="p-5 sm:p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded bg-emerald-950 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">Point Cloud to BIM</h3>
+          <h3 class="text-base sm:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">Point Cloud to BIM</h3>
           <p class="text-xs text-gray-400 mt-2 leading-relaxed">3D laser scan registration (.e57/.rcp), millimeter-accurate as-built digital twins, heritage conservation, & existing condition modeling.</p>
           <span class="mt-4 inline-flex items-center space-x-1 text-xs font-mono text-cyan-400">
             <span>Explore Scan-to-BIM</span>
@@ -671,11 +675,11 @@
         </a>
 
         <!-- AutoCAD Card -->
-        <a href="autocad.html" class="p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
-          <div class="w-12 h-12 rounded bg-indigo-950 border border-indigo-500/30 text-indigo-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+        <a href="autocad.html" class="p-5 sm:p-6 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-md card-hover block group">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded bg-indigo-950 border border-indigo-500/30 text-indigo-400 flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">Documentation & CAD</h3>
+          <h3 class="text-base sm:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors">Documentation & CAD</h3>
           <p class="text-xs text-gray-400 mt-2 leading-relaxed">Permit set production, detailed architectural drawings, structural shop drawings, municipal sets, and PDF to CAD conversion.</p>
           <span class="mt-4 inline-flex items-center space-x-1 text-xs font-mono text-cyan-400">
             <span>Explore Documentation</span>
@@ -684,6 +688,107 @@
         </a>
 
       </div>
+    </div>
+  </section>
+
+  <!-- Complete End-to-End BIM Workflow Section -->
+  <section class="py-12 sm:py-16 bg-slate-900/40 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">END-TO-END METHODOLOGY</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Structured BIM Execution Workflow</h2>
+        <p class="text-gray-400 text-xs sm:text-sm mt-2">A rigorous, quality-assured process ensuring zero site collisions, millimeter accuracy, and code compliance.</p>
+      </div>
+
+      <!-- 6-Step Workflow Flowchart Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+        
+        <!-- Step 1 -->
+        <div class="bg-slate-950 border border-slate-800 rounded-md p-4 sm:p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
+          <div>
+            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
+              01
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1.5">Input & Scan Ingestion</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Laser scan point cloud (.e57, .rcp), 2D CAD DWG, PDF blueprints, or design sketches.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
+            ReCap · Faro · CAD
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-slate-950 border border-slate-800 rounded-md p-4 sm:p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
+          <div>
+            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
+              02
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1.5">Revit BIM Modeling</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Parametric architectural elements, wall assemblies, custom families, and level grids setup.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
+            Autodesk Revit · RVT
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-slate-950 border border-slate-800 rounded-md p-4 sm:p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
+          <div>
+            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
+              03
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1.5">Architectural & MEP</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">HVAC duct routing, domestic water piping, fire suppression, cable trays, and equipment.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
+            LOD 200 – LOD 400
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-slate-950 border border-slate-800 rounded-md p-4 sm:p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
+          <div>
+            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
+              04
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1.5">BIM Coordination</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Federation of architectural, structural, and multi-trade MEP discipline models.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
+            Multi-Trade Matrix
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="bg-slate-950 border border-slate-800 rounded-md p-4 sm:p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
+          <div>
+            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
+              05
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1.5">Clash Audit & Reports</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Navisworks clash detection, tolerance clearing, spatial conflict resolution, and audit logs.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
+            Navisworks Manage
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="bg-slate-950 border border-slate-800 rounded-md p-4 sm:p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
+          <div>
+            <div class="w-8 h-8 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-xs flex items-center justify-center mb-3">
+              06
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1.5">Documentation & Handover</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Permit drawings, construction sheet sets, schedules, IFC openBIM files, and digital twin RVT.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 text-[10px] font-mono text-cyan-400">
+            PDF · IFC · NWD · RVT
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -873,24 +978,24 @@
   </section>
 
   <!-- Client-Focused Bottom Call To Action (CTA) Section -->
-  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-800 text-center">
+  <section class="py-14 sm:py-16 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-800 text-center">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
         Have a BIM project in mind?
       </h2>
 
-      <p class="text-gray-300 text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-        Let's discuss your project requirements, scope, and deliverables.
+      <p class="text-gray-300 text-sm sm:text-base mt-2 sm:mt-3 max-w-2xl mx-auto leading-relaxed">
+        Let's discuss your requirements, scope, and deliverables.
       </p>
 
-      <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <button class="open-contact-modal px-8 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm rounded-md transition-all shadow-xl shadow-cyan-950/50 inline-flex items-center space-x-2">
-          <span>Start a Project</span>
+      <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto">
+        <button class="open-contact-modal w-full sm:w-auto px-8 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm rounded-md transition-all shadow-xl shadow-cyan-950/50 inline-flex items-center justify-center space-x-2 cursor-pointer min-h-[48px]">
+          <span>Request a Quote</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </button>
 
-        <button class="open-contact-modal px-8 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-gray-200 hover:text-white font-bold text-sm rounded-md transition-all inline-flex items-center space-x-2">
-          <span>Contact Me</span>
+        <button class="open-contact-modal w-full sm:w-auto px-8 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-gray-200 hover:text-white font-bold text-sm rounded-md transition-all inline-flex items-center justify-center space-x-2 cursor-pointer min-h-[48px]">
+          <span>Let's Work Together</span>
         </button>
       </div>
     </div>

@@ -70,16 +70,17 @@ function autoInitCategoryGrids() {
 }
 
 /* 12 Prioritized Featured Project IDs for Homepage Showcase */
+/* Top 3 strictly demonstrate: 1. Revit BIM Modeling, 2. MEP Coordination / Clash Detection, 3. Point Cloud to BIM (Scan-to-BIM) */
 const FEATURED_PROJECT_PRIORITY_IDS = [
-  'project-10', // Point Cloud to Revit (Residential)
+  'project-01', // 1. Revit BIM Modeling: High-End Pharmaceutical 3D BIM Model (LOD 350)
+  'project-02', // 2. MEP Coordination: HVAC Project 3D BIM Model
+  'project-10', // 3. Point Cloud to BIM: Point Cloud to Revit (Residential Laser Scan)
   'project-16', // Point Cloud to Revit (Hospital Main Building)
-  'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
-  'project-02', // HVAC Project 3D BIM Model
   'project-24', // Hotel Resort MEP 3D BIM Model
-  'project-22', // Spa Center Architectural & MEP BIM
   'project-25', // 4601 S University Ave Architectural & MEP BIM
-  'project-01', // High-End Pharmaceutical 3D BIM Model (LOD 350)
+  'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
   'project-08', // Incepta Pharmaceutical Facility BIM (LOD 400)
+  'project-22', // Spa Center Architectural & MEP BIM
   'project-23', // Construction City Permit Set (Documentation)
   'project-04', // Healthcare Facility 3D BIM Model
   'project-06'  // East MC Kinny Residential As-Built BIM
@@ -92,16 +93,16 @@ function getProjectMetadata(project) {
   let scopeTag = '3D BIM Modeling · Documentation';
 
   if (project.id === 'project-01' || project.id === 'project-08' || project.buildingType === 'pharmaceutical') {
-    categoryLabel = 'Industrial / MEP BIM';
+    categoryLabel = 'Revit BIM Modeling';
     scopeTag = 'Pharmaceutical Facility · Cleanroom · MEP';
   } else if (cats.includes('point-cloud')) {
     categoryLabel = 'Point Cloud → BIM';
     scopeTag = 'Existing Condition · Laser Scan · As-Built';
   } else if (cats.includes('mep') && cats.includes('architecture')) {
-    categoryLabel = 'Architectural & MEP BIM';
+    categoryLabel = 'Architecture & MEP BIM';
     scopeTag = 'Multidisciplinary · Clash Coordination';
   } else if (cats.includes('mep')) {
-    categoryLabel = 'MEP BIM';
+    categoryLabel = 'MEP Coordination';
     scopeTag = 'HVAC Ductwork · Piping · Clash Detection';
   } else if (cats.includes('autocad') && !cats.includes('architecture')) {
     categoryLabel = 'CAD & Documentation';
@@ -116,8 +117,9 @@ function getProjectMetadata(project) {
 
 let homeSelectedCategory = 'all';
 let homeSearchQuery = '';
+let mobileShowAllProjects = false;
 
-/* Render 12 Projects for the Home Page Showcase with Category & Search support */
+/* Render 12 Projects for the Home Page Showcase with Category, Search & Mobile-First Prioritization */
 function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
   const container = document.getElementById('selected-projects-grid');
   if (!container) return;
@@ -185,15 +187,20 @@ function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
     return;
   }
 
-  container.innerHTML = displayProjects.map(project => {
+  const isDefaultOverview = (!categoryFilter || categoryFilter === 'all') && (!searchQuery || searchQuery.trim() === '');
+
+  const cardsHtml = displayProjects.map((project, idx) => {
     const { categoryLabel, scopeTag } = getProjectMetadata(project);
     const thumbnail = project.thumbnail || project.image || 
       (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
     const lod = project.lod || 'LOD 350';
     const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
+    
+    // On mobile, hide projects beyond index 2 by default if in default showcase view
+    const mobileClass = (isDefaultOverview && idx >= 3 && !mobileShowAllProjects) ? 'mobile-project-collapsed' : '';
 
     return `
-      <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+      <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40 ${mobileClass}">
         <div>
           <!-- Thumbnail & Category Tag (16:9 standard ratio) -->
           <div class="relative aspect-video overflow-hidden bg-slate-950">
@@ -234,7 +241,7 @@ function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
 
         <!-- Footer Action -->
         <div class="px-4 pb-4 pt-2">
-          <a href="project-details.html?id=${project.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
+          <a href="project-details.html?id=${project.id}" class="w-full py-2.5 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all min-h-[44px]">
             <span>View Project</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </a>
@@ -243,8 +250,33 @@ function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
     `;
   }).join('');
 
+  container.innerHTML = cardsHtml;
+
+  // Handle Mobile "Show More / Show Less" toggle if needed
+  const mobileToggleContainer = document.getElementById('mobile-projects-toggle-wrapper');
+  if (isDefaultOverview && displayProjects.length > 3) {
+    if (mobileToggleContainer) {
+      mobileToggleContainer.classList.remove('hidden');
+      const toggleBtn = document.getElementById('mobile-projects-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.textContent = mobileShowAllProjects 
+          ? 'Show Top 3 Projects ↑' 
+          : `Show More Featured Projects (${displayProjects.length - 3} more) ↓`;
+      }
+    }
+  } else if (mobileToggleContainer) {
+    mobileToggleContainer.classList.add('hidden');
+  }
+
   initLazyImages(container);
 }
+
+/* Toggle mobile projects expansion */
+window.toggleMobileFeaturedProjects = function() {
+  mobileShowAllProjects = !mobileShowAllProjects;
+  renderSelectedProjects(homeSelectedCategory, homeSearchQuery);
+  trackBimEvent('mobile_projects_toggle', { expanded: mobileShowAllProjects });
+};
 
 /* Home Page Selected Projects Filter Handler */
 function setupSelectedProjectFilters() {
@@ -467,15 +499,33 @@ function initMobileNav() {
   const mobileMenu = document.getElementById('mobile-menu');
   
   if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
     });
 
-    const links = mobileMenu.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
+    // Close when clicking any link or action button inside mobile menu
+    const interactiveElements = mobileMenu.querySelectorAll('a, button');
+    interactiveElements.forEach(el => {
+      el.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // Close when clicking outside of mobile menu
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 }
@@ -496,40 +546,104 @@ function highlightActiveNav() {
   });
 }
 
+/* Global Modal Controls (Accessible from anywhere) */
+window.openContactModal = function(service = '', message = '') {
+  const modal = document.getElementById('contact-modal');
+  if (!modal) {
+    console.warn('contact-modal element not found in DOM');
+    return;
+  }
+
+  // Ensure modal is displayed
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  // Prefill service / project type if provided
+  if (service) {
+    const projectTypeSelect = modal.querySelector('select[name="projectType"]') || modal.querySelector('select[name="service"]');
+    if (projectTypeSelect) {
+      for (let i = 0; i < projectTypeSelect.options.length; i++) {
+        const optVal = projectTypeSelect.options[i].value.toLowerCase();
+        const optTxt = projectTypeSelect.options[i].text.toLowerCase();
+        const s = service.toLowerCase();
+        if (optVal.includes(s) || optTxt.includes(s)) {
+          projectTypeSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  }
+
+  // Prefill message if provided
+  if (message) {
+    const msgTextarea = modal.querySelector('textarea[name="message"]') || document.getElementById('contact-message');
+    if (msgTextarea && !msgTextarea.value.trim()) {
+      msgTextarea.value = message;
+    }
+  }
+
+  // Auto focus first input
+  setTimeout(() => {
+    const firstInput = modal.querySelector('input[type="text"], input[type="email"], textarea');
+    if (firstInput) {
+      firstInput.focus();
+    }
+  }, 50);
+
+  trackBimEvent('contact_modal_open', { service: service || 'general' });
+};
+
+window.closeContactModal = function() {
+  const modal = document.getElementById('contact-modal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+};
+
 /* Contact Modal & Fast Quote Request Drawer */
 function initContactModal() {
   const modal = document.getElementById('contact-modal');
-  const openBtns = document.querySelectorAll('.open-contact-modal');
-  const closeBtns = document.querySelectorAll('.close-contact-modal');
   const contactForm = document.getElementById('contact-form');
 
-  openBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // Universal Click Event Delegation for open/close triggers
+  document.addEventListener('click', (e) => {
+    // Check if clicked element is or is inside an open button
+    const openTrigger = e.target.closest('.open-contact-modal, [data-open-contact-modal], a[href="#contact-modal"], a[href="#contact"]');
+    if (openTrigger) {
       e.preventDefault();
-      if (modal) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      }
-    });
+      const service = openTrigger.getAttribute('data-service') || '';
+      const message = openTrigger.getAttribute('data-message') || '';
+      window.openContactModal(service, message);
+      return;
+    }
+
+    // Check if clicked element is close trigger
+    const closeTrigger = e.target.closest('.close-contact-modal');
+    if (closeTrigger) {
+      e.preventDefault();
+      window.closeContactModal();
+      return;
+    }
+
+    // Close when clicking directly on backdrop
+    if (modal && e.target === modal) {
+      window.closeContactModal();
+    }
   });
 
-  closeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-    });
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      window.closeContactModal();
+      window.closeRequirementHelper();
+    }
   });
-
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-    });
-  }
 
   // Handle Form Submission with Formspree Endpoint
   if (contactForm) {
@@ -624,39 +738,47 @@ function initContactModal() {
   }
 }
 
-/* Project Requirement Helper Modal Trigger */
-function initRequirementHelper() {
-  const triggerBtns = document.querySelectorAll('.open-requirement-helper');
+/* Project Requirement Helper Modal */
+window.openRequirementHelper = function() {
   const modal = document.getElementById('requirement-helper-modal');
-  const closeBtns = document.querySelectorAll('.close-requirement-helper');
+  if (!modal) return;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+};
 
-  triggerBtns.forEach(btn => {
-    btn.onclick = (e) => {
+window.closeRequirementHelper = function() {
+  const modal = document.getElementById('requirement-helper-modal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+};
+
+function initRequirementHelper() {
+  const modal = document.getElementById('requirement-helper-modal');
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.open-requirement-helper, [data-open-requirement-helper]');
+    if (trigger) {
       e.preventDefault();
-      if (modal) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      }
-    };
-  });
+      window.openRequirementHelper();
+      return;
+    }
 
-  closeBtns.forEach(btn => {
-    btn.onclick = () => {
-      if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-    };
-  });
+    const closeTrigger = e.target.closest('.close-requirement-helper');
+    if (closeTrigger) {
+      e.preventDefault();
+      window.closeRequirementHelper();
+      return;
+    }
 
-  if (modal) {
-    modal.onclick = (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-    };
-  }
+    if (modal && e.target === modal) {
+      window.closeRequirementHelper();
+    }
+  });
 }
 
 /* Scroll To Top Button */

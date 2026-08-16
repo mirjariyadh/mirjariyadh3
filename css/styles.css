@@ -74,6 +74,35 @@ body {
   touch-action: pan-y;
 }
 
+/* Mobile-First Touch & Typography Optimizations */
+@media (max-width: 639px) {
+  /* Prevent iOS automatic zoom on form input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Touch target floor of 44px */
+  button, .button-touch, [role="button"] {
+    min-height: 44px;
+  }
+
+  /* Compact spacing for mobile card grids */
+  .mobile-compact-card {
+    padding: 1rem !important;
+  }
+
+  /* Collapsed state for mobile featured projects */
+  .mobile-project-collapsed {
+    display: none !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .mobile-project-collapsed {
+    display: flex !important;
+  }
+}
+
 .comparison-slider img {
   pointer-events: none;
   user-select: none;
