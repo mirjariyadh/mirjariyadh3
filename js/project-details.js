@@ -203,14 +203,66 @@ function renderProjectDetailsPage() {
   const mainImage = project.thumbnail || project.image || 
     (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
 
-  let galleryList = (project.images || project.gallery || []).map(img => 
-    typeof img === 'string' ? { url: img, caption: project.title } : img
-  );
+  // Extract gallery groups and flat gallery list for lightboxes
+  let galleryGroups = [];
+  let flatGalleryList = [];
 
-  if (!galleryList.length && mainImage) {
-    galleryList = [{ url: mainImage, caption: project.title }];
+  if (Array.isArray(project.galleryGroups) && project.galleryGroups.length > 0) {
+    project.galleryGroups.forEach(grp => {
+      const gName = grp.name || grp.groupTitle || grp.title || grp.group || 'General Drawings';
+      const grpImages = (grp.images || grp.gallery || []).map(img => 
+        typeof img === 'string' ? { url: img, caption: project.title, group: gName } : { ...img, group: img.group || gName }
+      );
+      if (grpImages.length > 0) {
+        galleryGroups.push({
+          name: gName,
+          images: grpImages
+        });
+        flatGalleryList.push(...grpImages);
+      }
+    });
+  } else {
+    // Check if flat images array has group properties
+    const rawImages = (project.images || project.gallery || []).map(img => 
+      typeof img === 'string' ? { url: img, caption: project.title } : img
+    );
+
+    const hasAnyGroup = rawImages.some(img => img && img.group);
+
+    if (hasAnyGroup) {
+      // Group by img.group preserving appearance order
+      const groupMap = new Map();
+      rawImages.forEach(img => {
+        const gName = img.group || 'Project Drawings';
+        if (!groupMap.has(gName)) {
+          groupMap.set(gName, []);
+        }
+        groupMap.get(gName).push(img);
+      });
+      groupMap.forEach((imgs, gName) => {
+        galleryGroups.push({
+          name: gName,
+          images: imgs
+        });
+      });
+      flatGalleryList = rawImages;
+    } else {
+      flatGalleryList = rawImages;
+      if (rawImages.length > 0) {
+        galleryGroups.push({
+          name: '',
+          images: rawImages
+        });
+      }
+    }
   }
 
+  if (!flatGalleryList.length && mainImage) {
+    flatGalleryList = [{ url: mainImage, caption: project.title }];
+    galleryGroups = [{ name: '', images: flatGalleryList }];
+  }
+
+  const galleryList = flatGalleryList;
   window.currentProjectGallery = galleryList;
 
   const deliverables = project.deliverables || project.keyFeatures || [
@@ -479,38 +531,65 @@ function renderProjectDetailsPage() {
         <!-- Technical Image Gallery with Lightbox Hook -->
         ${galleryList.length > 0 ? `
           <section class="bg-slate-900/50 border border-slate-800 rounded-md p-6 sm:p-8">
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-800">
               <h2 class="text-xl font-bold text-white flex items-center space-x-2.5">
                 <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
                 <span>Project Gallery & Technical Drawings</span>
               </h2>
-              <span class="text-xs font-mono text-gray-400">${galleryList.length} Visuals</span>
+              <span class="text-xs font-mono px-2.5 py-1 bg-slate-950 text-cyan-400 border border-slate-800 rounded-sm font-semibold">${galleryList.length} Visuals</span>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              ${galleryList.map((imgObj, idx) => `
-                <div 
-                  class="relative overflow-hidden rounded-md border border-slate-800 bg-slate-950 aspect-video group cursor-pointer hover:border-cyan-500/50 transition-colors" 
-                  onclick="window.openLightbox(${idx})"
-                  tabindex="0"
-                  role="button"
-                  aria-label="View Image ${idx + 1}"
-                  onkeydown="if(event.key==='Enter'||event.key===' ') { window.openLightbox(${idx}); event.preventDefault(); }"
-                >
-                  <img 
-                    src="${imgObj.url}" 
-                    alt="${imgObj.caption || project.title}" 
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                    loading="lazy" 
-                    referrerPolicy="no-referrer" 
-                  />
-                  <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-3 py-1.5 bg-slate-900 text-cyan-300 text-xs font-mono font-bold rounded border border-cyan-500/40 shadow-lg flex items-center space-x-1.5">
-                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                      <span>Inspect Drawing</span>
-                    </span>
-                  </div>
-                </div>
-              `).join('')}
+
+            <!-- Grouped Gallery Container -->
+            <div class="space-y-8">
+              ${(() => {
+                let globalIdx = 0;
+                return galleryGroups.map(grp => {
+                  const hasGroupName = Boolean(grp.name && grp.name.trim().length > 0 && (galleryGroups.length > 1 || grp.name.toLowerCase() !== 'general drawings'));
+                  return `
+                    <div class="space-y-4">
+                      ${hasGroupName ? `
+                        <div class="flex items-center justify-between pt-1 pb-1">
+                          <div class="flex items-center space-x-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                            <h3 class="text-sm font-mono font-bold text-cyan-300 uppercase tracking-wider">${grp.name}</h3>
+                          </div>
+                          <span class="text-[11px] font-mono text-gray-500">${grp.images.length} Drawing${grp.images.length > 1 ? 's' : ''}</span>
+                        </div>
+                      ` : ''}
+
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        ${grp.images.map(imgObj => {
+                          const currentIdx = globalIdx++;
+                          return `
+                            <div 
+                              class="relative overflow-hidden rounded-md border border-slate-800 bg-slate-950 aspect-video group cursor-pointer hover:border-cyan-500/50 transition-colors" 
+                              onclick="window.openLightbox(${currentIdx})"
+                              tabindex="0"
+                              role="button"
+                              aria-label="View Image ${currentIdx + 1}"
+                              onkeydown="if(event.key==='Enter'||event.key===' ') { window.openLightbox(${currentIdx}); event.preventDefault(); }"
+                            >
+                              <img 
+                                src="${imgObj.url}" 
+                                alt="${imgObj.caption || project.title}" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                                loading="lazy" 
+                                referrerPolicy="no-referrer" 
+                              />
+                              <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-3 py-1.5 bg-slate-900 text-cyan-300 text-xs font-mono font-bold rounded border border-cyan-500/40 shadow-lg flex items-center space-x-1.5">
+                                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                                  <span>Inspect Drawing</span>
+                                </span>
+                              </div>
+                            </div>
+                          `;
+                        }).join('')}
+                      </div>
+                    </div>
+                  `;
+                }).join('');
+              })()}
             </div>
           </section>
         ` : ''}
@@ -749,12 +828,14 @@ function openLightbox(index = 0) {
     const item = gallery[currentLightboxIndex];
     const imgUrl = typeof item === 'string' ? item : (item ? item.url : '');
     const caption = typeof item === 'object' && item && item.caption ? item.caption : (window.currentProject ? window.currentProject.title : '');
+    const groupName = typeof item === 'object' && item && item.group ? item.group : '';
 
     modal.innerHTML = `
       <!-- Top Bar: Counter & Close Button -->
       <div class="w-full max-w-7xl flex items-center justify-between px-2 sm:px-4 py-1 sm:py-2 text-white z-20 shrink-0">
-        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3.5 py-1.5 rounded border border-slate-700 shadow-md">
-          Image ${currentLightboxIndex + 1} of ${gallery.length}
+        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3.5 py-1.5 rounded border border-slate-700 shadow-md flex items-center space-x-1.5">
+          <span>Image ${currentLightboxIndex + 1} of ${gallery.length}</span>
+          ${groupName ? `<span class="text-gray-600">|</span><span class="text-gray-300 font-normal truncate max-w-[200px] sm:max-w-xs">${groupName}</span>` : ''}
         </span>
         <button id="lightbox-close-btn" class="bg-slate-900 hover:bg-cyan-600 text-white w-9 h-9 rounded flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer" aria-label="Close Lightbox">
           ✕

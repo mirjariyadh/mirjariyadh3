@@ -1,11 +1,28 @@
 /**
  * Portfolio Projects Data
- * Full 23 Projects list with structured metadata
+ * Full Projects list with structured metadata
  * 
  * category: Slugs for filtering ["architecture", "mep", "point-cloud", "autocad"]
  * discipline: Disciplines ["architecture", "mep", "point-cloud", "autocad", "coordination"]
  * buildingType: ["pharmaceutical", "residential", "commercial", "industrial", "hospitality", "healthcare", "educational"]
  * categoryName: Display text shown on website UI
+ * 
+ * Gallery Grouping Options (shown with group headings in project details page):
+ * Option A (Image object group field):
+ *   "images": [
+ *     {"url": "./src/assets/images/projects/example/p0.webp", "caption": "Floor Plan", "group": "Architectural Plans"},
+ *     {"url": "./src/assets/images/projects/example/p1.webp", "caption": "HVAC Duct Layout", "group": "MEP Coordination"}
+ *   ]
+ * 
+ * Option B (galleryGroups structure):
+ *   "galleryGroups": [
+ *     {
+ *       "name": "Architectural Plans",
+ *       "images": [
+ *         {"url": "./src/assets/images/projects/example/p0.webp", "caption": "Floor Plan"}
+ *       ]
+ *     }
+ *   ]
  */
 
 var PORTFOLIO_PROJECTS = [
@@ -21,72 +38,28 @@ var PORTFOLIO_PROJECTS = [
     "buildingType": "pharmaceutical",
     "thumbnail": "./src/assets/images/projects/dbl/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/dbl/p0.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p1.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p2.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p3.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p4.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p5.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p6.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p7.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p8.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p9.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p11.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p12.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p13.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p14.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p16.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p17.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p18.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p20.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p21.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p24.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p26.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      },
-      {
-        "url": "./src/assets/images/projects/dbl/p27.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details"
-      }
+      {"url": "./src/assets/images/projects/dbl/p0.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
+      {"url": "./src/assets/images/projects/dbl/p1.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
+      {"url": "./src/assets/images/projects/dbl/p2.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
+      {"url": "./src/assets/images/projects/dbl/p3.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
+      {"url": "./src/assets/images/projects/dbl/p4.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
+      {"url": "./src/assets/images/projects/dbl/p5.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
+      {"url": "./src/assets/images/projects/dbl/p6.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "MEP Detail Modeling"},
+      {"url": "./src/assets/images/projects/dbl/p7.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "MEP Detail Modeling"},
+      {"url": "./src/assets/images/projects/dbl/p8.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "MEP Detail Modeling"},
+      {"url": "./src/assets/images/projects/dbl/p9.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "MEP Detail Modeling"},
+      {"url": "./src/assets/images/projects/dbl/p11.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "MEP 3D Floor Plan"},
+      {"url": "./src/assets/images/projects/dbl/p12.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "MEP 3D Floor Plan"},
+      {"url": "./src/assets/images/projects/dbl/p13.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Clean Water Spool Drawing"},
+      {"url": "./src/assets/images/projects/dbl/p14.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Clean Water Spool Drawing"},
+      {"url": "./src/assets/images/projects/dbl/p16.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "HVAC Detail Coordination"},
+      {"url": "./src/assets/images/projects/dbl/p17.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "HVAC Detail Coordination"},
+      {"url": "./src/assets/images/projects/dbl/p18.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "HVAC Detail Coordination"},
+      {"url": "./src/assets/images/projects/dbl/p20.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Utility Room Industrial Cable Tray Modeling"},
+      {"url": "./src/assets/images/projects/dbl/p21.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Utility Room Industrial Cable Tray Modeling"},
+      {"url": "./src/assets/images/projects/dbl/p24.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Electrical Lighting Distribution"},
+      {"url": "./src/assets/images/projects/dbl/p26.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Schedule and Reports"},
+      {"url": "./src/assets/images/projects/dbl/p27.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Schedule and Reports"}
     ],
     "shortDesc": "Complete 3D Revit Architectural and MEP model (LOD 350) for a 60,000 sq.ft pharmaceutical facility, featuring parametric facade elements and material schedules.",
     "fullDesc": "Modeled from 2D CAD architectural blueprints into high-precision Autodesk Revit 3D environment. Includes comprehensive parametric family creation, material takeoffs, room tagging, elevation extraction, and 3D walkthrough views prepared for high-end pharmaceutical development.",
@@ -118,15 +91,9 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/hvac1/p1.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/hvac1/p1.webp", "caption": "MEP Project 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hvac1/p2.webp", "caption": "MEP Project 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hvac1/p3.webp", "caption": "MEP Project 3D BIM Model"
-      }
+      {"url": "./src/assets/images/projects/hvac1/p1.webp", "caption": "MEP Project 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hvac1/p2.webp", "caption": "MEP Project 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hvac1/p3.webp", "caption": "MEP Project 3D BIM Model"}
     ],
     "shortDesc": "2D CAD Concept into 3D installation-ready Revit model for a HVAC system, including ductwork, piping, and equipment layout with LOD 350.",
     "fullDesc": "Fully developed a 3D Revit model for a HVAC system, integrating ductwork, piping, and equipment layout with precise dimensions and installation-ready details. The model was created from 2D CAD drawings and includes detailed annotations, schedules, and clash detection to ensure seamless construction.",
@@ -164,33 +131,15 @@ var PORTFOLIO_PROJECTS = [
       {"url": "./src/assets/images/projects/4601-s-university-ave/p2.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
       {"url": "./src/assets/images/projects/4601-s-university-ave/p3.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
       {"url": "./src/assets/images/projects/4601-s-university-ave/p4.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p5.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p6.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p7.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p8.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p9.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p10.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p11.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p12.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/4601-s-university-ave/p13.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"
-      }
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p5.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p6.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p7.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p8.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p9.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p10.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p11.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p12.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p13.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"}
     ],
     "shortDesc": "2D CAD Concept into 3D installation-ready Revit model for a Architectual and MEP system.",
     "fullDesc": "Fully developed a 3D Revit model for a Architectural and MEP system, piping, and equipment layout with precise dimensions and installation-ready details. The model was created from cocept.",
@@ -222,21 +171,11 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/eco-park/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/eco-park/p0.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/eco-park/p1.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/eco-park/p2.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"
-      }
+      {"url": "./src/assets/images/projects/eco-park/p0.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p1.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p2.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"}
     ],
     "shortDesc": "SketchUp models into a millimeter-accurate Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
     "fullDesc": "Processed over 18GB of point cloud scan data (.e57 format) using Autodesk Recap Pro and imported into Revit. Reconstructed irregular historical brick masonry, tilted columns, original timber roof trusses, and exposed pipework with strict tolerance limits (<5mm deviation).",
@@ -266,42 +205,18 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/hlsl/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/hlsl/p0.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p1.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p2.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p3.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p4.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p5.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p6.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p7.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p8.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p9.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p10.webp", "caption": "Healthcare Facility 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/hlsl/p11.webp", "caption": "Healthcare Facility 3D BIM Model"
-      }
+      {"url": "./src/assets/images/projects/hlsl/p0.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p1.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p2.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p3.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p4.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p5.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p6.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p7.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p8.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p9.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p10.webp", "caption": "Healthcare Facility 3D BIM Model"},
+      {"url": "./src/assets/images/projects/hlsl/p11.webp", "caption": "Healthcare Facility 3D BIM Model"}
     ],
     "shortDesc": "2D CAD Concept to 3D Revit Architectural and MEP model (LOD 350) for a 65,000 sq.ft healthcare facility, featuring parametric facade elements and material schedules.",
     "fullDesc": "Developed a comprehensive 3D BIM model for a healthcare facility, integrating architectural and MEP systems with parametric facade elements and detailed material schedules.",
@@ -331,24 +246,12 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/spa-lodge-arc/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/spa-lodge-arc/p1.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-arc/p2.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-arc/p3.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-arc/p4.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-arc/p5.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-arc/p6.webp", "caption": "Hotel Resort 3D BIM Model"
-      }
+      {"url": "./src/assets/images/projects/spa-lodge-arc/p1.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-arc/p2.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-arc/p3.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-arc/p4.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-arc/p5.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-arc/p6.webp", "caption": "Hotel Resort 3D BIM Model"}
     ],
     "shortDesc": "Transformed 2D CAD drawings into a full functional 3D BIM model (LOD 350) for a hotel resort.",
     "fullDesc": "Developed a detailed drawing set and documentation report for a hotel resort project.",
@@ -377,21 +280,11 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/spa-lodge-mep/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/spa-lodge-mep/p1.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-mep/p2.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-mep/p3.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-mep/p4.webp", "caption": "Hotel Resort 3D BIM Model"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-mep/p5.webp", "caption": "Hotel Resort 3D BIM Model"
-      }
+      {"url": "./src/assets/images/projects/spa-lodge-mep/p1.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-mep/p2.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-mep/p3.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-mep/p4.webp", "caption": "Hotel Resort 3D BIM Model"},
+      {"url": "./src/assets/images/projects/spa-lodge-mep/p5.webp", "caption": "Hotel Resort 3D BIM Model"}
     ],
     "shortDesc": "Transformed 2D CAD drawings into a full functional MEP 3D BIM model (LOD 350) for a hotel resort.",
     "fullDesc": "Developed a detailed drawing set and documentation report for a hotel resort project.",
@@ -421,39 +314,17 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/east-mc-kinny/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p0.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p1.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p2.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p3.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p4.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p5.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p6.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p7.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p8.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p9.webp", "caption": "Architectural Residential Revit Model"
-      },
-      {
-        "url": "./src/assets/images/projects/east-mc-kinny/p10.webp", "caption": "Architectural Residential Revit Model"
-      }
+      {"url": "./src/assets/images/projects/east-mc-kinny/p0.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p1.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p2.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p3.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p4.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p5.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p6.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p7.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p8.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p9.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/east-mc-kinny/p10.webp", "caption": "Architectural Residential Revit Model"}
     ],
     "shortDesc": "Transformed 3D Faro point cloud scan data into a millimeter-accurate Revit As-Built model (LOD 400) for historic renovation.",
     "fullDesc": "Processed over 18GB of point cloud scan data (.e57 format) using Autodesk Recap Pro and imported into Revit. Reconstructed irregular historical brick masonry, tilted columns, original timber roof trusses, and exposed pipework with strict tolerance limits (<5mm deviation).",
@@ -484,15 +355,9 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/hvac2/p1.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/hvac2/p1.webp", "caption": "HVAC 3D BIM Model for Office Building"
-      },
-      {
-        "url": "./src/assets/images/projects/hvac2/p2.webp", "caption": "HVAC 3D BIM Model for Office Building"
-      },
-      {
-        "url": "./src/assets/images/projects/hvac2/p3.webp", "caption": "HVAC 3D BIM Model for Office Building"
-      }
+      {"url": "./src/assets/images/projects/hvac2/p1.webp", "caption": "HVAC 3D BIM Model for Office Building"},
+      {"url": "./src/assets/images/projects/hvac2/p2.webp", "caption": "HVAC 3D BIM Model for Office Building"},
+      {"url": "./src/assets/images/projects/hvac2/p3.webp", "caption": "HVAC 3D BIM Model for Office Building"}
     ],
     "shortDesc": "Concept to 3D Revit model for a HVAC system in an office building, including ductwork, piping, and equipment layout.",
     "fullDesc": "Developed a coordinated 3D Revit model from conceptual HVAC layouts for an office building, integrating precise ductwork, piping, and equipment layouts for construction readiness.",
@@ -523,57 +388,23 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/incepta/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/incepta/p1.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p2.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p3.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p4.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p5.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p6.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p7.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p8.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p9.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p10.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p11.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p12.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p13.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p15.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p16.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p17.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      },
-      {
-        "url": "./src/assets/images/projects/incepta/p18.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"
-      }
+      {"url": "./src/assets/images/projects/incepta/p1.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p2.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p3.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p4.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p5.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p6.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p7.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p8.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p9.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p10.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p11.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p12.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p13.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p15.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p16.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p17.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"},
+      {"url": "./src/assets/images/projects/incepta/p18.webp", "caption": "Architectural & MEP 3D BIM Model for Incepta Pharmaceutical"}
     ],
     "shortDesc": "2D CAD Concept into 3D Revit model for a pharmaceutical facility, including architectural clean room and MEP systems.",
     "fullDesc": "Converted 2D CAD concepts into a high-fidelity 3D Revit model for a pharmaceutical facility, integrating specialized architectural cleanroom layouts with fully coordinated MEP systems to meet strict regulatory and construction compliance.",
@@ -603,33 +434,15 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/marple-cross/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/marple-cross/p1.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p2.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p3.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p4.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p5.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p6.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p7.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p8.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      },
-      {
-        "url": "./src/assets/images/projects/marple-cross/p9.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"
-      }
+      {"url": "./src/assets/images/projects/marple-cross/p1.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p2.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p3.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p4.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p5.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p6.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p7.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p8.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"},
+      {"url": "./src/assets/images/projects/marple-cross/p9.webp", "caption": "Architectural Residence 3D BIM Model for Marple Cross"}
     ],
     "shortDesc": "Concept to 3D Revit model for a residential property, including detailed architectural elements and construction documentation.",
     "fullDesc": "Transformed schematic design concepts into a detailed 3D Revit model for a residential property, integrating precise architectural elements and automated construction documentation packages.",
@@ -659,12 +472,8 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p1/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p1/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p1/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p1/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
+      {"url": "./src/assets/images/projects/point-cloud-p1/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
     "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
@@ -694,12 +503,8 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p2/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p2/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p2/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p2/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
+      {"url": "./src/assets/images/projects/point-cloud-p2/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
     "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
@@ -729,15 +534,9 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p3/p1.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p3/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p3/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p3/p3.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p3/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
+      {"url": "./src/assets/images/projects/point-cloud-p3/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
+      {"url": "./src/assets/images/projects/point-cloud-p3/p3.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
     "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
@@ -767,24 +566,12 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p4/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p4/t0.webp", "caption": "Point Cloud to Revit Conversion for a School Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p4/p0.webp", "caption": "Point Cloud to Revit Conversion for a School Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p4/p1.webp", "caption": "Point Cloud to Revit Conversion for a School Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p4/p2.webp", "caption": "Point Cloud to Revit Conversion for a School Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p4/p3.webp", "caption": "Point Cloud to Revit Conversion for a School Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p4/p4.webp", "caption": "Point Cloud to Revit Conversion for a School Building"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p4/t0.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p0.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p1.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p2.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p3.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p4.webp", "caption": "Point Cloud to Revit Conversion for a School Building"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
     "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
@@ -814,27 +601,13 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p5/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p5/t0.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p5/p0.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p5/p1.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p5/p2.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p5/p3.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p5/p4.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p5/p5.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p5/t0.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p0.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p1.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p2.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p3.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p4.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p5.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a school building.",
     "fullDesc": "Converted high-density laser scan data into a highly detailed 3D Revit model for a school building, capturing accurate as-built architectural and structural elements for educational facility management.",
@@ -864,21 +637,11 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p6/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p6/t0.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p6/p0.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p6/p1.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p6/p2.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p6/p3.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p6/t0.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p0.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p1.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p2.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p3.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a historical residential building.",
     "fullDesc": "Converted high-density point cloud scan data into a highly detailed 3D Revit model for a historical residential building, capturing complex non-standard geometries for precise heritage preservation and documentation.",
@@ -908,21 +671,11 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p7/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p7/p0.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p7/p1.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p7/p2.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p7/p3.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p7/p4.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p7/p0.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p1.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p2.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p3.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p4.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a hospital building.",
     "fullDesc": "Converted high-density point cloud scan data into a highly detailed 3D Revit model for a hospital building, capturing complex as-built architectural layouts and critical healthcare infrastructure.",
@@ -952,18 +705,10 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p8/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p8/p0.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p8/p1.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p8/p2.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p8/p3.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p8/p0.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p8/p1.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p8/p2.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"},
+      {"url": "./src/assets/images/projects/point-cloud-p8/p3.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a office building.",
     "fullDesc": "Converted high-density point cloud scan data into a detailed 3D Revit model for a commercial office building, establishing an accurate as-built baseline for corporate spatial optimization and asset tracking.",
@@ -993,18 +738,10 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p9/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/point-cloud-p9/p0.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p9/p1.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p9/p2.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"
-      },
-      {
-        "url": "./src/assets/images/projects/point-cloud-p9/p3.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"
-      }
+      {"url": "./src/assets/images/projects/point-cloud-p9/p0.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"},
+      {"url": "./src/assets/images/projects/point-cloud-p9/p1.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"},
+      {"url": "./src/assets/images/projects/point-cloud-p9/p2.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"},
+      {"url": "./src/assets/images/projects/point-cloud-p9/p3.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a Hotel building.",
     "fullDesc": "Converted high-density point cloud scan data into a detailed 3D Revit model for a hotel building, capturing intricate hospitality layouts and structural frameworks for large-scale renovation and facility management.",
@@ -1035,18 +772,10 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/private-project-1/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/private-project-1/p0.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/private-project-1/p1.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/private-project-1/p2.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/private-project-1/p3.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"
-      }
+      {"url": "./src/assets/images/projects/private-project-1/p0.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/private-project-1/p1.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/private-project-1/p2.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/private-project-1/p3.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"}
     ],
     "shortDesc": "Architectural and MEP 3D BIM model for a private house.",
     "fullDesc": "Developed a fully integrated architectural and MEP 3D BIM model for a private house, delivering a coordinated parametric design optimized for seamless residential construction and system installation.",
@@ -1076,33 +805,15 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/renovation-p1/p1.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p1.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p2.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p3.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p4.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p5.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p6.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p7.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p8.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      },
-      {
-        "url": "./src/assets/images/projects/renovation-p1/p9.webp", "caption": "Architectural Renovation BIM Model for a Private House"
-      }
+      {"url": "./src/assets/images/projects/renovation-p1/p1.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p2.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p3.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p4.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p5.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p6.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p7.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p8.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
+      {"url": "./src/assets/images/projects/renovation-p1/p9.webp", "caption": "Architectural Renovation BIM Model for a Private House"}
     ],
     "shortDesc": "Architectural renovation BIM model for a private house, including detailed interior and exterior modeling.",
     "fullDesc": "Developed a high-fidelity architectural renovation BIM model for a private house, delivering comprehensive interior and exterior 3D parametric components to streamline modernization and spatial restructuring.",
@@ -1132,30 +843,14 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/sand-state/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/sand-state/p0.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      },
-      {
-        "url": "./src/assets/images/projects/sand-state/p1.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      },
-      {
-        "url": "./src/assets/images/projects/sand-state/p2.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      },
-      {
-        "url": "./src/assets/images/projects/sand-state/p3.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      },
-      {
-        "url": "./src/assets/images/projects/sand-state/p4.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      },
-      {
-        "url": "./src/assets/images/projects/sand-state/p5.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      },
-      {
-        "url": "./src/assets/images/projects/sand-state/p6.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      },
-      {
-        "url": "./src/assets/images/projects/sand-state/p7.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"
-      }
+      {"url": "./src/assets/images/projects/sand-state/p0.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
+      {"url": "./src/assets/images/projects/sand-state/p1.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
+      {"url": "./src/assets/images/projects/sand-state/p2.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
+      {"url": "./src/assets/images/projects/sand-state/p3.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
+      {"url": "./src/assets/images/projects/sand-state/p4.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
+      {"url": "./src/assets/images/projects/sand-state/p5.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
+      {"url": "./src/assets/images/projects/sand-state/p6.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
+      {"url": "./src/assets/images/projects/sand-state/p7.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"}
     ],
     "shortDesc": "Architectural model with detailed roof structure modeling for a residential project.",
     "fullDesc": "Developed a high-fidelity architectural BIM model for a residential project, featuring precise 3D parametric roof structure modeling to ensure structural integrity and flawless construction alignment.",
@@ -1187,39 +882,17 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/spa-lodge-1/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p0.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p1.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p2.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p3.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p4.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p5.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p6.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p7.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p8.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p9.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      },
-      {
-        "url": "./src/assets/images/projects/spa-lodge-1/p10.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"
-      }
+      {"url": "./src/assets/images/projects/spa-lodge-1/p0.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p1.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p2.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p3.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p4.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p5.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p6.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p7.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p8.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p9.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p10.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"}
     ],
     "shortDesc": "Architectural & MEP 3D BIM Model for a Spa Center",
     "fullDesc": "Developed a fully coordinated Architectural and MEP 3D BIM model for a spa center, integrating specialized wellness layouts with complex mechanical, electrical, and plumbing engineering systems.",
@@ -1251,57 +924,23 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/the-chase-house/t0.webp",
     "images": [
-      {
-        "url": "./src/assets/images/projects/the-chase-house/t0.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p0.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p01.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p1.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p2.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p3.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p4.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p5.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p6.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p7.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p8.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p9.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p10.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p11.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p12.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p13.webp", "caption": "Construction City permit set for a Residential Project"
-      },
-      {
-        "url": "./src/assets/images/projects/the-chase-house/p14.webp", "caption": "Construction City permit set for a Residential Project"
-      }
+      {"url": "./src/assets/images/projects/the-chase-house/t0.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p0.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p01.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p1.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p2.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p3.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p4.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p5.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p6.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p7.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p8.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p9.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p10.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p11.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p12.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p13.webp", "caption": "Construction City permit set for a Residential Project"},
+      {"url": "./src/assets/images/projects/the-chase-house/p14.webp", "caption": "Construction City permit set for a Residential Project"}
     ],
     "shortDesc": "Construction City permit set for a Residential Project, including detailed architectural and MEP documentation.",
     "fullDesc": "Developed a comprehensive, municipal-compliant construction permit set for a residential project, delivering fully coordinated architectural layouts and detailed MEP documentation to secure rapid city approval.",
