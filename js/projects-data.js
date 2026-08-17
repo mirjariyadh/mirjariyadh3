@@ -309,30 +309,34 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/eco-park/t0.webp",
     "images": [
+      {"url": "./src/assets/images/projects/eco-park/t0.webp", "caption": "Architectural Residential Revit Model"},
       {"url": "./src/assets/images/projects/eco-park/p0.webp", "caption": "Architectural Residential Revit Model"},
       {"url": "./src/assets/images/projects/eco-park/p1.webp", "caption": "Architectural Residential Revit Model"},
       {"url": "./src/assets/images/projects/eco-park/p2.webp", "caption": "Architectural Residential Revit Model"},
       {"url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"},
       {"url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"}
     ],
-    "shortDesc": "SketchUp models into a Point Cloud-verified Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
-    "fullDesc": "Processed over 18GB of point cloud scan data (.e57 format) using Autodesk Recap Pro and imported into Revit. Reconstructed irregular historical brick masonry, tilted columns, original timber roof trusses, and exposed pipework with strict tolerance limits (<5mm deviation).",
+    "shortDesc": "SketchUp models into a Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
+    "fullDesc": "This process transforms static SketchUp geometry into intelligent, metadata-rich Revit models at LOD 300. By replacing shapes with parametric components, teams secure reliable coordination, automated scheduling, and flawless construction documentation.",
     "lod": "LOD 300",
     "softwareUsed": [
       "Autodesk Revit",
-      "Navisworks"
+      "Sketchup",
+      "AutoCAD"
     ],
     "clientRegion": "Malaysia (Kuala Lumpur)",
     "completionDate": "March 2024",
     "areaSqFt": "7,200 sq.ft",
     "keyFeatures": [
-      "Point Cloud-verified modeling",
-      "Specialized parametric handling of complex, non-standard historic wall geometries",
-      "Accurate As-Built structural verification and structural load path modeling"
+      "ranslates static SketchUp meshes into intelligent, dimensionally flexible Revit system and loadable families",
+      "Embeds precise geometric data and critical non-graphical metadata for accurate construction verification",
+      "Enables automated, clash-free floor plans, dynamic material schedules, and reliable building lifecycles"
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture Modeling"
   },
+
+
   {
     "id": "project-25",
     "title": "Healthcare Facility 3D BIM Model",
