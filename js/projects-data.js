@@ -167,7 +167,106 @@ var PORTFOLIO_PROJECTS = [
     "categoryName": "Point Cloud to BIM"
   },
 
+
+  {
+    "id": "project-04",
+    "title": "Permit Set for 4601 S University Ave (Architectural & MEP 3D BIM Model)",
+    "category": [
+      "architecture",
+      "mep"
+    ],
+    "thumbnail": "./src/assets/images/projects/4601-s-university-ave/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p0.webp", "caption": "Cover Sheet for 4601 S University Ave Architectural & MEP 3D BIM Model", "group": "Cover Sheet"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p1.webp", "caption": "Informations & Symbols", "group": "Supporting and Details"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p2.webp", "caption": "Site Plans", "group": "Supporting and Details"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p3.webp", "caption": "Accessibility", "group": "Supporting and Details"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p4.webp", "caption": "Accessibility", "group": "Supporting and Details"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p5.webp", "caption": "Life Safety Plan", "group": "Parmit Plans"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p6.webp", "caption": "Floor Plan", "group": "Parmit Plans"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p7.webp", "caption": "Roof Plan", "group": "Parmit Plans"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p8.webp", "caption": "Architectural Elevations", "group": "Section & Elevations"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p9.webp", "caption": "Architectural Sections", "group": "Section & Elevations"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p10.webp", "caption": "Rest Room Details", "group": "Architectural Details"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p11.webp", "caption": "Door Schedule, Partition & Windows", "group": "Architectural Details"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p12.webp", "caption": "Water Supply Plan", "group": "Water System"},
+      {"url": "./src/assets/images/projects/4601-s-university-ave/p13.webp", "caption": "Waste Water Plan", "group": "Water System"}
+    ],
+    "shortDesc": "2D CAD Concept into Permit set Revit BIM model (Architectual and MEP system.)",
+    "fullDesc": "Transformed conceptual designs into a fully coordinated, permit-ready 3D Revit model, featuring precise architectural and MEP system dimensions, piping layouts, and installation-ready construction details.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk Autocad"
+    ],
+    "clientRegion": "United States",
+    "completionDate": "Sep 2024",
+    "areaSqFt": "8,700 sq.ft",
+    "keyFeatures": [
+      "Developed a code-compliant 3D BIM model integrating architectural structures with detailed MEP piping and equipment layouts.",
+      "Converted conceptual schematics into precise, parametric 3D components meeting local building and safety regulations.",
+      "Generated comprehensive technical annotations, accurate equipment schedules, and material take-offs required for agency plan review",
+      "Conducted automated clash detection to eliminate spatial conflicts, ensuring a seamless field installation and local code adherence."
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architectural & MEP Permit Set"
+  },
   
+
+  {
+    "id": "project-05",
+    "title": "Point Cloud to Revit Conversion for Barvirska Main Building",
+    "category": [
+      "point-cloud"
+    ],
+    "thumbnail": "./src/assets/images/projects/point-cloud-p7/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/point-cloud-p7/p0.webp", "caption": "Point Cloud Model", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p1.webp", "caption": "Revit BIM Model", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p2.webp", "caption": "3D Floor Plans", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p3.webp", "caption": "Ground Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p4.webp", "caption": "1st Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p5.webp", "caption": "2nd Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p6.webp", "caption": "3rd Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p7.webp", "caption": "4th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p8.webp", "caption": "5th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p9.webp", "caption": "6th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p10.webp", "caption": "7th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p11.webp", "caption": "8th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p12.webp", "caption": "9th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p13.webp", "caption": "10th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p14.webp", "caption": "11th Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p15.webp", "caption": "Roof Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p16.webp", "caption": "Section A", "group": "Elevations & Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p17.webp", "caption": "Section B", "group": "Elevations & Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p18.webp", "caption": "Section C", "group": "Elevations & Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p19.webp", "caption": "East Elevation", "group": "Elevations & Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p20.webp", "caption": "West Elevation", "group": "Elevations & Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p21.webp", "caption": "North Elevation", "group": "Elevations & Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p7/p22.webp", "caption": "South Elevation", "group": "Elevations & Sections"}
+    ],
+    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a hospital building.",
+    "fullDesc": "Converted high-density point cloud scan data into a highly detailed 3D Revit model for a hospital building, capturing complex as-built architectural layouts and critical healthcare infrastructure.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk AutoCAD",
+      "Navisworks"
+    ],
+    "clientRegion": "Czech Republic",
+    "completionDate": "Mar 2024",
+    "areaSqFt": "20,000 sq.ft",
+    "keyFeatures": [
+      "Transformed massive hospital laser scan data into a Point Cloud-verified 3D Revit as-built model",
+      "Captured complex medical layouts, specialized healthcare partitions, and structural frameworks precisely",
+      "Documented existing facility conditions without disrupting ongoing medical operations or active patient zones",
+      "Provided a high-fidelity BIM baseline optimized for complex healthcare renovations, MEP coordination, and facility management"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Point Cloud to BIM"
+  },
+
+
   {
     "id": "project-26",
     "title": "HVAC Project 3D BIM Model",
@@ -199,52 +298,6 @@ var PORTFOLIO_PROJECTS = [
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "MEP Systems HVAC Modeling"
-  },
-
-
-  {
-    "id": "project-25",
-    "title": "4601 S University Ave Architectural & MEP 3D BIM Model",
-    "category": [
-      "architecture",
-      "mep"
-    ],
-    "thumbnail": "./src/assets/images/projects/4601-s-university-ave/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p0.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p1.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p2.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p3.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p4.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p5.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p6.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p7.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p8.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p9.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p10.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p11.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p12.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"},
-      {"url": "./src/assets/images/projects/4601-s-university-ave/p13.webp", "caption": "4601 S University Ave Architectural & MEP 3D BIM Model"}
-    ],
-    "shortDesc": "2D CAD Concept into 3D installation-ready Revit model for a Architectual and MEP system.",
-    "fullDesc": "Fully developed a 3D Revit model for a Architectural and MEP system, piping, and equipment layout with precise dimensions and installation-ready details. The model was created from cocept.",
-    "lod": "LOD 350",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk Autocad",
-      "Navisworks"
-    ],
-    "clientRegion": "United States",
-    "completionDate": "Sep 2024",
-    "areaSqFt": "8,700 sq.ft",
-    "keyFeatures": [
-      "Developed a detailed 3D Revit model integrating all piping, and equipment layouts",
-      "Converted concept into precise, installation-ready 3D parametric components",
-      "Included comprehensive technical annotations, accurate equipment schedules, and material take-offs",
-      "Conducted automated clash detection to resolve spatial conflicts before on-site construction"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Architectural & MEP BIM model"
   },
 
   
@@ -281,7 +334,7 @@ var PORTFOLIO_PROJECTS = [
     "categoryName": "Architecture Modeling"
   },
   {
-    "id": "project-04",
+    "id": "project-25",
     "title": "Healthcare Facility 3D BIM Model",
     "category": [
       "architecture",
@@ -324,7 +377,7 @@ var PORTFOLIO_PROJECTS = [
     "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
   },
   {
-    "id": "project-05",
+    "id": "project-16",
     "title": "Hotel Resort 3D BIM Model",
     "category": [
       "architecture"
@@ -714,40 +767,8 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Point Cloud to BIM"
   },
-  {
-    "id": "project-16",
-    "title": "Point Cloud to Revit Conversion for Barvirska Main Building",
-    "category": [
-      "point-cloud"
-    ],
-    "thumbnail": "./src/assets/images/projects/point-cloud-p7/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p7/p0.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p7/p1.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p7/p2.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p7/p3.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p7/p4.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Main Building"}
-    ],
-    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a hospital building.",
-    "fullDesc": "Converted high-density point cloud scan data into a highly detailed 3D Revit model for a hospital building, capturing complex as-built architectural layouts and critical healthcare infrastructure.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "Czech Republic",
-    "completionDate": "Mar 2024",
-    "areaSqFt": "20,000 sq.ft",
-    "keyFeatures": [
-      "Transformed massive hospital laser scan data into a Point Cloud-verified 3D Revit as-built model",
-      "Captured complex medical layouts, specialized healthcare partitions, and structural frameworks precisely",
-      "Documented existing facility conditions without disrupting ongoing medical operations or active patient zones",
-      "Provided a high-fidelity BIM baseline optimized for complex healthcare renovations, MEP coordination, and facility management"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Point Cloud to BIM"
-  },
+
+
   {
     "id": "project-17",
     "title": "Point Cloud to Revit Conversion for Barvirska Front Building",
