@@ -7,7 +7,7 @@
 const FEATURED_PROJECT_PRIORITY_IDS = [
   'project-01', // 1. Revit BIM Modeling: High-End Pharmaceutical 3D BIM Model (LOD 350)
   'project-02', // 2. MEP Coordination: HVAC Project 3D BIM Model
-  'project-10', // 3. Point Cloud to BIM: Point Cloud to Revit (Residential Laser Scan)
+  'project-03', // 3. Point Cloud to BIM: Point Cloud to Revit (School)
   'project-16', // Point Cloud to Revit (Hospital Main Building)
   'project-24', // Hotel Resort MEP 3D BIM Model
   'project-25', // 4601 S University Ave Architectural & MEP BIM

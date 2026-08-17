@@ -83,8 +83,94 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
   },
+
+
   {
     "id": "project-02",
+    "title": "MEP BIM Model for RHG DUNBLAME",
+    "category": [
+      "mep"
+    ],
+    "discipline": ["mep", "coordination"],
+    "buildingType": "commercial",
+    "thumbnail": "./src/assets/images/projects/rhg-dunblame/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/rhg-dunblame/p0.webp", "caption": "Cover page for MEP Coordination Project", "group": "Cover Sheet"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p1.webp", "caption": "Containment Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p2.webp", "caption": "Lighting distribution Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p3.webp", "caption": "Small Power distribution Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p4.webp", "caption": "Fire Alarm distribution Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p5.webp", "caption": "Air Conditioning Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p6.webp", "caption": "Heating Elements/Piping distribution Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p7.webp", "caption": "Ventilation Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p8.webp", "caption": "Water Distribution Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p9.webp", "caption": "Drainage System Layout", "group": "MEP Coordinated Layout"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p10.webp", "caption": "Plant room distribution", "group": "MEP Coordination System"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p11.webp", "caption": "General Installation - Ventilation", "group": "MEP Coordination System"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p12.webp", "caption": "General Installation - Ventilation", "group": "MEP Coordination System"},
+      {"url": "./src/assets/images/projects/rhg-dunblame/p13.webp", "caption": "General Installation - Ventilation", "group": "MEP Coordination System"}
+    ],
+    "shortDesc": "Coordinated MEP BIM modeling for HVAC, plumbing, Water services, electrical, and fire protection systems.",
+    "fullDesc": "Detailed MEP modeling integrated with the architectural model, focused on accurate system routing, clash detection, and construction coordination.",
+    "lod": "LOD 350",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Navisworks Manage"
+    ],
+    "clientRegion": "United Kingdom",
+    "completionDate": "Apr 2026",
+    "areaSqFt": "25,000 sq.ft",
+    "keyFeatures": [
+      "HVAC, Plumbing, Electrical & Fire Protection",
+      "MEP & Architectural Coordination",
+      "Clash Detection & Resolution",
+      "Construction-Ready BIM Model"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "MEP Systems • Full Coordination"
+  },
+
+
+  {
+    "id": "project-03",
+    "title": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou",
+    "category": [
+      "point-cloud"
+    ],
+    "thumbnail": "./src/assets/images/projects/point-cloud-p5/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/point-cloud-p5/p0.webp", "caption": "Point Cloud Raw Data for Gymnazium-Nad-Kavalirkou", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p2.webp", "caption": "3D BIM Model for Gymnazium-Nad-Kavalirkou", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p3.webp", "caption": "BIM Model Presentation for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p1.webp", "caption": "3D View for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p4.webp", "caption": "3D Floor cut view for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p5.webp", "caption": "Section View A for Gymnazium-Nad-Kavalirkou", "group": "Building Section"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p6.webp", "caption": "Section View B for Gymnazium-Nad-Kavalirkou", "group": "Building Section"}
+    ],
+    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a school building.",
+    "fullDesc": "Converted high-density laser scan data into a highly detailed 3D Revit model for a school building, capturing accurate as-built architectural and structural elements for educational facility management.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk AutoCAD",
+      "Navisworks"
+    ],
+    "clientRegion": "Czech Republic",
+    "completionDate": "Feb 2024",
+    "areaSqFt": "35,000 sq.ft",
+    "keyFeatures": [
+      "Transformed complex school point cloud data into a Point Cloud-verified 3D Revit model",
+      "Captured detailed institutional layouts, structural elements, and large-scale architectural features",
+      "Documented existing conditions precisely to eliminate manual surveying errors across multiple campus blocks",
+      "Provided a high-fidelity as-built BIM baseline optimized for school renovation and facility management"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Point Cloud to BIM"
+  },
+
+  
+  {
+    "id": "project-26",
     "title": "HVAC Project 3D BIM Model",
     "category": [
       "mep"
@@ -164,7 +250,7 @@ var PORTFOLIO_PROJECTS = [
 
   
   {
-    "id": "project-03",
+    "id": "project-14",
     "title": "Eco Park Architectural Residential 3D BIM Model",
     "category": [
       "architecture"
@@ -593,42 +679,8 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Point Cloud to BIM"
   },
-  {
-    "id": "project-14",
-    "title": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou",
-    "category": [
-      "point-cloud"
-    ],
-    "thumbnail": "./src/assets/images/projects/point-cloud-p5/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p5/t0.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p0.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p1.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p2.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p3.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p4.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p5.webp", "caption": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou"}
-    ],
-    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a school building.",
-    "fullDesc": "Converted high-density laser scan data into a highly detailed 3D Revit model for a school building, capturing accurate as-built architectural and structural elements for educational facility management.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "Czech Republic",
-    "completionDate": "Feb 2024",
-    "areaSqFt": "35,000 sq.ft",
-    "keyFeatures": [
-      "Transformed complex school point cloud data into a Point Cloud-verified 3D Revit model",
-      "Captured detailed institutional layouts, structural elements, and large-scale architectural features",
-      "Documented existing conditions precisely to eliminate manual surveying errors across multiple campus blocks",
-      "Provided a high-fidelity as-built BIM baseline optimized for school renovation and facility management"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Point Cloud to BIM"
-  },
+
+
   {
     "id": "project-15",
     "title": "Point Cloud to Revit Conversion for Pražský Dům",
