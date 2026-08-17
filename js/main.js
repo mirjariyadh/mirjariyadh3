@@ -9,7 +9,7 @@ const FEATURED_PROJECT_PRIORITY_IDS = [
   'project-02', // 2. MEP Coordination: HVAC Project 3D BIM Model
   'project-03', // 3. Point Cloud to BIM: Point Cloud to Revit (School)
   'project-04', // 4. Permit Set
-  'project-16', // Point Cloud to Revit (Hospital Main Building)
+  'project-05', // 5. Point Cloud to Revit (Hospital Main Building)
   'project-24', // Hotel Resort MEP 3D BIM Model
   'project-25', // 4601 S University Ave Architectural & MEP BIM
   'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
