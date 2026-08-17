@@ -38,7 +38,6 @@ var PORTFOLIO_PROJECTS = [
     "buildingType": "pharmaceutical",
     "thumbnail": "./src/assets/images/projects/dbl/t0.webp",
     "images": [
-      {"url": "./src/assets/images/projects/dbl/p0.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
       {"url": "./src/assets/images/projects/dbl/p1.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
       {"url": "./src/assets/images/projects/dbl/p2.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
       {"url": "./src/assets/images/projects/dbl/p3.webp", "caption": "Overall 3D Revit Architectural Render with Curtain Wall Details", "group": "Architectural Plans/3D Model/Section"},
