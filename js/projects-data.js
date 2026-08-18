@@ -28,7 +28,7 @@
 var PORTFOLIO_PROJECTS = [
   {
     "id": "project-01",
-    "title": "High-End Pharmaceutical 3D BIM Model",
+    "title": "High-End Healthcare 3D BIM Model",
     "category": [
       "architecture",
       "mep",
@@ -86,7 +86,7 @@ var PORTFOLIO_PROJECTS = [
 
   {
     "id": "project-02",
-    "title": "MEP BIM Model for RHG DUNBLAME",
+    "title": "MEP Coordination Project (Residential)",
     "category": [
       "mep"
     ],
@@ -132,19 +132,30 @@ var PORTFOLIO_PROJECTS = [
 
   {
     "id": "project-03",
-    "title": "Point Cloud to Revit Conversion for Gymnazium-Nad-Kavalirkou",
+    "title": "Point Cloud to BIM Revit (School)",
     "category": [
       "point-cloud"
     ],
     "thumbnail": "./src/assets/images/projects/point-cloud-p5/t0.webp",
     "images": [
       {"url": "./src/assets/images/projects/point-cloud-p5/p0.webp", "caption": "Point Cloud Raw Data for Gymnazium-Nad-Kavalirkou", "group": "Comparison"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p2.webp", "caption": "3D BIM Model for Gymnazium-Nad-Kavalirkou", "group": "Comparison"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p3.webp", "caption": "BIM Model Presentation for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p1.webp", "caption": "3D View for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p4.webp", "caption": "3D Floor cut view for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p5.webp", "caption": "Section View A for Gymnazium-Nad-Kavalirkou", "group": "Building Section"},
-      {"url": "./src/assets/images/projects/point-cloud-p5/p6.webp", "caption": "Section View B for Gymnazium-Nad-Kavalirkou", "group": "Building Section"}
+      {"url": "./src/assets/images/projects/point-cloud-p5/p1.webp", "caption": "3D BIM Model for Gymnazium-Nad-Kavalirkou", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p2.webp", "caption": "3D Render for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p3.webp", "caption": "3D Floor plan for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p4.webp", "caption": "3D BIM Model for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p5.webp", "caption": "IFC 3D Model for Gymnazium-Nad-Kavalirkou", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p6.webp", "caption": "Under Ground Floor Plan for Gymnazium-Nad-Kavalirkou", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p7.webp", "caption": "Ground Floor Plan for Gymnazium-Nad-Kavalirkou", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p8.webp", "caption": "1st Floor Plan for Gymnazium-Nad-Kavalirkou", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p9.webp", "caption": "2nd Floor Plan for Gymnazium-Nad-Kavalirkou", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p10.webp", "caption": "3rd Floor Plan for Gymnazium-Nad-Kavalirkou", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p11.webp", "caption": "4th Floor for Gymnazium-Nad-Kavalirkou", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p12.webp", "caption": "Roof Plan for Gymnazium-Nad-Kavalirkou", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p13.webp", "caption": "Section A for Gymnazium-Nad-Kavalirkou", "group": "Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p14.webp", "caption": "Section B for Gymnazium-Nad-Kavalirkou", "group": "Sections"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p15.webp", "caption": "East and West Elevation for Gymnazium-Nad-Kavalirkou", "group": "Elevations"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p16.webp", "caption": "North Elevation for Gymnazium-Nad-Kavalirkou", "group": "Elevations"},
+      {"url": "./src/assets/images/projects/point-cloud-p5/p17.webp", "caption": "South Elevation for Gymnazium-Nad-Kavalirkou", "group": "Elevations"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a school building.",
     "fullDesc": "Converted high-density laser scan data into a highly detailed 3D Revit model for a school building, capturing accurate as-built architectural and structural elements for educational facility management.",
@@ -170,7 +181,7 @@ var PORTFOLIO_PROJECTS = [
 
   {
     "id": "project-04",
-    "title": "Permit Set for 4601 S University Ave (Architectural & MEP 3D BIM Model)",
+    "title": "Permit Set (Architectural & MEP 3D BIM Model)",
     "category": [
       "architecture",
       "mep"
@@ -194,7 +205,7 @@ var PORTFOLIO_PROJECTS = [
     ],
     "shortDesc": "2D CAD Concept into Permit set Revit BIM model (Architectual and MEP system.)",
     "fullDesc": "Transformed conceptual designs into a fully coordinated, permit-ready 3D Revit model, featuring precise architectural and MEP system dimensions, piping layouts, and installation-ready construction details.",
-    "lod": "LOD 300",
+    "lod": "LOD 350",
     "softwareUsed": [
       "Autodesk Revit",
       "Autodesk Autocad"
@@ -269,15 +280,15 @@ var PORTFOLIO_PROJECTS = [
 
   {
     "id": "project-26",
-    "title": "HVAC Project 3D BIM Model",
+    "title": "Ventilation/HVAC Coordinate BIM Project",
     "category": [
       "mep"
     ],
     "thumbnail": "./src/assets/images/projects/hvac1/p1.webp",
     "images": [
-      {"url": "./src/assets/images/projects/hvac1/p1.webp", "caption": "MEP Project 3D BIM Model"},
-      {"url": "./src/assets/images/projects/hvac1/p2.webp", "caption": "MEP Project 3D BIM Model"},
-      {"url": "./src/assets/images/projects/hvac1/p3.webp", "caption": "MEP Project 3D BIM Model"}
+      {"url": "./src/assets/images/projects/hvac1/p1.webp", "caption": "Ventilation/HVAC Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/hvac1/p2.webp", "caption": "Ventilation/HVAC 3D View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/hvac1/p3.webp", "caption": "Ventilation?HVAC Clean 3D View", "group": "3D Views"}
     ],
     "shortDesc": "2D CAD Concept into 3D installation-ready Revit model for a HVAC system, including ductwork, piping, and equipment layout with LOD 350.",
     "fullDesc": "Fully developed a 3D Revit model for a HVAC system, integrating ductwork, piping, and equipment layout with precise dimensions and installation-ready details. The model was created from 2D CAD drawings and includes detailed annotations, schedules, and clash detection to ensure seamless construction.",
@@ -875,21 +886,21 @@ var PORTFOLIO_PROJECTS = [
   },
   {
     "id": "project-20",
-    "title": "Architectural Renovation BIM Model for a Private House",
+    "title": "Architectural Renovation BIM Model",
     "category": [
       "architecture"
     ],
     "thumbnail": "./src/assets/images/projects/renovation-p1/p1.webp",
     "images": [
-      {"url": "./src/assets/images/projects/renovation-p1/p1.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p2.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p3.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p4.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p5.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p6.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p7.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p8.webp", "caption": "Architectural Renovation BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/renovation-p1/p9.webp", "caption": "Architectural Renovation BIM Model for a Private House"}
+      {"url": "./src/assets/images/projects/renovation-p1/p1.webp", "caption": "Cover sheet", "group": "Cover Sheet"},
+      {"url": "./src/assets/images/projects/renovation-p1/p2.webp", "caption": "Site plan", "group": "Site Plan"},
+      {"url": "./src/assets/images/projects/renovation-p1/p3.webp", "caption": "Ground Floor Plan (Existing & New Construction)", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/renovation-p1/p4.webp", "caption": "First Floor Plan (Existing & New Construction)", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/renovation-p1/p5.webp", "caption": "Roof Plan (Existing & New)", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/renovation-p1/p6.webp", "caption": "Demolition Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/renovation-p1/p7.webp", "caption": "Front & Rear Elevation (Existing & New Construction)", "group": "Architectural Elevations"},
+      {"url": "./src/assets/images/projects/renovation-p1/p8.webp", "caption": "Left & Right Elevation (Existing & New Construction)", "group": "Architectural Elevations"},
+      {"url": "./src/assets/images/projects/renovation-p1/p9.webp", "caption": "Building Sections", "group": "Architectural Section"}
     ],
     "shortDesc": "Architectural renovation BIM model for a private house, including detailed interior and exterior modeling.",
     "fullDesc": "Developed a high-fidelity architectural renovation BIM model for a private house, delivering comprehensive interior and exterior 3D parametric components to streamline modernization and spatial restructuring.",
@@ -913,20 +924,20 @@ var PORTFOLIO_PROJECTS = [
   },
   {
     "id": "project-21",
-    "title": "Architectural Model with Detail Roof Structure for Sand State",
+    "title": "Architectural Model with Detail Roof Structure (Residential)",
     "category": [
       "architecture"
     ],
     "thumbnail": "./src/assets/images/projects/sand-state/t0.webp",
     "images": [
-      {"url": "./src/assets/images/projects/sand-state/p0.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
-      {"url": "./src/assets/images/projects/sand-state/p1.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
-      {"url": "./src/assets/images/projects/sand-state/p2.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
-      {"url": "./src/assets/images/projects/sand-state/p3.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
-      {"url": "./src/assets/images/projects/sand-state/p4.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
-      {"url": "./src/assets/images/projects/sand-state/p5.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
-      {"url": "./src/assets/images/projects/sand-state/p6.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"},
-      {"url": "./src/assets/images/projects/sand-state/p7.webp", "caption": "Architectural Model with Detail Roof Structure for Sand State"}
+      {"url": "./src/assets/images/projects/sand-state/p0.webp", "caption": "3D Roof View", "group": "3D View & Cover"},
+      {"url": "./src/assets/images/projects/sand-state/p1.webp", "caption": "Cover Sheet", "group": "3D View & Cover"},
+      {"url": "./src/assets/images/projects/sand-state/p2.webp", "caption": "Site Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/sand-state/p3.webp", "caption": "Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/sand-state/p4.webp", "caption": "Roof Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/sand-state/p5.webp", "caption": "Roof Plan Details", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/sand-state/p6.webp", "caption": "Architectural Elevations", "group": "Elevations"},
+      {"url": "./src/assets/images/projects/sand-state/p7.webp", "caption": "Structural Foundation", "group": "Foundation"}
     ],
     "shortDesc": "Architectural model with detailed roof structure modeling for a residential project.",
     "fullDesc": "Developed a high-fidelity architectural BIM model for a residential project, featuring precise 3D parametric roof structure modeling to ensure structural integrity and flawless construction alignment.",
@@ -950,7 +961,7 @@ var PORTFOLIO_PROJECTS = [
   },
   {
     "id": "project-22",
-    "title": "Architectural & MEP 3D BIM Model for a Spa Center",
+    "title": "Architectural & MEP BIM Model for a Spa Center",
     "category": [
       "architecture",
       "mep",
@@ -958,17 +969,17 @@ var PORTFOLIO_PROJECTS = [
     ],
     "thumbnail": "./src/assets/images/projects/spa-lodge-1/t0.webp",
     "images": [
-      {"url": "./src/assets/images/projects/spa-lodge-1/p0.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p1.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p2.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p3.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p4.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p5.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p6.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p7.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p8.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p9.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"},
-      {"url": "./src/assets/images/projects/spa-lodge-1/p10.webp", "caption": "Architectural & MEP 3D BIM Model for a Spa Center"}
+      {"url": "./src/assets/images/projects/spa-lodge-1/p0.webp", "caption": "Architectural 3D View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p1.webp", "caption": "Architectural 3D View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p2.webp", "caption": "Architectural 3D View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p3.webp", "caption": "Architectural 3D View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p4.webp", "caption": "Architectural Floor Plan", "group": "Floor Plans"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p5.webp", "caption": "Architectural Elevations", "group": "Elevations"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p6.webp", "caption": "MEP 3D BIM Coordination View", "group": "MEP Distributions"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p7.webp", "caption": "MEP Lighting Element Distributions", "group": "MEP Distributions"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p8.webp", "caption": "MEP Heating Water Distributions", "group": "MEP Distributions"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p9.webp", "caption": "MEP Water Supply Distributions", "group": "MEP Distributions"},
+      {"url": "./src/assets/images/projects/spa-lodge-1/p10.webp", "caption": "MEP Ventilation/HVAC", "group": "MEP Distributions"}
     ],
     "shortDesc": "Architectural & MEP 3D BIM Model for a Spa Center",
     "fullDesc": "Developed a fully coordinated Architectural and MEP 3D BIM model for a spa center, integrating specialized wellness layouts with complex mechanical, electrical, and plumbing engineering systems.",
@@ -990,6 +1001,8 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
   },
+
+
   {
     "id": "project-23",
     "title": "Construction City permit set for a Residential Project",
