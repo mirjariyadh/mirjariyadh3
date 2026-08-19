@@ -16,7 +16,7 @@ const FEATURED_PROJECT_PRIORITY_IDS = [
   'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
   'project-08', // Incepta Pharmaceutical Facility BIM (LOD 400)
   'project-23', // Construction City Permit Set (Documentation)
-  'project-06'  // East MC Kinny Residential As-Built BIM
+  'project-09'  // Architectural Drawing Set
 ];
 
 let homeSelectedCategory = 'all';
