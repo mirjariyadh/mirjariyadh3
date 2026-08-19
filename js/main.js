@@ -9,13 +9,13 @@ const FEATURED_PROJECT_PRIORITY_IDS = [
   'project-04', // 2. Permit Set (Architecture and MEP)
   'project-02', // 3. MEP Coordination Project (Residential)
   'project-03', // 4. Point Cloud to BIM: Point Cloud to Revit (School)
-  'project-20', // 5. Architectural Renovation Project
+  'project-27', // 5. Architectural Renovation Project From Point Cloud
   'project-26', // 6. Ventilation Coordinate BIM Project
   'project-21', // 7. Architectural Model with Detail Roof Structure (Residential)
   'project-22', // 8. Architectural & MEP BIM Model (Spa Center)
   'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
   'project-08', // Incepta Pharmaceutical Facility BIM (LOD 400)
-  'project-23', // Construction City Permit Set (Documentation)
+  'project-20', // 11. Architectural Renovation Project
   'project-09'  // Architectural Drawing Set
 ];
 

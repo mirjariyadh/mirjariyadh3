@@ -23,6 +23,22 @@
  *       ]
  *     }
  *   ]
+ * 
+ * buildingType
+ *  "pharmaceutical" 
+ *  "residential" 
+ *  "commercial" 
+ *  "industrial" 
+ *  "hospitality" 
+ *  "healthcare" 
+ *  "educational"
+ * 
+ * discipline/category
+ * "architecture"
+ * "mep"
+ * "point-cloud"
+ * "autocad"
+ * "coordination"
  */
 
 var PORTFOLIO_PROJECTS = [
@@ -221,6 +237,84 @@ var PORTFOLIO_PROJECTS = [
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architectural & MEP Permit Set"
+  },
+
+
+  {
+    "id": "project-27",
+    "title": "Point Cloud to BIM - Complete Architecture Renovation & Permit Set",
+    "category": [
+      "architecture",
+      "point-cloud"
+    ],
+    "discipline": ["architecture", "point-cloud", "autocad"],
+    "buildingType": "residential",
+    "thumbnail": "./src/assets/images/projects/1290-delaware-ave/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/1290-delaware-ave/t1.webp", "caption": "Point Cloud", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/t2.webp", "caption": "BIM Model", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p1.webp", "caption": "Cover Sheet", "group": "Cover"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p2.webp", "caption": "Basement Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p3.webp", "caption": "1st Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p4.webp", "caption": "2nd Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p5.webp", "caption": "3rd Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p6.webp", "caption": "4th Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p7.webp", "caption": "5th Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p8.webp", "caption": "6th Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p9.webp", "caption": "7th Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p10.webp", "caption": "8th Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p11.webp", "caption": "Roof Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p12.webp", "caption": "Basement Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p13.webp", "caption": "1st Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p14.webp", "caption": "2nd Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p15.webp", "caption": "3rd Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p16.webp", "caption": "4th Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p17.webp", "caption": "5th Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p18.webp", "caption": "6th Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p19.webp", "caption": "7th Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p20.webp", "caption": "8th Floor Demolition Ceiling Plan", "group": "Demolition Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p21.webp", "caption": "Details and Schedules", "group": "Details & Schedules"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p22.webp", "caption": "Basement Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p23.webp", "caption": "1st Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p24.webp", "caption": "2nd Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p25.webp", "caption": "3rd Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p26.webp", "caption": "4th Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p27.webp", "caption": "5th Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p28.webp", "caption": "6th Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p29.webp", "caption": "7th Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p30.webp", "caption": "8th Floor Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p31.webp", "caption": "Roof Plan", "group": "Proposed Floor Plans"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p32.webp", "caption": "Basement Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p33.webp", "caption": "1st Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p34.webp", "caption": "2nd Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p35.webp", "caption": "3rd Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p36.webp", "caption": "4th Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p37.webp", "caption": "5th Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p38.webp", "caption": "6th Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p39.webp", "caption": "7th Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p40.webp", "caption": "8th Reflected Ceiling Plan (RCP)", "group": "Reflected Ceiling Plan"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p41.webp", "caption": "Front Elevation", "group": "Elevations"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p42.webp", "caption": "Rear Elevation", "group": "Elevations"},
+      {"url": "./src/assets/images/projects/1290-delaware-ave/p43.webp", "caption": "Left & Right Elevation", "group": "Elevations"}
+    ],
+    "shortDesc": "Scan-to-BIM renovation with demolition, new builds, and permit sets.",
+    "fullDesc": "Complete architectural renovation workflow utilizing point cloud data. Features seamless demolition planning, new construction phases, and delivery of a ready-to-submit city permit drawing set.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk Autocad"
+    ],
+    "clientRegion": "United States",
+    "completionDate": "Jan 2025",
+    "areaSqFt": "9x8,000 sq.ft",
+    "keyFeatures": [
+      "High-precision architectural modeling generated directly from raw point cloud data data.",
+      "Clearly segregated phases mapping out both demolition and new construction zones.",
+      "Comprehensive drawing sets fully compliant with local city building codes.",
+      "Proactive identification of spatial conflicts to eliminate costly on-site errors."
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architecture & BIM Services"
   },
   
 
@@ -886,7 +980,7 @@ var PORTFOLIO_PROJECTS = [
   },
   {
     "id": "project-20",
-    "title": "Architectural Renovation BIM Model",
+    "title": "Concept to Architectural Renovation BIM Model",
     "category": [
       "architecture"
     ],
