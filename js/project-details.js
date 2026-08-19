@@ -504,35 +504,6 @@ function renderProjectDetailsPage() {
           </div>
         </section>
 
-        <!-- Structured BIM Workflow Visualization Component -->
-        <section class="bg-slate-900/50 border border-slate-800 rounded-md p-6 sm:p-8">
-          <h3 class="text-sm font-mono font-bold text-cyan-400 uppercase tracking-wider mb-4">
-            BIM EXECUTION WORKFLOW
-          </h3>
-          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-xs font-mono">
-            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
-              <span class="text-cyan-400 block font-bold mb-1">01. INGESTION</span>
-              <span class="text-gray-300 text-[11px]">Point Cloud / CAD / PDF Drawings</span>
-            </div>
-            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
-              <span class="text-cyan-400 block font-bold mb-1">02. MODELING</span>
-              <span class="text-gray-300 text-[11px]">Parametric Revit Components</span>
-            </div>
-            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
-              <span class="text-cyan-400 block font-bold mb-1">03. MULTI-TRADE</span>
-              <span class="text-gray-300 text-[11px]">Architecture & MEP Systems</span>
-            </div>
-            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
-              <span class="text-emerald-400 block font-bold mb-1">04. CLASH AUDIT</span>
-              <span class="text-gray-300 text-[11px]">Navisworks Spatial Resolution</span>
-            </div>
-            <div class="bg-slate-950 p-3 rounded border border-slate-800 hover:border-cyan-500/40 transition-colors">
-              <span class="text-cyan-400 block font-bold mb-1">05. OUTPUTS</span>
-              <span class="text-gray-300 text-[11px]">RVT · IFC · DWG · Sheets</span>
-            </div>
-          </div>
-        </section>
-
         <!-- Technical Image Gallery with Lightbox Hook -->
         ${galleryList.length > 0 ? `
           <section class="bg-slate-900/50 border border-slate-800 rounded-md p-6 sm:p-8">
