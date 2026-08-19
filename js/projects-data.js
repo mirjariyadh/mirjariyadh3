@@ -446,7 +446,7 @@ var PORTFOLIO_PROJECTS = [
     "id": "project-29",
     "title": "Point Cloud to Revit BIM Model",
     "category": [
-      "architecture"
+      "point-cloud"
     ],
       "discipline": ["architecture", "point-cloud"],
       "buildingType": "residential",
