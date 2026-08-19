@@ -443,6 +443,46 @@ var PORTFOLIO_PROJECTS = [
 
 
   {
+    "id": "project-29",
+    "title": "Point Cloud to Revit BIM Model",
+    "category": [
+      "architecture"
+    ],
+      "discipline": ["architecture", "point-cloud"],
+      "buildingType": "residential",
+    "thumbnail": "./src/assets/images/projects/twinworks-richmond/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/twinworks-richmond/p1.webp", "caption": "Point Cloud RCP File", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/twinworks-richmond/p2.webp", "caption": "3D BIM Model Revit Birds-eye View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/twinworks-richmond/p3.webp", "caption": "3D BIM Model Revit Camera View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/twinworks-richmond/p4.webp", "caption": "3D BIM Render View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/twinworks-richmond/p5.webp", "caption": "IFC Export", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/twinworks-richmond/p6.webp", "caption": "Architectural Layout", "group": "Layout & Elevations"},
+      {"url": "./src/assets/images/projects/twinworks-richmond/p7.webp", "caption": "Architectural Elevations", "group": "Layout & Elevations"},
+      {"url": "./src/assets/images/projects/twinworks-richmond/p8.webp", "caption": "Architectural 3D Views", "group": "3D Views"}
+    ],
+    "shortDesc": "Accurate Scan-to-BIM conversion of point cloud data into detailed architectural Revit models.",
+    "fullDesc": "High-precision Scan-to-BIM services transforming raw laser scan point cloud data into parametric, data-rich architectural Revit models. Deliverables include accurate as-built floor plans, walls, structures, and building components that reflect real-world conditions for renovation or facility management.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "AutoCAD"
+    ],
+    "clientRegion": "United States",
+    "completionDate": "Sep 2025",
+    "areaSqFt": "2,200 sq.ft",
+    "keyFeatures": [
+      "Transforming raw laser scan data into accurate as-built Revit models",
+      "Intelligent architectural components with embedded data attributes",
+      "Verification of model accuracy against original point cloud data",
+      "Perfect foundational models for retrofits, extensions, and facility management"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architecture Modeling"
+  },
+
+
+  {
     "id": "project-25",
     "title": "Healthcare Facility 3D BIM Model",
     "category": [
@@ -495,7 +535,7 @@ var PORTFOLIO_PROJECTS = [
       "autocad"
     ],
     "discipline": ["architecture", "autocad"],
-    "buildingType": "commercial",
+    "buildingType": "residential",
     "thumbnail": "./src/assets/images/projects/sazon-restaurant/t0.webp",
     "images": [
       {"url": "./src/assets/images/projects/sazon-restaurant/p1.webp", "caption": "Cover Sheet", "group": "Architectural Plans"},
@@ -519,25 +559,24 @@ var PORTFOLIO_PROJECTS = [
       {"url": "./src/assets/images/projects/sazon-restaurant/p19.webp", "caption": "Proposed Building Materials", "group": "Proposed Building"},
       {"url": "./src/assets/images/projects/sazon-restaurant/p20.webp", "caption": "Proposed Area Plan", "group": "Proposed Building"}
     ],
-    "shortDesc": "2D CAD Concept to 3D Revit Architectural and MEP model (LOD 350) for a 65,000 sq.ft healthcare facility, featuring parametric facade elements and material schedules.",
-    "fullDesc": "Developed a comprehensive 3D BIM model for a healthcare facility, integrating architectural and MEP systems with parametric facade elements and detailed material schedules.",
-    "lod": "LOD 350",
+    "shortDesc": "Complete architectural construction plans detailing restaurant layouts, finishes, and structures.",
+    "fullDesc": "A comprehensive architectural construction drawing set for a restaurant. This package features detailed dimensioned floor plans, precise dining seating layouts, interior wall elevations, millwork details, finish schedules, and life safety egress routes tailored for commercial food service.",
+    "lod": "LOD 300",
     "softwareUsed": [
       "Autodesk Revit",
-      "Autodesk Autocad",
-      "Navisworks"
+      "Autodesk Autocad"
     ],
-    "clientRegion": "Bangladesh (Chittagong)",
-    "completionDate": "Feb 2024",
-    "areaSqFt": "65,000 sq.ft",
+    "clientRegion": "United States",
+    "completionDate": "Jul 2025",
+    "areaSqFt": "6,000 sq.ft",
     "keyFeatures": [
-      "2D CAD Concept to 3D Revit Architectural and MEP model (LOD 350)",
-      "Phamaceutical cleanroom layout with MEP integration and compliance with ISO standards",
-      "|Accurate Bill of Quantities (BOQ) and schedule tables",
-      "Prepared model for retrofitting modern HVAC ductwork"
+      "Dimensioned layouts mapping out the dining area, bar, and restrooms.",
+      "Optimized tables and pathways to maximize capacity and guest comfort",
+      "Detailed wall treatments, built-in cabinetry, and millwork designs",
+      "Architectural ceiling designs coordinating lighting and finish materials"
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
+    "categoryName": "Architecture Modeling • Construction Drawing • Permit Set"
   },
 
 
@@ -904,6 +943,8 @@ var PORTFOLIO_PROJECTS = [
     "category": [
       "point-cloud"
     ],
+    "discipline": ["architecture", "point-cloud"],
+    "buildingType": "residential",
     "thumbnail": "./src/assets/images/projects/point-cloud-p6/t0.webp",
     "images": [
       {"url": "./src/assets/images/projects/point-cloud-p6/t0.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},

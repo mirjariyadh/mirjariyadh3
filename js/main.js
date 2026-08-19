@@ -13,7 +13,7 @@ const FEATURED_PROJECT_PRIORITY_IDS = [
   'project-26', // 6. Ventilation Coordinate BIM Project
   'project-21', // 7. Architectural Model with Detail Roof Structure (Residential)
   'project-22', // 8. Architectural & MEP BIM Model (Spa Center)
-  'project-15', // Point Cloud to Revit (Heritage Building Pražský Dům)
+  'project-29', // 9. Point Cloud to Revit Model
   'project-28', // 10. Construction Permit set
   'project-20', // 11. Architectural Renovation Project
   'project-09'  // Architectural Drawing Set
