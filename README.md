@@ -40,4 +40,50 @@ Comprehensive BIM & CAD Portfolio website for **Mirja Riyadh**, Senior BIM Speci
 
 ## 📜 License
 
+
+/**
+ * Portfolio Projects Data
+ * Full Projects list with structured metadata
+
+ * category: Slugs for filtering ["architecture", "mep", "point-cloud", "autocad"]
+ * discipline: Disciplines ["architecture", "mep", "point-cloud", "autocad", "coordination"]
+ * buildingType: ["pharmaceutical", "residential", "commercial", "industrial", "hospitality", "healthcare", "educational"]
+ * categoryName: Display text shown on website UI
+
+ * Gallery Grouping Options (shown with group headings in project details page):
+ * Option A (Image object group field):
+ *   "images": [
+ *     {"url": "./src/assets/images/projects/example/p0.webp", "caption": "Floor Plan", "group": "Architectural Plans"},
+ *     {"url": "./src/assets/images/projects/example/p1.webp", "caption": "HVAC Duct Layout", "group": "MEP Coordination"}
+ *   ]
+
+ * Option B (galleryGroups structure):
+ *   "galleryGroups": [
+ *     {
+ *       "name": "Architectural Plans",
+ *       "images": [
+ *         {"url": "./src/assets/images/projects/example/p0.webp", "caption": "Floor Plan"}
+ *       ]
+ *     }
+ *   ]
+
+ * buildingType
+ *  "pharmaceutical" 
+ *  "residential" 
+ *  "commercial" 
+ *  "industrial" 
+ *  "hospitality" 
+ *  "healthcare" 
+ *  "educational"
+
+ * discipline/category
+ * "architecture"
+ * "mep"
+ * "point-cloud"
+ * "autocad"
+ * "coordination"
+
+ */
+
+
 © 2026 Mirja Riyadh. All rights reserved.

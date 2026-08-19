@@ -485,6 +485,62 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
   },
+
+
+  {
+    "id": "project-28",
+    "title": "Construction Drawing for a Restaurant",
+    "category": [
+      "architecture",
+      "autocad"
+    ],
+    "discipline": ["architecture", "autocad"],
+    "buildingType": "commercial",
+    "thumbnail": "./src/assets/images/projects/sazon-restaurant/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/sazon-restaurant/p1.webp", "caption": "Cover Sheet", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p2.webp", "caption": "Code Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p3.webp", "caption": "Code Plan Cont.", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p4.webp", "caption": "Site Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p5.webp", "caption": "Proposed Floor Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p6.webp", "caption": "Proposed Roof Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p7.webp", "caption": "Life Safety Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p8.webp", "caption": "First Floor Kitchen Details", "group": "Details"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p9.webp", "caption": "First Floor Bar Details", "group": "Details"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p10.webp", "caption": "North and East Elevation", "group": "Elevation & Sections"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p11.webp", "caption": "South and West Elevation", "group": "Elevation & Sections"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p12.webp", "caption": "Building Section", "group": "Elevation & Sections"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p13.webp", "caption": "Building Section", "group": "Elevation & Sections"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p14.webp", "caption": "Wall and Footing Details", "group": "Details"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p15.webp", "caption": "Connection Details", "group": "Details"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p16.webp", "caption": "Window Schedule", "group": "Schedules"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p17.webp", "caption": "Door Schedule", "group": "Schedules"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p18.webp", "caption": "Interior Details", "group": "Details"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p19.webp", "caption": "Proposed Building Materials", "group": "Proposed Building"},
+      {"url": "./src/assets/images/projects/sazon-restaurant/p20.webp", "caption": "Proposed Area Plan", "group": "Proposed Building"}
+    ],
+    "shortDesc": "2D CAD Concept to 3D Revit Architectural and MEP model (LOD 350) for a 65,000 sq.ft healthcare facility, featuring parametric facade elements and material schedules.",
+    "fullDesc": "Developed a comprehensive 3D BIM model for a healthcare facility, integrating architectural and MEP systems with parametric facade elements and detailed material schedules.",
+    "lod": "LOD 350",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk Autocad",
+      "Navisworks"
+    ],
+    "clientRegion": "Bangladesh (Chittagong)",
+    "completionDate": "Feb 2024",
+    "areaSqFt": "65,000 sq.ft",
+    "keyFeatures": [
+      "2D CAD Concept to 3D Revit Architectural and MEP model (LOD 350)",
+      "Phamaceutical cleanroom layout with MEP integration and compliance with ISO standards",
+      "|Accurate Bill of Quantities (BOQ) and schedule tables",
+      "Prepared model for retrofitting modern HVAC ductwork"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
+  },
+
+
   {
     "id": "project-16",
     "title": "Hotel Resort 3D BIM Model",
