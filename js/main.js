@@ -14,7 +14,7 @@ const FEATURED_PROJECT_PRIORITY_IDS = [
   'project-20', // 9. Architectural Renovation Project
   'project-27', // 8. Architectural Renovation Project From Point Cloud
   'project-21', // 7. Architectural Model with Detail Roof Structure (Residential)
-  'project-22', // 10. Architectural & MEP BIM Model (Spa Center)
+  'project-16', // 10. Architectural & MEP BIM Model (Hotel Lodge)
   'project-28', // 11. Construction Permit set
   'project-29'  // 12. Point Cloud to Revit Model
 ];
