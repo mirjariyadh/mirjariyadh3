@@ -152,6 +152,8 @@ var PORTFOLIO_PROJECTS = [
     "category": [
       "point-cloud"
     ],
+    "discipline": ["point-cloud", "autocad"],
+    "buildingType": "educational",
     "thumbnail": "./src/assets/images/projects/point-cloud-p5/t0.webp",
     "images": [
       {"url": "./src/assets/images/projects/point-cloud-p5/p0.webp", "caption": "Point Cloud Raw Data for Gymnazium-Nad-Kavalirkou", "group": "Comparison"},
@@ -582,18 +584,26 @@ var PORTFOLIO_PROJECTS = [
 
   {
     "id": "project-16",
-    "title": "Hotel Resort 3D BIM Model",
+    "title": "Full Hotel Resort 3D BIM Model (Architectural & MEP",
     "category": [
-      "architecture"
+      "architecture",
+      "mep"
     ],
-    "thumbnail": "./src/assets/images/projects/spa-lodge-arc/t0.webp",
+    "discipline": ["architecture", "autocad", "mep", "coordination"],
+    "buildingType": "hospitality",
+    "thumbnail": "./src/assets/images/projects/spa-lodge/t0.webp",
     "images": [
-      {"url": "./src/assets/images/projects/spa-lodge-arc/p1.webp", "caption": "Hotel Resort 3D BIM Model"},
-      {"url": "./src/assets/images/projects/spa-lodge-arc/p2.webp", "caption": "Hotel Resort 3D BIM Model"},
-      {"url": "./src/assets/images/projects/spa-lodge-arc/p3.webp", "caption": "Hotel Resort 3D BIM Model"},
-      {"url": "./src/assets/images/projects/spa-lodge-arc/p4.webp", "caption": "Hotel Resort 3D BIM Model"},
-      {"url": "./src/assets/images/projects/spa-lodge-arc/p5.webp", "caption": "Hotel Resort 3D BIM Model"},
-      {"url": "./src/assets/images/projects/spa-lodge-arc/p6.webp", "caption": "Hotel Resort 3D BIM Model"}
+      {"url": "./src/assets/images/projects/spa-lodge/p1.webp", "caption": "3D BIM Model", "group": "Architectural 3D Views"},
+      {"url": "./src/assets/images/projects/spa-lodge/p2.webp", "caption": "Cover Sheet", "group": "Architectural 3D Views"},
+      {"url": "./src/assets/images/projects/spa-lodge/p3.webp", "caption": "First Floor Plan", "group": "Architectural Floor Plans"},
+      {"url": "./src/assets/images/projects/spa-lodge/p4.webp", "caption": "Second Floor Plan", "group": "Architectural Floor Plans"},
+      {"url": "./src/assets/images/projects/spa-lodge/p5.webp", "caption": "Architectural Elevations", "group": "Architectural Elevations"},
+      {"url": "./src/assets/images/projects/spa-lodge/p6.webp", "caption": "Architectural Roof Plans", "group": "Architectural Floor Plans"},
+      {"url": "./src/assets/images/projects/spa-lodge/p7.webp", "caption": "MEP Coordinations", "group": "MEP 3D Views"},
+      {"url": "./src/assets/images/projects/spa-lodge/p8.webp", "caption": "Electrical Lighting Distributions", "group": "MEP Plans"},
+      {"url": "./src/assets/images/projects/spa-lodge/p9.webp", "caption": "Heating Layout", "group": "MEP Plans"},
+      {"url": "./src/assets/images/projects/spa-lodge/p10.webp", "caption": "Cold Water Supply Layout", "group": "MEP Plans"},
+      {"url": "./src/assets/images/projects/spa-lodge/p11.webp", "caption": "Ventilation/HVAC Layout", "group": "MEP Plans"}
     ],
     "shortDesc": "Transformed 2D CAD drawings into a full functional 3D BIM model (LOD 350) for a hotel resort.",
     "fullDesc": "Developed a detailed drawing set and documentation report for a hotel resort project.",

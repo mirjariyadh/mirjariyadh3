@@ -6,17 +6,17 @@
 // Global State & Constants
 const FEATURED_PROJECT_PRIORITY_IDS = [
   'project-01', // 1. Pharma Project
-  'project-04', // 2. Permit Set (Architecture and MEP)
-  'project-02', // 3. MEP Coordination Project (Residential)
+  'project-02', // 2. MEP Coordination Project (Residential)
+  'project-04', // 3. Permit Set (Architecture and MEP)
   'project-03', // 4. Point Cloud to BIM: Point Cloud to Revit (School)
-  'project-27', // 5. Architectural Renovation Project From Point Cloud
+  'project-09', // 5. Architectural Drawing Set
   'project-26', // 6. Ventilation Coordinate BIM Project
+  'project-20', // 9. Architectural Renovation Project
+  'project-27', // 8. Architectural Renovation Project From Point Cloud
   'project-21', // 7. Architectural Model with Detail Roof Structure (Residential)
-  'project-22', // 8. Architectural & MEP BIM Model (Spa Center)
-  'project-29', // 9. Point Cloud to Revit Model
-  'project-28', // 10. Construction Permit set
-  'project-20', // 11. Architectural Renovation Project
-  'project-09'  // Architectural Drawing Set
+  'project-22', // 10. Architectural & MEP BIM Model (Spa Center)
+  'project-28', // 11. Construction Permit set
+  'project-29'  // 12. Point Cloud to Revit Model
 ];
 
 let homeSelectedCategory = 'all';
