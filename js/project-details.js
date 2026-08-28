@@ -829,14 +829,21 @@ function openLightbox(index = 0) {
           </button>
         ` : ''}
 
-        <!-- Image Element (object-contain avoids clipping drawings) -->
-        <img 
-          id="lightbox-main-img"
-          src="${imgUrl}" 
-          alt="${caption}" 
-          class="max-w-full max-h-full object-contain rounded border border-slate-800/80 shadow-2xl transition-opacity duration-200" 
-          referrerPolicy="no-referrer" 
-        />
+        <!-- Image Element with Anti-Download Shield & Watermark -->
+        <div class="relative max-w-full max-h-full flex items-center justify-center select-none img-copyright-shield">
+          <img 
+            id="lightbox-main-img"
+            src="${imgUrl}" 
+            alt="${caption}" 
+            class="max-w-full max-h-full object-contain rounded border border-slate-800/80 shadow-2xl transition-opacity duration-200 pointer-events-none select-none" 
+            referrerPolicy="no-referrer" 
+          />
+          <!-- Subtle Floating Copyright Shield Tag -->
+          <div class="absolute bottom-3 right-3 bg-slate-950/85 border border-slate-700/80 px-2.5 py-1 rounded text-[10px] font-mono text-cyan-300 backdrop-blur-md shadow-lg pointer-events-none select-none flex items-center space-x-1.5 opacity-80 hover:opacity-100">
+            <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H10m11-3.5a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>© Mirja Riyadh</span>
+          </div>
+        </div>
 
         <!-- Next Button -->
         ${gallery.length > 1 ? `

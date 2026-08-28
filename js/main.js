@@ -37,6 +37,146 @@ function trackBimEvent(eventName, data = {}) {
 }
 window.trackBimEvent = trackBimEvent;
 
+/* Image Protection: Disable context menu on images, drag-and-drop, and add copyright protection */
+function initImageProtection() {
+  // Prevent context menu (right click) on all images across the site
+  document.addEventListener('contextmenu', (e) => {
+    const target = e.target;
+    if (target && (target.tagName === 'IMG' || target.closest('img') || target.classList.contains('comparison-slider') || target.closest('#lightbox-modal') || target.closest('.group'))) {
+      if (target.tagName === 'IMG' || target.closest('img') || (target.tagName === 'CANVAS')) {
+        e.preventDefault();
+        showImageCopyrightToast();
+        return false;
+      }
+    }
+  }, { passive: false });
+
+  // Prevent dragging images
+  document.addEventListener('dragstart', (e) => {
+    const target = e.target;
+    if (target && target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  }, { passive: false });
+
+  // Prevent keyboard shortcuts for saving images (e.g., Ctrl+S, Cmd+S on image viewer)
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+      const activeLightbox = document.getElementById('lightbox-modal');
+      if (activeLightbox) {
+        e.preventDefault();
+        showImageCopyrightToast();
+        return false;
+      }
+    }
+  });
+
+  // Attach copyright modal triggers
+  initCopyrightModal();
+}
+
+function showImageCopyrightToast() {
+  let toast = document.getElementById('bim-copyright-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'bim-copyright-toast';
+    toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 bg-slate-900/95 border border-cyan-500/40 text-cyan-300 text-xs font-mono rounded-full shadow-2xl backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none flex items-center space-x-2';
+    toast.innerHTML = `
+      <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H10m11-3.5a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <span>© Protected Content — All BIM assets & drawings are copyrighted by Mirja Riyadh.</span>
+    `;
+    document.body.appendChild(toast);
+  }
+
+  toast.classList.remove('opacity-0', 'pointer-events-none');
+  toast.classList.add('opacity-100');
+
+  clearTimeout(window._copyrightToastTimer);
+  window._copyrightToastTimer = setTimeout(() => {
+    if (toast) {
+      toast.classList.remove('opacity-100');
+      toast.classList.add('opacity-0', 'pointer-events-none');
+    }
+  }, 2800);
+}
+
+function initCopyrightModal() {
+  // Ensure the copyright notice modal exists in DOM
+  if (!document.getElementById('copyright-notice-modal')) {
+    const modal = document.createElement('div');
+    modal.id = 'copyright-notice-modal';
+    modal.className = 'fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4';
+    modal.innerHTML = `
+      <div class="bg-slate-900 border border-slate-800 rounded-md max-w-lg w-full p-6 sm:p-7 relative shadow-2xl text-left font-sans">
+        <button id="close-copyright-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-lg cursor-pointer leading-none" aria-label="Close modal">✕</button>
+        
+        <div class="mb-5 flex items-center space-x-3">
+          <div class="w-9 h-9 rounded bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">LEGAL & COPYRIGHT NOTICE</span>
+            <h3 class="text-lg font-bold text-white leading-tight">Intellectual Property Rights</h3>
+          </div>
+        </div>
+
+        <div class="space-y-3.5 text-xs text-gray-300 leading-relaxed font-sans border-y border-slate-800/80 py-4">
+          <p>
+            All architectural models, MEP coordination drawings, Scan-to-BIM visual outputs, 2D AutoCAD drafting sheets, parametric Revit families, and portfolio media showcased on this website (<strong class="text-cyan-300">mirjariyadh.com.bd</strong>) are the exclusive intellectual property of <strong class="text-white">Mirja Riyadh</strong> and respective project clients.
+          </p>
+          <div class="bg-slate-950 p-3.5 rounded border border-slate-800/80 space-y-1.5 font-mono text-[11px] text-gray-400">
+            <div class="text-cyan-400 font-bold">🔒 Usage Restrictions:</div>
+            <div>• Unauthorized downloading, scraping, reproduction, hotlinking, or commercial reuse of these drawings and renders is strictly prohibited.</div>
+            <div>• All deliverables comply with strict client Non-Disclosure Agreements (NDA).</div>
+            <div>• To request licensed samples, official BIM models, or customized portfolio sheets, please submit a direct proposal request.</div>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap items-center justify-between gap-3">
+          <span class="text-[11px] font-mono text-gray-500">© 2026 Mirja Riyadh. All rights reserved.</span>
+          <button id="dismiss-copyright-modal" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold rounded cursor-pointer transition-colors shadow-md">
+            Understood
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+
+    modal.querySelector('#close-copyright-modal')?.addEventListener('click', closeModal);
+    modal.querySelector('#dismiss-copyright-modal')?.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  // Bind any elements with .open-copyright-modal
+  document.querySelectorAll('.open-copyright-modal').forEach(btn => {
+    btn.removeEventListener('click', openCopyrightModal);
+    btn.addEventListener('click', openCopyrightModal);
+  });
+}
+
+function openCopyrightModal(e) {
+  if (e) e.preventDefault();
+  initCopyrightModal();
+  const modal = document.getElementById('copyright-notice-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+window.openCopyrightModal = openCopyrightModal;
+
 function initMain() {
   // Ensure dark mode is active
   document.documentElement.classList.add('dark');
@@ -53,6 +193,7 @@ function initMain() {
   initCopyButtons();
   initSectionObserverAnimations();
   autoInitCategoryGrids();
+  initImageProtection();
 }
 
 /* Automatically initialize grids if elements are present in DOM */

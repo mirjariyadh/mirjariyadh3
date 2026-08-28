@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bimGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded Base Background -->
+  <rect width="64" height="64" rx="16" fill="url(#bimGradient)" stroke="#06b6d4" stroke-width="2" stroke-opacity="0.6"/>
+  
+  <!-- Isometric BIM / 3D Grid Coordinate Lines -->
+  <path d="M12 24 L32 14 L52 24 L32 34 Z" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.35"/>
+  <path d="M12 24 L12 40 L32 50 L32 34 Z" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.25"/>
+  <path d="M52 24 L52 40 L32 50 L32 34 Z" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.25"/>
+
+  <!-- Stylized "MR" / BIM Monogram Structure -->
+  <!-- Letter M (Left Pillar & Peak) -->
+  <path d="M18 46 V22 L26 33 L32 25" fill="none" stroke="url(#accentGradient)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Letter R (Right Loop & Leg) -->
+  <path d="M34 46 V22 H41 C44.5 22 47 24.5 47 28 C47 31.5 44.5 34 41 34 H34 M41 34 L47 46" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- High-Tech Point Cloud / Precision Coordinate Node -->
+  <circle cx="32" cy="14" r="2.5" fill="#38bdf8"/>
+  <circle cx="52" cy="24" r="2" fill="#06b6d4"/>
+</svg>
