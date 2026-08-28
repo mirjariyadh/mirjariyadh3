@@ -318,6 +318,62 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture & BIM Services"
   },
+
+
+  {
+    "id": "project-30",
+    "title": "Concept to Complete Architecture Renovation & Permit Set",
+    "category": [
+      "architecture",
+      "autocad"
+    ],
+    "discipline": ["architecture", "autocad"],
+    "buildingType": "residential",
+    "thumbnail": "./src/assets/images/projects/renovation-p2/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/renovation-p2/p1.webp", "caption": "Concept", "group": "Client Concept"},
+      {"url": "./src/assets/images/projects/renovation-p2/p2.webp", "caption": "3D View 1", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/renovation-p2/p3.webp", "caption": "3D View 2", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/renovation-p2/p4.webp", "caption": "Cover Sheet", "group": "Informations"},
+      {"url": "./src/assets/images/projects/renovation-p2/p5.webp", "caption": "Site Plan", "group": "Informations"},
+      {"url": "./src/assets/images/projects/renovation-p2/p6.webp", "caption": "UG Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p7.webp", "caption": "EG Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p8.webp", "caption": "DG Demolition Plan", "group": "Demolition Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p9.webp", "caption": "Section DD Demolition", "group": "Sections and Elevations Demolition"},
+      {"url": "./src/assets/images/projects/renovation-p2/p10.webp", "caption": "Section EE Demolition", "group": "Sections and Elevations Demolition"},
+      {"url": "./src/assets/images/projects/renovation-p2/p11.webp", "caption": "North and South Elevation Demolition", "group": "Sections and Elevations Demolition"},
+      {"url": "./src/assets/images/projects/renovation-p2/p12.webp", "caption": "East and West Elevation Demolition", "group": "Sections and Elevations Demolition"},
+      {"url": "./src/assets/images/projects/renovation-p2/p13.webp", "caption": "UG Existing Plan", "group": "Existing Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p14.webp", "caption": "EG Existing Plan", "group": "Existing Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p15.webp", "caption": "DG Existing Plan", "group": "Existing Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p16.webp", "caption": "RF Existing Plan", "group": "Existing Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p17.webp", "caption": "UG Complete Plan", "group": "Complete Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p18.webp", "caption": "EG Complete Plan", "group": "Complete Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p19.webp", "caption": "DG & RF Complete Plan", "group": "Complete Plan"},
+      {"url": "./src/assets/images/projects/renovation-p2/p20.webp", "caption": "Section AA Complete", "group": "Section and Elevation Complete"},
+      {"url": "./src/assets/images/projects/renovation-p2/p21.webp", "caption": "Section BB Complete", "group": "Section and Elevation Complete"},
+      {"url": "./src/assets/images/projects/renovation-p2/p22.webp", "caption": "North and South Elevation Complete", "group": "Section and Elevation Complete"},
+      {"url": "./src/assets/images/projects/renovation-p2/p23.webp", "caption": "East and West Elevation Complete", "group": "Section and Elevation Complete"}
+    ],
+    "shortDesc": "Residential renovation taken from site survey to a fully coordinated LOD 300 BIM model.",
+    "fullDesc": "A single-family home renovation in Bad Mergentheim, Germany, developed from archival permits and site survey through a coordinated LOD 300 BIM model to client-ready photorealistic visualization.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Autodesk Autocad"
+    ],
+    "clientRegion": "Germany",
+    "completionDate": "Oct 2024",
+    "areaSqFt": "5,326.00 sq.ft",
+    "keyFeatures": [
+      "Full site survey and permit archive digitized",
+      "LOD 300 BIM model: accurate size, shape, location",
+      "Structural and MEP coordination across levels",
+      "Photorealistic renders for client presentation"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architecture & BIM Services"
+  },
   
 
   {
