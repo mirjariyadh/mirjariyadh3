@@ -890,14 +890,24 @@ var PORTFOLIO_PROJECTS = [
     "category": [
       "point-cloud"
     ],
+    "discipline": ["architecture", "autocad"],
+    "buildingType": "educational",
     "thumbnail": "./src/assets/images/projects/point-cloud-p4/t0.webp",
     "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p4/t0.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p0.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p1.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p2.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p3.webp", "caption": "Point Cloud to Revit Conversion for a School Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p4.webp", "caption": "Point Cloud to Revit Conversion for a School Building"}
+      {"url": "./src/assets/images/projects/point-cloud-p4/t0.webp", "caption": "3D Render View", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p0.webp", "caption": "3D Point Cloud", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p1.webp", "caption": "Cover Page", "group": "3D View"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p2.webp", "caption": "3D Views", "group": "3D View"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p3.webp", "caption": "Ground Floor Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p4.webp", "caption": "1st Floor Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p5.webp", "caption": "2st Floor Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p6.webp", "caption": "3rd Floor Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p7.webp", "caption": "Roof Plan", "group": "Architectural Plans"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p8.webp", "caption": "Architectural Section", "group": "Architectural Sections & Elevations"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p9.webp", "caption": "Architectural Section", "group": "Architectural Sections & Elevations"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p10.webp", "caption": "East & West Elevations", "group": "Architectural Sections & Elevations"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p11.webp", "caption": "North Elevation", "group": "Architectural Sections & Elevations"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p12.webp", "caption": "South Elevation", "group": "Architectural Sections & Elevations"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
     "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
