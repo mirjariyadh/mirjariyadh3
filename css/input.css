@@ -214,27 +214,48 @@ body {
   pointer-events: none;
 }
 
-/* Section Reveal on Scroll (Smooth & Professional Intersection Observer Animation) */
+/* Section & Element Reveal on Scroll (Smooth & Dynamic Intersection Observer Animation) */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(24px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
-/* Stagger delay classes for direct child elements */
-.reveal-stagger > *:nth-child(1) { transition-delay: 50ms; }
-.reveal-stagger > *:nth-child(2) { transition-delay: 120ms; }
-.reveal-stagger > *:nth-child(3) { transition-delay: 190ms; }
-.reveal-stagger > *:nth-child(4) { transition-delay: 260ms; }
+/* Modifier variants for diverse UI contexts */
+.reveal-on-scroll.reveal-fade {
+  transform: none;
+  transition: opacity 0.7s ease-out;
+}
+
+.reveal-on-scroll.reveal-scale {
+  transform: scale(0.96) translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.reveal-scale.is-visible {
+  transform: scale(1) translateY(0) !important;
+}
+
+/* Stagger delay classes for direct child elements & cards */
+.reveal-stagger > *:nth-child(1), [data-stagger] > *:nth-child(1) { transition-delay: 40ms; }
+.reveal-stagger > *:nth-child(2), [data-stagger] > *:nth-child(2) { transition-delay: 90ms; }
+.reveal-stagger > *:nth-child(3), [data-stagger] > *:nth-child(3) { transition-delay: 140ms; }
+.reveal-stagger > *:nth-child(4), [data-stagger] > *:nth-child(4) { transition-delay: 190ms; }
+.reveal-stagger > *:nth-child(5), [data-stagger] > *:nth-child(5) { transition-delay: 240ms; }
+.reveal-stagger > *:nth-child(6), [data-stagger] > *:nth-child(6) { transition-delay: 290ms; }
+.reveal-stagger > *:nth-child(7), [data-stagger] > *:nth-child(7) { transition-delay: 340ms; }
+.reveal-stagger > *:nth-child(8), [data-stagger] > *:nth-child(8) { transition-delay: 390ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-on-scroll {
+  .reveal-on-scroll,
+  .reveal-on-scroll.reveal-scale,
+  .reveal-on-scroll.reveal-fade {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

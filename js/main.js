@@ -334,7 +334,7 @@ function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
     const mobileClass = (isDefaultOverview && idx >= 3 && !mobileShowAllProjects) ? 'mobile-project-collapsed' : '';
 
     return `
-      <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40 ${mobileClass}">
+      <div class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40 ${mobileClass}" style="transition-delay: ${(idx % 6) * 50}ms;">
         <div>
           <!-- Thumbnail & Category Tag (16:9 standard ratio) -->
           <div class="relative aspect-video overflow-hidden bg-slate-950">
@@ -403,6 +403,7 @@ function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
   }
 
   initLazyImages(container);
+  initSectionObserverAnimations(container);
 }
 
 /* Toggle mobile projects expansion */
@@ -503,7 +504,7 @@ function setupAdvancedPortfolioFilter(gridContainerId = 'all-projects-grid') {
       return;
     }
 
-    container.innerHTML = results.map(project => {
+    container.innerHTML = results.map((project, idx) => {
       const { categoryLabel, scopeTag } = getProjectMetadata(project);
       const thumbnail = project.thumbnail || project.image || 
         (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
@@ -511,7 +512,7 @@ function setupAdvancedPortfolioFilter(gridContainerId = 'all-projects-grid') {
       const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
 
       return `
-        <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+        <div class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40" style="transition-delay: ${(idx % 6) * 50}ms;">
           <div>
             <div class="relative aspect-video overflow-hidden bg-slate-950">
               <img 
@@ -559,6 +560,7 @@ function setupAdvancedPortfolioFilter(gridContainerId = 'all-projects-grid') {
     }).join('');
 
     initLazyImages(container);
+    initSectionObserverAnimations(container);
   }
 
   function resetFilters() {
@@ -1013,7 +1015,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
     return;
   }
 
-  container.innerHTML = filtered.map(project => {
+  container.innerHTML = filtered.map((project, idx) => {
     const { categoryLabel, scopeTag } = getProjectMetadata(project);
     const thumbnail = project.thumbnail || project.image || 
       (project.images && project.images[0] ? (typeof project.images[0] === 'string' ? project.images[0] : project.images[0].url) : '');
@@ -1021,7 +1023,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
     const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
 
     return `
-      <div class="bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40">
+      <div class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40" style="transition-delay: ${(idx % 6) * 50}ms;">
         <div>
           <div class="relative aspect-video overflow-hidden bg-slate-950">
             <img 
@@ -1069,6 +1071,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
   }).join('');
 
   initLazyImages(container);
+  initSectionObserverAnimations(container);
 }
 
 /* Intersection Observer-based High Performance Lazy Loader */
@@ -1105,9 +1108,17 @@ function initLazyImages(container) {
   }
 }
 
-/* Smooth Section Reveal Observer Animation on Scroll */
-function initSectionObserverAnimations() {
-  const targets = document.querySelectorAll('section:not(#hero), .reveal-on-scroll');
+/* Smooth Section & Element Reveal Observer Animation on Scroll */
+let _globalSectionObserver = null;
+
+function initSectionObserverAnimations(scope) {
+  const root = scope || document;
+  
+  // Select all sections (except hero), explicitly marked elements, cards, metrics, features
+  const targets = root.querySelectorAll(
+    'section:not(#hero), .reveal-on-scroll, .metric-card, .process-step, .service-card, .bim-highlight-card, [data-reveal]'
+  );
+  
   if (!targets || targets.length === 0) return;
 
   targets.forEach((el) => {
@@ -1117,20 +1128,32 @@ function initSectionObserverAnimations() {
   });
 
   if ('IntersectionObserver' in window) {
-    const sectionObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
+    if (!_globalSectionObserver) {
+      _globalSectionObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting || entry.intersectionRatio > 0.04) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: [0, 0.06, 0.12]
       });
-    }, {
-      root: null,
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.08
-    });
+    }
 
-    targets.forEach(target => sectionObserver.observe(target));
+    targets.forEach(target => {
+      if (target.classList.contains('is-visible')) return;
+
+      const rect = target.getBoundingClientRect();
+      const isAlreadyInView = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
+      if (isAlreadyInView) {
+        target.classList.add('is-visible');
+      } else {
+        _globalSectionObserver.observe(target);
+      }
+    });
   } else {
     targets.forEach(target => target.classList.add('is-visible'));
   }

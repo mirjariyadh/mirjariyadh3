@@ -678,14 +678,14 @@ function renderProjectDetailsPage() {
       ? window.BIM_PROJECT_UTILS.getRelatedProjects(project.id, 3)
       : projects.filter(p => p.id !== project.id).slice(0, 3);
 
-    relatedContainer.innerHTML = related.map(rel => {
+    relatedContainer.innerHTML = related.map((rel, idx) => {
       const relCat = rel.categoryName || (Array.isArray(rel.category) ? rel.category[0].toUpperCase() : 'BIM MODEL');
       const relImg = rel.thumbnail || rel.image || (rel.images && rel.images[0] ? (typeof rel.images[0] === 'string' ? rel.images[0] : rel.images[0].url) : '');
       const relLod = rel.lod || 'LOD 350';
       const relSoftware = (rel.softwareUsed && rel.softwareUsed[0]) || 'Autodesk Revit';
 
       return `
-        <div class="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300">
+        <div class="reveal-on-scroll bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300" style="transition-delay: ${(idx % 4) * 60}ms;">
           <div>
             <div class="aspect-video bg-slate-950 overflow-hidden relative">
               <img src="${relImg}" alt="${rel.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" />
@@ -717,6 +717,11 @@ function renderProjectDetailsPage() {
         </div>
       `;
     }).join('');
+  }
+
+  // Trigger intersection observer scroll reveal animations
+  if (typeof window.initSectionObserverAnimations === 'function') {
+    window.initSectionObserverAnimations(container);
   }
 }
 
