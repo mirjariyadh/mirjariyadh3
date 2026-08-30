@@ -177,14 +177,85 @@ function openCopyrightModal(e) {
 }
 window.openCopyrightModal = openCopyrightModal;
 
-function initMain() {
-  // Ensure dark mode is active
-  document.documentElement.classList.add('dark');
-  document.documentElement.classList.remove('light-theme');
-  if (document.body) {
-    document.body.classList.remove('light-theme');
+/* ==========================================================================
+   THEME MANAGER (Dark Mode Default + Light Mode Toggle with LocalStorage)
+   ========================================================================== */
+function applyInitialTheme() {
+  const savedTheme = localStorage.getItem('site-theme');
+  const isLight = savedTheme === 'light';
+
+  if (isLight) {
+    document.documentElement.classList.add('light-mode');
+    document.documentElement.classList.remove('dark');
+    if (document.body) {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark');
+    }
+  } else {
+    // Dark mode is the default state
+    document.documentElement.classList.remove('light-mode');
+    document.documentElement.classList.add('dark');
+    if (document.body) {
+      document.body.classList.remove('light-mode');
+      document.body.classList.add('dark');
+    }
+  }
+  updateThemeToggleButtons(isLight);
+}
+
+function updateThemeToggleButtons(isLight) {
+  const toggleButtons = document.querySelectorAll('.theme-toggle-btn, #theme-toggle-btn, #theme-toggle-btn-mobile');
+  toggleButtons.forEach(btn => {
+    btn.setAttribute('aria-label', isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+    btn.setAttribute('title', isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+  });
+}
+
+function toggleTheme() {
+  const isCurrentlyLight = document.body ? document.body.classList.contains('light-mode') : document.documentElement.classList.contains('light-mode');
+  const nextIsLight = !isCurrentlyLight;
+
+  if (nextIsLight) {
+    document.documentElement.classList.add('light-mode');
+    document.documentElement.classList.remove('dark');
+    if (document.body) {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark');
+    }
+    localStorage.setItem('site-theme', 'light');
+    trackBimEvent('theme_change', { theme: 'light' });
+  } else {
+    document.documentElement.classList.remove('light-mode');
+    document.documentElement.classList.add('dark');
+    if (document.body) {
+      document.body.classList.remove('light-mode');
+      document.body.classList.add('dark');
+    }
+    localStorage.setItem('site-theme', 'dark');
+    trackBimEvent('theme_change', { theme: 'dark' });
   }
 
+  updateThemeToggleButtons(nextIsLight);
+}
+
+function initThemeToggle() {
+  applyInitialTheme();
+
+  // Attach event delegation for all theme toggle buttons across the page
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.theme-toggle-btn, #theme-toggle-btn, #theme-toggle-btn-mobile');
+    if (btn) {
+      e.preventDefault();
+      toggleTheme();
+    }
+  });
+}
+
+// Immediate execution to prevent flash of wrong theme
+applyInitialTheme();
+
+function initMain() {
+  initThemeToggle();
   initMobileNav();
   highlightActiveNav();
   initContactModal();

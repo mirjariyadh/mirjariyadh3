@@ -63,27 +63,449 @@ img, .protected-image, .comparison-slider img {
   display: flex !important;
 }
 
-/* Mirja Riyadh Portfolio Custom Styles */
+/* Mirja Riyadh Portfolio Custom Styles & Theme Architecture */
 :root {
-  --bg-primary: #0a0e17;
-  --bg-secondary: #111827;
-  --bg-card: #1a2234;
-  --bg-card-hover: #222d42;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --accent-cyan: #06b6d4;
+  /* Surface & Backgrounds (Default: Dark Mode) */
+  --bg-primary: #020617;       /* Deep slate/black canvas (slate-950) */
+  --bg-secondary: #0f172a;     /* Cards & elevated containers (slate-900) */
+  --bg-tertiary: #1e293b;      /* Input fields, hover badges, dropdowns (slate-800) */
+  --bg-card: #0f172a;
+  --bg-card-hover: #1e293b;
+  --bg-accent: #083344;        /* Cyan 950 subtle surfaces */
+
+  /* Text & Typography */
+  --text-main: #f8fafc;        /* Headings & prominent text (slate-50) */
+  --text-secondary: #cbd5e1;   /* Readable body & subtitles (slate-300) */
+  --text-muted: #94a3b8;       /* Meta tags, captions, subtle text (slate-400) */
+
+  /* Accents & BIM Engineering Brand Colors */
+  --accent-cyan: #06b6d4;      /* Primary interactive cyan (cyan-500) */
+  --accent-cyan-hover: #22d3ee;/* Brighter cyan on hover (cyan-400) */
+  --accent-cyan-bg: rgba(6, 182, 212, 0.12);
   --accent-blue: #3b82f6;
   --accent-emerald: #10b981;
-  --border-color: #2e3a52;
-  --nav-bg: rgba(10, 14, 23, 0.85);
+
+  /* Borders & Dividers */
+  --border-color: #1e293b;     /* Slate-800 border */
+  --border-subtle: #334155;    /* Slate-700 border */
+  --border-hover: rgba(6, 182, 212, 0.6);
+
+  /* Navigation & Glassmorphism */
+  --nav-bg: rgba(2, 6, 23, 0.88);
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
 }
 
+/* ==========================================================================
+   LIGHT MODE OVERRIDES (.light-mode / body.light-mode / html.light-mode)
+   ========================================================================== */
+.light-mode,
+body.light-mode,
+html.light-mode {
+  /* Surface & Backgrounds (Crisp, High-Contrast Light Theme) */
+  --bg-primary: #f8fafc;       /* Crisp off-white canvas (slate-50) */
+  --bg-secondary: #ffffff;     /* Elevated pure white card backgrounds */
+  --bg-tertiary: #f1f5f9;      /* Input fields, subtle badges (slate-100) */
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-accent: #e0f2fe;        /* Soft cyan tint */
+
+  /* Text & Typography (WCAG AA High Contrast) */
+  --text-main: #0f172a;        /* Deep slate-900 for headlines & body */
+  --text-secondary: #334155;   /* Slate-700 for subtitles */
+  --text-muted: #64748b;       /* Slate-500 for captions & labels */
+
+  /* Accents & Brand Colors adjusted for optimal light contrast */
+  --accent-cyan: #0891b2;      /* Deep cyan-600 for sharp readability */
+  --accent-cyan-hover: #0e7490;/* Cyan-700 hover */
+  --accent-cyan-bg: rgba(8, 145, 178, 0.1);
+  --accent-blue: #2563eb;
+  --accent-emerald: #059669;
+
+  /* Borders & Dividers */
+  --border-color: #e2e8f0;     /* Slate-200 border */
+  --border-subtle: #cbd5e1;    /* Slate-300 border */
+  --border-hover: #0891b2;
+
+  /* Navigation & Shadows */
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+}
+
+/* ==========================================================================
+   GLOBAL SMOOTH TRANSITION
+   ========================================================================== */
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-x: hidden;
+}
+
+header, nav, footer, section, main,
+.glass-panel, .theme-toggle-btn {
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* ==========================================================================
+   LIGHT MODE COMPONENT & UTILITY OVERRIDES
+   ========================================================================== */
+body.light-mode {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Background utilities adaptation */
+body.light-mode .bg-slate-950,
+body.light-mode .bg-\[\#070B14\],
+body.light-mode .bg-\[\#070b14\],
+body.light-mode .bg-\[\#0A0F1D\],
+body.light-mode .bg-\[\#0B1220\],
+body.light-mode .bg-\[\#0B1220\]\/90,
+body.light-mode .bg-\[\#0B1220\]\/85,
+body.light-mode .bg-\[\#080E1A\] {
+  background-color: #f8fafc !important;
+}
+
+/* Cards & elevated components - Pure crisp white */
+body.light-mode .bg-slate-900,
+body.light-mode .bg-slate-900\/95,
+body.light-mode .bg-slate-900\/90,
+body.light-mode .bg-slate-900\/80,
+body.light-mode .bg-slate-900\/70,
+body.light-mode .bg-slate-900\/60,
+body.light-mode .bg-slate-900\/50,
+body.light-mode .bg-slate-900\/40,
+body.light-mode .bg-slate-900\/30,
+body.light-mode .bg-slate-850,
+body.light-mode .bg-\[\#0F172A\],
+body.light-mode .bg-\[\#111827\] {
+  background-color: #ffffff !important;
+}
+
+/* Secondary light surfaces & pill containers */
+body.light-mode .bg-slate-950\/80,
+body.light-mode .bg-slate-950\/90,
+body.light-mode .bg-slate-950\/60,
+body.light-mode .bg-slate-950\/40,
+body.light-mode .bg-slate-950\/30,
+body.light-mode .bg-slate-800,
+body.light-mode .bg-slate-800\/90,
+body.light-mode .bg-slate-800\/80,
+body.light-mode .bg-slate-800\/60,
+body.light-mode .bg-slate-800\/50 {
+  background-color: #f1f5f9 !important;
+}
+
+body.light-mode .bg-slate-700 {
+  background-color: #e2e8f0 !important;
+}
+
+body.light-mode .bg-cyan-950,
+body.light-mode .bg-cyan-950\/80,
+body.light-mode .bg-cyan-950\/60,
+body.light-mode .bg-cyan-950\/40,
+body.light-mode .bg-cyan-950\/30,
+body.light-mode .bg-cyan-950\/20,
+body.light-mode .bg-cyan-950\/10 {
+  background-color: #e0f2fe !important;
+  color: #0369a1 !important;
+}
+
+body.light-mode .bg-emerald-950,
+body.light-mode .bg-emerald-950\/80,
+body.light-mode .bg-emerald-950\/60,
+body.light-mode .bg-emerald-950\/40 {
+  background-color: #d1fae5 !important;
+  color: #047857 !important;
+}
+
+body.light-mode .bg-blue-950,
+body.light-mode .bg-blue-950\/80,
+body.light-mode .bg-blue-950\/60 {
+  background-color: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+
+body.light-mode .bg-purple-950,
+body.light-mode .bg-indigo-950 {
+  background-color: #ede9fe !important;
+  color: #6d28d9 !important;
+}
+
+body.light-mode .bg-white\/5,
+body.light-mode .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Number indicators & step pills in Light Mode */
+body.light-mode .bg-\[\#18A999\]\/20 {
+  background-color: rgba(24, 169, 153, 0.15) !important;
+  color: #0d9488 !important;
+  border-color: rgba(24, 169, 153, 0.3) !important;
+}
+
+/* Border utilities adaptation */
+body.light-mode .border-slate-800,
+body.light-mode .border-slate-800\/90,
+body.light-mode .border-slate-800\/80,
+body.light-mode .border-slate-800\/60,
+body.light-mode .border-slate-800\/50,
+body.light-mode .border-slate-700,
+body.light-mode .border-slate-700\/60,
+body.light-mode .border-slate-700\/50 {
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode .border-cyan-500\/30,
+body.light-mode .border-cyan-500\/40,
+body.light-mode .border-cyan-500\/20 {
+  border-color: #7dd3fc !important;
+}
+
+body.light-mode .border-\[\#18A999\]\/30,
+body.light-mode .border-\[\#18A999\]\/40 {
+  border-color: #5eead4 !important;
+}
+
+/* Text typography adaptation */
+body.light-mode .text-white,
+body.light-mode .text-gray-100,
+body.light-mode .text-slate-100,
+body.light-mode .text-slate-50 {
+  color: #0f172a !important;
+}
+
+body.light-mode .text-gray-200,
+body.light-mode .text-gray-300,
+body.light-mode .text-slate-200,
+body.light-mode .text-slate-300 {
+  color: #334155 !important;
+}
+
+body.light-mode .text-gray-400,
+body.light-mode .text-gray-500,
+body.light-mode .text-slate-400,
+body.light-mode .text-slate-500 {
+  color: #64748b !important;
+}
+
+body.light-mode .text-cyan-400,
+body.light-mode .text-cyan-300 {
+  color: #0891b2 !important;
+}
+
+body.light-mode .text-\[\#18A999\] {
+  color: #0d9488 !important;
+}
+
+body.light-mode .text-emerald-400,
+body.light-mode .text-emerald-300 {
+  color: #059669 !important;
+}
+
+body.light-mode .text-blue-400,
+body.light-mode .text-blue-300 {
+  color: #2563eb !important;
+}
+
+body.light-mode .text-purple-400 {
+  color: #7c3aed !important;
+}
+
+body.light-mode .text-indigo-400,
+body.light-mode .text-indigo-300 {
+  color: #4f46e5 !important;
+}
+
+body.light-mode .text-amber-400,
+body.light-mode .text-amber-300 {
+  color: #d97706 !important;
+}
+
+/* Hero Gradient Text in Light Mode */
+body.light-mode .from-cyan-400.to-blue-500 {
+  --tw-gradient-from: #0891b2 !important;
+  --tw-gradient-to: #1d4ed8 !important;
+}
+
+/* Retain white text on solid colored buttons & badges */
+body.light-mode .bg-cyan-600,
+body.light-mode .bg-cyan-500,
+body.light-mode .bg-cyan-700,
+body.light-mode .bg-\[\#18A999\],
+body.light-mode .bg-\[\#138b7e\],
+body.light-mode .bg-\[\#009FB7\],
+body.light-mode .bg-\[\#00b22d\],
+body.light-mode .bg-\[\#0088cc\],
+body.light-mode .bg-emerald-600,
+body.light-mode .bg-blue-600,
+body.light-mode button[type="submit"],
+body.light-mode .open-contact-modal,
+body.light-mode .selected-filter-btn,
+body.light-mode #dismiss-copyright-modal,
+body.light-mode a[href*="contact"] {
+  color: #ffffff !important;
+}
+
+body.light-mode .bg-cyan-600 *,
+body.light-mode .bg-cyan-500 *,
+body.light-mode .bg-\[\#18A999\] *,
+body.light-mode .bg-\[\#009FB7\] *,
+body.light-mode .bg-\[\#00b22d\] *,
+body.light-mode .bg-\[\#0088cc\] *,
+body.light-mode .open-contact-modal *,
+body.light-mode .selected-filter-btn * {
+  color: #ffffff !important;
+}
+
+/* Download CV Button in Light Mode */
+body.light-mode #download-cv-btn {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+}
+body.light-mode #download-cv-btn * {
+  color: #ffffff !important;
+}
+body.light-mode #download-cv-btn:hover {
+  background-color: #18A999 !important;
+  border-color: #18A999 !important;
+}
+
+/* CTA Gradient Banner in Light Mode */
+body.light-mode section.bg-gradient-to-r,
+body.light-mode .from-slate-900.via-slate-900.to-cyan-950 {
+  background-image: linear-gradient(to right, #f8fafc, #f1f5f9, #e0f2fe) !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Overlay labels on images */
+body.light-mode .aspect-\[4\/5\] .bg-\[\#0B1220\]\/85,
+body.light-mode .aspect-\[4\/5\] .bg-\[\#0B1220\]\/90 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Form controls in light mode */
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+body.light-mode input:focus,
+body.light-mode select:focus,
+body.light-mode textarea:focus {
+  border-color: #0891b2 !important;
+  outline-color: #0891b2 !important;
+  box-shadow: 0 0 0 2px rgba(8, 145, 178, 0.2) !important;
+}
+
+/* Glassmorphism & Header in light mode */
+body.light-mode .glass-panel {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode #mobile-menu {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Grid Pattern in light mode */
+body.light-mode .bg-grid-pattern {
+  background-image: radial-gradient(rgba(8, 145, 178, 0.15) 1px, transparent 0) !important;
+}
+
+/* Subtle Technical Grid in about.html */
+body.light-mode .bg-\[size\:32px_32px\],
+body.light-mode .bg-\[size\:40px_40px\] {
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px) !important;
+}
+
+/* Cards elevation & shadow in light mode */
+body.light-mode .group:hover,
+body.light-mode .card-hover:hover {
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.1) !important;
+  border-color: #0891b2 !important;
+}
+
+/* Copyright badges in light mode */
+body.light-mode .copyright-pill-badge {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+body.light-mode .copyright-pill-badge:hover {
+  border-color: #0891b2 !important;
+  color: #0891b2 !important;
+}
+
+/* Modals in light mode */
+body.light-mode #contact-modal > div > div,
+body.light-mode #copyright-notice-modal > div,
+body.light-mode #requirement-helper-modal > div > div {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+}
+
+/* ==========================================================================
+   THEME TOGGLE BUTTON STYLING & ICON SWITCHING
+   ========================================================================== */
+.theme-toggle-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background-color: var(--bg-card-hover);
+}
+
+/* Default Dark Mode: show Moon icon, hide Sun icon */
+.theme-toggle-btn .icon-moon {
+  display: block !important;
+}
+.theme-toggle-btn .icon-sun {
+  display: none !important;
+}
+
+/* Light Mode active: show Sun icon, hide Moon icon */
+body.light-mode .theme-toggle-btn .icon-moon,
+html.light-mode .theme-toggle-btn .icon-moon {
+  display: none !important;
+}
+
+body.light-mode .theme-toggle-btn .icon-sun,
+html.light-mode .theme-toggle-btn .icon-sun {
+  display: block !important;
+  color: #0891b2 !important;
 }
 
 .font-mono-code {
@@ -379,11 +801,6 @@ body {
 /* SEO Schema hidden container */
 .seo-structured-data {
   display: none;
-}
-
-#theme-toggle-btn, #theme-toggle-icon, #theme-toggle-btn-mobile {
-  display: none !important;
-  visibility: hidden !important;
 }
 
 /* Clean Printable Project Sheet Layout (@media print) */
