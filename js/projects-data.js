@@ -882,100 +882,8 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture Modeling"
   },
-  {
-    "id": "project-10",
-    "title": "Point Cloud to Revit Conversion for a Residential Property",
-    "category": [
-      "point-cloud"
-    ],
-    "thumbnail": "./src/assets/images/projects/point-cloud-p1/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p1/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
-      {"url": "./src/assets/images/projects/point-cloud-p1/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"}
-    ],
-    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
-    "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "Germany",
-    "completionDate": "Nov 2023",
-    "areaSqFt": "4,000 sq.ft",
-    "keyFeatures": [
-      "Converted high-density point cloud scan data into a Point Cloud-verified 3D Revit model",
-      "Captured complex as-built residential architectural elements, including structural walls, fixtures, and finishes",
-      "Eliminated manual measurement errors by modeling directly over registered laser scan data",
-      "Provided a reliable, high-fidelity BIM foundation for future residential renovations and extensions"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Point Cloud to BIM"
-  },
-  {
-    "id": "project-11",
-    "title": "Point Cloud to Revit Conversion for a Residential Property",
-    "category": [
-      "point-cloud"
-    ],
-    "thumbnail": "./src/assets/images/projects/point-cloud-p2/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p2/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
-      {"url": "./src/assets/images/projects/point-cloud-p2/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"}
-    ],
-    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
-    "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "Germany",
-    "completionDate": "Dec 2023",
-    "areaSqFt": "2,400 sq.ft",
-    "keyFeatures": [
-      "Converted high-density point cloud scan data into a Point Cloud-verified 3D Revit model",
-      "Captured complex as-built residential architectural elements, including structural walls, fixtures, and finishes",
-      "Eliminated manual measurement errors by modeling directly over registered laser scan data",
-      "Provided a reliable, high-fidelity BIM foundation for future residential renovations and extensions"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Point Cloud to BIM"
-  },
-  {
-    "id": "project-12",
-    "title": "Point Cloud to Revit Conversion for a Residential Property",
-    "category": [
-      "point-cloud"
-    ],
-    "thumbnail": "./src/assets/images/projects/point-cloud-p3/p1.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p3/p1.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
-      {"url": "./src/assets/images/projects/point-cloud-p3/p2.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"},
-      {"url": "./src/assets/images/projects/point-cloud-p3/p3.webp", "caption": "Point Cloud to Revit Conversion for a Residential Property"}
-    ],
-    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a residential property, including architectural elements.",
-    "fullDesc": "Transformed raw point cloud scan data into a highly detailed 3D Revit model for a residential property, capturing precise architectural elements for accurate as-built documentation.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "Australia",
-    "completionDate": "Dec 2023",
-    "areaSqFt": "1,800 sq.ft",
-    "keyFeatures": [
-      "Converted high-density point cloud scan data into a Point Cloud-verified 3D Revit model",
-      "Captured complex as-built residential architectural elements, including structural walls, fixtures, and finishes",
-      "Eliminated manual measurement errors by modeling directly over registered laser scan data",
-      "Provided a reliable, high-fidelity BIM foundation for future residential renovations and extensions"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Point Cloud to BIM"
-  },
+
+
   {
     "id": "project-13",
     "title": "Point Cloud to Revit Conversion for a School Building",
@@ -1117,40 +1025,8 @@ var PORTFOLIO_PROJECTS = [
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Point Cloud to BIM"
   },
-  {
-    "id": "project-19",
-    "title": "Architectural & MEP 3D BIM Model for a Private House",
-    "category": [
-      "architecture",
-      "mep"
-    ],
-    "thumbnail": "./src/assets/images/projects/private-project-1/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/private-project-1/p0.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/private-project-1/p1.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/private-project-1/p2.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"},
-      {"url": "./src/assets/images/projects/private-project-1/p3.webp", "caption": "Architectural & MEP 3D BIM Model for a Private House"}
-    ],
-    "shortDesc": "Architectural and MEP 3D BIM model for a private house.",
-    "fullDesc": "Developed a fully integrated architectural and MEP 3D BIM model for a private house, delivering a coordinated parametric design optimized for seamless residential construction and system installation.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "United States (Florida)",
-    "completionDate": "Feb 2024",
-    "areaSqFt": "1,000 sq.ft",
-    "keyFeatures": [
-      "Created a highly detailed 3D Revit model merging custom residential architecture with core MEP engineering",
-      "Routed precise layouts for domestic plumbing, residential HVAC ductwork, and electrical circuitry",
-      "Conducted comprehensive clash detection to resolve spatial conflicts between services and structural framing",
-      "Generated coordinated, installation-ready construction documentation packages including material quantities"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Architecture Modeling • MEP Systems"
-  },
+
+
   {
     "id": "project-20",
     "title": "Concept to Architectural Renovation BIM Model",
