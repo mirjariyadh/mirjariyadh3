@@ -768,7 +768,15 @@ function triggerQuoteForProject(projectTitle) {
   }
 }
 
-// Technical Image Lightbox Modal
+// Technical Image Lightbox Modal with Full-Screen Fit, Zoom & Pan Controls
+let lightboxZoomLevel = 1;
+let lightboxPanX = 0;
+let lightboxPanY = 0;
+let isPanning = false;
+let panStartX = 0;
+let panStartY = 0;
+let lightboxFitMode = 'contain'; // 'contain' (fit all sides uncropped) or 'stretch' (expanded fit)
+
 function openLightbox(index = 0) {
   let gallery = window.currentProjectGallery || [];
 
@@ -797,73 +805,174 @@ function openLightbox(index = 0) {
     currentLightboxIndex = 0;
   }
 
+  lightboxZoomLevel = 1;
+  lightboxPanX = 0;
+  lightboxPanY = 0;
+
   const existing = document.getElementById('lightbox-modal');
   if (existing) existing.remove();
 
   const modal = document.createElement('div');
   modal.id = 'lightbox-modal';
-  modal.className = "fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 select-none";
+  modal.className = "fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-2 sm:p-3 select-none";
   modal.setAttribute('role', 'dialog');
   modal.setAttribute('aria-label', 'Technical Image Viewer');
 
+  function updateZoomTransform() {
+    const zoomContainer = modal.querySelector('#lightbox-zoom-container');
+    const zoomLabel = modal.querySelector('#lightbox-zoom-label');
+    const imgEl = modal.querySelector('#lightbox-main-img');
+    if (zoomContainer) {
+      zoomContainer.style.transform = `translate(${lightboxPanX}px, ${lightboxPanY}px) scale(${lightboxZoomLevel})`;
+    }
+    if (zoomLabel) {
+      zoomLabel.textContent = `${Math.round(lightboxZoomLevel * 100)}%`;
+    }
+    if (imgEl) {
+      if (lightboxFitMode === 'stretch') {
+        imgEl.classList.remove('object-contain');
+        imgEl.classList.add('object-fill', 'w-full', 'h-full');
+      } else {
+        imgEl.classList.add('object-contain');
+        imgEl.classList.remove('object-fill');
+      }
+    }
+  }
+
+  function resetZoom() {
+    lightboxZoomLevel = 1;
+    lightboxPanX = 0;
+    lightboxPanY = 0;
+    updateZoomTransform();
+  }
+
+  function zoomIn() {
+    lightboxZoomLevel = Math.min(lightboxZoomLevel + 0.3, 3.5);
+    updateZoomTransform();
+  }
+
+  function zoomOut() {
+    lightboxZoomLevel = Math.max(lightboxZoomLevel - 0.3, 0.7);
+    if (lightboxZoomLevel <= 1) {
+      lightboxPanX = 0;
+      lightboxPanY = 0;
+    }
+    updateZoomTransform();
+  }
+
   function renderLightboxStep() {
+    lightboxZoomLevel = 1;
+    lightboxPanX = 0;
+    lightboxPanY = 0;
+
     const item = gallery[currentLightboxIndex];
     const imgUrl = typeof item === 'string' ? item : (item ? item.url : '');
     const caption = typeof item === 'object' && item && item.caption ? item.caption : (window.currentProject ? window.currentProject.title : '');
     const groupName = typeof item === 'object' && item && item.group ? item.group : '';
 
     modal.innerHTML = `
-      <!-- Top Bar: Counter & Close Button -->
-      <div class="w-full max-w-7xl flex items-center justify-between px-2 sm:px-4 py-1 sm:py-2 text-white z-20 shrink-0">
-        <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3 py-1.5 rounded border border-slate-700 shadow-md flex items-center space-x-1.5 max-w-[calc(100%-50px)] overflow-hidden">
-          <span class="shrink-0 font-bold">Image ${currentLightboxIndex + 1} of ${gallery.length}</span>
-          ${groupName ? `<span class="text-gray-600 shrink-0">|</span><span class="text-gray-300 font-normal truncate">${groupName}</span>` : ''}
-        </span>
-        <button id="lightbox-close-btn" class="bg-slate-900 hover:bg-cyan-600 text-white w-9 h-9 rounded flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer shrink-0 ml-2" aria-label="Close Lightbox">
-          ✕
-        </button>
+      <!-- Top Bar: Counter, Zoom/Fit Tools & Close Button (Spans full viewport width) -->
+      <div class="w-full flex items-center justify-between px-2 sm:px-4 py-1.5 text-white z-30 shrink-0 gap-2">
+        
+        <!-- Left: Image Count & Info -->
+        <div class="flex items-center space-x-2 overflow-hidden">
+          <span class="text-xs font-mono bg-slate-900/90 text-cyan-400 px-3 py-1.5 rounded border border-slate-700 shadow-md flex items-center space-x-1.5 shrink-0">
+            <span class="font-bold">Image ${currentLightboxIndex + 1} of ${gallery.length}</span>
+            ${groupName ? `<span class="text-gray-600">|</span><span class="text-gray-300 font-normal truncate max-w-[140px] sm:max-w-xs">${groupName}</span>` : ''}
+          </span>
+        </div>
+
+        <!-- Center / Right: Interactive Controls (Zoom, Fit Mode, Fullscreen, Close) -->
+        <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
+          
+          <!-- Zoom Controls -->
+          <div class="hidden xs:flex items-center bg-slate-900/90 border border-slate-700 rounded p-0.5 space-x-1 shadow-md text-xs font-mono text-gray-300">
+            <button id="lightbox-zoom-out-btn" type="button" class="w-7 h-7 hover:bg-slate-800 hover:text-cyan-400 rounded flex items-center justify-center transition-colors cursor-pointer" title="Zoom Out (-)">
+              -
+            </button>
+            <span id="lightbox-zoom-label" class="px-1.5 text-[11px] text-cyan-300 font-semibold min-w-[38px] text-center select-none cursor-pointer" title="Click to Reset Zoom">
+              100%
+            </span>
+            <button id="lightbox-zoom-in-btn" type="button" class="w-7 h-7 hover:bg-slate-800 hover:text-cyan-400 rounded flex items-center justify-center transition-colors cursor-pointer" title="Zoom In (+)">
+              +
+            </button>
+          </div>
+
+          <!-- Fit / Stretch View Mode Toggle -->
+          <button 
+            id="lightbox-fit-toggle-btn" 
+            type="button" 
+            class="px-2.5 py-1.5 bg-slate-900/90 hover:bg-slate-800 text-gray-300 hover:text-cyan-400 border border-slate-700 rounded text-xs font-mono flex items-center space-x-1 shadow-md transition-colors cursor-pointer" 
+            title="Toggle Uncropped Full Fit / Expanded Mode"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+            <span class="hidden sm:inline" id="lightbox-fit-mode-text">${lightboxFitMode === 'contain' ? 'Fit All Sides' : 'Fill Screen'}</span>
+          </button>
+
+          <!-- Fullscreen Toggle -->
+          <button 
+            id="lightbox-fullscreen-btn" 
+            type="button" 
+            class="p-1.5 sm:px-2 sm:py-1.5 bg-slate-900/90 hover:bg-slate-800 text-gray-300 hover:text-cyan-400 border border-slate-700 rounded text-xs font-mono flex items-center justify-center shadow-md transition-colors cursor-pointer" 
+            title="Toggle Fullscreen View"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h7v2H5v5H3V3zm14 0h7v7h-2V5h-5V3zm5 14v7h-7v-2h5v-5h2zM3 17h2v5h5v2H3v-7z"></path></svg>
+          </button>
+
+          <!-- Close Button -->
+          <button 
+            id="lightbox-close-btn" 
+            class="bg-slate-900 hover:bg-cyan-600 text-white w-8 h-8 sm:w-9 sm:h-9 rounded flex items-center justify-center border border-slate-700 transition-colors shadow-lg cursor-pointer shrink-0 ml-1" 
+            aria-label="Close Lightbox"
+            title="Close (Esc)"
+          >
+            ✕
+          </button>
+        </div>
       </div>
 
-      <!-- Main Image Display (Uncropped Technical Drawing View) -->
-      <div id="lightbox-content-area" class="relative flex-1 min-h-0 w-full max-w-7xl flex items-center justify-center my-1 sm:my-2 overflow-hidden">
+      <!-- Main Image Display Area (Full Viewport, uncropped, edge-to-edge stretch & fit) -->
+      <div id="lightbox-content-area" class="relative flex-1 min-h-0 w-full h-full flex items-center justify-center my-1 overflow-hidden cursor-grab active:cursor-grabbing">
         
         <!-- Previous Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-prev-btn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer min-h-[40px] min-w-[40px]" aria-label="Previous image">
+          <button id="lightbox-prev-btn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer min-h-[42px] min-w-[42px]" aria-label="Previous image" title="Previous (Left Arrow)">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
           </button>
         ` : ''}
 
-        <!-- Image Element with Anti-Download Shield & Watermark -->
-        <div class="relative max-w-full max-h-full flex items-center justify-center select-none img-copyright-shield">
-          <img 
-            id="lightbox-main-img"
-            src="${imgUrl}" 
-            alt="${caption}" 
-            class="max-w-full max-h-full object-contain rounded border border-slate-800/80 shadow-2xl transition-opacity duration-200 pointer-events-none select-none" 
-            referrerPolicy="no-referrer" 
-          />
-          <!-- Subtle Floating Copyright Shield Tag -->
-          <div class="absolute bottom-3 right-3 bg-slate-950/85 border border-slate-700/80 px-2.5 py-1 rounded text-[10px] font-mono text-cyan-300 backdrop-blur-md shadow-lg pointer-events-none select-none flex items-center space-x-1.5 opacity-80 hover:opacity-100">
-            <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H10m11-3.5a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span>© Mirja Riyadh</span>
+        <!-- Zoomable & Pannable Image Container (Expanded to fit all sides) -->
+        <div id="lightbox-zoom-container" class="relative w-full h-full flex items-center justify-center select-none transition-transform duration-100 ease-out origin-center">
+          <div class="relative max-w-full max-h-full flex items-center justify-center img-copyright-shield">
+            <img 
+              id="lightbox-main-img"
+              src="${imgUrl}" 
+              alt="${caption}" 
+              class="w-auto h-auto max-w-[98vw] max-h-[82vh] sm:max-h-[85vh] ${lightboxFitMode === 'stretch' ? 'object-fill w-full h-full' : 'object-contain'} rounded border border-slate-800/80 shadow-2xl transition-opacity duration-200 pointer-events-none select-none" 
+              referrerPolicy="no-referrer" 
+            />
+            <!-- Subtle Floating Copyright Tag -->
+            <div class="absolute bottom-2.5 right-2.5 bg-slate-950/85 border border-slate-700/80 px-2.5 py-1 rounded text-[10px] font-mono text-cyan-300 backdrop-blur-md shadow-lg pointer-events-none select-none flex items-center space-x-1.5 opacity-80 hover:opacity-100">
+              <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H10m11-3.5a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span>© Mirja Riyadh</span>
+            </div>
           </div>
         </div>
 
         <!-- Next Button -->
         ${gallery.length > 1 ? `
-          <button id="lightbox-next-btn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer min-h-[40px] min-w-[40px]" aria-label="Next image">
+          <button id="lightbox-next-btn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-900/90 hover:bg-cyan-600 text-cyan-300 hover:text-white p-2.5 sm:p-3 rounded-full border border-slate-700 shadow-2xl transition-all flex items-center justify-center cursor-pointer min-h-[42px] min-w-[42px]" aria-label="Next image" title="Next (Right Arrow)">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
           </button>
         ` : ''}
       </div>
 
       <!-- Bottom Container: Caption & Bottom Thumbnail Preview Strip -->
-      <div class="w-full max-w-7xl flex flex-col items-center gap-2 z-20 px-2 sm:px-4 pb-1 shrink-0 select-none">
+      <div class="w-full flex flex-col items-center gap-1.5 z-30 px-2 sm:px-4 pb-1 shrink-0 select-none">
         
-        <!-- Caption Bar (Full text wrap on mobile, prevents truncation clipping) -->
+        <!-- Caption Bar (Full text wrap, no cutoff) -->
         ${caption ? `
-          <div class="bg-slate-900/95 border border-slate-800 px-3.5 py-1.5 sm:px-4 sm:py-1 rounded-md sm:rounded-full text-center max-w-[94vw] sm:max-w-2xl text-[11px] sm:text-xs font-mono text-cyan-300 shadow-xl break-words leading-tight">
+          <div class="bg-slate-900/95 border border-slate-800 px-3.5 py-1 sm:px-4 rounded-md sm:rounded-full text-center max-w-[94vw] sm:max-w-2xl text-[11px] sm:text-xs font-mono text-cyan-300 shadow-xl break-words leading-tight">
             ${caption}
           </div>
         ` : ''}
@@ -871,7 +980,7 @@ function openLightbox(index = 0) {
         <!-- Horizontal Thumbnail Preview Strip (All Project Images) -->
         ${gallery.length > 1 ? `
           <div class="w-full flex items-center justify-center">
-            <div id="lightbox-thumb-strip" class="flex items-center gap-2 overflow-x-auto max-w-[95vw] sm:max-w-full py-1.5 px-3 bg-slate-950/90 border border-slate-800 rounded-lg scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+            <div id="lightbox-thumb-strip" class="flex items-center gap-2 overflow-x-auto max-w-[96vw] sm:max-w-5xl py-1.5 px-3 bg-slate-950/90 border border-slate-800 rounded-lg scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
               ${gallery.map((thumbItem, tIdx) => {
                 const tUrl = typeof thumbItem === 'string' ? thumbItem : (thumbItem ? thumbItem.url : '');
                 const isActive = tIdx === currentLightboxIndex;
@@ -929,6 +1038,64 @@ function openLightbox(index = 0) {
       };
     }
 
+    // Zoom Buttons
+    const zoomInBtn = modal.querySelector('#lightbox-zoom-in-btn');
+    if (zoomInBtn) {
+      zoomInBtn.onclick = (e) => {
+        e.stopPropagation();
+        zoomIn();
+      };
+    }
+
+    const zoomOutBtn = modal.querySelector('#lightbox-zoom-out-btn');
+    if (zoomOutBtn) {
+      zoomOutBtn.onclick = (e) => {
+        e.stopPropagation();
+        zoomOut();
+      };
+    }
+
+    const zoomLabel = modal.querySelector('#lightbox-zoom-label');
+    if (zoomLabel) {
+      zoomLabel.onclick = (e) => {
+        e.stopPropagation();
+        resetZoom();
+      };
+    }
+
+    // Fit / Fill Mode Toggle
+    const fitToggleBtn = modal.querySelector('#lightbox-fit-toggle-btn');
+    if (fitToggleBtn) {
+      fitToggleBtn.onclick = (e) => {
+        e.stopPropagation();
+        lightboxFitMode = lightboxFitMode === 'contain' ? 'stretch' : 'contain';
+        const modeText = modal.querySelector('#lightbox-fit-mode-text');
+        if (modeText) {
+          modeText.textContent = lightboxFitMode === 'contain' ? 'Fit All Sides' : 'Fill Screen';
+        }
+        updateZoomTransform();
+      };
+    }
+
+    // Fullscreen Toggle
+    const fullscreenBtn = modal.querySelector('#lightbox-fullscreen-btn');
+    if (fullscreenBtn) {
+      fullscreenBtn.onclick = (e) => {
+        e.stopPropagation();
+        if (!document.fullscreenElement) {
+          if (modal.requestFullscreen) {
+            modal.requestFullscreen();
+          } else if (modal.webkitRequestFullscreen) {
+            modal.webkitRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      };
+    }
+
     // Thumbnail Clicks
     modal.querySelectorAll('.lightbox-thumb-btn').forEach(btn => {
       btn.onclick = (e) => {
@@ -949,16 +1116,94 @@ function openLightbox(index = 0) {
       }
     }, 20);
 
-    // Touch swipe gestures for mobile
+    // Mouse wheel zoom on content area
     const contentArea = modal.querySelector('#lightbox-content-area');
     if (contentArea) {
+      contentArea.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+          zoomIn();
+        } else {
+          zoomOut();
+        }
+      }, { passive: false });
+
+      // Double click to toggle zoom
+      contentArea.addEventListener('dblclick', (e) => {
+        if (e.target.closest('#lightbox-prev-btn') || e.target.closest('#lightbox-next-btn')) return;
+        if (lightboxZoomLevel === 1) {
+          lightboxZoomLevel = 1.8;
+        } else {
+          lightboxZoomLevel = 1;
+          lightboxPanX = 0;
+          lightboxPanY = 0;
+        }
+        updateZoomTransform();
+      });
+
+      // Mouse drag to pan when zoomed
+      contentArea.addEventListener('mousedown', (e) => {
+        if (e.target.closest('#lightbox-prev-btn') || e.target.closest('#lightbox-next-btn')) return;
+        if (lightboxZoomLevel > 1) {
+          isPanning = true;
+          panStartX = e.clientX - lightboxPanX;
+          panStartY = e.clientY - lightboxPanY;
+        }
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (isPanning && lightboxZoomLevel > 1) {
+          lightboxPanX = e.clientX - panStartX;
+          lightboxPanY = e.clientY - panStartY;
+          updateZoomTransform();
+        }
+      });
+
+      window.addEventListener('mouseup', () => {
+        isPanning = false;
+      });
+
+      // Touch swipe & pinch gestures for mobile
+      let touchDistanceStart = 0;
       contentArea.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+        if (e.touches.length === 1) {
+          touchStartX = e.changedTouches[0].screenX;
+          if (lightboxZoomLevel > 1) {
+            isPanning = true;
+            panStartX = e.touches[0].clientX - lightboxPanX;
+            panStartY = e.touches[0].clientY - lightboxPanY;
+          }
+        } else if (e.touches.length === 2) {
+          // Pinch start
+          touchDistanceStart = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+        }
+      }, { passive: true });
+
+      contentArea.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 1 && isPanning && lightboxZoomLevel > 1) {
+          lightboxPanX = e.touches[0].clientX - panStartX;
+          lightboxPanY = e.touches[0].clientY - panStartY;
+          updateZoomTransform();
+        } else if (e.touches.length === 2 && touchDistanceStart > 0) {
+          const currentDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          const factor = currentDist / touchDistanceStart;
+          lightboxZoomLevel = Math.min(Math.max(factor, 0.8), 3.5);
+          updateZoomTransform();
+        }
       }, { passive: true });
 
       contentArea.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+        isPanning = false;
+        if (e.changedTouches && e.changedTouches.length === 1 && lightboxZoomLevel === 1) {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }
       }, { passive: true });
     }
   }
@@ -991,13 +1236,19 @@ function openLightbox(index = 0) {
     } else if (e.key === 'ArrowRight') {
       currentLightboxIndex = (currentLightboxIndex + 1) % gallery.length;
       renderLightboxStep();
+    } else if (e.key === '+' || e.key === '=') {
+      zoomIn();
+    } else if (e.key === '-' || e.key === '_') {
+      zoomOut();
+    } else if (e.key === '0') {
+      resetZoom();
     }
   }
 
   window.addEventListener('keydown', handleKeyEvents);
 
   modal.onclick = (e) => {
-    if (e.target === modal || e.target.id === 'lightbox-content-area') {
+    if (e.target === modal || (e.target.id === 'lightbox-content-area' && !isPanning)) {
       closeModal();
     }
   };
