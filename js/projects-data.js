@@ -886,7 +886,7 @@ var PORTFOLIO_PROJECTS = [
 
   {
     "id": "project-13",
-    "title": "Point Cloud to Revit Conversion for a School Building",
+    "title": "Point Cloud to Revit Conversion of a School Building",
     "category": [
       "point-cloud"
     ],
@@ -894,10 +894,11 @@ var PORTFOLIO_PROJECTS = [
     "buildingType": "educational",
     "thumbnail": "./src/assets/images/projects/point-cloud-p4/t0.webp",
     "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p4/t0.webp", "caption": "3D Render View", "group": "Comparison"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p0.webp", "caption": "3D Point Cloud", "group": "Comparison"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p1.webp", "caption": "Cover Page", "group": "3D View"},
-      {"url": "./src/assets/images/projects/point-cloud-p4/p2.webp", "caption": "3D Views", "group": "3D View"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p0.webp", "caption": "Point Cloud", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/t1.webp", "caption": "3D View", "group": "Comparison"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/t2.webp", "caption": "3D Render View", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p2.webp", "caption": "3D Views", "group": "3D Views"},
+      {"url": "./src/assets/images/projects/point-cloud-p4/p1.webp", "caption": "Cover Page", "group": "3D Views"},
       {"url": "./src/assets/images/projects/point-cloud-p4/p3.webp", "caption": "Ground Floor Plan", "group": "Architectural Plans"},
       {"url": "./src/assets/images/projects/point-cloud-p4/p4.webp", "caption": "1st Floor Plan", "group": "Architectural Plans"},
       {"url": "./src/assets/images/projects/point-cloud-p4/p5.webp", "caption": "2st Floor Plan", "group": "Architectural Plans"},
