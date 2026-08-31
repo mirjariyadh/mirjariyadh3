@@ -475,42 +475,6 @@ var PORTFOLIO_PROJECTS = [
     "categoryName": "MEP Systems HVAC Modeling"
   },
 
-  
-  {
-    "id": "project-14",
-    "title": "Eco Park Architectural Residential 3D BIM Model",
-    "category": [
-      "architecture"
-    ],
-    "thumbnail": "./src/assets/images/projects/eco-park/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/eco-park/t0.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p0.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p1.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p2.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"}
-    ],
-    "shortDesc": "SketchUp models into a Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
-    "fullDesc": "This process transforms static SketchUp geometry into intelligent, metadata-rich Revit models at LOD 300. By replacing shapes with parametric components, teams secure reliable coordination, automated scheduling, and flawless construction documentation.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Sketchup",
-      "AutoCAD"
-    ],
-    "clientRegion": "Malaysia (Kuala Lumpur)",
-    "completionDate": "March 2024",
-    "areaSqFt": "7,200 sq.ft",
-    "keyFeatures": [
-      "ranslates static SketchUp meshes into intelligent, dimensionally flexible Revit system and loadable families",
-      "Embeds precise geometric data and critical non-graphical metadata for accurate construction verification",
-      "Enables automated, clash-free floor plans, dynamic material schedules, and reliable building lifecycles"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Architecture Modeling"
-  },
-
 
   {
     "id": "project-29",
@@ -1100,6 +1064,45 @@ var PORTFOLIO_PROJECTS = [
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
+  },
+
+
+  {
+    "id": "eco-park",
+    "title": "Eco Park Architectural Residential 3D BIM Model",
+    "category": [
+      "architecture", 
+      "autocad"
+    ],
+    "discipline": ["architecture", "autocad"],
+    "buildingType": "residential",
+    "thumbnail": "./src/assets/images/projects/eco-park/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/eco-park/t0.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p0.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p1.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p2.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"}
+    ],
+    "shortDesc": "SketchUp models into a Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
+    "fullDesc": "This process transforms static SketchUp geometry into intelligent, metadata-rich Revit models at LOD 300. By replacing shapes with parametric components, teams secure reliable coordination, automated scheduling, and flawless construction documentation.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Sketchup",
+      "AutoCAD"
+    ],
+    "clientRegion": "Malaysia (Kuala Lumpur)",
+    "completionDate": "March 2024",
+    "areaSqFt": "7,200 sq.ft",
+    "keyFeatures": [
+      "SketchUp meshes into intelligent, dimensionally flexible Revit system and loadable families",
+      "Embeds precise geometric data and critical non-graphical metadata for accurate construction verification",
+      "Enables automated, clash-free floor plans, dynamic material schedules, and reliable building lifecycles"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architecture Modeling"
   },
 
 
