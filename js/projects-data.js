@@ -971,39 +971,6 @@ var PORTFOLIO_PROJECTS = [
 
 
   {
-    "id": "project-17",
-    "title": "Point Cloud to Revit Conversion for Barvirska Front Building",
-    "category": [
-      "point-cloud"
-    ],
-    "thumbnail": "./src/assets/images/projects/point-cloud-p8/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p8/p0.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p8/p1.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p8/p2.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"},
-      {"url": "./src/assets/images/projects/point-cloud-p8/p3.webp", "caption": "Point Cloud to Revit Conversion for Barvirska Front Building"}
-    ],
-    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a office building.",
-    "fullDesc": "Converted high-density point cloud scan data into a detailed 3D Revit model for a commercial office building, establishing an accurate as-built baseline for corporate spatial optimization and asset tracking.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "Czech Republic",
-    "completionDate": "Apr 2024",
-    "areaSqFt": "12,200 sq.ft",
-    "keyFeatures": [
-      "Transformed multi-floor office laser scan data into a Point Cloud-verified 3D Revit model",
-      "Captured complex commercial layouts, structural columns, core areas, and ceiling grids precisely",
-      "Documented existing open-plan configurations and core services to optimize corporate spatial planning",
-      "Provided a high-fidelity as-built BIM baseline for commercial interior fit-outs and facility lifecycle management"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Point Cloud to BIM"
-  },
-  {
     "id": "project-18",
     "title": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka",
     "category": [
