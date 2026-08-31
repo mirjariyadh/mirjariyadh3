@@ -473,6 +473,26 @@ body.light-mode .group .bg-black\/40 {
   background-color: rgba(0, 0, 0, 0.45) !important;
 }
 
+/* Navigation Dropdown Menu Styling */
+.nav-dropdown-menu {
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.4));
+}
+
+body.light-mode .nav-dropdown-menu > div {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .nav-dropdown-item {
+  color: #334155 !important;
+}
+
+body.light-mode .nav-dropdown-item:hover {
+  background-color: #f1f5f9 !important;
+  color: #0891b2 !important;
+}
+
 /* Modals in light mode */
 body.light-mode #contact-modal > div > div,
 body.light-mode #copyright-notice-modal > div,
