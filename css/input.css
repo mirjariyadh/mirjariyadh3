@@ -380,11 +380,14 @@ body.light-mode #download-cv-btn:hover {
   border-color: #18A999 !important;
 }
 
-/* CTA Gradient Banner in Light Mode */
+/* CTA Gradient Banner & Client Inquiry in Light Mode */
 body.light-mode section.bg-gradient-to-r,
-body.light-mode .from-slate-900.via-slate-900.to-cyan-950 {
-  background-image: linear-gradient(to right, #f8fafc, #f1f5f9, #e0f2fe) !important;
-  border-color: #e2e8f0 !important;
+body.light-mode .from-slate-900.via-slate-900.to-cyan-950,
+body.light-mode .from-slate-900.to-slate-950 {
+  background-image: linear-gradient(to bottom right, #ffffff, #f8fafc) !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Overlay labels on images */
@@ -456,6 +459,18 @@ body.light-mode .copyright-pill-badge {
 body.light-mode .copyright-pill-badge:hover {
   border-color: #0891b2 !important;
   color: #0891b2 !important;
+}
+
+/* Gallery & Project Image Overlays in light mode - Prevent solid white overlay */
+body.light-mode .group:hover img {
+  opacity: 1 !important;
+}
+
+body.light-mode .group .bg-slate-950\/60,
+body.light-mode .group .bg-slate-950\/80,
+body.light-mode .group .bg-cyan-950\/30,
+body.light-mode .group .bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.45) !important;
 }
 
 /* Modals in light mode */

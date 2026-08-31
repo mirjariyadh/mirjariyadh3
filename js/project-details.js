@@ -474,13 +474,13 @@ function renderProjectDetailsPage() {
           <img 
             src="${mainImage}" 
             alt="${project.title} Main Visual" 
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             referrerPolicy="no-referrer"
           />
-          <div class="absolute inset-0 bg-cyan-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center no-print">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center no-print backdrop-blur-[1px]">
             <span class="px-4 py-2 bg-slate-900/95 text-cyan-300 text-xs font-mono font-bold rounded-md border border-cyan-500/40 shadow-xl flex items-center space-x-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-              <span>Click to Enlarge Drawing (Lightbox)</span>
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+              <span class="text-white">Click to Enlarge Drawing (Lightbox)</span>
             </span>
           </div>
         </div>
@@ -552,10 +552,10 @@ function renderProjectDetailsPage() {
                                 loading="lazy" 
                                 referrerPolicy="no-referrer" 
                               />
-                              <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="px-3 py-1.5 bg-slate-900 text-cyan-300 text-xs font-mono font-bold rounded border border-cyan-500/40 shadow-lg flex items-center space-x-1.5">
-                                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                                  <span>Inspect Drawing</span>
+                              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+                                <span class="px-3 py-1.5 bg-slate-900/95 text-cyan-300 text-xs font-mono font-bold rounded border border-cyan-500/40 shadow-lg flex items-center space-x-1.5">
+                                  <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                                  <span class="text-white">Inspect Drawing</span>
                                 </span>
                               </div>
                             </div>
