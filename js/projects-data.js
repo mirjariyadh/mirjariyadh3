@@ -971,41 +971,6 @@ var PORTFOLIO_PROJECTS = [
 
 
   {
-    "id": "project-18",
-    "title": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka",
-    "category": [
-      "point-cloud"
-    ],
-    "thumbnail": "./src/assets/images/projects/point-cloud-p9/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p9/p0.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"},
-      {"url": "./src/assets/images/projects/point-cloud-p9/p1.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"},
-      {"url": "./src/assets/images/projects/point-cloud-p9/p2.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"},
-      {"url": "./src/assets/images/projects/point-cloud-p9/p3.webp", "caption": "Point Cloud to Revit Conversion for Hotelová škola a VOŠ Fráni Šrámka"}
-    ],
-    "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a Hotel building.",
-    "fullDesc": "Converted high-density point cloud scan data into a detailed 3D Revit model for a hotel building, capturing intricate hospitality layouts and structural frameworks for large-scale renovation and facility management.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Autodesk AutoCAD",
-      "Navisworks"
-    ],
-    "clientRegion": "Czech Republic",
-    "completionDate": "May 2024",
-    "areaSqFt": "30,000 sq.ft",
-    "keyFeatures": [
-      "Transformed large-scale hotel laser scan data into a Point Cloud-verified 3D Revit as-built model",
-      "Captured complex multi-room guest layouts, grand lobbies, structural columns, and circulation zones precisely",
-      "Documented existing architectural conditions to streamline future hospitality interior fit-outs and modernizations",
-      "Provided a high-fidelity BIM baseline optimized for multidisciplinary MEP coordination and ongoing resort facility management"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Point Cloud to BIM"
-  },
-
-
-  {
     "id": "project-20",
     "title": "Concept to Architectural Renovation BIM Model",
     "category": [
