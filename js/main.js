@@ -405,7 +405,7 @@ function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
     const mobileClass = (isDefaultOverview && idx >= 3 && !mobileShowAllProjects) ? 'mobile-project-collapsed' : '';
 
     return `
-      <div class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40 ${mobileClass}" style="transition-delay: ${(idx % 6) * 50}ms;">
+      <a href="project-details.html?id=${project.id}" class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40 cursor-pointer block no-underline text-inherit ${mobileClass}" style="transition-delay: ${(idx % 6) * 50}ms;">
         <div>
           <!-- Thumbnail & Category Tag (16:9 standard ratio) -->
           <div class="relative aspect-video overflow-hidden bg-slate-950">
@@ -446,12 +446,12 @@ function renderSelectedProjects(categoryFilter = 'all', searchQuery = '') {
 
         <!-- Footer Action -->
         <div class="px-4 pb-4 pt-2">
-          <a href="project-details.html?id=${project.id}" class="w-full py-2.5 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all min-h-[44px]">
+          <div class="w-full py-2.5 bg-slate-800/80 group-hover:bg-cyan-600 text-gray-200 group-hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all min-h-[44px]">
             <span>View Project</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
         </div>
-      </div>
+      </a>
     `;
   }).join('');
 
@@ -583,7 +583,7 @@ function setupAdvancedPortfolioFilter(gridContainerId = 'all-projects-grid') {
       const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
 
       return `
-        <div class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40" style="transition-delay: ${(idx % 6) * 50}ms;">
+        <a href="project-details.html?id=${project.id}" class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40 cursor-pointer block no-underline text-inherit" style="transition-delay: ${(idx % 6) * 50}ms;">
           <div>
             <div class="relative aspect-video overflow-hidden bg-slate-950">
               <img 
@@ -621,12 +621,12 @@ function setupAdvancedPortfolioFilter(gridContainerId = 'all-projects-grid') {
           </div>
 
           <div class="px-4 pb-4 pt-2">
-            <a href="project-details.html?id=${project.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
+            <div class="w-full py-2 bg-slate-800/80 group-hover:bg-cyan-600 text-gray-200 group-hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
               <span>View Case Study</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+              <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </div>
           </div>
-        </div>
+        </a>
       `;
     }).join('');
 
@@ -1094,7 +1094,7 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
     const primarySoftware = (project.softwareUsed && project.softwareUsed[0]) || 'Autodesk Revit';
 
     return `
-      <div class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40" style="transition-delay: ${(idx % 6) * 50}ms;">
+      <a href="project-details.html?id=${project.id}" class="reveal-on-scroll bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/80 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 shadow-lg hover:shadow-cyan-950/40 cursor-pointer block no-underline text-inherit" style="transition-delay: ${(idx % 6) * 50}ms;">
         <div>
           <div class="relative aspect-video overflow-hidden bg-slate-950">
             <img 
@@ -1132,12 +1132,12 @@ function renderProjectGrid(containerId, categoryFilter = 'all', searchKeyword = 
         </div>
 
         <div class="px-4 pb-4 pt-2">
-          <a href="project-details.html?id=${project.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
+          <div class="w-full py-2 bg-slate-800/80 group-hover:bg-cyan-600 text-gray-200 group-hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
             <span>View Case Study</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
         </div>
-      </div>
+      </a>
     `;
   }).join('');
 

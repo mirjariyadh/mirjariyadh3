@@ -685,7 +685,7 @@ function renderProjectDetailsPage() {
       const relSoftware = (rel.softwareUsed && rel.softwareUsed[0]) || 'Autodesk Revit';
 
       return `
-        <div class="reveal-on-scroll bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300" style="transition-delay: ${(idx % 4) * 60}ms;">
+        <a href="project-details.html?id=${rel.id}" class="reveal-on-scroll bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-md overflow-hidden flex flex-col justify-between group transition-all duration-300 cursor-pointer block no-underline text-inherit" style="transition-delay: ${(idx % 4) * 60}ms;">
           <div>
             <div class="aspect-video bg-slate-950 overflow-hidden relative">
               <img src="${relImg}" alt="${rel.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" />
@@ -709,12 +709,12 @@ function renderProjectDetailsPage() {
             </div>
           </div>
           <div class="p-4 pt-0">
-            <a href="project-details.html?id=${rel.id}" class="w-full py-2 bg-slate-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
+            <div class="w-full py-2 bg-slate-800/80 group-hover:bg-cyan-600 text-gray-200 group-hover:text-white text-xs font-mono font-bold rounded flex items-center justify-center space-x-1.5 transition-all">
               <span>View Case Study</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+              <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </div>
           </div>
-        </div>
+        </a>
       `;
     }).join('');
   }
