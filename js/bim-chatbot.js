@@ -146,8 +146,12 @@
         animation: bimChatSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         font-family: inherit;
       }
-      .bim-chat-window.hidden {
+      .bim-chat-window.hidden,
+      .bim-chat-window:not(.is-open) {
         display: none !important;
+      }
+      .bim-chat-window.is-open {
+        display: flex !important;
       }
       @keyframes bimChatSlideUp {
         from { opacity: 0; transform: translateY(16px) scale(0.97); }
@@ -555,6 +559,7 @@
     chatWindow.className = 'bim-chat-window hidden';
     chatWindow.setAttribute('role', 'dialog');
     chatWindow.setAttribute('aria-modal', 'true');
+    chatWindow.setAttribute('aria-hidden', 'true');
     chatWindow.setAttribute('aria-label', 'BIM Assistant Chat Interface');
 
     chatWindow.innerHTML = `
@@ -576,13 +581,13 @@
           </div>
         </div>
         <div class="bim-chat-header-actions">
-          <button id="bim-chat-clear-btn" class="bim-chat-icon-action" title="Clear Conversation" aria-label="Clear chat">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button type="button" id="bim-chat-clear-btn" class="bim-chat-icon-action" title="Clear Conversation" aria-label="Clear chat">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
             </svg>
           </button>
-          <button id="bim-chat-close-btn" class="bim-chat-icon-action" title="Close Chat (Esc)" aria-label="Close chat">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button type="button" id="bim-chat-close-btn" class="bim-chat-icon-action" title="Close Chat (Esc)" aria-label="Close chat window">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
@@ -667,7 +672,7 @@
       toggleChat();
     });
 
-    // Header Actions
+    // Close Button Action
     const closeBtn = document.getElementById('bim-chat-close-btn');
     if (closeBtn) {
       closeBtn.addEventListener('click', (e) => {
@@ -675,13 +680,21 @@
         e.stopPropagation();
         closeChat();
       });
+      closeBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          closeChat();
+        }
+      });
       closeBtn.addEventListener('touchend', (e) => {
         e.preventDefault();
         e.stopPropagation();
         closeChat();
-      });
+      }, { passive: false });
     }
 
+    // Clear Button Action
     const clearBtn = document.getElementById('bim-chat-clear-btn');
     if (clearBtn) {
       clearBtn.addEventListener('click', (e) => {
@@ -718,12 +731,55 @@
       }
     });
 
-    // Close on click outside (optional and non-intrusive)
-    document.addEventListener('click', (e) => {
-      if (isChatOpen && chatWindow && !chatWindow.contains(e.target) && !floatingBtn.contains(e.target)) {
-        // Only close if clicked outside
-        closeChat();
+    // Delegated click handler on chatWindow for action chips
+    chatWindow.addEventListener('click', (e) => {
+      const chip = e.target.closest('.bim-chat-chip, .bim-chat-bar-chip');
+      if (chip) {
+        e.preventDefault();
+        e.stopPropagation();
+        const actionText = chip.getAttribute('data-action-text');
+        if (actionText && !isGenerating) {
+          if (!isChatOpen) openChat();
+
+          // Special handling for Quote
+          if (actionText.toLowerCase() === 'request a quote' || actionText.toLowerCase().includes('quote')) {
+            const contactModal = document.getElementById('contact-modal');
+            if (contactModal) {
+              contactModal.classList.remove('hidden');
+              contactModal.classList.add('flex');
+              contactModal.style.display = 'flex';
+              document.body.style.overflow = 'hidden';
+            }
+          }
+
+          chatInput.value = actionText;
+          handleUserSubmit();
+        }
       }
+    });
+
+    // Close on click outside (safely ignoring inside clicks and elements detached during re-renders)
+    document.addEventListener('click', (e) => {
+      if (!isChatOpen || !chatWindow) return;
+
+      const target = e.target;
+      if (!target) return;
+
+      // If clicked inside chatWindow or floatingBtn, do not close
+      if (
+        chatWindow.contains(target) || 
+        floatingBtn.contains(target) || 
+        (target.closest && (target.closest('#bim-chat-window') || target.closest('#bim-chat-floating-btn')))
+      ) {
+        return;
+      }
+
+      // If target was removed from DOM during dynamic re-render (e.g. chip click), do NOT close
+      if (!document.body.contains(target)) {
+        return;
+      }
+
+      closeChat();
     });
   }
 
@@ -738,8 +794,10 @@
   function openChat() {
     isChatOpen = true;
     chatWindow.classList.remove('hidden');
+    chatWindow.classList.add('is-open');
     chatWindow.style.display = 'flex';
-    floatingBtn.classList.add('is-active');
+    chatWindow.setAttribute('aria-hidden', 'false');
+    floatingBtn.classList.add('is-active', 'is-open');
     floatingBtn.setAttribute('aria-expanded', 'true');
 
     const botIcon = floatingBtn.querySelector('.bim-chat-icon-bot');
@@ -760,9 +818,11 @@
 
   function closeChat() {
     isChatOpen = false;
+    chatWindow.classList.remove('is-open');
     chatWindow.classList.add('hidden');
     chatWindow.style.display = 'none';
-    floatingBtn.classList.remove('is-active');
+    chatWindow.setAttribute('aria-hidden', 'true');
+    floatingBtn.classList.remove('is-active', 'is-open');
     floatingBtn.setAttribute('aria-expanded', 'false');
 
     const botIcon = floatingBtn.querySelector('.bim-chat-icon-bot');
@@ -1017,9 +1077,17 @@
   function attachDynamicActionEvents() {
     const allChips = document.querySelectorAll('.bim-chat-chip, .bim-chat-bar-chip');
     allChips.forEach(chip => {
-      chip.addEventListener('click', () => {
+      chip.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
         const actionText = chip.getAttribute('data-action-text');
-        if (!actionText) return;
+        if (!actionText || isGenerating) return;
+
+        // Ensure window stays open
+        if (!isChatOpen) {
+          openChat();
+        }
 
         // Special handling for Quote
         if (actionText.toLowerCase() === 'request a quote' || actionText.toLowerCase().includes('quote')) {
@@ -1036,7 +1104,7 @@
         // Send action text as user prompt
         chatInput.value = actionText;
         handleUserSubmit();
-      });
+      };
     });
   }
 
