@@ -533,6 +533,13 @@ function setupAdvancedPortfolioFilter(gridContainerId = 'all-projects-grid') {
   const countBadge = document.getElementById('portfolio-count-badge');
   const clearBtn = document.getElementById('clear-filters-btn');
 
+  // Dynamically update total project count on the 'All Projects' button
+  const allProjects = window.projectsData || window.PORTFOLIO_PROJECTS || [];
+  const allBtn = document.querySelector('.filter-discipline-btn[data-discipline="all"]');
+  if (allBtn && allProjects.length > 0) {
+    allBtn.textContent = `All Projects (${allProjects.length})`;
+  }
+
   let activeDiscipline = 'all';
   let activeBuildingType = 'all';
   let activeSearchQuery = '';

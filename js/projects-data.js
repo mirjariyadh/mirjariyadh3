@@ -204,8 +204,6 @@ var PORTFOLIO_PROJECTS = [
       "architecture",
       "mep"
     ],
-    "discipline": ["architecture", "autocad"],
-    "buildingType": "commercial",
     "thumbnail": "./src/assets/images/projects/4601-s-university-ave/t0.webp",
     "images": [
       {"url": "./src/assets/images/projects/4601-s-university-ave/p0.webp", "caption": "Cover Sheet for 4601 S University Ave Architectural & MEP 3D BIM Model", "group": "Cover Sheet"},
@@ -473,6 +471,42 @@ var PORTFOLIO_PROJECTS = [
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "MEP Systems HVAC Modeling"
+  },
+
+  
+  {
+    "id": "project-14",
+    "title": "Eco Park Architectural Residential 3D BIM Model",
+    "category": [
+      "architecture"
+    ],
+    "thumbnail": "./src/assets/images/projects/eco-park/t0.webp",
+    "images": [
+      {"url": "./src/assets/images/projects/eco-park/t0.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p0.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p1.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p2.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"},
+      {"url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"}
+    ],
+    "shortDesc": "SketchUp models into a Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
+    "fullDesc": "This process transforms static SketchUp geometry into intelligent, metadata-rich Revit models at LOD 300. By replacing shapes with parametric components, teams secure reliable coordination, automated scheduling, and flawless construction documentation.",
+    "lod": "LOD 300",
+    "softwareUsed": [
+      "Autodesk Revit",
+      "Sketchup",
+      "AutoCAD"
+    ],
+    "clientRegion": "Malaysia (Kuala Lumpur)",
+    "completionDate": "March 2024",
+    "areaSqFt": "7,200 sq.ft",
+    "keyFeatures": [
+      "ranslates static SketchUp meshes into intelligent, dimensionally flexible Revit system and loadable families",
+      "Embeds precise geometric data and critical non-graphical metadata for accurate construction verification",
+      "Enables automated, clash-free floor plans, dynamic material schedules, and reliable building lifecycles"
+    ],
+    "externalUrl": "https://mirjariyadh.com.bd",
+    "categoryName": "Architecture Modeling"
   },
 
 
@@ -908,23 +942,11 @@ var PORTFOLIO_PROJECTS = [
     "buildingType": "residential",
     "thumbnail": "./src/assets/images/projects/point-cloud-p6/t0.webp",
     "images": [
-      {"url": "./src/assets/images/projects/point-cloud-p6/t1.webp", "caption": "3D Render Views", "group": "Comparison"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p0.webp", "caption": "3D View", "group": "Comparison"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p1.webp", "caption": "3D View", "group": "3D View"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p2.webp", "caption": "Basement Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p3.webp", "caption": "1st Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p4.webp", "caption": "2nd Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p5.webp", "caption": "3rd Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p6.webp", "caption": "4th Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p7.webp", "caption": "5th Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p8.webp", "caption": "6th Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p9.webp", "caption": "7th Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p10.webp", "caption": "8th Floor Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p11.webp", "caption": "Roof Plan", "group": "Architectural Plans"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p12.webp", "caption": "Building Section", "group": "Section & Elevations"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p13.webp", "caption": "North & South Elevation", "group": "Section & Elevations"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p14.webp", "caption": "East Elevation", "group": "Section & Elevations"},
-      {"url": "./src/assets/images/projects/point-cloud-p6/p15.webp", "caption": "West Elevation", "group": "Section & Elevations"}
+      {"url": "./src/assets/images/projects/point-cloud-p6/t0.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p0.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p1.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p2.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"},
+      {"url": "./src/assets/images/projects/point-cloud-p6/p3.webp", "caption": "Point Cloud to Revit Conversion for Pražský Dům"}
     ],
     "shortDesc": "Point cloud scan data converted into a detailed 3D Revit model for a historical residential building.",
     "fullDesc": "Converted high-density point cloud scan data into a highly detailed 3D Revit model for a historical residential building, capturing complex non-standard geometries for precise heritage preservation and documentation.",
@@ -1064,45 +1086,6 @@ var PORTFOLIO_PROJECTS = [
     ],
     "externalUrl": "https://mirjariyadh.com.bd",
     "categoryName": "Architecture Modeling • MEP Systems • AutoCAD Services"
-  },
-
-
-  {
-    "id": "eco-park",
-    "title": "Eco Park Architectural Residential 3D BIM Model",
-    "category": [
-      "architecture", 
-      "autocad"
-    ],
-    "discipline": ["architecture", "autocad"],
-    "buildingType": "residential",
-    "thumbnail": "./src/assets/images/projects/eco-park/t0.webp",
-    "images": [
-      {"url": "./src/assets/images/projects/eco-park/t0.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p0.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p1.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p2.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p3.webp", "caption": "Architectural Residential Revit Model"},
-      {"url": "./src/assets/images/projects/eco-park/p4.webp", "caption": "Architectural Residential Revit Model"}
-    ],
-    "shortDesc": "SketchUp models into a Revit As-Built model (LOD 300) to deliver high-fidelity parametric components and coordinated construction documentation",
-    "fullDesc": "This process transforms static SketchUp geometry into intelligent, metadata-rich Revit models at LOD 300. By replacing shapes with parametric components, teams secure reliable coordination, automated scheduling, and flawless construction documentation.",
-    "lod": "LOD 300",
-    "softwareUsed": [
-      "Autodesk Revit",
-      "Sketchup",
-      "AutoCAD"
-    ],
-    "clientRegion": "Malaysia (Kuala Lumpur)",
-    "completionDate": "March 2024",
-    "areaSqFt": "7,200 sq.ft",
-    "keyFeatures": [
-      "SketchUp meshes into intelligent, dimensionally flexible Revit system and loadable families",
-      "Embeds precise geometric data and critical non-graphical metadata for accurate construction verification",
-      "Enables automated, clash-free floor plans, dynamic material schedules, and reliable building lifecycles"
-    ],
-    "externalUrl": "https://mirjariyadh.com.bd",
-    "categoryName": "Architecture Modeling"
   },
 
 

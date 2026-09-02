@@ -918,69 +918,15 @@
     }
   }
 
-  // Client-Side Fallback Engine
+  // Client-Side Fallback Engine (Uses Centralized BIM_KNOWLEDGE_BASE)
   function generateClientSmartFallback(userText) {
-    const q = (userText || '').toLowerCase().trim();
-
-    // 1. Point Cloud / Scan-to-BIM
-    if (q.includes('point cloud') || q.includes('scan to bim') || q.includes('laser scan') || q.includes('scan') || q.includes('পয়েন্ট ক্লাউড') || q.includes('স্ক্যান')) {
-      return {
-        reply: `Point Cloud to BIM (Scan-to-BIM) converts 3D laser-scan data (.e57, .rcp, .rcs) into high-precision Autodesk Revit models (LOD 200–350).\n\nTypical Workflow:\nPoint Cloud Registration → Revit Modeling → Model Review → Documentation\n\nWould you like to explore our Scan-to-BIM project portfolio?`,
-        suggestions: ['View Point Cloud Projects', 'Scan-to-BIM Workflow', 'Request a Quote', 'Explore Services']
-      };
+    if (typeof BIM_KNOWLEDGE_BASE !== 'undefined' && BIM_KNOWLEDGE_BASE && typeof BIM_KNOWLEDGE_BASE.matchQuery === 'function') {
+      return BIM_KNOWLEDGE_BASE.matchQuery(userText);
     }
 
-    // 2. MEP BIM / Coordination
-    if (q.includes('mep') || q.includes('hvac') || q.includes('plumbing') || q.includes('electrical') || q.includes('clash') || q.includes('duct') || q.includes('পাইপিং') || q.includes('ইলেকট্রিক্যাল') || q.includes('ক্ল্যাশ')) {
-      return {
-        reply: `Mirja Riyadh provides complete MEP BIM Modeling & 3D Coordination (HVAC ducting, plumbing, electrical systems, and plant rooms) at LOD 300–400 with clash resolution in Navisworks Manage.\n\nWould you like to review MEP case studies?`,
-        suggestions: ['View MEP Projects', 'Clash Detection Process', 'Request a Quote', 'Explore Services']
-      };
-    }
-
-    // 3. Price & Cost
-    if (q.includes('price') || q.includes('cost') || q.includes('pricing') || q.includes('rate') || q.includes('fee') || q.includes('charge') || q.includes('খরচ') || q.includes('কত টাকা') || q.includes('কত') || q.includes('রেট') || q.includes('প্রাইস')) {
-      return {
-        reply: `Project pricing depends on factors such as building size (sq.ft / m²), scope of disciplines, source drawings (CAD/PDF/Point Cloud), required LOD, and timeline.\n\nI can help you prepare the project information needed for an accurate quote.`,
-        suggestions: ['Request a Quote', 'Prepare Requirements', 'View Projects', 'Explore Services']
-      };
-    }
-
-    // 4. Architecture / CAD to Revit
-    if (q.includes('architecture') || q.includes('architectural') || q.includes('revit') || q.includes('cad to revit') || q.includes('2d to 3d') || q.includes('autocad') || q.includes('dwg') || q.includes('নকশা') || q.includes('মডেলিং') || q.includes('আর্কিটেকচার')) {
-      return {
-        reply: `Architectural BIM services include transforming 2D CAD DWG or PDF drawings into detailed 3D Revit models, parametric family creation, construction documentation, and schedule extraction.\n\nKey Disciplines:\n• 2D CAD/PDF to Revit 3D Conversion\n• Exterior & Interior Parametric Modeling\n• Construction & Permit Drawing Sets\n\nWould you like to explore Architectural case studies?`,
-        suggestions: ['View Architecture Projects', 'CAD to BIM Details', 'Request a Quote', 'Explore Services']
-      };
-    }
-
-    // 5. Quote / Hire / Contact
-    if (q.includes('quote') || q.includes('hire') || q.includes('contact') || q.includes('inquiry') || q.includes('order') || q.includes('যোগাযোগ') || q.includes('হায়ার') || q.includes('কোটেশন') || q.includes('কাজ দিতে চাই')) {
-      return {
-        reply: `You can submit your project requirements directly through our Quote & Inquiry form. Please share building type, approximate area, available source files, and required disciplines.`,
-        suggestions: ['Request a Quote', 'View Projects', 'About Mirja Riyadh']
-      };
-    }
-
-    // 6. About Mirja Riyadh
-    if (q.includes('who are you') || q.includes('about') || q.includes('mirja') || q.includes('riyadh') || q.includes('experience') || q.includes('কে') || q.includes('অভিজ্ঞতা') || q.includes('পরিচয়')) {
-      return {
-        reply: `Mirja Riyadh is a professional Senior BIM Specialist and Revit Modeler with extensive hands-on experience in international Architectural, MEP, and Scan-to-BIM project delivery.\n\nSpecialized in Revit, Navisworks, AutoCAD, and Recap Pro delivering LOD 200–400 BIM models.\n\nWould you like to check out verified portfolio projects or get in touch?`,
-        suggestions: ['View Projects', 'Explore Services', 'Request a Quote']
-      };
-    }
-
-    // 7. Greeting / Hi / Hello
-    if (q === 'hi' || q === 'hello' || q === 'hey' || q.includes('হাই') || q.includes('হ্যালো') || q.includes('কেমন আছেন') || q.includes('salam') || q.includes('সালাম')) {
-      return {
-        reply: `Hello! I'm Mirja Riyadh's BIM Assistant. I can help you explore BIM services, find relevant portfolio projects (Architecture, MEP, Point Cloud), explain modeling workflows, or prepare a project estimate.\n\nWhat type of project are you planning?`,
-        suggestions: ['Explore Services', 'View Projects', 'Point Cloud to BIM', 'Request a Quote']
-      };
-    }
-
-    // 8. Default
+    // Safety fallback if knowledge base is loading
     return {
-      reply: `I can help you explore Mirja Riyadh's BIM services, find relevant portfolio projects, understand workflows, or prepare a project inquiry.\n\n• **Scan-to-BIM**: Converting point clouds (.e57/rcp) to Revit models (LOD 200–350)\n• **MEP BIM & Coordination**: HVAC, plumbing, electrical & clash detection\n• **Architectural BIM**: 2D CAD/PDF to Revit 3D, CD sets, BOQ extraction\n\nWhat can I help you with today?`,
+      reply: "I can help you explore Mirja Riyadh's BIM services, find relevant portfolio projects, understand workflows, or prepare a project inquiry.\n\n• **Scan-to-BIM**: Converting point clouds (.e57/rcp) to Revit models (LOD 200–350)\n• **MEP BIM & Coordination**: HVAC, plumbing, electrical & clash detection\n• **Architectural BIM**: 2D CAD/PDF to Revit 3D, CD sets, BOQ extraction\n\nWhat can I help you with today?",
       suggestions: ['Explore Services', 'View Projects', 'Point Cloud to BIM', 'MEP BIM & Coordination', 'Request a Quote']
     };
   }

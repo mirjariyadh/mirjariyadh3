@@ -1,14 +1,14 @@
 import express, { Request, Response } from "express";
 import path from "path";
-import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, ThinkingLevel } from "@google/genai";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const BIM_KNOWLEDGE_BASE = require("./js/chatbot-knowledge.js");
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -32,16 +32,26 @@ function getGenAI(): GoogleGenAI | null {
 }
 
 // Portfolio Knowledge Base injected into System Instructions
+const knowledgeBaseText = BIM_KNOWLEDGE_BASE.knowledgeItems.map((item: any) => `
+Topic: ${item.title} (${item.category})
+Keywords: ${item.keywords.join(", ")}
+English Guidance: ${item.answerEnglish}
+Bangla Guidance: ${item.answerBangla || ""}
+`).join("\n");
+
 const BIM_SYSTEM_INSTRUCTION = `You are an expert AI website assistant for https://mirjariyadh.com.bd/ belonging to Mirja Riyadh, a Senior BIM Specialist and Revit Modeler based in Bangladesh with extensive international project delivery experience.
 
-CORE SERVICES:
-1. Architectural BIM Modeling (Revit 3D models, existing condition modeling, architectural drawing sheets, design development, LOD 200-350)
-2. MEP BIM Modeling (HVAC ducting & equipment, mechanical systems, plumbing & drainage piping, electrical cable trays & lighting, LOD 300-400)
-3. MEP Coordination & Clash Detection (Navisworks Manage clash reports, zero-clash hard/soft clash resolution, constructability reviews)
-4. Point Cloud to BIM / Scan-to-BIM (Point cloud registration data e57/rcp/rcs to high-precision Revit architectural & MEP models, LOD 200-350)
-5. AutoCAD / PDF to BIM (Conversion of legacy 2D CAD DWG and scanned PDF blueprints into parametric 3D Revit models)
-6. Revit Family Creation (Custom parametric BIM components, MEP fixtures, mechanical equipment, schedule-driven families)
-7. BIM Documentation & Deliverables (Permit sets, construction drawing sets, schedules, material quantities BOQ, IFC / openBIM deliverables, Navisworks NWD/NWC)
+SPECIALIST PROFILE:
+- Name: ${BIM_KNOWLEDGE_BASE.profile.name}
+- Title: ${BIM_KNOWLEDGE_BASE.profile.title}
+- Experience: ${BIM_KNOWLEDGE_BASE.profile.experience}
+- Core Tools: ${BIM_KNOWLEDGE_BASE.profile.tools.join(", ")}
+- Disciplines: ${BIM_KNOWLEDGE_BASE.profile.disciplines.join(", ")}
+- Standards: ${BIM_KNOWLEDGE_BASE.profile.standards.join(", ")}
+- Working Hours: ${BIM_KNOWLEDGE_BASE.profile.workHours}
+
+TRAINED TOPICS & FREQUENTLY ASKED QUESTIONS:
+${knowledgeBaseText}
 
 PORTFOLIO PROJECTS DATA SUMMARY (Actual verified projects on website):
 - project-01: "High-End Healthcare 3D BIM Model" (Pharmaceutical, Architecture & MEP & AutoCAD, LOD 350, 60,000 sq.ft, cleanrooms, cable trays, HVAC) -> URL: project-details.html?id=project-01
@@ -64,6 +74,7 @@ PORTFOLIO PROJECTS DATA SUMMARY (Actual verified projects on website):
 COMMUNICATION RULES & PERSONALITY:
 - Tone: Professional, friendly, concise, helpful, confident, international-client friendly.
 - Language: If visitor writes in Bangla, answer in Bangla. If English, answer in English. If mixed, reply naturally in the same style.
+- Conversational Pleasantries: When the visitor asks casual questions like "How are you?", "What's up?", or greets you ("Good morning", "Hi", "Hello"), respond warmly and courteously first (e.g. "I'm doing well, thank you! How can I assist you today with your BIM, Revit, or Scan-to-BIM project?") before asking how you can help with their project.
 - Brevity: Keep responses crisp and scannable (2 to 4 short paragraphs or bullet points). Use workflow arrows when explaining processes (e.g. Point Cloud → Revit Modeling → Quality Review → Documentation).
 - Never Invent: Do NOT make up fake clients, fixed pricing, fake deadlines, or unverified claims. If data is unknown, politely direct them to submit project details for a custom assessment.
 - Pricing Inquiry Rule: Explain that BIM pricing depends on square footage/scope, LOD required, source file condition (CAD/PDF/Point Cloud), and timeline, then invite them to request a formal quote.
@@ -71,71 +82,9 @@ COMMUNICATION RULES & PERSONALITY:
 - Call-to-Action (CTA): Suggest relevant actions like "[Request a Quote]", "[View Projects]", "[Explore Point Cloud]", "[Explore MEP]", or direct links to project detail pages (project-details.html?id=...).
 `;
 
-// Fallback rule-based response generator when offline or no API key
+// Fallback rule-based response generator using centralized knowledge base
 function generateSmartFallbackResponse(userMessage: string): { reply: string; suggestions: string[] } {
-  const query = (userMessage || "").toLowerCase().trim();
-
-  // 1. Point Cloud / Scan-to-BIM
-  if (query.includes("point cloud") || query.includes("scan to bim") || query.includes("laser scan") || query.includes("scan") || query.includes("পয়েন্ট ক্লাউড") || query.includes("স্ক্যান")) {
-    return {
-      reply: `Point Cloud to BIM (Scan-to-BIM) converts 3D laser scanner data (.e57, .rcp, .rcs) into high-accuracy, parametric Autodesk Revit models (LOD 200–350).\n\nTypical Scan-to-BIM Workflow:\nPoint Cloud Registration → Revit BIM Modeling → As-Built Deviation Check → Documentation & Sheets\n\nYou can explore verified Scan-to-BIM case studies on the portfolio. Would you like to review project samples or prepare your scan files for an estimate?`,
-      suggestions: ["View Point Cloud Projects", "Scan-to-BIM Workflow", "Request a Quote", "Explore Services"]
-    };
-  }
-
-  // 2. MEP BIM / Coordination / Clash Detection
-  if (query.includes("mep") || query.includes("hvac") || query.includes("plumbing") || query.includes("electrical") || query.includes("clash") || query.includes("duct") || query.includes("পাইপিং") || query.includes("ইলেকট্রিক্যাল") || query.includes("ক্ল্যাশ")) {
-    return {
-      reply: `Mirja Riyadh provides comprehensive MEP BIM Modeling & 3D Coordination across HVAC ducting, piping/plumbing, electrical cable trays, and equipment layouts (LOD 300–400).\n\nKey Capabilities:\n• Multi-trade clash detection in Navisworks Manage\n• Constructability resolution & spool drawings\n• Builder's work opening coordination with Architecture\n\nWould you like to see our MEP coordination projects?`,
-      suggestions: ["View MEP Projects", "Clash Detection Process", "Request a Quote", "All Projects"]
-    };
-  }
-
-  // 3. Pricing / Cost / Rates
-  if (query.includes("cost") || query.includes("price") || query.includes("pricing") || query.includes("rate") || query.includes("fee") || query.includes("charge") || query.includes("কত টাকা") || query.includes("খরচ") || query.includes("রেট") || query.includes("প্রাইস")) {
-    return {
-      reply: `Project pricing depends on building type, total area (sq.ft / m²), required Level of Development (LOD 200–350+), source drawing quality (CAD/PDF/Point Cloud), and target timeline.\n\nTo get a fast and accurate quote, you can share your project scope or submit an inquiry through our quote form.`,
-      suggestions: ["Request a Quote", "Prepare Requirements", "View Projects", "About Mirja Riyadh"]
-    };
-  }
-
-  // 4. Architecture / 2D to 3D / Revit Modeling
-  if (query.includes("architecture") || query.includes("architectural") || query.includes("revit") || query.includes("cad to revit") || query.includes("2d to 3d") || query.includes("autocad") || query.includes("dwg") || query.includes("নকশা") || query.includes("মডেলিং") || query.includes("আর্কিটেকচার")) {
-    return {
-      reply: `Architectural BIM services include transforming 2D CAD DWG or PDF drawings into detailed 3D Revit models, parametric family creation, construction documentation, and schedule extraction.\n\nKey Disciplines:\n• 2D CAD/PDF to Revit 3D Conversion\n• Exterior & Interior Parametric Modeling\n• Construction & Permit Drawing Sets\n\nWould you like to explore Architectural case studies?`,
-      suggestions: ["View Architecture Projects", "CAD to BIM Details", "Request a Quote", "Explore Services"]
-    };
-  }
-
-  // 5. Contact / Hire / Quote / Order
-  if (query.includes("quote") || query.includes("hire") || query.includes("contact") || query.includes("inquiry") || query.includes("order") || query.includes("proposal") || query.includes("যোগাযোগ") || query.includes("হায়ার") || query.includes("কোটেশন") || query.includes("কাজ দিতে চাই")) {
-    return {
-      reply: `You can directly submit your project scope for a detailed proposal and turnaround estimate.\n\nKey details to prepare:\n1. Building type & approximate area\n2. Available inputs (CAD, PDF, or Point Cloud)\n3. Required disciplines (Architecture, MEP, or both)\n4. Target deadline & LOD\n\nClick below to open the project quote form.`,
-      suggestions: ["Request a Quote", "View Portfolio Projects", "About Mirja Riyadh"]
-    };
-  }
-
-  // 6. About Mirja Riyadh / Experience / Skills
-  if (query.includes("who are you") || query.includes("about") || query.includes("mirja") || query.includes("riyadh") || query.includes("experience") || query.includes("কে") || query.includes("অভিজ্ঞতা") || query.includes("পরিচয়")) {
-    return {
-      reply: `Mirja Riyadh is a professional Senior BIM Specialist and Revit Modeler with extensive hands-on experience in international Architectural, MEP, and Scan-to-BIM project delivery.\n\nSpecialized in Revit, Navisworks, AutoCAD, and Recap Pro delivering LOD 200–400 BIM models.\n\nWould you like to check out verified portfolio projects or get in touch?`,
-      suggestions: ["View Projects", "Explore Services", "Request a Quote"]
-    };
-  }
-
-  // 7. Greeting / Hi / Hello
-  if (query === "hi" || query === "hello" || query === "hey" || query.includes("হাই") || query.includes("হ্যালো") || query.includes("কেমন আছেন") || query.includes("salam") || query.includes("সালাম")) {
-    return {
-      reply: `Hello! I'm Mirja Riyadh's BIM Assistant. I can help you explore BIM services, find relevant portfolio projects (Architecture, MEP, Point Cloud), explain modeling workflows, or prepare a project estimate.\n\nWhat type of project are you planning?`,
-      suggestions: ["Explore Services", "View Projects", "Point Cloud to BIM", "Request a Quote"]
-    };
-  }
-
-  // 8. Default dynamic response
-  return {
-    reply: `I can assist you with Mirja Riyadh's BIM services, including:\n\n• **Scan-to-BIM**: Converting point clouds (.e57/rcp) to Revit models (LOD 200–350)\n• **MEP BIM & Coordination**: HVAC, plumbing, electrical & clash detection\n• **Architectural BIM**: 2D CAD/PDF to Revit 3D, CD sets, BOQ extraction\n• **Custom Revit Families**: Parametric BIM components\n\nFeel free to ask a specific question or select a topic below!`,
-    suggestions: ["Explore Services", "View Projects", "Point Cloud to BIM", "MEP BIM & Coordination", "Request a Quote"]
-  };
+  return BIM_KNOWLEDGE_BASE.matchQuery(userMessage);
 }
 
 // POST /api/chat
@@ -193,17 +142,32 @@ app.post("/api/chat", async (req: Request, res: Response) => {
           });
         }
 
-        const response = await ai.models.generateContent({
-          model: "gemini-3.7-flash",
-          contents: formattedContents,
-          config: {
-            systemInstruction: BIM_SYSTEM_INSTRUCTION,
-            temperature: 0.6,
-            thinkingConfig: {
-              thinkingLevel: ThinkingLevel.LOW,
+        let response;
+        try {
+          // Attempt 1: gemini-3.7-flash with LOW thinking level for fastest response
+          response = await ai.models.generateContent({
+            model: "gemini-3.7-flash",
+            contents: formattedContents,
+            config: {
+              systemInstruction: BIM_SYSTEM_INSTRUCTION,
+              temperature: 0.6,
+              thinkingConfig: {
+                thinkingLevel: ThinkingLevel.LOW,
+              },
             },
-          },
-        });
+          });
+        } catch (primaryModelErr: any) {
+          console.warn("Primary model gemini-3.7-flash unavailable/busy, falling back to gemini-3.6-flash:", primaryModelErr?.message || primaryModelErr);
+          // Attempt 2: gemini-3.6-flash fallback for high-demand spikes (503 / 429)
+          response = await ai.models.generateContent({
+            model: "gemini-3.6-flash",
+            contents: formattedContents,
+            config: {
+              systemInstruction: BIM_SYSTEM_INSTRUCTION,
+              temperature: 0.6,
+            },
+          });
+        }
 
         const replyText = response.text || "I am ready to assist with your BIM, Revit, and point cloud modeling requirements.";
 
