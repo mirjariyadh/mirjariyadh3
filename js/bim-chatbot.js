@@ -497,14 +497,40 @@
         margin-top: 5px;
         line-height: 1.2;
       }
-      @media (max-width: 640px) {
+      /* Tablet & Mobile View (<= 1024px): Hide label, show only icon button */
+      @media (max-width: 1024px) {
         .bim-chat-btn {
-          bottom: 16px !important;
-          right: 16px !important;
-          padding: 6px 10px 6px 6px !important;
+          width: 50px !important;
+          height: 50px !important;
+          padding: 0 !important;
+          border-radius: 50% !important;
+          justify-content: center !important;
+          bottom: 20px !important;
+          right: 20px !important;
+        }
+        .bim-chat-btn-pulse {
+          border-radius: 50% !important;
+        }
+        .bim-chat-btn-inner {
+          justify-content: center !important;
+          gap: 0 !important;
         }
         .bim-chat-btn-label {
-          font-size: 12px !important;
+          display: none !important;
+        }
+        .bim-chat-icon-wrap {
+          width: 36px !important;
+          height: 36px !important;
+          margin: 0 !important;
+        }
+      }
+      /* Mobile View (<= 640px) */
+      @media (max-width: 640px) {
+        .bim-chat-btn {
+          width: 48px !important;
+          height: 48px !important;
+          bottom: 16px !important;
+          right: 16px !important;
         }
         .bim-chat-window {
           bottom: 74px !important;

@@ -1437,16 +1437,45 @@ html.light-mode .theme-toggle-btn .icon-sun {
   line-height: 1.2;
 }
 
-/* Responsive Styles */
-@media (max-width: 640px) {
+/* Responsive Styles: Tablet & Mobile (<= 1024px) - Hide label, show only icon */
+@media (max-width: 1024px) {
   .bim-chat-btn {
-    bottom: 16px;
-    right: 16px;
-    padding: 6px 10px 6px 6px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .bim-chat-btn-pulse {
+    border-radius: 50%;
+  }
+
+  .bim-chat-btn-inner {
+    justify-content: center;
+    gap: 0;
   }
 
   .bim-chat-btn-label {
-    font-size: 12px;
+    display: none !important;
+  }
+
+  .bim-chat-icon-wrap {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+  }
+}
+
+/* Mobile View (<= 640px) */
+@media (max-width: 640px) {
+  .bim-chat-btn {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
   }
 
   .bim-chat-window {
