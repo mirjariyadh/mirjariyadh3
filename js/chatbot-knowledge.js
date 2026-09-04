@@ -1,6 +1,9 @@
 /**
  * BIM Chatbot Centralized Knowledge Base
  * 
+ * Updated for the current mirjariyadh.com.bd portfolio: broader FAQ coverage,
+ * website-aligned project counts, and stronger natural-language matching.
+ *
  * Simple structure:
  * {
  *   id: "my_custom_topic",
@@ -63,7 +66,7 @@
   {
     id: "explore_services",
     keywords: ["explore services", "services", "service", "what services", "what do you do", "capabilities", "skills"],
-    answer: "Overview of Mirja Riyadh's Core BIM Services:\n\n1. **Architectural BIM**: High-precision 3D architectural modeling, custom Revit families, facade curtain walls & building envelopes.\n2. **MEP Systems & Clash**: HVAC ducting, domestic plumbing, fire sprinklers, electrical trays & Navisworks hard-clash detection/resolution matrix.\n3. **Point Cloud to BIM**: 3D laser scan registration (.e57/.rcp) into accurate as-built digital twins.\n4. **Documentation & AutoCAD Services**: Permit set production, shop drawings, municipal sets & PDF-to-CAD conversion.\n5. **Structural BIM**: Structural framing, rebar detailing & coordination models.\n6. **Custom Revit Families**: Parametric Architectural and MEP components tailored to specifications.\n7. **4D/5D BIM & Quantity Takeoff**: Construction sequencing and BOQ/cost estimation support.\n\nWhich service would you like to explore in detail?",
+    answer: "Overview of Mirja Riyadh's Core BIM Services:\n\n1. **Architectural BIM**: High-precision 3D architectural modeling, custom Revit families, facade curtain walls & building envelopes.\n2. **MEP Systems & Clash**: HVAC ducting, domestic plumbing, fire sprinklers, electrical trays & Navisworks hard-clash detection/resolution matrix.\n3. **Point Cloud to BIM**: 3D laser scan registration (.e57/.rcp) into accurate as-built digital twins.\n4. **Documentation & AutoCAD Services**: Permit set production, shop drawings, municipal sets & PDF-to-CAD conversion.\n5. **Structural BIM**: Structural framing, rebar detailing & coordination models.\n6. **Custom Revit Families**: Parametric Architectural and MEP components tailored to specifications.\n7. **Quantity Takeoff & BIM Support**: Construction sequencing and BOQ/cost estimation support.\n\nWhich service would you like to explore in detail?",
     suggestions: ["Point Cloud to BIM", "MEP BIM & Coordination", "Architectural BIM", "Documentation & CAD Services", "Custom Revit Families"]
   },
 
@@ -71,7 +74,7 @@
   {
     id: "view_projects",
     keywords: ["view projects", "all projects", "view portfolio projects", "projects", "portfolio", "project samples", "case studies"],
-    answer: "The portfolio currently features 24 verified case studies across these categories:\n\n🏛️ **Architectural BIM** — high-precision 3D modeling, custom families, facades & envelopes\n⚡ **MEP Systems & Clash** — HVAC ducting, plumbing, fire sprinklers, electrical trays & Navisworks clash resolution\n☁️ **Point Cloud to BIM** — registered .e57/.rcp scan data converted to accurate as-built digital twins\n📐 **AutoCAD / Documentation** — permit sets, shop drawings, municipal sets & PDF-to-CAD conversion\n\nProjects span Commercial, Healthcare, Industrial/Pharmaceutical, Residential, Hospitality, Infrastructure, and Renovation building types. Which category would you like to review?",
+    answer: "The portfolio currently features 23 verified case studies across these categories:\n\n🏛️ **Architectural BIM** — high-precision 3D modeling, custom families, facades & envelopes\n⚡ **MEP Systems & Clash** — HVAC ducting, plumbing, fire sprinklers, electrical trays & Navisworks clash resolution\n☁️ **Point Cloud to BIM** — registered .e57/.rcp scan data converted to accurate as-built digital twins\n📐 **AutoCAD / Documentation** — permit sets, shop drawings, municipal sets & PDF-to-CAD conversion\n\nProjects span Commercial, Healthcare, Industrial/Pharmaceutical, Residential, Hospitality, Infrastructure, and Renovation building types. Which category would you like to review?",
     suggestions: ["View Point Cloud Projects", "View MEP Projects", "View Architecture Projects", "Documentation & CAD Services"]
   },
 
@@ -139,7 +142,7 @@
     suggestions: ["View Architecture Projects", "Prepare Requirements", "Request a Quote", "Explore Services"]
   },
 
-  // 12. View Architecture Projects  (NEW — closes the gap: this button existed before but had no dedicated project list)
+  // 12. View Architecture Projects
   {
     id: "view_architecture_projects",
     keywords: ["view architecture projects", "architecture projects", "architectural projects", "cad to bim projects"],
@@ -147,7 +150,7 @@
     suggestions: ["CAD to BIM Details", "Request a Quote", "View MEP Projects", "All Projects"]
   },
 
-  // 12.5 Documentation & AutoCAD Services (NEW — matches the site's dedicated "AutoCAD Services" page)
+  // 12.5 Documentation & AutoCAD Services
   {
     id: "documentation_autocad_services",
     keywords: ["documentation & cad services", "autocad services", "documentation", "pdf to cad", "shop drawings", "permit sets", "permit", "municipal sets", "cad drafting", "2d drafting"],
@@ -176,7 +179,7 @@
     id: "pricing_cost_rates",
     keywords: ["pricing & rates", "cost", "price", "pricing", "rate", "rates", "fee", "charge", "budget", "how much"],
     answer: "Project pricing depends on building type, total area (sq.ft / m²), required Level of Development (LOD 200–350+), source drawing quality (CAD/PDF/Point Cloud), and target timeline.\n\nTo get a fast and accurate quote, you can share your project scope or submit an inquiry through our quote form.",
-    suggestions: ["Request a Quote", "Prepare Requirements", "Discounts & Bulk Pricing", "Payment Terms"]
+    suggestions: ["Request a Quote", "Hourly Rates", "Discounts & Bulk Pricing", "Payment Terms"]
   },
 
   // 16. About Mirja Riyadh
@@ -243,27 +246,27 @@
     suggestions: ["Explore Services", "Clash Detection Process", "Request a Quote"]
   },
 
-  // 24. 4D/5D BIM & Quantity Takeoff
+  // 24. Quantity Takeoff & BIM Support
   {
     id: "4d_5d_bim_qto",
     keywords: ["4d bim", "5d bim", "quantity takeoff", "boq", "cost estimation", "construction sequencing", "qto"],
-    answer: "4D/5D BIM & Quantity Takeoff Support:\n\n• **4D BIM**: Linking the model to construction schedules for sequencing and phasing visualization.\n• **5D BIM**: Extracting quantities directly from the model for cost estimation and BOQ (Bill of Quantities).\n• Model-based takeoffs for concrete, steel, ductwork, piping, and finishes — reducing manual estimation errors.",
+    answer: "Quantity Takeoff & BIM Support:\n\n• **4D BIM**: Linking the model to construction schedules for sequencing and phasing visualization.\n• **5D BIM**: Extracting quantities directly from the model for cost estimation and BOQ (Bill of Quantities).\n• Model-based takeoffs for concrete, steel, ductwork, piping, and finishes — reducing manual estimation errors.",
     suggestions: ["Explore Services", "Request a Quote", "Prepare Requirements"]
   },
 
-  // 25. COBie & Facility Management
-  {
-    id: "cobie_facility_management",
-    keywords: ["cobie", "facility management", "fm data", "asset data", "handover data"],
-    answer: "COBie & Facility Management (FM) Data Delivery:\n\n• Structured asset data (equipment, room, and system information) embedded in the model.\n• COBie spreadsheet exports for handover to FM/CAFM systems.\n• Supports asset tagging, warranty tracking, and maintenance scheduling for owner/operator use post-construction.",
-    suggestions: ["Explore Services", "BIM Execution Plan", "Request a Quote"]
-  },
+// 25. COBie & Facility Management
+{
+  id: "cobie_facility_management",
+  keywords: ["cobie", "facility management", "fm data", "asset data", "handover data"],
+  answer: "COBie & Facility Management:\n\nCOBie and dedicated Facility Management (FM) data delivery are not currently part of my core BIM services.\n\nMy primary focus is on Revit BIM modeling, Architectural BIM, MEP modeling & coordination, Point Cloud to BIM, Revit Family creation, AutoCAD documentation, and Navisworks clash coordination.\n\nIf your project requires COBie or FM data, please mention it in your inquiry so the required scope can be reviewed before the project starts.",
+  suggestions: ["Explore Services", "View Projects", "Request a Quote"]
+},
 
   // 26. BIM Execution Plan (BEP)
   {
     id: "bim_execution_plan",
     keywords: ["bim execution plan", "bep", "bim standards", "iso 19650", "bim protocol"],
-    answer: "BIM Execution Plan (BEP) & Standards Compliance:\n\n• Models are developed following ISO 19650 principles for information management.\n• Custom BEPs can be followed per client/project (naming conventions, coordinate systems, LOD matrices, file exchange protocols).\n• Comfortable adapting to client-specific CDE (Common Data Environment) workflows such as BIM 360, ACC, or Trimble Connect.",
+    answer: "BIM Execution Plan (BEP) & Standards Compliance:\n\n• Models are developed following ISO 19650 principles for information management.\n• Custom BEPs can be followed per client/project (naming conventions, coordinate systems, LOD matrices, file exchange protocols).",
     suggestions: ["Model Federation & IFC", "Data Privacy & NDA", "Request a Quote"]
   },
 
@@ -361,15 +364,156 @@
     keywords: ["language", "do you speak", "bangla", "english support", "which language"],
     answer: "Communication is available in English and Bangla (বাংলা). Project documentation and deliverables are provided in English by default, matching standard international AEC practice.",
     suggestions: ["Working Hours & Availability", "Request a Quote", "About Mirja Riyadh"]
-  }
-];
+  },
 
-var DEFAULT_RESPONSE = {
-  answer: "I can help you explore Mirja Riyadh's BIM services, find relevant portfolio projects, understand workflows, or prepare a project inquiry.\n\n• **Scan-to-BIM**: Converting point clouds (.e57/rcp) to Revit models (LOD 200–350)\n• **MEP BIM & Coordination**: HVAC, plumbing, electrical & clash detection\n• **Architectural BIM**: 2D CAD/PDF to Revit 3D, CD sets, BOQ extraction\n\nType 'help' anytime to see the full topic menu. What can I help you with today?",
-  suggestions: ["Explore Services", "View Projects", "Point Cloud to BIM", "MEP BIM & Coordination", "Request a Quote"]
-};
+  // 39. Website / Portfolio Overview
+  {
+    id: "website_overview",
+    keywords: ["website", "portfolio website", "what is this website", "what can i find here", "what do you offer", "services and projects"],
+    answer: "This portfolio showcases Mirja Riyadh's BIM and CAD work, with a focus on Revit Architecture, MEP coordination, Point Cloud to BIM (Scan-to-BIM), AutoCAD drafting, project case studies, workflows, deliverables, and direct project inquiries.",
+    suggestions: ["Explore Services", "View Projects", "About Mirja Riyadh", "Request a Quote"]
+  },
 
+  // 40. Project Count / Categories
+  {
+    id: "project_count_categories",
+    keywords: ["how many projects", "number of projects", "project count", "23 projects", "23 case studies", "project categories", "building types"],
+    answer: "The portfolio currently contains 23 verified project case studies. The main categories are Architectural BIM, MEP Systems, Point Cloud / Scan-to-BIM, AutoCAD Services, and Clash Coordination. Project types include commercial, healthcare, industrial, residential, hospitality, infrastructure, pharmaceutical, and renovation work.",
+    suggestions: ["View Projects", "View Architecture Projects", "View MEP Projects", "View Point Cloud Projects"]
+  },
 
+  // 41. Deliverables
+  {
+    id: "deliverables",
+    keywords: ["deliverables", "what do i receive", "what will i get", "output files", "rvt", "nwd", "nwc", "dwg", "pdf sheets", "schedules", "boq", "clash reports"],
+    answer: "Depending on the project scope, deliverables can include Autodesk Revit (.RVT), IFC, Navisworks NWC/NWD, AutoCAD DWG, PDF sheets, schedules, BOQ/quantities, clash reports, and Revit families.",
+    suggestions: ["File Formats Accepted", "Prepare Requirements", "Request a Quote"]
+  },
+
+  // 42. Project Units & Standards
+  {
+    id: "project_units_standards",
+    keywords: ["units", "project units", "imperial", "metric", "feet inches", "millimeters", "meters", "building codes", "standards"],
+    answer: "Projects can be prepared in Imperial (feet/inches) or Metric (millimeters/meters), according to the project requirements. Regional building codes and client BIM standards can also be followed when they are provided.",
+    suggestions: ["Prepare Requirements", "BIM Execution Plan", "Request a Quote"]
+  },
+
+  // 43. Input Data / Large Files
+  {
+    id: "input_data_large_files",
+    keywords: ["large files", "large file", "send files", "send drawings", "send point cloud", "wetransfer", "google drive", "dropbox", "file transfer"],
+    answer: "For large drawings, point clouds, or Revit models, you can include a WeTransfer, Google Drive, or Dropbox link in your inquiry, or email files directly to mirja.riyadh@gmail.com. Common source files include .e57, .rcp, .las, .dwg, .dxf, .pdf, .rvt, .nwc, and .ifc.",
+    suggestions: ["File Formats Accepted", "Request a Quote", "Prepare Requirements"]
+  },
+
+  // 44. Location
+  {
+    id: "location",
+    keywords: ["where are you", "where is mirja", "location", "based where", "country", "bangladesh", "dhaka"],
+    answer: "Mirja Riyadh is based in Bangladesh and works remotely with clients worldwide.",
+    suggestions: ["International Clients", "Working Hours & Availability", "About Mirja Riyadh"]
+  },
+
+  // 45. Revit / BIM Specialization
+  {
+    id: "revit_specialization",
+    keywords: ["revit specialist", "bim specialist", "revit modeler", "what are you specialized in", "specialization", "expertise"],
+    answer: "Mirja Riyadh specializes in Revit-based BIM modeling, including Architectural BIM, MEP modeling and coordination, Point Cloud to BIM / Scan-to-BIM, Revit families, AutoCAD drafting, documentation, and Navisworks clash coordination.",
+    suggestions: ["About Mirja Riyadh", "Explore Services", "Software & Tools Used"]
+  },
+
+  // 46. Point Cloud Input / As-Built
+  {
+    id: "point_cloud_inputs_asbuilt",
+    keywords: ["as built", "existing condition", "existing conditions", "laser scan data", "registered point cloud", "point cloud input", "scan data"],
+    answer: "Point Cloud to BIM work can use registered laser-scan data such as .e57, .rcp, or .las. The workflow is intended for existing-condition and as-built modeling, with the required LOD and project standards defined before modeling begins.",
+    suggestions: ["Point Cloud to BIM", "Scan-to-BIM Workflow", "File Formats Accepted", "Request a Quote"]
+  },
+
+  // 47. MEP Scope
+  {
+    id: "mep_scope_details",
+    keywords: ["what mep", "mep scope", "mep systems", "hvac plumbing electrical", "fire protection", "fire sprinkler", "cable tray"],
+    answer: "MEP services shown on the portfolio include HVAC ducting, domestic water and plumbing, fire protection/sprinkler systems, electrical systems and cable trays, equipment, and multidisciplinary coordination with clash detection.",
+    suggestions: ["MEP BIM & Coordination", "Clash Detection Process", "View MEP Projects"]
+  },
+
+  // 48. AutoCAD Scope
+  {
+    id: "autocad_scope",
+    keywords: ["autocad", "cad drafting", "2d drafting", "pdf to dwg", "pdf to cad", "shop drawing", "technical drawing"],
+    answer: "AutoCAD services include PDF-to-DWG conversion, 2D technical drafting, layer management, construction/shop drawings, spool sheets, permit or municipal documentation, and drawing support for BIM projects.",
+    suggestions: ["Documentation & CAD Services", "CAD to BIM Details", "Request a Quote"]
+  },
+
+  // 49. Coordination / Clash
+  {
+    id: "coordination_scope",
+    keywords: ["coordination", "bim coordination", "multidiscipline coordination", "multi discipline", "clash free", "clash report", "navisworks"],
+    answer: "BIM coordination includes federating Architectural, Structural, and MEP models, reviewing spatial conflicts, running Navisworks clash tests, grouping and reviewing clashes, and coordinating model changes. Clash reports can be provided as part of the agreed deliverables.",
+    suggestions: ["Clash Detection Process", "Model Federation & IFC", "View MEP Projects", "Request a Quote"]
+  },
+
+  // 50. Quote Process
+  {
+    id: "quote_process",
+    keywords: ["how do i get a quote", "quote process", "quotation process", "estimate process", "how to hire", "how can i hire"],
+    answer: "To request a project estimate, provide the building type and area, source files, required disciplines, target LOD, units/standards, deliverable formats, and deadline. You can submit the website quote form or contact Mirja Riyadh directly by email at mirja.riyadh@gmail.com or WhatsApp at +8801717144566.",
+    suggestions: ["Prepare Requirements", "Request a Quote", "File Formats Accepted"]
+  },
+
+  // 51. Contact
+  {
+    id: "contact_details",
+    keywords: ["email address", "email contact", "whatsapp", "phone", "contact details", "how to contact", "contact mirja"],
+    answer: "You can contact Mirja Riyadh by email at mirja.riyadh@gmail.com or WhatsApp at +8801717144566. You can also use the BIM project inquiry / quote form on the website.",
+    suggestions: ["Request a Quote", "Prepare Requirements", "Working Hours & Availability"]
+  },
+
+  // 52. Testimonials
+  {
+    id: "client_reviews",
+    keywords: ["fiverr review", "upwork review", "client reviews", "client rating", "five star", "5 star", "reviews from clients"],
+    answer: "The portfolio shows 5.0-star client feedback and verified reviews from Fiverr and Upwork clients in Finland, Canada, and the United Kingdom. The testimonials highlight professionalism, communication, technical ability, and reliable project delivery.",
+    suggestions: ["Testimonials & Reviews", "About Mirja Riyadh", "View Projects"]
+  },
+
+  // 53. Privacy / NDA
+  {
+    id: "privacy_confidentiality",
+    keywords: ["is my data safe", "confidential", "confidentiality", "nda", "will you share my files", "private files", "security"],
+    answer: "Project files, drawings, scan data, and other client information are treated as confidential. NDAs are welcomed, and project files are not shared, reused, or published without client permission.",
+    suggestions: ["Data Privacy & NDA", "Request a Quote", "About Mirja Riyadh"]
+  },
+
+  // 54. Career / Personal Intro
+  {
+    id: "professional_intro",
+    keywords: ["tell me about yourself", "introduce yourself", "who is mirja", "who is riyadh", "what does mirja do"],
+    answer: "Mirja Riyadh is a BIM Modeler and Revit Specialist based in Bangladesh. His work focuses on Architectural BIM, MEP modeling and coordination, Point Cloud to BIM, AutoCAD drafting, technical documentation, and Revit-based project delivery.",
+    suggestions: ["About Mirja Riyadh", "Explore Services", "View Projects"]
+  },
+
+  // 55. Thanks / Goodbye variants
+  {
+    id: "thanks_bye_variants",
+    keywords: ["ok thanks", "okay thanks", "thanks a lot", "see you later", "talk to you later", "have a good day"],
+    answer: "You're welcome! If you have a BIM, Revit, MEP, Scan-to-BIM, or CAD project in mind, you can come back anytime or submit a project inquiry.",
+    suggestions: ["Request a Quote", "View Projects", "Explore Services"]
+  },
+// 26. Hourly Rates
+  {
+  id: "hourly_rates",
+  keywords: ["how much your hourly rate", "hourly rate", "hourly rates", "hourly", "hourly pricing", "price/hour", "price per hour", "cost/hour", "cost per hour", "hourly cost", "charge/hour", "charge per hour", "per hour", "how much per hour"],
+  answer: "Hourly Rates:\n\n• Simple Projects — $20/hour\n• Complex Projects — $28/hour\n\nThe hourly rate depends on the project complexity, scope, required BIM detail, coordination requirements, and technical workload.\n\nFor an accurate estimate, please share your project requirements, drawings, point cloud, or other available project information.",
+  suggestions: ["Explore Services", "Request a Quote"]
+  },
+  ];
+
+  var DEFAULT_RESPONSE = {
+    answer: "I can help you explore Mirja Riyadh's BIM services, find relevant portfolio projects, understand workflows, or prepare a project inquiry.\n\n• **Scan-to-BIM**: Converting point clouds (.e57/rcp) to Revit models (LOD 200–350)\n• **MEP BIM & Coordination**: HVAC, plumbing, electrical & clash detection\n• **Architectural BIM**: Revit architectural modeling, documentation, and custom families\n• **AutoCAD Services**: PDF-to-DWG and 2D technical drafting\n\nType 'help' anytime to see the full topic menu. What can I help you with today?",
+    suggestions: ["Explore Services", "View Projects", "Point Cloud to BIM", "MEP BIM & Coordination", "Request a Quote"]
+  };
 
   /**
    * Directly match query or button click and return English answer
@@ -381,20 +525,116 @@ var DEFAULT_RESPONSE = {
         suggestions: DEFAULT_RESPONSE.suggestions
       };
     }
-    
-    var cleanQuery = (userText || '').toLowerCase().trim().replace(/[?!.,;:#*]/g, '');
 
-    // 1. Exact match with ID or Keyword (instant match for suggestions or exact queries)
+    var cleanQuery = (userText || '')
+      .toLowerCase()
+      .replace(/[?!.,;:#*()[\]{}"'`]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    // Common natural-language aliases used by visitors.
+    var aliases = {
+      "scan to revit": "point cloud to bim",
+      "scan2bim": "point cloud to bim",
+      "pointcloud to revit": "point cloud to bim",
+      "laser scan to revit": "point cloud to bim",
+      "cad to revit": "cad to bim",
+      "pdf to revit": "cad to bim",
+      "2d cad to 3d": "cad to bim",
+      "bim model": "architectural bim",
+      "mep coordination": "mep bim",
+      "hvac coordination": "mep bim",
+      "clash check": "clash detection",
+      "clash checking": "clash detection",
+      "revit family": "custom revit families",
+      "custom families": "custom revit families",
+      "how much does it cost": "pricing",
+      "how much will it cost": "pricing",
+      "price": "pricing",
+      "get price": "pricing",
+      "how long": "turnaround",
+      "delivery": "turnaround",
+      "contact": "contact details",
+      "email": "contact details"
+    };
+
+    var normalizedQuery = aliases[cleanQuery] || cleanQuery;
+    var queryTokens = normalizedQuery.split(' ').filter(function (t) {
+      return t.length > 1;
+    });
+
+    // High-confidence natural-language routes.
+    var intentRoutes = [
+      { re: /mep.*projects|projects.*mep|hvac projects/, id: "view_mep_projects" },
+      { re: /point cloud.*projects|scan.*projects/, id: "view_point_cloud_projects" },
+      { re: /mep.*projects|projects.*mep/, id: "view_mep_projects" },
+      { re: /parametric families|make parametric|create.*revit families|make.*revit families/, id: "custom_revit_families" },
+      { re: /mep bim|provide mep|do you do mep|model hvac/, id: "mep_bim_coordination" },
+      { re: /coordinate.*hvac|coordinate.*plumbing|hvac.*plumbing/, id: "mep_bim_coordination" },
+      { re: /architecture.*projects|architectural.*projects|architectural bim samples/, id: "view_architecture_projects" },
+      { re: /pdf.*to.*revit|pdf.*revit/, id: "architecture_cad_to_bim" },
+      { re: /pdf.*to.*dwg|pdf.*cad/, id: "documentation_autocad_services" },
+      { re: /steps.*scan|scan.*steps/, id: "scan_to_bim_workflow" },
+      { re: /need.*quote|need.*for.*quote|requirements.*quote|quote.*requirements|information.*send.*estimate/, id: "prepare_requirements" },
+      { re: /want.*hire|hire.*you|how.*hire/, id: "hire_contact_quote" },
+      { re: /boq|quantity takeoff|quantity.*takeoff/, id: "4d_5d_bim_qto" },
+      { re: /support.*cobie|cobie/, id: "cobie_facility_management" },
+      { re: /follow.*bep|bep|iso.*19650/, id: "bim_execution_plan" },
+      { re: /accurate.*point cloud|point cloud.*accur|tolerance/, id: "point_cloud_accuracy" },
+      { re: /nwc|nwd|support.*ifc|ifc|federate.*model|model.*federat/, id: "model_federation_ifc" },
+      { re: /bim ?360|\bacc\b|autodesk construction cloud|trimble connect/, id: "cloud_collaboration" },
+      { re: /sign.*\bnda\b|\bnda\b/, id: "data_privacy_nda" },
+      { re: /files confidential|data safe|file.*confidential/, id: "privacy_confidentiality" },
+      { re: /payment.*method|payment.*accept|advance payment|bill.*milestone|milestone.*bill/, id: "payment_terms" },
+      { re: /large project|large.*volume|team|staff|capacity|recurring work/, id: "team_size_capacity" },
+      { re: /rated.*upwork|upwork.*rated/, id: "client_reviews" },
+      { re: /long.?term rate|long.?term|discount|bulk pricing|recurring.*discount/, id: "discounts_bulk_pricing" },
+      { re: /client.*review|review.*client|fiverr.*review/, id: "testimonials_reviews" },
+      { re: /test.*small project|sample|trial project|test project/, id: "free_sample_trial" },
+      { re: /working hours|timezone|availability|respond|how quickly/, id: "working_hours_availability" },
+      { re: /based in bangladesh|where.*based|location/, id: "location" },
+      { re: /language|bangla|english support/, id: "language_support" },
+      { re: /how many projects|number of projects|project count/, id: "project_count_categories" },
+      { re: /e57|rcp|what files|files.*send|input.*files|accepted.*files|send dwg.*pdf/, id: "file_formats_accepted" },
+      { re: /metric|feet.*inches|imperial|project units|client units|units and standards|units.*standards/, id: "project_units_standards" },
+      { re: /large point cloud|large file|wetransfer|google drive|dropbox/, id: "input_data_large_files" },
+      { re: /as.?built|existing condition|existing.*model/, id: "point_cloud_inputs_asbuilt" },
+      { re: /what mep|mep system|fire sprinkler|cable tray|hvac.*plumbing/, id: "mep_scope_details" },
+      { re: /revit and navisworks|what software|software.*use/, id: "software_tools_used" },
+      { re: /lod.*provide|what.*lod|lod 200|lod 300|lod 350|lod 400/, id: "understanding_lod" },
+      { re: /what autocad|autocad.*service|2d drafting|pdf.*dwg/, id: "autocad_scope" },
+      { re: /how.*detect.*clash|clash detection|clash steps/, id: "clash_detection_process" },
+      { re: /clash report|multidisciplinary coordination|multi.?discipline coordination/, id: "coordination_scope" },
+      { re: /what.*email|email address|how.*contact|contact.*mirja|whatsapp/, id: "contact_details" },
+      { re: /tell me about mirja|who is mirja|who is riyadh/, id: "professional_intro" }
+    ];
+
+    for (var ir = 0; ir < intentRoutes.length; ir++) {
+      if (intentRoutes[ir].re.test(normalizedQuery)) {
+        for (var ri = 0; ri < CHATBOT_KNOWLEDGE_ITEMS.length; ri++) {
+          if (CHATBOT_KNOWLEDGE_ITEMS[ri].id === intentRoutes[ir].id) {
+            return {
+              reply: CHATBOT_KNOWLEDGE_ITEMS[ri].answer,
+              suggestions: CHATBOT_KNOWLEDGE_ITEMS[ri].suggestions
+            };
+          }
+        }
+      }
+    }
+
+    // Exact ID / keyword match.
     for (var i = 0; i < CHATBOT_KNOWLEDGE_ITEMS.length; i++) {
       var item = CHATBOT_KNOWLEDGE_ITEMS[i];
-      if (cleanQuery === item.id.toLowerCase()) {
+
+      if (normalizedQuery === item.id.toLowerCase()) {
         return {
           reply: item.answer,
           suggestions: item.suggestions
         };
       }
+
       for (var k = 0; k < item.keywords.length; k++) {
-        if (cleanQuery === item.keywords[k].toLowerCase()) {
+        if (normalizedQuery === item.keywords[k].toLowerCase()) {
           return {
             reply: item.answer,
             suggestions: item.suggestions
@@ -403,18 +643,56 @@ var DEFAULT_RESPONSE = {
       }
     }
 
-    // 2. Substring / partial match
+    // Score matches instead of returning the first weak substring match.
+    var bestItem = null;
+    var bestScore = 0;
+
     for (var j = 0; j < CHATBOT_KNOWLEDGE_ITEMS.length; j++) {
       var itm = CHATBOT_KNOWLEDGE_ITEMS[j];
+
       for (var x = 0; x < itm.keywords.length; x++) {
         var kw = itm.keywords[x].toLowerCase();
-        if (cleanQuery.indexOf(kw) !== -1 || kw.indexOf(cleanQuery) !== -1) {
-          return {
-            reply: itm.answer,
-            suggestions: itm.suggestions
-          };
+        var score = 0;
+
+        // Avoid tiny keywords such as "hi" matching inside unrelated words like "this".
+        if (kw.length >= 5 && normalizedQuery.indexOf(kw) !== -1) {
+          score = Math.max(score, kw.length >= 8 ? 10 : 7);
+        }
+
+        var kwTokens = kw.split(' ').filter(function (t) {
+          return t.length > 1;
+        });
+
+        var overlap = 0;
+
+        for (var a = 0; a < kwTokens.length; a++) {
+          if (queryTokens.indexOf(kwTokens[a]) !== -1) {
+            overlap++;
+          }
+        }
+
+        if (overlap > 0) {
+          var tokenScore = overlap * 2 + (kwTokens.length > 1 ? 2 : 0);
+
+          if (kwTokens.length === 1 && kw.length >= 5) {
+            tokenScore += 2;
+          }
+
+          score = Math.max(score, tokenScore);
+        }
+
+        if (score > bestScore) {
+          bestScore = score;
+          bestItem = itm;
         }
       }
+    }
+
+    if (bestItem && bestScore >= 4) {
+      return {
+        reply: bestItem.answer,
+        suggestions: bestItem.suggestions
+      };
     }
 
     // Default fallback
