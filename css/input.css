@@ -1488,3 +1488,294 @@ html.light-mode .theme-toggle-btn .icon-sun {
   }
 }
 
+/* ==========================================================================
+   LIGHT MODE OVERRIDES FOR BIM CHATBOT
+   ========================================================================== */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-btn,
+.bim-chat-btn.theme-light {
+  background: #ffffff !important;
+  border: 1px solid rgba(8, 145, 178, 0.4) !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 0 18px rgba(8, 145, 178, 0.18) !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-btn:hover,
+.bim-chat-btn.theme-light:hover {
+  background: #f8fafc !important;
+  border-color: #0891b2 !important;
+  box-shadow: 0 14px 30px -5px rgba(15, 23, 42, 0.16), 0 0 22px rgba(8, 145, 178, 0.25) !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-btn.is-active,
+.bim-chat-btn.theme-light.is-active {
+  background: #0891b2 !important;
+  border-color: #06b6d4 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-btn-label,
+.bim-chat-btn.theme-light .bim-chat-btn-label {
+  color: #0f172a !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-btn.is-active .bim-chat-btn-label,
+.bim-chat-btn.theme-light.is-active .bim-chat-btn-label {
+  color: #ffffff !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-icon-wrap,
+.bim-chat-btn.theme-light .bim-chat-icon-wrap {
+  background: rgba(8, 145, 178, 0.12) !important;
+  border: 1px solid rgba(8, 145, 178, 0.35) !important;
+  color: #0891b2 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-btn.is-active .bim-chat-icon-wrap,
+.bim-chat-btn.theme-light.is-active .bim-chat-icon-wrap {
+  background: #0e7490 !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-status-dot,
+.bim-chat-btn.theme-light .bim-chat-status-dot {
+  border-color: #ffffff !important;
+}
+
+/* Chat Window Modal in Light Mode */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-window,
+.bim-chat-window.theme-light {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 25px 60px -10px rgba(15, 23, 42, 0.2), 0 0 30px rgba(8, 145, 178, 0.12) !important;
+}
+
+/* Header in Light Mode */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-header,
+.bim-chat-window.theme-light .bim-chat-header {
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-avatar,
+.bim-chat-window.theme-light .bim-chat-avatar {
+  background: rgba(8, 145, 178, 0.12) !important;
+  border: 1px solid rgba(8, 145, 178, 0.3) !important;
+  color: #0891b2 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-avatar svg,
+.bim-chat-window.theme-light .bim-chat-avatar svg {
+  color: #0891b2 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-online-badge,
+.bim-chat-window.theme-light .bim-chat-online-badge {
+  border-color: #f8fafc !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-title,
+.bim-chat-window.theme-light .bim-chat-title {
+  color: #0f172a !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-badge,
+.bim-chat-window.theme-light .bim-chat-badge {
+  background: rgba(8, 145, 178, 0.1) !important;
+  color: #0891b2 !important;
+  border: 1px solid rgba(8, 145, 178, 0.25) !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-subtitle,
+.bim-chat-window.theme-light .bim-chat-subtitle {
+  color: #64748b !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-icon-action,
+.bim-chat-window.theme-light .bim-chat-icon-action {
+  color: #64748b !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-icon-action:hover,
+.bim-chat-window.theme-light .bim-chat-icon-action:hover {
+  color: #0f172a !important;
+  background: #e2e8f0 !important;
+}
+
+/* Messages Area in Light Mode */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-messages,
+.bim-chat-window.theme-light .bim-chat-messages {
+  background: #f1f5f9 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-messages::-webkit-scrollbar-thumb,
+.bim-chat-window.theme-light .bim-chat-messages::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-msg-avatar,
+.bim-chat-window.theme-light .bim-chat-msg-avatar {
+  background: rgba(8, 145, 178, 0.12) !important;
+  border: 1px solid rgba(8, 145, 178, 0.28) !important;
+  color: #0891b2 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-msg-avatar svg,
+.bim-chat-window.theme-light .bim-chat-msg-avatar svg {
+  color: #0891b2 !important;
+}
+
+/* Assistant Message Bubbles in Light Mode */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-bubble,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-bubble {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05) !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-text strong,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-text strong {
+  color: #0369a1 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-li,
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-ol-li,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-li,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-ol-li {
+  color: #334155 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-num,
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-arrow,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-num,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-arrow {
+  color: #0891b2 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-link,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-link {
+  color: #0284c7 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-assistant .bim-chat-link:hover,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-assistant .bim-chat-link:hover {
+  color: #0369a1 !important;
+}
+
+/* User Message Bubbles */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble-wrap.is-user .bim-chat-bubble,
+.bim-chat-window.theme-light .bim-chat-bubble-wrap.is-user .bim-chat-bubble {
+  background: #0891b2 !important;
+  color: #ffffff !important;
+  border: 1px solid #0e7490 !important;
+  box-shadow: 0 2px 6px rgba(8, 145, 178, 0.25) !important;
+}
+
+/* Inline Suggestion Chips inside Messages */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-chips-group,
+.bim-chat-window.theme-light .bim-chat-chips-group {
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-chip,
+.bim-chat-window.theme-light .bim-chat-chip {
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-chip:hover,
+.bim-chat-window.theme-light .bim-chat-chip:hover {
+  background: #0891b2 !important;
+  border-color: #0891b2 !important;
+  color: #ffffff !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-chip.is-highlight,
+.bim-chat-window.theme-light .bim-chat-chip.is-highlight {
+  background: rgba(8, 145, 178, 0.1) !important;
+  border-color: #0891b2 !important;
+  color: #0891b2 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-chip.is-highlight:hover,
+.bim-chat-window.theme-light .bim-chat-chip.is-highlight:hover {
+  background: #0891b2 !important;
+  color: #ffffff !important;
+}
+
+/* Typing indicator */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bubble.is-typing,
+.bim-chat-window.theme-light .bim-chat-bubble.is-typing {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-typing-dot,
+.bim-chat-window.theme-light .bim-chat-typing-dot {
+  background: #0891b2 !important;
+}
+
+/* Quick Suggestions Bar */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-suggestions,
+.bim-chat-window.theme-light .bim-chat-suggestions {
+  background: #f8fafc !important;
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bar-chip,
+.bim-chat-window.theme-light .bim-chat-bar-chip {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bar-chip:hover,
+.bim-chat-window.theme-light .bim-chat-bar-chip:hover {
+  border-color: #0891b2 !important;
+  color: #0891b2 !important;
+  background: #f0fdfa !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-bar-chip.is-quote,
+.bim-chat-window.theme-light .bim-chat-bar-chip.is-quote {
+  border-color: #0891b2 !important;
+  color: #0891b2 !important;
+  background: rgba(8, 145, 178, 0.08) !important;
+}
+
+/* Input Area & Form in Light Mode */
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-input-area,
+.bim-chat-window.theme-light .bim-chat-input-area {
+  background: #ffffff !important;
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-form,
+.bim-chat-window.theme-light .bim-chat-form {
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-form:focus-within,
+.bim-chat-window.theme-light .bim-chat-form:focus-within {
+  border-color: #0891b2 !important;
+  box-shadow: 0 0 10px rgba(8, 145, 178, 0.18) !important;
+  background: #ffffff !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-input,
+.bim-chat-window.theme-light .bim-chat-input {
+  color: #0f172a !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-input::placeholder,
+.bim-chat-window.theme-light .bim-chat-input::placeholder {
+  color: #94a3b8 !important;
+}
+
+:is(html.light-mode, body.light-mode, html:not(.dark), body:not(.dark)) .bim-chat-footer-note,
+.bim-chat-window.theme-light .bim-chat-footer-note {
+  color: #94a3b8 !important;
+}
+
+
