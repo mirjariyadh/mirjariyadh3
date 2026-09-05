@@ -38,6 +38,13 @@
     suggestions: ["Explore Services", "View Projects", "Point Cloud to BIM", "Request a Quote"]
   },
   {
+    id: "how_can_you_help",
+    keywords: ["how can you help me", "what can you do", "how can you help", "what are your services", "what do you do"],
+    answer: "I can help you explore Mirja Riyadh's professional BIM and Revit modeling expertise! Whether you need to convert point cloud data into accurate 3D models or manage complex building designs, I'm here to guide you through his portfolio and services.\n\nHow would you like to get started?",
+    suggestions: ["Explore Services", "View Projects", "Point Cloud to BIM", "Contact Information"]
+  },
+
+  {
     id: "gratitude",
     keywords: ["thank", "thx", "thanks", "thank you", "appreciate it", "great help", "awesome"],
     answer: "You're very welcome! If you have any other questions about Revit modeling, LOD requirements, or want to discuss a new project, feel free to ask anytime.",
