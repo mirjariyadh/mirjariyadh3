@@ -97,7 +97,7 @@
   {
     id: "scan_to_bim_workflow",
     keywords: ["scan-to-bim workflow", "scan workflow", "point cloud workflow", "scan steps", "workflow"],
-    answer: "Our 5-Step Scan-to-BIM Delivery Workflow:\n\n1. **Data Ingestion & QC**: Clean and inspect .rcp/.e57 point clouds in Autodesk Recap Pro with coordinate verification.\n2. **Revit Setup**: Establish real-world datum, shared coordinates, levels, and grid intersections.\n3. **Parametric Modeling**: Construct architectural, structural, or MEP geometry to target LOD (200/300/350).\n4. **Deviation Analysis & QA**: Overlay point cloud on Revit elements to verify tolerances (within ±3mm to ±10mm).\n5. **Deliverables Extraction**: Provide clean .RVT model, CAD exports, schedules, and PDF sheet sets.",
+    answer: "Our 5-Step Scan-to-BIM Delivery Workflow:\n\n1. **Data Ingestion & QC**: Clean and inspect .rcp/.e57 point clouds in Autodesk Recap Pro with coordinate verification.\n2. **Revit Setup**: Establish real-world datum, shared coordinates, levels, and grid intersections.\n3. **Parametric Modeling**: Construct architectural, structural, or MEP geometry to target LOD (200/300/350).\n4. **Deviation Analysis & QA**: Overlay point cloud on Revit elements to verify tolerances.\n5. **Deliverables Extraction**: Provide clean .RVT model, CAD exports, schedules, and PDF sheet sets.",
     suggestions: ["View Point Cloud Projects", "Prepare Requirements", "Request a Quote", "Explore Services"]
   },
 
