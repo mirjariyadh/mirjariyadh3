@@ -4,6 +4,8 @@
 
 import { REVIT_FAMILY_SAMPLES, getSamplesByCategory, getSampleById } from './family-data.js';
 import { renderFamilySvg } from './family-renderers.js';
+import heroImageUrl from '../assets/images/hero/hero.webp';
+import heroFallbackImageUrl from '../assets/images/hero-revit-family.webp';
 
 let activeCategory = 'all';
 
@@ -179,10 +181,10 @@ function initHeroInteractiveViewer() {
         <div class="relative w-full h-full flex items-center justify-center overflow-hidden luxury-frame">
           <img 
             id="hero-model-img" 
-            src="/src/assets/images/revit-family/hero-revit-family.webp" 
+            src="${heroImageUrl}"
             alt="Packaged Rooftop AHU Revit Family 3D Model" 
             class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-            onerror="this.src='/src/assets/images/hero/hero.webp'"
+            onerror="this.onerror=null;this.src='${heroFallbackImageUrl}'"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
           <div class="absolute bottom-4 left-4 text-[10px] tracking-luxury uppercase text-white/90 bg-black/60 px-3 py-1 backdrop-blur-sm">
