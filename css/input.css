@@ -8,14 +8,66 @@
   --font-sans: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-heading: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --color-cyan-400: #22d3ee;
-  --color-cyan-500: #06b6d4;
-  --color-cyan-600: #0891b2;
-  --color-cyan-950: #083344;
-  --color-tealCustom-500: #18A999;
-  --color-tealCustom-600: #138b7e;
-  --color-teal-custom-500: #18A999;
-  --color-teal-custom-600: #138b7e;
+  --color-slate-950: #0a0a0a;
+  --color-slate-900: #121212;
+  --color-slate-800: #181818;
+  --color-slate-700: #262626;
+  --color-slate-600: #404040;
+  --color-slate-500: #737373;
+  --color-slate-400: #a3a3a3;
+  --color-slate-300: #d4d4d4;
+  --color-slate-200: #e5e5e5;
+  --color-slate-100: #f5f5f5;
+  --color-slate-50: #fafafa;
+  --color-gray-950: #0c0a09;
+  --color-gray-900: #1c1917;
+  --color-gray-800: #292524;
+  --color-gray-700: #44403c;
+  --color-gray-600: #57534e;
+  --color-gray-500: #78716c;
+  --color-gray-400: #a8a29e;
+  --color-gray-300: #d6d3d1;
+  --color-gray-200: #e7e5e4;
+  --color-gray-100: #f5f5f4;
+  --color-gray-50: #fafaf9;
+  --color-cyan-950: #292117;
+  --color-cyan-900: #332718;
+  --color-cyan-800: #4b3927;
+  --color-cyan-700: #6f563a;
+  --color-cyan-600: #806642;
+  --color-cyan-500: #aa8b61;
+  --color-cyan-400: #c5a880;
+  --color-cyan-300: #dfd1b8;
+  --color-cyan-200: #ece6db;
+  --color-cyan-100: #f5f3ef;
+  --color-cyan-50: #fcfbf9;
+  --color-blue-400: #a3a3a3;
+  --color-blue-500: #8a7a62;
+  --color-blue-600: #715a3a;
+  --color-emerald-300: #dfd1b8;
+  --color-emerald-400: #c5a880;
+  --color-emerald-500: #aa8b61;
+  --color-emerald-600: #806642;
+  --color-emerald-950: #292117;
+  --color-emerald-900: #332718;
+  --color-emerald-800: #4b3927;
+  --color-emerald-700: #6f563a;
+  --color-indigo-300: #dfd1b8;
+  --color-indigo-400: #c5a880;
+  --color-indigo-500: #aa8b61;
+  --color-indigo-600: #806642;
+  --color-purple-300: #dfd1b8;
+  --color-purple-400: #c5a880;
+  --color-purple-500: #aa8b61;
+  --color-purple-600: #806642;
+  --color-amber-300: #dfd1b8;
+  --color-amber-400: #c5a880;
+  --color-amber-500: #aa8b61;
+  --color-amber-600: #806642;
+  --color-tealCustom-500: #c5a880;
+  --color-tealCustom-600: #806642;
+  --color-teal-custom-500: #c5a880;
+  --color-teal-custom-600: #806642;
 }
 
 /* Image Protection & Anti-Download Styling */
@@ -73,32 +125,32 @@ img, .protected-image, .comparison-slider img {
 /* Mirja Riyadh Portfolio Custom Styles & Theme Architecture */
 :root {
   /* Surface & Backgrounds (Default: Dark Mode) */
-  --bg-primary: #020617;       /* Deep slate/black canvas (slate-950) */
-  --bg-secondary: #0f172a;     /* Cards & elevated containers (slate-900) */
-  --bg-tertiary: #1e293b;      /* Input fields, hover badges, dropdowns (slate-800) */
-  --bg-card: #0f172a;
-  --bg-card-hover: #1e293b;
-  --bg-accent: #083344;        /* Cyan 950 subtle surfaces */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-tertiary: #181818;
+  --bg-card: #121212;
+  --bg-card-hover: #181818;
+  --bg-accent: #292117;
 
   /* Text & Typography */
-  --text-main: #f8fafc;        /* Headings & prominent text (slate-50) */
-  --text-secondary: #cbd5e1;   /* Readable body & subtitles (slate-300) */
-  --text-muted: #94a3b8;       /* Meta tags, captions, subtle text (slate-400) */
+  --text-main: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
 
   /* Accents & BIM Engineering Brand Colors */
-  --accent-cyan: #06b6d4;      /* Primary interactive cyan (cyan-500) */
-  --accent-cyan-hover: #22d3ee;/* Brighter cyan on hover (cyan-400) */
-  --accent-cyan-bg: rgba(6, 182, 212, 0.12);
-  --accent-blue: #3b82f6;
-  --accent-emerald: #10b981;
+  --accent-cyan: #aa8b61;
+  --accent-cyan-hover: #c5a880;
+  --accent-cyan-bg: rgba(197, 168, 128, 0.12);
+  --accent-blue: #a3a3a3;
+  --accent-emerald: #a3a3a3;
 
   /* Borders & Dividers */
-  --border-color: #1e293b;     /* Slate-800 border */
-  --border-subtle: #334155;    /* Slate-700 border */
-  --border-hover: rgba(6, 182, 212, 0.6);
+  --border-color: #262626;
+  --border-subtle: #404040;
+  --border-hover: rgba(197, 168, 128, 0.6);
 
   /* Navigation & Glassmorphism */
-  --nav-bg: rgba(2, 6, 23, 0.88);
+  --nav-bg: rgba(10, 10, 10, 0.92);
   --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
 }
 
@@ -109,32 +161,32 @@ img, .protected-image, .comparison-slider img {
 body.light-mode,
 html.light-mode {
   /* Surface & Backgrounds (Crisp, High-Contrast Light Theme) */
-  --bg-primary: #f8fafc;       /* Crisp off-white canvas (slate-50) */
-  --bg-secondary: #ffffff;     /* Elevated pure white card backgrounds */
-  --bg-tertiary: #f1f5f9;      /* Input fields, subtle badges (slate-100) */
+  --bg-primary: #fcfbf9;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f5f3ef;
   --bg-card: #ffffff;
-  --bg-card-hover: #f8fafc;
-  --bg-accent: #e0f2fe;        /* Soft cyan tint */
+  --bg-card-hover: #f5f3ef;
+  --bg-accent: #f5f3ef;
 
   /* Text & Typography (WCAG AA High Contrast) */
-  --text-main: #0f172a;        /* Deep slate-900 for headlines & body */
-  --text-secondary: #334155;   /* Slate-700 for subtitles */
-  --text-muted: #64748b;       /* Slate-500 for captions & labels */
+  --text-main: #111111;
+  --text-secondary: #525252;
+  --text-muted: #737373;
 
   /* Accents & Brand Colors adjusted for optimal light contrast */
-  --accent-cyan: #0891b2;      /* Deep cyan-600 for sharp readability */
-  --accent-cyan-hover: #0e7490;/* Cyan-700 hover */
-  --accent-cyan-bg: rgba(8, 145, 178, 0.1);
-  --accent-blue: #2563eb;
-  --accent-emerald: #059669;
+  --accent-cyan: #806642;
+  --accent-cyan-hover: #6f563a;
+  --accent-cyan-bg: rgba(128, 102, 66, 0.1);
+  --accent-blue: #57534e;
+  --accent-emerald: #57534e;
 
   /* Borders & Dividers */
-  --border-color: #e2e8f0;     /* Slate-200 border */
-  --border-subtle: #cbd5e1;    /* Slate-300 border */
-  --border-hover: #0891b2;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.15);
+  --border-hover: #806642;
 
   /* Navigation & Shadows */
-  --nav-bg: rgba(255, 255, 255, 0.92);
+  --nav-bg: rgba(252, 251, 249, 0.94);
   --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
 }
 
@@ -373,16 +425,16 @@ body.light-mode .selected-filter-btn * {
 
 /* Download CV Button in Light Mode */
 body.light-mode #download-cv-btn {
-  background-color: #0f172a !important;
+  background-color: #111111 !important;
   color: #ffffff !important;
-  border-color: #0f172a !important;
+  border-color: #111111 !important;
 }
 body.light-mode #download-cv-btn * {
   color: #ffffff !important;
 }
 body.light-mode #download-cv-btn:hover {
-  background-color: #18A999 !important;
-  border-color: #18A999 !important;
+  background-color: #806642 !important;
+  border-color: #806642 !important;
 }
 
 /* CTA Gradient Banner & Client Inquiry in Light Mode */
@@ -1246,6 +1298,201 @@ html.light-mode .theme-toggle-btn .icon-sun {
   padding: 0 3px;
 }
 
+/* Shared Atelier visual language for the main portfolio pages */
+body:not(.bg-atelier-dark) {
+  font-family: var(--font-sans);
+}
+
+body:not(.bg-atelier-dark) :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
+  letter-spacing: -0.035em;
+}
+
+body:not(.bg-atelier-dark) button,
+body:not(.bg-atelier-dark) [role="button"] {
+  letter-spacing: 0.08em;
+}
+
+body:not(.bg-atelier-dark) .font-mono {
+  letter-spacing: 0.08em;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-\[\#070B14\],
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-\[\#070b14\],
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-\[\#0A0F1D\],
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-\[\#0B1220\],
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-\[\#080E1A\],
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-\[\#0F172A\],
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-\[\#111827\] {
+  background-color: #0a0a0a !important;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-cyan-300,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-cyan-400,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-emerald-300,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-emerald-400,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-blue-300,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-blue-400,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-indigo-300,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-indigo-400,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-purple-400,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-amber-300,
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-amber-400,
+:root:not(.light-mode) body:not(.bg-atelier-dark) [class~="text-tealCustom-500"],
+:root:not(.light-mode) body:not(.bg-atelier-dark) [class~="text-teal-custom-500"],
+:root:not(.light-mode) body:not(.bg-atelier-dark) .text-\[\#18A999\] {
+  color: #c5a880 !important;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bg-grid-pattern {
+  background-image: radial-gradient(rgba(197, 168, 128, 0.11) 1px, transparent 0);
+}
+
+html.light-mode body:not(.bg-atelier-dark),
+body.light-mode:not(.bg-atelier-dark) {
+  background-color: #fcfbf9 !important;
+  color: #111111 !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-950,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-950\/80,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-950\/90,
+html.light-mode body:not(.bg-atelier-dark) .bg-\[\#070B14\],
+html.light-mode body:not(.bg-atelier-dark) .bg-\[\#070b14\],
+html.light-mode body:not(.bg-atelier-dark) .bg-\[\#0A0F1D\],
+html.light-mode body:not(.bg-atelier-dark) .bg-\[\#0B1220\],
+html.light-mode body:not(.bg-atelier-dark) .bg-\[\#080E1A\],
+html.light-mode body:not(.bg-atelier-dark) .bg-\[\#0F172A\],
+html.light-mode body:not(.bg-atelier-dark) .bg-\[\#111827\] {
+  background-color: #fcfbf9 !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-900,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-900\/95,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-900\/90,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-900\/80,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-900\/70,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-900\/60,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-900\/50,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-800,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-800\/90,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-800\/80,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-800\/60,
+html.light-mode body:not(.bg-atelier-dark) .bg-slate-800\/50 {
+  background-color: #f5f3ef !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.text-white, .text-gray-100, .text-slate-100, .text-slate-50) {
+  color: #111111 !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.text-gray-200, .text-gray-300, .text-slate-200, .text-slate-300) {
+  color: #44403c !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.text-gray-400, .text-gray-500, .text-slate-400, .text-slate-500) {
+  color: #57534e !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.text-cyan-300, .text-cyan-400, .text-blue-300, .text-blue-400, .text-emerald-300, .text-emerald-400, .text-indigo-300, .text-indigo-400, .text-purple-400, .text-amber-300, .text-amber-400, .text-\[\#18A999\]) {
+  color: #806642 !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .from-cyan-400.to-blue-500 {
+  --tw-gradient-from: #806642 !important;
+  --tw-gradient-to: #6f563a !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.bg-cyan-950, .bg-cyan-950\/80, .bg-cyan-950\/60, .bg-cyan-950\/40, .bg-cyan-950\/30, .bg-cyan-950\/20, .bg-cyan-950\/10, .bg-blue-950, .bg-blue-950\/80, .bg-blue-950\/60, .bg-emerald-950, .bg-emerald-950\/80, .bg-emerald-950\/60, .bg-emerald-950\/40, .bg-purple-950, .bg-indigo-950) {
+  background-color: #f5f3ef !important;
+  color: #6f563a !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.border-slate-800, .border-slate-800\/90, .border-slate-800\/80, .border-slate-700, .border-slate-700\/60, .border-slate-700\/50) {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.border-cyan-500\/20, .border-cyan-500\/30, .border-cyan-500\/40) {
+  border-color: rgba(128, 102, 66, 0.35) !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .bg-grid-pattern {
+  background-image: radial-gradient(rgba(128, 102, 66, 0.13) 1px, transparent 0) !important;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) :is(.bim-chat-btn, .bim-chat-window) {
+  background-color: #121212;
+  border-color: rgba(197, 168, 128, 0.4);
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-window {
+  background-color: #0a0a0a;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) :is(.bim-chat-header, .bim-chat-bubble-wrap.is-assistant .bim-chat-bubble) {
+  background-color: #121212;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-messages {
+  background-color: #0a0a0a;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-bubble-wrap.is-user .bim-chat-bubble {
+  background-color: #806642;
+  border-color: #aa8b61;
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) :is(.bim-chat-icon-wrap, .bim-chat-avatar, .bim-chat-msg-avatar, .bim-chat-badge) {
+  color: #c5a880;
+  border-color: rgba(197, 168, 128, 0.4);
+}
+
+:root:not(.light-mode) body:not(.bg-atelier-dark) :is(.bim-chat-text strong, .bim-chat-num, .bim-chat-arrow, .bim-chat-link, .bim-chat-chip.is-highlight) {
+  color: #c5a880;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .bim-chat-btn,
+body.light-mode:not(.bg-atelier-dark) .bim-chat-btn {
+  background-color: #ffffff !important;
+  border-color: rgba(128, 102, 66, 0.4) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 0 18px rgba(128, 102, 66, 0.12) !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .bim-chat-btn.is-active,
+body.light-mode:not(.bg-atelier-dark) .bim-chat-btn.is-active {
+  background-color: #806642 !important;
+  border-color: #aa8b61 !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.bim-chat-icon-wrap, .bim-chat-avatar, .bim-chat-msg-avatar, .bim-chat-badge),
+body.light-mode:not(.bg-atelier-dark) :is(.bim-chat-icon-wrap, .bim-chat-avatar, .bim-chat-msg-avatar, .bim-chat-badge) {
+  color: #806642 !important;
+  border-color: rgba(128, 102, 66, 0.35) !important;
+  background-color: rgba(128, 102, 66, 0.08) !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .bim-chat-window,
+body.light-mode:not(.bg-atelier-dark) .bim-chat-window {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.bim-chat-header, .bim-chat-messages),
+body.light-mode:not(.bg-atelier-dark) :is(.bim-chat-header, .bim-chat-messages) {
+  background-color: #fcfbf9 !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) .bim-chat-bubble-wrap.is-user .bim-chat-bubble,
+body.light-mode:not(.bg-atelier-dark) .bim-chat-bubble-wrap.is-user .bim-chat-bubble {
+  background-color: #806642 !important;
+  border-color: #806642 !important;
+}
+
+html.light-mode body:not(.bg-atelier-dark) :is(.bim-chat-text strong, .bim-chat-num, .bim-chat-arrow, .bim-chat-link, .bim-chat-chip.is-highlight),
+body.light-mode:not(.bg-atelier-dark) :is(.bim-chat-text strong, .bim-chat-num, .bim-chat-arrow, .bim-chat-link, .bim-chat-chip.is-highlight) {
+  color: #806642 !important;
+}
+
 .bim-chat-link {
   display: inline-block;
   color: #22d3ee;
@@ -1777,5 +2024,3 @@ html.light-mode .theme-toggle-btn .icon-sun {
 .bim-chat-window.theme-light .bim-chat-footer-note {
   color: #94a3b8 !important;
 }
-
-

@@ -795,6 +795,65 @@
       .bim-chat-window.theme-light .bim-chat-footer-note {
         color: #94a3b8 !important;
       }
+
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-btn,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-window {
+        background-color: #121212 !important;
+        border-color: rgba(197, 168, 128, 0.4) !important;
+      }
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-window,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-messages {
+        background-color: #0a0a0a !important;
+      }
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-header,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-bubble-wrap.is-assistant .bim-chat-bubble {
+        background-color: #121212 !important;
+      }
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-bubble-wrap.is-user .bim-chat-bubble {
+        background-color: #806642 !important;
+        border-color: #aa8b61 !important;
+      }
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-btn-pulse {
+        background: radial-gradient(circle, rgba(197, 168, 128, 0.45) 0%, transparent 70%) !important;
+      }
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-btn.is-active,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-icon-wrap,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-avatar,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-msg-avatar {
+        background-color: #806642 !important;
+        border-color: #c5a880 !important;
+        color: #f5f5f5 !important;
+      }
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-badge,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-text strong,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-num,
+      :root:not(.light-mode) body:not(.bg-atelier-dark) .bim-chat-arrow {
+        color: #c5a880 !important;
+      }
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-btn.theme-light,
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-window.theme-light {
+        background-color: #ffffff !important;
+        border-color: rgba(128, 102, 66, 0.35) !important;
+      }
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-btn.theme-light.is-active,
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-bubble-wrap.is-user .bim-chat-bubble {
+        background-color: #806642 !important;
+        border-color: #806642 !important;
+        color: #ffffff !important;
+      }
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-icon-wrap,
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-avatar,
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-msg-avatar {
+        background-color: rgba(128, 102, 66, 0.08) !important;
+        border-color: rgba(128, 102, 66, 0.35) !important;
+        color: #806642 !important;
+      }
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-badge,
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-text strong,
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-num,
+      html.light-mode body:not(.bg-atelier-dark) .bim-chat-arrow {
+        color: #806642 !important;
+      }
     `;
     document.head.appendChild(style);
   }

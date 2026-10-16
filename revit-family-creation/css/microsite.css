@@ -41,6 +41,14 @@ body {
   font-family: var(--font-code) !important;
 }
 
+.construction-notice {
+  color: #ef4444;
+}
+
+.light-mode .construction-notice {
+  color: #b91c1c;
+}
+
 .tracking-luxury {
   letter-spacing: 0.14em;
 }
