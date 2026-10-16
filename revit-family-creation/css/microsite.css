@@ -1,0 +1,310 @@
+/* ==========================================================================
+   Revit Family Creation Service Microsite
+   Gucci-Inspired Minimalist Luxury & Architectural Atelier Theme
+   ========================================================================== */
+
+:root {
+  --lux-bg-dark: #0a0a0a;
+  --lux-card-dark: #121212;
+  --lux-surface-dark: #181818;
+  --lux-border-dark: rgba(255, 255, 255, 0.08);
+  --lux-border-light-dark: rgba(255, 255, 255, 0.15);
+  --lux-text-primary-dark: #f5f5f5;
+  --lux-text-muted-dark: #a3a3a3;
+  --lux-text-dim-dark: #737373;
+
+  --lux-bg-light: #fcfbf9;
+  --lux-card-light: #ffffff;
+  --lux-surface-light: #f5f3ef;
+  --lux-border-light: rgba(0, 0, 0, 0.08);
+  --lux-border-light-light: rgba(0, 0, 0, 0.15);
+  --lux-text-primary-light: #111111;
+  --lux-text-muted-light: #525252;
+  --lux-text-dim-light: #8a8a8a;
+
+  --lux-accent-gold: #c5a880;
+  --font-main: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-code: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Typography - Harmonized with main website Poppins & Fira Code font system */
+body {
+  font-family: var(--font-main);
+}
+
+.font-editorial,
+.font-brand-heading {
+  font-family: var(--font-main);
+}
+
+.font-mono {
+  font-family: var(--font-code) !important;
+}
+
+.tracking-luxury {
+  letter-spacing: 0.14em;
+}
+
+.tracking-luxury-wide {
+  letter-spacing: 0.22em;
+}
+
+/* Luxury Backgrounds */
+.bg-atelier-dark {
+  background-color: var(--lux-bg-dark);
+}
+
+.bg-atelier-card {
+  background-color: var(--lux-card-dark);
+}
+
+.light-mode .bg-atelier-dark {
+  background-color: var(--lux-bg-light);
+}
+
+.light-mode .bg-atelier-card {
+  background-color: var(--lux-card-light);
+}
+
+/* Re-map dark-theme stone text utilities to readable light-theme tones. */
+.light-mode .text-stone-50,
+.light-mode .text-stone-100 {
+  color: var(--lux-text-primary-light);
+}
+
+.light-mode .text-stone-200 {
+  color: #292524;
+}
+
+.light-mode .text-stone-300 {
+  color: #44403c;
+}
+
+.light-mode .text-stone-400,
+.light-mode .text-stone-500 {
+  color: #57534e;
+}
+
+/* Keep shared-site contact-link overrides from making atelier links white. */
+.light-mode .luxury-tab[href*="contact"] {
+  color: var(--lux-text-primary-light) !important;
+}
+
+.light-mode .btn-luxury-outline[href*="contact"] {
+  color: var(--lux-text-primary-light) !important;
+}
+
+.light-mode .btn-luxury-outline[href*="contact"]:hover {
+  color: #ffffff !important;
+}
+
+/* Luxury Hairline Borders */
+.border-lux {
+  border-color: var(--lux-border-dark);
+}
+
+.light-mode .border-lux {
+  border-color: var(--lux-border-light);
+}
+
+.border-lux-focus {
+  border-color: var(--lux-border-light-dark);
+}
+
+.light-mode .border-lux-focus {
+  border-color: var(--lux-border-light-light);
+}
+
+/* Minimalist Underlined Links & Tabs */
+.luxury-tab {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.luxury-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.luxury-tab:hover::after,
+.luxury-tab.active::after {
+  width: 100%;
+}
+
+/* Luxury Image Presentation Frame */
+.luxury-frame {
+  position: relative;
+  overflow: hidden;
+  background-color: #0e0e0e;
+}
+
+.light-mode .luxury-frame {
+  background-color: #f0eee9;
+}
+
+.luxury-frame img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.luxury-frame:hover img {
+  transform: scale(1.035);
+}
+
+@media (min-width: 1024px) {
+  .specialist-portrait {
+    width: 65%;
+  }
+}
+
+/* Rock-solid layout resilience for Hero and Sections */
+.hero-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid-layout {
+    display: grid !important;
+    grid-template-columns: 7fr 5fr !important;
+    gap: 3.5rem !important;
+  }
+}
+
+.hero-preview-frame {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  min-height: 280px;
+}
+
+@media (min-width: 640px) {
+  .hero-preview-frame {
+    min-height: 340px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-preview-frame {
+    min-height: 400px;
+  }
+}
+
+/* Luxury Buttons */
+.btn-luxury-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.25rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+  transition: all 0.35s ease;
+}
+
+.btn-luxury-solid:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.light-mode .btn-luxury-solid {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.light-mode .btn-luxury-solid:hover {
+  background-color: transparent;
+  color: #000000;
+}
+
+.btn-luxury-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.25rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.35s ease;
+}
+
+.btn-luxury-outline:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.light-mode .btn-luxury-outline {
+  color: #000000;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.light-mode .btn-luxury-outline:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+/* Minimalist Form Inputs */
+.luxury-input {
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+  color: #f5f5f5;
+  transition: border-color 0.3s ease;
+}
+
+.luxury-input:focus {
+  outline: none;
+  border-bottom-color: #ffffff;
+}
+
+.light-mode .luxury-input {
+  color: #111111;
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+}
+
+.light-mode .luxury-input:focus {
+  border-bottom-color: #000000;
+}
+
+/* Minimalist FAQ Accordion */
+.luxury-faq-item {
+  border-bottom: 1px solid var(--lux-border-dark);
+  transition: border-color 0.3s ease;
+}
+
+.light-mode .luxury-faq-item {
+  border-bottom: 1px solid var(--lux-border-light);
+}
+
+/* Table styling for specs */
+.luxury-spec-row {
+  border-bottom: 1px solid var(--lux-border-dark);
+}
+
+.light-mode .luxury-spec-row {
+  border-bottom: 1px solid var(--lux-border-light);
+}

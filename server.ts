@@ -57,10 +57,27 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
+// Normalize /revit-family-creation to /revit-family-creation/ with exact path check
+app.use((req, res, next) => {
+  if (req.path === "/revit-family-creation") {
+    return res.redirect(301, "/revit-family-creation/");
+  }
+  next();
+});
+
+// Serve compiled CSS files directly as raw static assets (prevents Vite JS-module wrapping in <link rel="stylesheet">)
+app.use("/css", express.static(path.join(process.cwd(), "css")));
+app.use("/revit-family-creation/css", express.static(path.join(process.cwd(), "revit-family-creation", "css")));
+app.use("/src/assets", express.static(path.join(process.cwd(), "src", "assets")));
+app.use("/assets", express.static(path.join(process.cwd(), "assets")));
+
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: { 
+        middlewareMode: true,
+        hmr: false,
+      },
       appType: "spa",
     });
     app.use(vite.middlewares);

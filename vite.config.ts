@@ -22,6 +22,8 @@ export default defineConfig(() => {
           pointCloud: path.resolve(__dirname, 'point-cloud.html'),
           autocad: path.resolve(__dirname, 'autocad.html'),
           projectDetails: path.resolve(__dirname, 'project-details.html'),
+          revitFamily: path.resolve(__dirname, 'revit-family-creation/index.html'),
+          revitFamilySample: path.resolve(__dirname, 'revit-family-creation/sample-detail.html'),
         },
       },
     },

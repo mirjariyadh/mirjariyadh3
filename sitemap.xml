@@ -68,4 +68,20 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Revit Family Creation Service Microsite -->
+  <url>
+    <loc>https://mirjariyadh.com.bd/revit-family-creation/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Revit Family Sample Specifications Detail -->
+  <url>
+    <loc>https://mirjariyadh.com.bd/revit-family-creation/sample-detail.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>

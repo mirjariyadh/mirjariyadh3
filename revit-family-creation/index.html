@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO Meta Tags for Revit Family Microsite -->
+  <title>Revit Family Creation for Manufacturers | Mirja Riyadh Atelier</title>
+  <meta name="description" content="Minimalist, precision-engineered Revit family creation for HVAC, MEP, industrial, and architectural product manufacturers in the USA and UK. Parametric BIM content with native MEP connectors and zero CAD mesh bloat." />
+  <meta name="keywords" content="Revit Family Creation, Manufacturer BIM Content, Parametric Revit Family, MEP Revit Families, HVAC Revit Family, BIM Content Creation USA UK, Autodesk Revit RFA, Mirja Riyadh" />
+  <meta name="author" content="Mirja Riyadh" />
+  <link rel="canonical" href="https://mirjariyadh.com.bd/revit-family-creation/" />
+
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mirjariyadh.com.bd/revit-family-creation/" />
+  <meta property="og:title" content="Revit Family Creation for Manufacturers | Mirja Riyadh" />
+  <meta property="og:description" content="Custom parametric Revit families and manufacturer-ready BIM content engineered with mathematical precision, native MEP connectors, and strict geometry hygiene." />
+  <meta property="og:image" content="https://mirjariyadh.com.bd/src/assets/images/revit-family/hero-revit-family.webp" />
+  <meta property="og:site_name" content="Mirja Riyadh - Revit Family Creation Atelier" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mirjariyadh.com.bd/revit-family-creation/" />
+  <meta name="twitter:title" content="Revit Family Creation for Manufacturers | Mirja Riyadh" />
+  <meta name="twitter:description" content="Precision parametric Revit families, LOD 300/350, native MEP connectors, and type catalogs for equipment manufacturers." />
+  <meta name="twitter:image" content="https://mirjariyadh.com.bd/src/assets/images/revit-family/hero-revit-family.webp" />
+
+  <!-- Web Fonts: Original Website Font System (Poppins + Fira Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="css/microsite.css" />
+  <!-- Instant Theme Script & Environment Guard -->
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem('site-theme') === 'light') {
+          document.documentElement.classList.add('light-mode');
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+
+      // Suppress Vite HMR WebSocket connection errors in sandbox iframe environment
+      window.addEventListener('error', function(e) {
+        if (e && (e.message?.includes('WebSocket') || e.filename?.includes('@vite/client'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e && e.reason && (e.reason.message?.includes('WebSocket') || String(e.reason).includes('WebSocket') || e.reason.stack?.includes('@vite/client'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    })();
+  </script>
+
+  <!-- Structured Data: JSON-LD for Professional BIM Service Atelier -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mirja Riyadh - Revit Family Creation Atelier",
+    "url": "https://mirjariyadh.com.bd/revit-family-creation/",
+    "logo": "https://mirjariyadh.com.bd/src/assets/images/logo/favicon_io/android-chrome-512x512.png",
+    "image": "https://mirjariyadh.com.bd/src/assets/images/revit-family/hero-revit-family.webp",
+    "description": "High-precision parametric Revit family creation, native MEP connector engineering, and manufacturer BIM content development for US & UK building equipment manufacturers.",
+    "founder": {
+      "@type": "Person",
+      "name": "Mirja Riyadh",
+      "jobTitle": "Revit BIM Specialist"
+    },
+    "areaServed": ["United States", "United Kingdom", "Canada", "Australia", "Europe"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Revit Family Creation Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HVAC Equipment Revit Families" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MEP Mechanical & Plumbing Families" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Industrial Equipment BIM Content" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Architectural Product Revit Families" } }
+      ]
+    }
+  }
+  </script>
+</head>
+
+<body class="bg-atelier-dark text-stone-100 font-sans antialiased selection:bg-stone-100 selection:text-stone-900 transition-colors duration-300">
+
+  <!-- ========================================== -->
+  <!-- 1. GUCCI-INSPIRED MINIMALIST LUXURY HEADER -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-50 bg-atelier-dark/95 backdrop-blur-md border-b border-lux transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Left: Atelier Brand Mark -->
+      <a href="https://mirjariyadh.com.bd/revit-family-creation/" class="group flex flex-col">
+        <span class="text-sm font-semibold font-medium tracking-luxury-wide text-white group-hover:text-stone-300 transition-colors uppercase">
+          Mirja Riyadh
+        </span>
+        <span class="text-[9px] uppercase tracking-luxury text-stone-400 font-sans mt-0.5">
+          Revit Family Atelier
+        </span>
+      </a>
+
+      <!-- Center: Minimalist Desktop Navigation -->
+      <nav class="hidden xl:flex items-center space-x-7 text-xs font-sans tracking-luxury uppercase text-stone-400">
+        <a href="https://mirjariyadh.com.bd/revit-family-creation/" class="luxury-tab active text-white">
+          Home
+        </a>
+        <a href="#categories" class="luxury-tab hover:text-white">
+          Collections
+        </a>
+        <a href="#portfolio" class="luxury-tab hover:text-white">
+          Verified Samples
+        </a>
+        <a href="#services" class="luxury-tab hover:text-white">
+          Services
+        </a>
+        <a href="#workflow" class="luxury-tab hover:text-white">
+          Atelier Process
+        </a>
+        <a href="#quality-standards" class="luxury-tab hover:text-white">
+          Standards
+        </a>
+        <a href="#about" class="luxury-tab hover:text-white">
+          Specialist
+        </a>
+        <a href="#faq" class="luxury-tab hover:text-white">
+          FAQ
+        </a>
+        <a href="#contact" class="luxury-tab hover:text-white">
+          Inquire
+        </a>
+      </nav>
+
+      <!-- Right: Actions & Theme Toggle -->
+      <div class="flex items-center space-x-4">
+        <!-- Minimal Theme Switcher -->
+        <button 
+          type="button" 
+          class="theme-toggle-btn p-2 text-stone-400 hover:text-white transition-colors cursor-pointer text-xs uppercase tracking-luxury font-mono"
+          aria-label="Toggle visual theme"
+          title="Toggle Dark / Light Theme"
+        >
+          <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Bespoke Commission CTA -->
+        <a 
+          href="#contact" 
+          class="hidden sm:inline-flex btn-luxury-outline py-2 px-5 text-[10px]"
+        >
+          Commission
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          class="xl:hidden p-2 text-stone-300 hover:text-white cursor-pointer"
+          aria-label="Open Navigation Menu"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-atelier-dark border-b border-lux px-6 py-6 space-y-4 text-xs font-sans tracking-luxury uppercase">
+      <a href="https://mirjariyadh.com.bd/revit-family-creation/" class="block py-1 text-white">Home</a>
+      <a href="#categories" class="block py-1 text-stone-400 hover:text-white">Collections</a>
+      <a href="#portfolio" class="block py-1 text-stone-400 hover:text-white">Verified Samples</a>
+      <a href="#services" class="block py-1 text-stone-400 hover:text-white">Services</a>
+      <a href="#workflow" class="block py-1 text-stone-400 hover:text-white">Atelier Process</a>
+      <a href="#quality-standards" class="block py-1 text-stone-400 hover:text-white">Standards</a>
+      <a href="#about" class="block py-1 text-stone-400 hover:text-white">About Specialist</a>
+      <a href="#faq" class="block py-1 text-stone-400 hover:text-white">FAQ</a>
+      <a href="#contact" class="block py-1 text-stone-400 hover:text-white">Inquire &amp; Quote</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================== -->
+    <!-- 2. EDITORIAL HERO SECTION                  -->
+    <!-- ========================================== -->
+    <section class="relative py-20 lg:py-28 border-b border-lux overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left Column: Pure Luxury Typography & Restrained CTAs -->
+          <div class="lg:col-span-6 space-y-8">
+            
+            <div class="text-[11px] font-sans tracking-luxury-wide uppercase text-stone-400">
+              Autodesk Revit · Precision BIM Content Atelier · USA &amp; UK
+            </div>
+
+            <div class="space-y-3">
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+                Precision Revit Family Creation
+                <span class="block text-stone-300 font-normal mt-1">for Equipment Manufacturers</span>
+              </h1>
+            </div>
+
+            <p class="text-sm sm:text-base text-stone-300 leading-relaxed font-sans font-light max-w-xl">
+              Custom parametric Revit families and manufacturer-ready BIM content developed with mathematical precision, native MEP connectors, and strict geometry hygiene from product CAD drawings and technical specifications.
+            </p>
+
+            <!-- 4 Unboxed Architectural Quality Metric Signals -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2 border-t border-b border-lux py-5 font-mono text-xs">
+              <div>
+                <span class="text-[10px] tracking-luxury uppercase text-stone-400 block mb-1">Standard</span>
+                <span class="text-stone-200 font-medium">LOD 350 / 400</span>
+              </div>
+              <div>
+                <span class="text-[10px] tracking-luxury uppercase text-stone-400 block mb-1">Connectors</span>
+                <span class="text-stone-200 font-medium">Native &amp; Linked</span>
+              </div>
+              <div>
+                <span class="text-[10px] tracking-luxury uppercase text-stone-400 block mb-1">Geometry</span>
+                <span class="text-stone-200 font-medium">&lt;800 KB Solid</span>
+              </div>
+              <div>
+                <span class="text-[10px] tracking-luxury uppercase text-stone-400 block mb-1">Platform</span>
+                <span class="text-stone-200 font-medium">2021 – 2025</span>
+              </div>
+            </div>
+
+            <!-- CTAs -->
+            <div class="pt-2 flex flex-wrap items-center gap-4">
+              <a 
+                href="#contact" 
+                class="btn-luxury-solid"
+              >
+                Request a Quote
+              </a>
+
+              <a 
+                href="#portfolio" 
+                class="btn-luxury-outline"
+              >
+                Explore Family Samples ↓
+              </a>
+            </div>
+
+            <div class="text-[11px] font-sans tracking-wider text-stone-400 pt-1">
+              Direct technical modeling by Mirja Riyadh. Strict NDA compliance. Zero CAD mesh bloat.
+            </div>
+
+          </div>
+
+          <!-- Right Column: Gallery-Grade Product Frame with .webp Image -->
+          <div class="lg:col-span-6">
+            <div class="border border-lux bg-atelier-card overflow-hidden">
+              
+              <!-- Frame Header: Clean Monochromatic Tabs -->
+              <div class="border-b border-lux px-4 py-3 flex items-center justify-between text-[11px] font-sans tracking-luxury uppercase">
+                <span class="text-stone-400 text-[10px]">
+                  Specimen / RTU-ECO-Series.rfa
+                </span>
+                
+                <div class="flex items-center space-x-3 overflow-x-auto text-[10px]">
+                  <button type="button" class="hero-view-btn text-white border-b border-white pb-0.5 cursor-pointer" data-view="render">
+                    3D Render (.webp)
+                  </button>
+                  <button type="button" class="hero-view-btn text-stone-400 border-b border-transparent hover:text-white pb-0.5 cursor-pointer" data-view="iso">
+                    Wireframe
+                  </button>
+                  <button type="button" class="hero-view-btn text-stone-400 border-b border-transparent hover:text-white pb-0.5 cursor-pointer" data-view="top">
+                    Plan
+                  </button>
+                  <button type="button" class="hero-view-btn text-stone-400 border-b border-transparent hover:text-white pb-0.5 cursor-pointer" data-view="front">
+                    Elevation
+                  </button>
+                  <button type="button" class="hero-view-btn text-stone-400 border-b border-transparent hover:text-white cursor-pointer" data-view="connectors">
+                    MEP Ports
+                  </button>
+                </div>
+              </div>
+
+              <!-- Main Viewport Area (.webp Display) -->
+              <div id="hero-cad-preview" data-active-view="render" class="aspect-[16/11] w-full flex items-center justify-center relative overflow-hidden bg-black/40">
+                <div class="relative w-full h-full flex items-center justify-center overflow-hidden luxury-frame">
+                  <img 
+                    id="hero-model-img" 
+                    src="/src/assets/images/revit-family/hero-revit-family.webp" 
+                    alt="Packaged Rooftop AHU Revit Family 3D Model" 
+                    class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    onerror="this.src='/src/assets/images/hero/hero.webp'"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                  <div class="absolute bottom-4 left-4 text-[10px] tracking-luxury uppercase text-white/90 bg-black/60 px-3 py-1 backdrop-blur-sm">
+                    RTU-ECO-SERIES V · LOD 350
+                  </div>
+                  <div class="absolute top-4 right-4 text-[9px] font-mono tracking-wider text-white/80 bg-black/60 px-2.5 py-0.5 backdrop-blur-sm">
+                    640 KB RFA · ZERO CAD MESH
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subtle Technical Annotation Bar -->
+              <div class="p-4 border-t border-lux flex items-center justify-between text-xs font-mono text-stone-400">
+                <div>
+                  Supply: <span class="text-stone-200">24"×20" Duct</span> · Return: <span class="text-stone-200">24"×22" Duct</span>
+                </div>
+                <a href="sample-detail.html?id=ahu-rooftop-01" class="text-stone-300 hover:text-white text-[11px] tracking-luxury uppercase font-sans border-b border-current pb-0.5">
+                  Inspect Specimen →
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. PRODUCT CATEGORIES (THE COLLECTIONS)    -->
+    <!-- ========================================== -->
+    <section id="categories" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Title: Gucci Lookbook Style -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-2">
+              THE PRODUCT DOMAINS
+            </span>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              Target Equipment Collections
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-stone-400 max-w-md font-sans font-light leading-relaxed">
+            Specialized manufacturer BIM content built to AIA, CIBSE, and ISO 19650 guidelines with Level of Development (LOD 300 to 400).
+          </p>
+        </div>
+
+        <!-- 4 Elegant Collection Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Collection 01: HVAC Equipment -->
+          <article id="hvac" class="group flex flex-col justify-between border-t border-lux pt-6">
+            <div>
+              <div class="flex items-baseline justify-between mb-4">
+                <span class="text-xs font-mono text-stone-400">01</span>
+                <span class="text-[10px] font-sans tracking-luxury uppercase text-stone-400">Air &amp; Thermal</span>
+              </div>
+              
+              <div class="luxury-frame aspect-[4/3] w-full overflow-hidden mb-5">
+                <img 
+                  src="/src/assets/images/revit-family/sample-ahu.webp" 
+                  alt="HVAC Equipment Revit Families" 
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  onerror="this.src='/src/assets/images/hero/hero.webp'"
+                />
+              </div>
+
+              <h3 class="text-lg font-bold text-white group-hover:text-stone-300 transition-colors">
+                HVAC Equipment
+              </h3>
+              <p class="text-xs text-stone-400 mt-2 font-sans font-light leading-relaxed">
+                Packaged Rooftop AHUs, Concealed Fan Coil Units, Ventilation Fans, Heat Exchangers, and Condensing Units with parametric air duct connectors.
+              </p>
+            </div>
+
+            <div class="pt-6">
+              <a 
+                href="#portfolio" 
+                onclick="document.querySelector('.category-filter-btn[data-category=\'hvac\']')?.click();"
+                class="inline-flex items-center gap-2 text-xs tracking-luxury uppercase text-stone-300 hover:text-white transition-colors border-b border-transparent hover:border-current pb-0.5"
+              >
+                <span>View Samples (2)</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Collection 02: MEP Equipment -->
+          <article id="mep" class="group flex flex-col justify-between border-t border-lux pt-6">
+            <div>
+              <div class="flex items-baseline justify-between mb-4">
+                <span class="text-xs font-mono text-stone-400">02</span>
+                <span class="text-[10px] font-sans tracking-luxury uppercase text-stone-400">Hydronic &amp; Fluid</span>
+              </div>
+              
+              <div class="luxury-frame aspect-[4/3] w-full overflow-hidden mb-5">
+                <img 
+                  src="/src/assets/images/revit-family/sample-pump.webp" 
+                  alt="MEP Equipment Revit Families" 
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  onerror="this.src='/src/assets/images/hero/hero.webp'"
+                />
+              </div>
+
+              <h3 class="text-lg font-bold text-white group-hover:text-stone-300 transition-colors">
+                MEP Equipment
+              </h3>
+              <p class="text-xs text-stone-400 mt-2 font-sans font-light leading-relaxed">
+                Centrifugal Chilled Water Pumps, Modulating Characterized Valves, Strainers, Expansion Tanks, and Hydronic Specialties with ANSI flanged connectors.
+              </p>
+            </div>
+
+            <div class="pt-6">
+              <a 
+                href="#portfolio" 
+                onclick="document.querySelector('.category-filter-btn[data-category=\'mep\']')?.click();"
+                class="inline-flex items-center gap-2 text-xs tracking-luxury uppercase text-stone-300 hover:text-white transition-colors border-b border-transparent hover:border-current pb-0.5"
+              >
+                <span>View Samples (2)</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Collection 03: Industrial Equipment -->
+          <article id="industrial" class="group flex flex-col justify-between border-t border-lux pt-6">
+            <div>
+              <div class="flex items-baseline justify-between mb-4">
+                <span class="text-xs font-mono text-stone-400">03</span>
+                <span class="text-[10px] font-sans tracking-luxury uppercase text-stone-400">Process &amp; Skid</span>
+              </div>
+              
+              <div class="luxury-frame aspect-[4/3] w-full overflow-hidden mb-5">
+                <img 
+                  src="/src/assets/images/revit-family/sample-vessel.webp" 
+                  alt="Industrial Equipment Revit Families" 
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  onerror="this.src='/src/assets/images/hero/hero.webp'"
+                />
+              </div>
+
+              <h3 class="text-lg font-bold text-white group-hover:text-stone-300 transition-colors">
+                Industrial Equipment
+              </h3>
+              <p class="text-xs text-stone-400 mt-2 font-sans font-light leading-relaxed">
+                Agitated Process Vessels, Triplex Variable Speed Booster Skids, Storage Tanks, and Packaged Machinery with sanitary piping and electrical points.
+              </p>
+            </div>
+
+            <div class="pt-6">
+              <a 
+                href="#portfolio" 
+                onclick="document.querySelector('.category-filter-btn[data-category=\'industrial\']')?.click();"
+                class="inline-flex items-center gap-2 text-xs tracking-luxury uppercase text-stone-300 hover:text-white transition-colors border-b border-transparent hover:border-current pb-0.5"
+              >
+                <span>View Samples (2)</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Collection 04: Architectural Products -->
+          <article id="architectural" class="group flex flex-col justify-between border-t border-lux pt-6">
+            <div>
+              <div class="flex items-baseline justify-between mb-4">
+                <span class="text-xs font-mono text-stone-400">04</span>
+                <span class="text-[10px] font-sans tracking-luxury uppercase text-stone-400">Envelope &amp; Interior</span>
+              </div>
+              
+              <div class="luxury-frame aspect-[4/3] w-full overflow-hidden mb-5">
+                <img 
+                  src="/src/assets/images/revit-family/sample-door.webp" 
+                  alt="Architectural Product Revit Families" 
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  onerror="this.src='/src/assets/images/hero/hero.webp'"
+                />
+              </div>
+
+              <h3 class="text-lg font-bold text-white group-hover:text-stone-300 transition-colors">
+                Architectural Products
+              </h3>
+              <p class="text-xs text-stone-400 mt-2 font-sans font-light leading-relaxed">
+                Narrow-Stile Storefront Entrance Doors, Flush Louvered Ceiling Access Panels, Partitions, and Hardware with parametric wall-hosting formulas.
+              </p>
+            </div>
+
+            <div class="pt-6">
+              <a 
+                href="#portfolio" 
+                onclick="document.querySelector('.category-filter-btn[data-category=\'architectural\']')?.click();"
+                class="inline-flex items-center gap-2 text-xs tracking-luxury uppercase text-stone-300 hover:text-white transition-colors border-b border-transparent hover:border-current pb-0.5"
+              >
+                <span>View Samples (2)</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. VERIFIED SAMPLES (PORTFOLIO GALLERY)    -->
+    <!-- ========================================== -->
+    <section id="portfolio" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+          <div>
+            <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-2">
+              VERIFIED SAMPLES
+            </span>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              Manufacturer Family Portfolio
+            </h2>
+            <p class="text-xs sm:text-sm text-stone-400 mt-2 max-w-xl font-sans font-light leading-relaxed">
+              Explore working Revit family models built with verified parametric formulas, type catalogs, and native MEP connector systems.
+            </p>
+          </div>
+
+          <!-- Minimalist Typographic Filter Bar -->
+          <div class="flex flex-wrap items-center gap-6 text-xs font-sans tracking-luxury uppercase border-b border-lux pb-2">
+            <button type="button" class="category-filter-btn text-white border-b-2 border-white pb-1 font-medium cursor-pointer" data-category="all">
+              All (8)
+            </button>
+            <button type="button" class="category-filter-btn text-stone-400 border-b-2 border-transparent hover:text-white pb-1 cursor-pointer" data-category="hvac">
+              HVAC (2)
+            </button>
+            <button type="button" class="category-filter-btn text-stone-400 border-b-2 border-transparent hover:text-white pb-1 cursor-pointer" data-category="mep">
+              MEP (2)
+            </button>
+            <button type="button" class="category-filter-btn text-stone-400 border-b-2 border-transparent hover:text-white pb-1 cursor-pointer" data-category="industrial">
+              Industrial (2)
+            </button>
+            <button type="button" class="category-filter-btn text-stone-400 border-b-2 border-transparent hover:text-white pb-1 cursor-pointer" data-category="architectural">
+              Architectural (2)
+            </button>
+          </div>
+        </div>
+
+        <!-- Portfolio Lookbook Grid (Rendered via microsite.js with .webp Images) -->
+        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- Populated dynamically by microsite.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 5. SERVICES (ATELIER CAPABILITIES)        -->
+    <!-- ========================================== -->
+    <section id="services" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16">
+          <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-2">
+            ATELIER CAPABILITIES
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            The Craftsmanship of BIM Geometry
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-400 mt-3 font-sans font-light leading-relaxed">
+            Practical BIM content development built around real-world design requirements, strict geometry hygiene, and agreed manufacturer specifications.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Service 1 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">01</span>
+            <h3 class="text-base font-bold text-white">Custom Revit Family Creation</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Development of manufacturer-specific equipment components engineered from submittal sheets, manufacturing CAD files, and cut-sheets.
+            </p>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">02</span>
+            <h3 class="text-base font-bold text-white">Parametric Family Development</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Formulas for dynamic dimensions, capacities, clearances, and mounting configurations matching actual manufacturing tolerances.
+            </p>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">03</span>
+            <h3 class="text-base font-bold text-white">HVAC &amp; MEP Equipment Families</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Native duct, pipe, and electrical connectors with correct flow direction, pressure drops, system classifications, and electrical loads.
+            </p>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">04</span>
+            <h3 class="text-base font-bold text-white">Manufacturer BIM Content Development</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Complete product line development structured for architects, consulting MEP engineers, and general contractors in the USA and UK.
+            </p>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">05</span>
+            <h3 class="text-base font-bold text-white">CAD &amp; PDF to Revit Conversion</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Conversion of 2D AutoCAD details, STEP/IGES solid exports, or PDF cut-sheets into lightweight native Revit parametric geometry.
+            </p>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">06</span>
+            <h3 class="text-base font-bold text-white">Type Catalog Development</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              External Type Catalog (.txt) creation for families with extensive product sizes, keeping project files fast and lightweight.
+            </p>
+          </div>
+
+          <!-- Service 7 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">07</span>
+            <h3 class="text-base font-bold text-white">Family Optimization &amp; Cleanup</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Purging imported CAD meshes, removing duplicate shared parameters, repairing broken formulas, and reducing RFA file sizes below 800 KB.
+            </p>
+          </div>
+
+          <!-- Service 8 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">08</span>
+            <h3 class="text-base font-bold text-white">Family Testing &amp; Quality Review</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Systematic flexing tests across all types, verifying coarse/medium/fine detail visibility, MEP system connectivity, and schedule parameters.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. WORKFLOW (THE 5-STEP ATELIER PROCESS)   -->
+    <!-- ========================================== -->
+    <section id="workflow" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16">
+          <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-2">
+            DISCIPLINED EXECUTION
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            The 5-Step Development Workflow
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-400 mt-3 font-sans font-light leading-relaxed">
+            A transparent, milestone-driven process ensuring every delivered RFA file complies with agreed mechanical specifications and Autodesk best practices.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+          
+          <!-- Step 1 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">STEP 01</span>
+            <h3 class="text-sm font-bold text-white">Drawing &amp; Data Intake</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Submit product 2D/3D CAD drawings, submittal sheets, catalog dimension charts, and MEP connector specifications.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">STEP 02</span>
+            <h3 class="text-sm font-bold text-white">Scope &amp; LOD Agreement</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Review parameters, LOD requirement (300 or 350), Revit version targeting, and type catalog structure before modeling begins.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">STEP 03</span>
+            <h3 class="text-sm font-bold text-white">Parametric Solid Modeling</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Creation of pure native solid geometry, reference planes, parameter formulas, materials, and MEP connectors.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">STEP 04</span>
+            <h3 class="text-sm font-bold text-white">Rigorous QA Testing</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Testing the family in actual Revit project environments: flexing all parameters, verifying MEP duct/pipe connections, and checking file size.
+            </p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="border-t border-lux pt-6 space-y-3">
+            <span class="text-xs font-mono text-stone-400">STEP 05</span>
+            <h3 class="text-sm font-bold text-white">Delivery &amp; Handover</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Delivery of final clean .RFA files, external type catalog .TXT files, shared parameter files, and technical usage guide.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 7. QUALITY STANDARDS & HYGIENE             -->
+    <!-- ========================================== -->
+    <section id="quality-standards" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16">
+          <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-2">
+            TECHNICAL DISCIPLINE
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            Manufacturing Quality Standards
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-400 mt-3 font-sans font-light leading-relaxed">
+            Every family is engineered to prevent project bloat, eliminate Revit error warnings, and provide seamless scheduling for design engineers.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <div class="border-t border-lux pt-6 space-y-3">
+            <h3 class="text-sm font-bold text-white">Zero Imported CAD Meshes</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Built 100% using native Revit solids, voids, extrusions, and sweeps. Never contains exploded DWG layers, SAT files, or corrupt polymesh data.
+            </p>
+          </div>
+
+          <div class="border-t border-lux pt-6 space-y-3">
+            <h3 class="text-sm font-bold text-white">Purged Lightweight Files</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Target file sizes strictly kept under 800 KB (often &lt;500 KB), ensuring hundreds of instances can be placed in large BIM projects without lag.
+            </p>
+          </div>
+
+          <div class="border-t border-lux pt-6 space-y-3">
+            <h3 class="text-sm font-bold text-white">Flow-Linked MEP Connectors</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Connectors feature correct system classifications (Supply/Return Air, Hydronic, Sanitary) and bidirectional airflow/water flow parameter links.
+            </p>
+          </div>
+
+          <div class="border-t border-lux pt-6 space-y-3">
+            <h3 class="text-sm font-bold text-white">Standard Classification Coding</h3>
+            <p class="text-xs text-stone-400 font-sans font-light leading-relaxed">
+              Pre-populated with OmniClass Table 23, UniFormat, and MasterFormat codes for automated BIM quantity takeoff and specification schedules.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 8. ABOUT SPECIALIST SECTION                -->
+    <!-- ========================================== -->
+    <section id="about" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
+          
+          <div class="lg:col-span-5 lg:flex lg:items-center lg:justify-center">
+            <div class="luxury-frame specialist-portrait aspect-[4/5] w-full overflow-hidden">
+              <img 
+                src="/src/assets/images/about/mirja-riyadh.webp" 
+                alt="Mirja Riyadh - Revit BIM Specialist" 
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+                onerror="this.src='/src/assets/images/about/mirja-riyadh-desk.webp'"
+              />
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-6">
+            <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block">
+              THE SPECIALIST
+            </span>
+            
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">
+              Mirja Riyadh
+              <span class="block text-lg font-sans font-light text-stone-300 mt-1">Revit BIM Specialist</span>
+            </h2>
+
+            <div class="space-y-4 text-xs sm:text-sm text-stone-300 font-sans font-light leading-relaxed">
+              <p>
+                My background spans comprehensive Autodesk Revit BIM modeling, mechanical and plumbing coordination, architectural modeling, point-cloud-to-BIM scans, and technical component authoring.
+              </p>
+              <p>
+                This dedicated service is positioned specifically around manufacturer-focused Revit family creation. When engineering firms in the USA and UK download your equipment families, they judge your brand by how cleanly the family behaves in their model—whether connectors route instantly, whether type catalogs flex without warnings, and whether the file is free from cumbersome 3D mesh bloat.
+              </p>
+              <p>
+                I handle each family modeling assignment personally. No outsourcing, no automated scripts, and strict non-disclosure agreement (NDA) adherence for all proprietary manufacturer CAD data.
+              </p>
+            </div>
+
+            <div class="pt-4 flex items-center gap-6 text-xs font-sans tracking-luxury uppercase">
+              <a 
+                href="https://mirjariyadh.com.bd/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="text-stone-300 hover:text-white border-b border-current pb-0.5 transition-colors"
+              >
+                Visit Main Portfolio ↗
+              </a>
+              <a 
+                href="#contact" 
+                class="text-stone-300 hover:text-white border-b border-current pb-0.5 transition-colors"
+              >
+                Direct Inquiry →
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 9. FREQUENTLY ASKED QUESTIONS              -->
+    <!-- ========================================== -->
+    <section id="faq" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16">
+          <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-2">
+            INQUIRIES &amp; CLARIFICATIONS
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          
+          <!-- FAQ 1 -->
+          <div class="luxury-faq-item pb-4 faq-item">
+            <button type="button" class="faq-trigger w-full py-3 flex items-center justify-between text-left text-sm font-medium text-white hover:text-stone-300 transition-colors cursor-pointer">
+              <span>What information is required to begin family modeling?</span>
+              <span class="faq-icon text-lg text-stone-400 transform transition-transform duration-300 font-mono">+</span>
+            </button>
+            <div class="faq-content hidden pt-2 text-xs sm:text-sm text-stone-400 font-sans font-light leading-relaxed">
+              We typically require 2D manufacturing drawings (DWG or PDF), 3D STEP/IGES models if available, dimensional submittal cut-sheets, MEP connector specifications (size, airflow, water flow, electrical requirements), and your desired Revit versions.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="luxury-faq-item pb-4 faq-item">
+            <button type="button" class="faq-trigger w-full py-3 flex items-center justify-between text-left text-sm font-medium text-white hover:text-stone-300 transition-colors cursor-pointer">
+              <span>Can you create entire product ranges with Type Catalogs?</span>
+              <span class="faq-icon text-lg text-stone-400 transform transition-transform duration-300 font-mono">+</span>
+            </button>
+            <div class="faq-content hidden pt-2 text-xs sm:text-sm text-stone-400 font-sans font-light leading-relaxed">
+              Yes. When an equipment line offers multiple capacities or dimensional variations, we build an external Type Catalog (.TXT file) accompanying the .RFA. This allows engineers to load only the specific SKU type they need, preserving lean project file sizes.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="luxury-faq-item pb-4 faq-item">
+            <button type="button" class="faq-trigger w-full py-3 flex items-center justify-between text-left text-sm font-medium text-white hover:text-stone-300 transition-colors cursor-pointer">
+              <span>Which Revit versions are supported?</span>
+              <span class="faq-icon text-lg text-stone-400 transform transition-transform duration-300 font-mono">+</span>
+            </button>
+            <div class="faq-content hidden pt-2 text-xs sm:text-sm text-stone-400 font-sans font-light leading-relaxed">
+              We author families in the agreed base year (commonly Revit 2021 or 2022) so they automatically upgrade seamlessly to 2023, 2024, 2025, and future releases without backwards-compatibility locks.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="luxury-faq-item pb-4 faq-item">
+            <button type="button" class="faq-trigger w-full py-3 flex items-center justify-between text-left text-sm font-medium text-white hover:text-stone-300 transition-colors cursor-pointer">
+              <span>Do you work with confidential and proprietary manufacturer data?</span>
+              <span class="faq-icon text-lg text-stone-400 transform transition-transform duration-300 font-mono">+</span>
+            </button>
+            <div class="faq-content hidden pt-2 text-xs sm:text-sm text-stone-400 font-sans font-light leading-relaxed">
+              Yes. Strict Non-Disclosure Agreements (NDAs) are routinely executed prior to receiving proprietary CAD, STEP, or fabrication drawings. Internal manufacturing geometry (such as internal motor windings or proprietary impellers) is abstracted to protect trade secrets while maintaining external dimensional accuracy.
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="luxury-faq-item pb-4 faq-item">
+            <button type="button" class="faq-trigger w-full py-3 flex items-center justify-between text-left text-sm font-medium text-white hover:text-stone-300 transition-colors cursor-pointer">
+              <span>What is the typical turnaround time for a Revit family?</span>
+              <span class="faq-icon text-lg text-stone-400 transform transition-transform duration-300 font-mono">+</span>
+            </button>
+            <div class="faq-content hidden pt-2 text-xs sm:text-sm text-stone-400 font-sans font-light leading-relaxed">
+              Turnaround depends on complexity and type variations. Standard equipment families typically take 2 to 4 business days per model, while multi-SKU product ranges with extensive type catalogs take 1 to 2 weeks. Specific deadlines are confirmed during scope review.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 10. COMMISSION & INQUIRY SECTION           -->
+    <!-- ========================================== -->
+    <section id="contact" class="py-20 lg:py-28 border-b border-lux">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16">
+          <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-2">
+            BESPOKE COMMISSIONS
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            Request a Family Creation Quote
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-400 mt-3 font-sans font-light leading-relaxed max-w-lg mx-auto">
+            Discuss your equipment range, target Revit versions, and modeling schedule. Direct response within 24 hours.
+          </p>
+        </div>
+
+        <form id="contact-form" class="space-y-8" onsubmit="event.preventDefault(); const c = this.querySelector('[name=company]').value; const e = this.querySelector('[name=email]').value; const s = this.querySelector('[name=scope]').value; window.location.href = `mailto:mirja.riyadh@gmail.com?subject=${encodeURIComponent('Revit Family Inquiry: ' + c)}&body=${encodeURIComponent('Company: ' + c + '\nEmail: ' + e + '\nScope:\n' + s)}`;">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Company / Organization</label>
+              <input type="text" name="company" required placeholder="e.g. Acme Equipment Co." class="luxury-input" />
+            </div>
+
+            <div>
+              <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Direct Contact Email</label>
+              <input type="email" name="email" required placeholder="engineer@manufacturer.com" class="luxury-input" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Product Category</label>
+              <select name="category" class="luxury-input cursor-pointer bg-atelier-dark text-stone-200">
+                <option value="HVAC Equipment">HVAC Equipment</option>
+                <option value="MEP Equipment">MEP Equipment</option>
+                <option value="Industrial Equipment">Industrial Equipment</option>
+                <option value="Architectural Products">Architectural Products</option>
+                <option value="Complete Product Catalog">Complete Product Catalog</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Target LOD Level</label>
+              <select name="lod" class="luxury-input cursor-pointer bg-atelier-dark text-stone-200">
+                <option value="LOD 350 (Recommended for MEP/HVAC)">LOD 350 (Standard for MEP)</option>
+                <option value="LOD 300 (Standard Architecture)">LOD 300 (Standard)</option>
+                <option value="LOD 400 (Fabrication Ready)">LOD 400 (Detailed Fabrication)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Project Scope &amp; Specifications</label>
+            <textarea name="scope" rows="4" required placeholder="Please provide model series names, estimated SKU count, available CAD files, and any delivery deadlines." class="luxury-input resize-none"></textarea>
+          </div>
+
+          <div class="text-center pt-4">
+            <button type="submit" class="btn-luxury-solid">
+              Submit Atelier Inquiry
+            </button>
+            <div class="text-[10px] font-sans tracking-wider text-stone-400 mt-3">
+              Direct email: mirja.riyadh@gmail.com · Dhaka, Bangladesh (Global USA / UK Client Delivery)
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 11. MINIMALIST LUXURY FOOTER               -->
+  <!-- ========================================== -->
+  <footer class="bg-atelier-dark py-16 border-t border-lux text-stone-400 text-xs font-sans">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-12 border-b border-lux">
+        <a href="https://mirjariyadh.com.bd/revit-family-creation/" class="group flex flex-col items-center md:items-start">
+          <span class="text-sm font-semibold font-medium tracking-luxury-wide text-white group-hover:text-stone-300 transition-colors uppercase">
+            Mirja Riyadh
+          </span>
+          <span class="text-[9px] uppercase tracking-luxury text-stone-400 font-sans mt-0.5">
+            Revit Family Creation Atelier
+          </span>
+        </a>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-[11px] tracking-luxury uppercase">
+          <a href="https://mirjariyadh.com.bd/revit-family-creation/" class="text-stone-300 hover:text-white transition-colors">Home</a>
+          <a href="#categories" class="text-stone-300 hover:text-white transition-colors">Collections</a>
+          <a href="#portfolio" class="text-stone-300 hover:text-white transition-colors">Verified Samples</a>
+          <a href="#services" class="text-stone-300 hover:text-white transition-colors">Services</a>
+          <a href="#workflow" class="text-stone-300 hover:text-white transition-colors">Atelier Process</a>
+          <a href="#quality-standards" class="text-stone-300 hover:text-white transition-colors">Standards</a>
+          <a href="#about" class="text-stone-300 hover:text-white transition-colors">Specialist</a>
+          <a href="#faq" class="text-stone-300 hover:text-white transition-colors">FAQ</a>
+          <a href="#contact" class="text-stone-300 hover:text-white transition-colors">Inquire</a>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-stone-400 text-[11px] tracking-wider">
+        <div>
+          &copy; 2026 Mirja Riyadh. All rights reserved. Precision Manufacturer BIM Content.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://mirjariyadh.com.bd/" target="_blank" rel="noopener noreferrer" class="hover:text-stone-300 transition-colors">Main Portfolio ↗</a>
+          <span>·</span>
+          <span>USA &amp; UK Manufacturer Service</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="js/microsite.js"></script>
+</body>
+</html>

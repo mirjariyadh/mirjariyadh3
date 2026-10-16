@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Revit Family Technical Specifications &amp; Sample Viewer | Mirja Riyadh Atelier</title>
+  <meta name="description" content="Detailed technical specifications, parametric type catalogs, MEP connector parameters, and 3D CAD schematics for manufacturer Revit family content." />
+  <meta name="author" content="Mirja Riyadh" />
+
+  <!-- Web Fonts: Original Website Font System (Poppins + Fira Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="css/microsite.css" />
+
+  <!-- Instant Theme Script & Environment Guard -->
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem('site-theme') === 'light') {
+          document.documentElement.classList.add('light-mode');
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+
+      // Suppress Vite HMR WebSocket connection errors in sandbox iframe environment
+      window.addEventListener('error', function(e) {
+        if (e && (e.message?.includes('WebSocket') || e.filename?.includes('@vite/client'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e && e.reason && (e.reason.message?.includes('WebSocket') || String(e.reason).includes('WebSocket') || e.reason.stack?.includes('@vite/client'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    })();
+  </script>
+</head>
+
+<body class="bg-atelier-dark text-stone-100 font-sans antialiased selection:bg-stone-100 selection:text-stone-900 transition-colors duration-300">
+
+  <!-- ========================================== -->
+  <!-- 1. GUCCI LUXURY HEADER                     -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-50 bg-atelier-dark/95 backdrop-blur-md border-b border-lux transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Atelier Brand Mark -->
+      <a href="index.html" class="group flex flex-col">
+        <span class="text-sm font-semibold font-medium tracking-luxury-wide text-white group-hover:text-stone-300 transition-colors uppercase">
+          Mirja Riyadh
+        </span>
+        <span class="text-[9px] uppercase tracking-luxury text-stone-400 font-sans mt-0.5">
+          Revit Family Atelier
+        </span>
+      </a>
+
+      <!-- Navigation & Breadcrumb -->
+      <div class="flex items-center space-x-6 text-xs font-sans tracking-luxury uppercase">
+        <a href="index.html" class="text-stone-400 hover:text-white transition-colors">
+          Home
+        </a>
+        <a href="index.html#portfolio" class="text-stone-400 hover:text-white transition-colors">
+          Portfolio
+        </a>
+        <a href="index.html#contact" class="hidden sm:inline-block btn-luxury-outline py-2 px-5 text-[10px]">
+          Commission Family
+        </a>
+        
+        <button 
+          type="button" 
+          class="theme-toggle-btn p-2 text-stone-400 hover:text-white transition-colors cursor-pointer"
+          aria-label="Toggle visual theme"
+        >
+          <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <!-- Back Navigation & Minimalist Breadcrumbs -->
+      <div class="flex items-center justify-between border-b border-lux pb-4 text-xs font-sans tracking-luxury uppercase">
+        <div class="flex items-center space-x-2 text-stone-400">
+          <a href="index.html" class="hover:text-white">Atelier</a>
+          <span>/</span>
+          <a id="breadcrumb-category" href="index.html#portfolio" class="hover:text-white">Equipment</a>
+          <span>/</span>
+          <span id="breadcrumb-current" class="text-stone-200">Model Specimen</span>
+        </div>
+
+        <a href="index.html#portfolio" class="text-stone-300 hover:text-white border-b border-current pb-0.5 transition-colors">
+          ← Back to Portfolio
+        </a>
+      </div>
+
+      <!-- Specimen Header (Gucci Lookbook Typography) -->
+      <div class="space-y-4 max-w-4xl">
+        <div class="flex items-center gap-4 text-xs font-mono text-stone-400 uppercase tracking-wider">
+          <span id="sample-model-series" class="text-stone-200">Series Name</span>
+          <span>/</span>
+          <span id="sample-lod">LOD 350</span>
+          <span>/</span>
+          <span id="sample-filesize">640 KB</span>
+        </div>
+
+        <h1 id="sample-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+          Product Family Specification
+        </h1>
+
+        <p id="sample-subtitle" class="text-sm sm:text-base text-stone-300 font-sans font-light leading-relaxed">
+          Technical summary and mechanical overview.
+        </p>
+      </div>
+
+      <!-- Main Exhibition Grid: Left Viewport (7 Cols), Right Specs (5 Cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left 7 Cols: Luxury Exhibition Viewport (.webp / CAD Schematics) -->
+        <div class="lg:col-span-7 border border-lux bg-atelier-card overflow-hidden">
+          
+          <!-- Viewport Header Tabs -->
+          <div class="border-b border-lux px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-[11px] font-sans tracking-luxury uppercase">
+            <span class="text-stone-400 text-[10px]">
+              Visual &amp; Orthogonal Specimen
+            </span>
+
+            <div class="flex items-center space-x-4 overflow-x-auto text-[10px]">
+              <button type="button" class="detail-view-tab text-white border-b border-white pb-0.5 cursor-pointer font-medium" data-view="render">
+                3D Render (.webp)
+              </button>
+              <button type="button" class="detail-view-tab text-stone-400 border-b border-transparent hover:text-white pb-0.5 cursor-pointer" data-view="iso">
+                Isometric
+              </button>
+              <button type="button" class="detail-view-tab text-stone-400 border-b border-transparent hover:text-white pb-0.5 cursor-pointer" data-view="top">
+                Plan
+              </button>
+              <button type="button" class="detail-view-tab text-stone-400 border-b border-transparent hover:text-white pb-0.5 cursor-pointer" data-view="front">
+                Elevation
+              </button>
+              <button type="button" class="detail-view-tab text-stone-400 border-b border-transparent hover:text-white pb-0.5 cursor-pointer" data-view="connectors">
+                MEP Ports
+              </button>
+            </div>
+          </div>
+
+          <!-- Canvas / Viewport Area -->
+          <div id="detail-svg-viewport" class="aspect-[16/11] w-full flex items-center justify-center overflow-hidden bg-black/40">
+            <!-- Rendered dynamically by sample-detail.js -->
+          </div>
+
+          <!-- Annotation Bar -->
+          <div class="p-4 border-t border-lux flex items-center justify-between text-xs font-mono text-stone-400">
+            <div>Solid Native Geometry · Zero Imported DWG Meshes</div>
+            <div class="text-stone-200">Autodesk Revit Verified</div>
+          </div>
+
+        </div>
+
+        <!-- Right 5 Cols: Type Switcher & Mechanical Rating Card -->
+        <div class="lg:col-span-5 border border-lux bg-atelier-card p-6 sm:p-8 space-y-6">
+          
+          <div>
+            <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-1">
+              TYPE SELECTOR
+            </span>
+            <h2 class="text-xl font-bold text-white">
+              Parametric Type Switcher
+            </h2>
+            <p class="text-xs text-stone-400 mt-1 font-sans font-light">
+              Select a catalog SKU to inspect dynamic dimensions and ratings:
+            </p>
+
+            <div id="type-selector-buttons" class="mt-4 flex flex-wrap gap-2">
+              <!-- Rendered via sample-detail.js -->
+            </div>
+          </div>
+
+          <!-- Specs Summary for Selected Type -->
+          <div class="border-t border-lux pt-5 space-y-4 font-mono text-xs">
+            <div class="flex items-center justify-between border-b border-lux pb-2.5">
+              <span class="text-stone-400 font-sans text-xs">Selected Type:</span>
+              <span id="active-type-name" class="text-white font-bold">RTU-05-1800</span>
+            </div>
+
+            <div class="flex items-center justify-between border-b border-lux pb-2.5">
+              <span class="text-stone-400 font-sans text-xs">Nominal Rating:</span>
+              <span id="active-type-capacity" class="text-stone-200">5.0 Tons / 1,800 CFM</span>
+            </div>
+
+            <div class="space-y-1.5 border-b border-lux pb-3">
+              <span class="text-stone-400 font-sans text-[11px] block">Dimensions (Length × Width × Height):</span>
+              <div class="grid grid-cols-3 gap-2 pt-1 text-center text-[11px]">
+                <div class="p-2 border border-lux">
+                  <span class="text-stone-400 block text-[9px] uppercase tracking-wider">Length</span>
+                  <span id="active-type-length" class="text-stone-200 font-medium">88.5"</span>
+                </div>
+                <div class="p-2 border border-lux">
+                  <span class="text-stone-400 block text-[9px] uppercase tracking-wider">Width</span>
+                  <span id="active-type-width" class="text-stone-200 font-medium">52.0"</span>
+                </div>
+                <div class="p-2 border border-lux">
+                  <span class="text-stone-400 block text-[9px] uppercase tracking-wider">Height</span>
+                  <span id="active-type-height" class="text-stone-200 font-medium">44.0"</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between border-b border-lux pb-2.5">
+              <span class="text-stone-400 font-sans text-xs">Operating Weight:</span>
+              <span id="active-type-weight" class="text-stone-200">920 lbs (417 kg)</span>
+            </div>
+
+            <div class="flex items-center justify-between border-b border-lux pb-2.5">
+              <span class="text-stone-400 font-sans text-xs">Flow Capacity:</span>
+              <span id="active-type-flow" class="text-stone-200">1,800 CFM @ 1.2" ESP</span>
+            </div>
+          </div>
+
+          <!-- Commission CTA -->
+          <div class="pt-2">
+            <button type="button" class="open-quote-modal-btn btn-luxury-solid w-full">
+              Request Similar Family Quote
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Technical Overview & Key Features -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-lux pt-12">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block">
+            MODEL ARCHITECTURE
+          </span>
+          <h2 class="text-2xl font-bold text-white">
+            Engineering Overview
+          </h2>
+          <p id="sample-overview" class="text-xs sm:text-sm text-stone-300 font-sans font-light leading-relaxed">
+            Detailed geometry specifications.
+          </p>
+
+          <div class="pt-4">
+            <h3 class="text-xs font-sans tracking-luxury uppercase text-stone-200 mb-3">
+              Certified Technical Capabilities
+            </h3>
+            <ul id="sample-features-list" class="space-y-2.5 font-sans font-light text-xs text-stone-300">
+              <!-- Rendered via sample-detail.js -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Classifications & Versions -->
+        <div class="lg:col-span-5 border border-lux bg-atelier-card p-6 space-y-5 text-xs font-mono">
+          <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block">
+            METADATA &amp; CLASSIFICATIONS
+          </span>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-lux pb-2">
+              <span class="text-stone-400 font-sans">OmniClass:</span>
+              <span id="sample-omniclass" class="text-stone-200 font-medium">Table 23</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-lux pb-2">
+              <span class="text-stone-400 font-sans">UniFormat:</span>
+              <span id="sample-uniformat" class="text-stone-200 font-medium">D3040.10</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-lux pb-2">
+              <span class="text-stone-400 font-sans">MasterFormat:</span>
+              <span id="sample-masterformat" class="text-stone-200 font-medium">23 74 13</span>
+            </div>
+          </div>
+
+          <div class="pt-3">
+            <span class="text-stone-400 font-sans text-xs block mb-2">Supported Revit Releases:</span>
+            <div id="sample-versions-list" class="flex flex-wrap gap-2 font-mono text-[11px]">
+              <!-- Pill list -->
+            </div>
+          </div>
+
+          <div class="pt-3">
+            <span class="text-stone-400 font-sans text-xs block mb-2">Deliverables Package:</span>
+            <div id="sample-deliverables-list" class="space-y-1.5 font-sans text-xs text-stone-300">
+              <!-- Deliverables -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Type Catalog Schedule Table -->
+      <div class="border-t border-lux pt-12 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-1">
+              CATALOG DATA
+            </span>
+            <h2 class="text-2xl font-bold text-white">
+              Full Type Catalog Schedule
+            </h2>
+          </div>
+          <span class="text-xs font-mono text-stone-400">External .TXT File Architecture</span>
+        </div>
+
+        <div class="overflow-x-auto border border-lux">
+          <table class="w-full text-left text-xs font-mono">
+            <thead class="bg-black/40 border-b border-lux text-[10px] tracking-luxury uppercase text-stone-400 font-sans">
+              <tr>
+                <th class="p-3">Type Name</th>
+                <th class="p-3">Nominal Rating</th>
+                <th class="p-3">Dimensions (L × W × H)</th>
+                <th class="p-3">Operating Weight</th>
+                <th class="p-3">Electrical Service</th>
+                <th class="p-3">Airflow / Flow</th>
+              </tr>
+            </thead>
+            <tbody id="type-catalog-tbody" class="divide-y divide-stone-800/40">
+              <!-- Rendered via sample-detail.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- MEP Connectors Table -->
+      <div class="border-t border-lux pt-12 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-1">
+              MEP PORTS
+            </span>
+            <h2 class="text-2xl font-bold text-white">
+              MEP Connectors &amp; System Integration
+            </h2>
+          </div>
+          <span class="text-xs font-mono text-stone-400">Bidirectional Flow Calculation</span>
+        </div>
+
+        <div class="overflow-x-auto border border-lux">
+          <table class="w-full text-left text-xs font-mono">
+            <thead class="bg-black/40 border-b border-lux text-[10px] tracking-luxury uppercase text-stone-400 font-sans">
+              <tr>
+                <th class="p-3">Connector ID</th>
+                <th class="p-3">Port Name</th>
+                <th class="p-3">System Classification</th>
+                <th class="p-3">Direction</th>
+                <th class="p-3">Connection Size</th>
+                <th class="p-3">Technical Function</th>
+              </tr>
+            </thead>
+            <tbody id="connectors-tbody" class="divide-y divide-stone-800/40">
+              <!-- Rendered via sample-detail.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Parameters Dictionary Table -->
+      <div class="border-t border-lux pt-12 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-1">
+              SHARED PARAMETERS
+            </span>
+            <h2 class="text-2xl font-bold text-white">
+              Key Parameters Dictionary
+            </h2>
+          </div>
+          <span class="text-xs font-mono text-stone-400">Consistent Scheduling GUIDs</span>
+        </div>
+
+        <div class="overflow-x-auto border border-lux">
+          <table class="w-full text-left text-xs font-mono">
+            <thead class="bg-black/40 border-b border-lux text-[10px] tracking-luxury uppercase text-stone-400 font-sans">
+              <tr>
+                <th class="p-3">Parameter Name</th>
+                <th class="p-3">Discipline / Group</th>
+                <th class="p-3">Data Type</th>
+                <th class="p-3">Binding</th>
+                <th class="p-3">Value / Formula Rule</th>
+                <th class="p-3">Engineering Notes</th>
+              </tr>
+            </thead>
+            <tbody id="parameters-tbody" class="divide-y divide-stone-800/40">
+              <!-- Rendered via sample-detail.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Quality & Hygiene Audit Card -->
+      <div class="border-t border-lux pt-12 space-y-6">
+        <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block">
+          QUALITY REVIEW
+        </span>
+        <h2 class="text-2xl font-bold text-white">
+          Development Audit &amp; Performance Review
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-5 border border-lux bg-atelier-card space-y-2">
+            <span class="text-[10px] font-sans uppercase tracking-luxury text-stone-400 block">Geometry Hygiene</span>
+            <p id="audit-geometry" class="text-xs text-stone-300 font-sans font-light leading-relaxed">-</p>
+          </div>
+          <div class="p-5 border border-lux bg-atelier-card space-y-2">
+            <span class="text-[10px] font-sans uppercase tracking-luxury text-stone-400 block">Performance Audit</span>
+            <p id="audit-performance" class="text-xs text-stone-300 font-sans font-light leading-relaxed">-</p>
+          </div>
+          <div class="p-5 border border-lux bg-atelier-card space-y-2">
+            <span class="text-[10px] font-sans uppercase tracking-luxury text-stone-400 block">Clash Clearances</span>
+            <p id="audit-clearance" class="text-xs text-stone-300 font-sans font-light leading-relaxed">-</p>
+          </div>
+          <div class="p-5 border border-lux bg-atelier-card space-y-2">
+            <span class="text-[10px] font-sans uppercase tracking-luxury text-stone-400 block">QA Signoff</span>
+            <p id="audit-qa" class="text-xs text-stone-300 font-sans font-light leading-relaxed">-</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Family Specimens Lookbook (With .webp Images) -->
+      <div class="border-t border-lux pt-12 space-y-6">
+        <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block">
+          RELATED SPECIMENS
+        </span>
+        <h2 class="text-2xl font-bold text-white">
+          Related Family Samples
+        </h2>
+
+        <div id="related-families-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Rendered via sample-detail.js with .webp Images -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Quote Modal -->
+  <div id="detail-rfq-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-atelier-card border border-lux max-w-lg w-full p-8 relative space-y-6">
+      <button id="close-detail-rfq-modal" type="button" class="absolute top-4 right-4 text-stone-400 hover:text-white text-lg font-mono cursor-pointer">
+        &times;
+      </button>
+
+      <div>
+        <span class="text-[10px] font-sans tracking-luxury-wide uppercase text-stone-400 block mb-1">BESPOKE INQUIRY</span>
+        <h3 class="text-xl font-bold text-white">Commission a Similar Revit Family</h3>
+      </div>
+
+      <form id="detail-rfq-form" class="space-y-4">
+        <div>
+          <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Referenced Family Specimen</label>
+          <input type="text" name="target_family" readonly class="luxury-input opacity-70 cursor-not-allowed text-stone-300" />
+        </div>
+
+        <div>
+          <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Company / Manufacturer Name</label>
+          <input type="text" name="company_name" required placeholder="e.g. Trane / Carrier / Marley" class="luxury-input" />
+        </div>
+
+        <div>
+          <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Direct Contact Email</label>
+          <input type="email" name="email" required placeholder="engineer@equipment.com" class="luxury-input" />
+        </div>
+
+        <div>
+          <label class="text-[10px] font-sans tracking-luxury uppercase text-stone-400 block mb-1">Special Requirements &amp; Target Deadlines</label>
+          <textarea name="notes" rows="3" placeholder="Provide model series, SKU count, and specific Revit version requirements." class="luxury-input resize-none"></textarea>
+        </div>
+
+        <div class="pt-3">
+          <button type="submit" class="btn-luxury-solid w-full">
+            Submit Commission Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Minimalist Luxury Footer -->
+  <footer class="bg-atelier-dark py-16 border-t border-lux text-stone-400 text-xs font-sans">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        &copy; 2026 Mirja Riyadh. Revit Family Creation Atelier.
+      </div>
+      <div class="flex items-center space-x-6 text-[11px] tracking-luxury uppercase">
+        <a href="index.html" class="text-stone-300 hover:text-white transition-colors">Atelier Home</a>
+        <a href="index.html#portfolio" class="text-stone-300 hover:text-white transition-colors">Portfolio</a>
+        <a href="index.html#contact" class="text-stone-300 hover:text-white transition-colors">Commission</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="js/sample-detail.js"></script>
+</body>
+</html>
