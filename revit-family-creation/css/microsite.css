@@ -70,6 +70,10 @@ body {
   background-color: var(--lux-bg-light);
 }
 
+.light-mode.bg-atelier-dark {
+  background-color: var(--lux-bg-light) !important;
+}
+
 .light-mode .bg-atelier-card {
   background-color: var(--lux-card-light);
 }

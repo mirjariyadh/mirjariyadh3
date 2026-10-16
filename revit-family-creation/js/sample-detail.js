@@ -63,10 +63,10 @@ function renderActiveView() {
       <div class="relative w-full h-full flex items-center justify-center overflow-hidden luxury-frame">
         <img 
           id="detail-model-img" 
-          src="${currentSample.imageWebp || '/src/assets/images/hero/hero.webp'}" 
+          src="${currentSample.imageWebp || 'assets/images/hero/hero.webp'}"
           alt="${currentSample.title}" 
           class="max-w-full max-h-full object-contain transition-transform duration-700 hover:scale-105"
-          onerror="this.src='/src/assets/images/hero/hero.webp'"
+          onerror="this.src='assets/images/hero/hero.webp'"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
         <div class="absolute bottom-4 left-4 text-[10px] tracking-luxury uppercase text-white/90 bg-black/60 px-3 py-1 backdrop-blur-sm">
@@ -291,10 +291,10 @@ function renderRelatedFamilies() {
       <a href="sample-detail.html?id=${s.id}" class="block group">
         <div class="luxury-frame aspect-[16/11] w-full overflow-hidden relative mb-4">
           <img 
-            src="${s.imageWebp || '/src/assets/images/hero/hero.webp'}" 
+            src="${s.imageWebp || 'assets/images/hero/hero.webp'}"
             alt="${s.title}" 
             class="w-full h-full object-cover"
-            onerror="this.src='/src/assets/images/hero/hero.webp'"
+            onerror="this.src='assets/images/hero/hero.webp'"
           />
           <div class="absolute bottom-3 left-3 bg-black/60 px-2 py-0.5 text-[9px] font-mono tracking-wider text-white/90 backdrop-blur-sm">
             ${s.modelSeries}

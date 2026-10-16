@@ -4,7 +4,7 @@
  * LOD definitions, MEP connectors, and type catalogs.
  */
 
-export const HERO_IMAGE_WEBP = '/src/assets/images/revit-family/hero-revit-family.webp';
+export const HERO_IMAGE_WEBP = 'assets/images/hero-revit-family.webp';
 
 export const REVIT_FAMILY_SAMPLES = [
   {
@@ -14,7 +14,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'HVAC Equipment',
     subtitle: 'Direct-expansion packaged rooftop air handler with motorized economizer dampers, ECM plug fan, and full MEP duct connectors.',
     modelSeries: 'RTU-ECO-Series V',
-    imageWebp: '/src/assets/images/revit-family/sample-ahu.webp',
+    imageWebp: 'assets/images/sample-ahu.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 350',
     fileSizeRfa: '640 KB',
@@ -156,7 +156,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'HVAC Equipment',
     subtitle: 'Ceiling-recessed hydronic fan coil with ECM motor, independent heating/cooling coils, and integrated plenum return.',
     modelSeries: 'FCU-HYD-Conceal',
-    imageWebp: '/src/assets/images/revit-family/sample-fcu.webp',
+    imageWebp: 'assets/images/sample-fcu.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 350',
     fileSizeRfa: '480 KB',
@@ -249,7 +249,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'MEP Equipment',
     subtitle: 'Heavy-duty commercial hydronic pump on cast iron structural base with TEFC motor and ANSI flanged pipe connectors.',
     modelSeries: 'BVM-ES-Series 1500',
-    imageWebp: '/src/assets/images/revit-family/sample-pump.webp',
+    imageWebp: 'assets/images/sample-pump.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 350',
     fileSizeRfa: '520 KB',
@@ -340,7 +340,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'MEP Equipment',
     subtitle: 'Flanged commercial control valve assembly with electronic fail-safe modulating rotary actuator and BACnet feedback.',
     modelSeries: 'CCV-FL-Series 200',
-    imageWebp: '/src/assets/images/revit-family/sample-valve.webp',
+    imageWebp: 'assets/images/sample-valve.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 350',
     fileSizeRfa: '410 KB',
@@ -430,7 +430,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'Industrial Equipment',
     subtitle: 'ASME-stamped vertical stainless steel sanitary mixing tank on structural skid with top-entry helical gear agitator.',
     modelSeries: 'IND-TNK-Agitator 3000',
-    imageWebp: '/src/assets/images/revit-family/sample-vessel.webp',
+    imageWebp: 'assets/images/sample-vessel.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 350',
     fileSizeRfa: '780 KB',
@@ -522,7 +522,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'Industrial Equipment',
     subtitle: 'Pre-piped triplex vertical multi-stage booster pump skid with 304 SS manifolds, ASME expansion tanks, and NEMA 4X VFD controller.',
     modelSeries: 'BVM-TRX-Booster 400',
-    imageWebp: '/src/assets/images/revit-family/sample-booster.webp',
+    imageWebp: 'assets/images/sample-booster.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 350',
     fileSizeRfa: '820 KB',
@@ -612,7 +612,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'Architectural Products',
     subtitle: 'Storefront commercial glazed entrance system with nested panic exit hardware, continuous geared hinges, and ADA threshold.',
     modelSeries: 'ARC-ENT-Narrow Stile 500',
-    imageWebp: '/src/assets/images/revit-family/sample-door.webp',
+    imageWebp: 'assets/images/sample-door.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 350',
     fileSizeRfa: '560 KB',
@@ -700,7 +700,7 @@ export const REVIT_FAMILY_SAMPLES = [
     categoryLabel: 'Architectural Products',
     subtitle: 'Flush drywall ceiling and wall access panel with sound-attenuated acoustic louvers and concealed pivot hinge.',
     modelSeries: 'ARC-ACC-AcousticFlush',
-    imageWebp: '/src/assets/images/revit-family/sample-louver.webp',
+    imageWebp: 'assets/images/sample-louver.webp',
     revitVersions: ['2021', '2022', '2023', '2024', '2025'],
     lodLevel: 'LOD 300',
     fileSizeRfa: '390 KB',
